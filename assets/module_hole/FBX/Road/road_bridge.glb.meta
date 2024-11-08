@@ -1,0 +1,145 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "c47cf": {
+      "importer": "gltf-mesh",
+      "uuid": "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@c47cf",
+      "displayName": "",
+      "id": "c47cf",
+      "name": "Mesh road_bridge.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 312
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a24b6": {
+      "importer": "gltf-scene",
+      "uuid": "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@a24b6",
+      "displayName": "",
+      "id": "a24b6",
+      "name": "road_bridge.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@c47cf"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@34703",
+        "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@787bd",
+        "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@e2243",
+        "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@ca6d7"
+      ],
+      "scenes": [
+        "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@a24b6"
+      ]
+    },
+    "redirect": "432d4af6-eb24-4ad2-adfe-f0fc59e21fe2@a24b6"
+  }
+}

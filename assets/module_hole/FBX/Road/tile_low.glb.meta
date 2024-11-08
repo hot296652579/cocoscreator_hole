@@ -1,0 +1,94 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "1bb468cb-8329-40b4-b6c0-8b7845e8b832",
+  "files": [],
+  "subMetas": {
+    "a188c": {
+      "importer": "gltf-mesh",
+      "uuid": "1bb468cb-8329-40b4-b6c0-8b7845e8b832@a188c",
+      "displayName": "",
+      "id": "a188c",
+      "name": "Mesh tile_low.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 12
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "1bb468cb-8329-40b4-b6c0-8b7845e8b832@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "c0b53": {
+      "importer": "gltf-scene",
+      "uuid": "1bb468cb-8329-40b4-b6c0-8b7845e8b832@c0b53",
+      "displayName": "",
+      "id": "c0b53",
+      "name": "tile_low.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "1bb468cb-8329-40b4-b6c0-8b7845e8b832@a188c"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "1bb468cb-8329-40b4-b6c0-8b7845e8b832@e2243"
+      ],
+      "scenes": [
+        "1bb468cb-8329-40b4-b6c0-8b7845e8b832@c0b53"
+      ]
+    },
+    "redirect": "1bb468cb-8329-40b4-b6c0-8b7845e8b832@c0b53"
+  }
+}

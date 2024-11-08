@@ -1,0 +1,94 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "2ac41e85-8886-465c-9181-2309148c2e47",
+  "files": [],
+  "subMetas": {
+    "42f9a": {
+      "importer": "gltf-mesh",
+      "uuid": "2ac41e85-8886-465c-9181-2309148c2e47@42f9a",
+      "displayName": "",
+      "id": "42f9a",
+      "name": "Mesh road_drivewayDoubleBarrier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 48
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "2ac41e85-8886-465c-9181-2309148c2e47@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "778ac": {
+      "importer": "gltf-scene",
+      "uuid": "2ac41e85-8886-465c-9181-2309148c2e47@778ac",
+      "displayName": "",
+      "id": "778ac",
+      "name": "road_drivewayDoubleBarrier.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "2ac41e85-8886-465c-9181-2309148c2e47@42f9a"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "2ac41e85-8886-465c-9181-2309148c2e47@e2243"
+      ],
+      "scenes": [
+        "2ac41e85-8886-465c-9181-2309148c2e47@778ac"
+      ]
+    },
+    "redirect": "2ac41e85-8886-465c-9181-2309148c2e47@778ac"
+  }
+}

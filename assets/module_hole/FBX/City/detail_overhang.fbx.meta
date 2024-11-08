@@ -1,0 +1,114 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "c1eb90fa-c78a-423c-82f2-4de1c63020c8",
+  "files": [],
+  "subMetas": {
+    "7dbc7": {
+      "importer": "gltf-mesh",
+      "uuid": "c1eb90fa-c78a-423c-82f2-4de1c63020c8@7dbc7",
+      "displayName": "",
+      "id": "7dbc7",
+      "name": "detail_overhang.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 76
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0ee4f": {
+      "importer": "gltf-material",
+      "uuid": "c1eb90fa-c78a-423c-82f2-4de1c63020c8@0ee4f",
+      "displayName": "",
+      "id": "0ee4f",
+      "name": "_defaultMat.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7bf25": {
+      "importer": "gltf-material",
+      "uuid": "c1eb90fa-c78a-423c-82f2-4de1c63020c8@7bf25",
+      "displayName": "",
+      "id": "7bf25",
+      "name": "door.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "dff99": {
+      "importer": "gltf-scene",
+      "uuid": "c1eb90fa-c78a-423c-82f2-4de1c63020c8@dff99",
+      "displayName": "",
+      "id": "dff99",
+      "name": "detail_overhang.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "c1eb90fa-c78a-423c-82f2-4de1c63020c8@7dbc7"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "c1eb90fa-c78a-423c-82f2-4de1c63020c8@0ee4f",
+        "c1eb90fa-c78a-423c-82f2-4de1c63020c8@7bf25"
+      ],
+      "scenes": [
+        "c1eb90fa-c78a-423c-82f2-4de1c63020c8@dff99"
+      ]
+    },
+    "redirect": "c1eb90fa-c78a-423c-82f2-4de1c63020c8@dff99"
+  }
+}

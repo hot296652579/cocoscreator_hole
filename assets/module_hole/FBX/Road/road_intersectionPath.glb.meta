@@ -1,0 +1,145 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "b00f2be1-6e56-4deb-8523-39331cad2a26",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "b00f2be1-6e56-4deb-8523-39331cad2a26@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "59432": {
+      "importer": "gltf-scene",
+      "uuid": "b00f2be1-6e56-4deb-8523-39331cad2a26@59432",
+      "displayName": "",
+      "id": "59432",
+      "name": "road_intersectionPath.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8c773": {
+      "importer": "gltf-mesh",
+      "uuid": "b00f2be1-6e56-4deb-8523-39331cad2a26@8c773",
+      "displayName": "",
+      "id": "8c773",
+      "name": "Mesh road_intersectionPath.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 204
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "b00f2be1-6e56-4deb-8523-39331cad2a26@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "b00f2be1-6e56-4deb-8523-39331cad2a26@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "b00f2be1-6e56-4deb-8523-39331cad2a26@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "b00f2be1-6e56-4deb-8523-39331cad2a26@8c773"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "b00f2be1-6e56-4deb-8523-39331cad2a26@787bd",
+        "b00f2be1-6e56-4deb-8523-39331cad2a26@e2243",
+        "b00f2be1-6e56-4deb-8523-39331cad2a26@ca6d7",
+        "b00f2be1-6e56-4deb-8523-39331cad2a26@34703"
+      ],
+      "scenes": [
+        "b00f2be1-6e56-4deb-8523-39331cad2a26@59432"
+      ]
+    },
+    "redirect": "b00f2be1-6e56-4deb-8523-39331cad2a26@59432"
+  }
+}

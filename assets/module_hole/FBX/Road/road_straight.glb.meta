@@ -1,0 +1,145 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "eb657": {
+      "importer": "gltf-mesh",
+      "uuid": "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@eb657",
+      "displayName": "",
+      "id": "eb657",
+      "name": "Mesh road_straight.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 44
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "abc2c": {
+      "importer": "gltf-scene",
+      "uuid": "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@abc2c",
+      "displayName": "",
+      "id": "abc2c",
+      "name": "road_straight.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@eb657"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@e2243",
+        "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@787bd",
+        "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@ca6d7",
+        "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@34703"
+      ],
+      "scenes": [
+        "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@abc2c"
+      ]
+    },
+    "redirect": "a5e56be9-703e-4fcd-8b7b-ae0fc43d6e5d@abc2c"
+  }
+}

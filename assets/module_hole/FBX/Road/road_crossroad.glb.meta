@@ -1,0 +1,145 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "fb39aef5-0306-461a-8f99-f6e3ae6be7fd",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "56fe5": {
+      "importer": "gltf-mesh",
+      "uuid": "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@56fe5",
+      "displayName": "",
+      "id": "56fe5",
+      "name": "Mesh road_crossroad.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 116
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1dd04": {
+      "importer": "gltf-scene",
+      "uuid": "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@1dd04",
+      "displayName": "",
+      "id": "1dd04",
+      "name": "road_crossroad.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@56fe5"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@787bd",
+        "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@ca6d7",
+        "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@e2243",
+        "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@34703"
+      ],
+      "scenes": [
+        "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@1dd04"
+      ]
+    },
+    "redirect": "fb39aef5-0306-461a-8f99-f6e3ae6be7fd@1dd04"
+  }
+}

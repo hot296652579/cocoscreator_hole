@@ -1,0 +1,97 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "286f24cd-b8df-4979-a647-2f01862f33b5",
+  "files": [],
+  "subMetas": {
+    "41580": {
+      "importer": "gltf-mesh",
+      "uuid": "286f24cd-b8df-4979-a647-2f01862f33b5@41580",
+      "displayName": "",
+      "id": "41580",
+      "name": "roof_center.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 2
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7bf25": {
+      "importer": "gltf-material",
+      "uuid": "286f24cd-b8df-4979-a647-2f01862f33b5@7bf25",
+      "displayName": "",
+      "id": "7bf25",
+      "name": "door.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "94dae": {
+      "importer": "gltf-scene",
+      "uuid": "286f24cd-b8df-4979-a647-2f01862f33b5@94dae",
+      "displayName": "",
+      "id": "94dae",
+      "name": "roof_center.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "286f24cd-b8df-4979-a647-2f01862f33b5@41580"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "286f24cd-b8df-4979-a647-2f01862f33b5@7bf25"
+      ],
+      "scenes": [
+        "286f24cd-b8df-4979-a647-2f01862f33b5@94dae"
+      ]
+    },
+    "redirect": "286f24cd-b8df-4979-a647-2f01862f33b5@94dae"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "b62bdf8b-845d-403d-8bac-05212f12f011",
+  "files": [],
+  "subMetas": {
+    "14648": {
+      "importer": "gltf-scene",
+      "uuid": "b62bdf8b-845d-403d-8bac-05212f12f011@14648",
+      "displayName": "",
+      "id": "14648",
+      "name": "driveway_short.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "54104": {
+      "importer": "gltf-mesh",
+      "uuid": "b62bdf8b-845d-403d-8bac-05212f12f011@54104",
+      "displayName": "",
+      "id": "54104",
+      "name": "driveway_short.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 12
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7bf25": {
+      "importer": "gltf-material",
+      "uuid": "b62bdf8b-845d-403d-8bac-05212f12f011@7bf25",
+      "displayName": "",
+      "id": "7bf25",
+      "name": "door.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "cb799": {
+      "importer": "gltf-material",
+      "uuid": "b62bdf8b-845d-403d-8bac-05212f12f011@cb799",
+      "displayName": "",
+      "id": "cb799",
+      "name": "border.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "b62bdf8b-845d-403d-8bac-05212f12f011@54104"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "b62bdf8b-845d-403d-8bac-05212f12f011@7bf25",
+        "b62bdf8b-845d-403d-8bac-05212f12f011@cb799"
+      ],
+      "scenes": [
+        "b62bdf8b-845d-403d-8bac-05212f12f011@14648"
+      ]
+    },
+    "redirect": "b62bdf8b-845d-403d-8bac-05212f12f011@14648"
+  }
+}

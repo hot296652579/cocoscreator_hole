@@ -1,0 +1,94 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "7c7b65ed-6b14-45f7-bc28-0328cb5504dd",
+  "files": [],
+  "subMetas": {
+    "b3bb7": {
+      "importer": "gltf-mesh",
+      "uuid": "7c7b65ed-6b14-45f7-bc28-0328cb5504dd@b3bb7",
+      "displayName": "",
+      "id": "b3bb7",
+      "name": "Mesh road_curveIntersectionBarrier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 166
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "7c7b65ed-6b14-45f7-bc28-0328cb5504dd@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0459a": {
+      "importer": "gltf-scene",
+      "uuid": "7c7b65ed-6b14-45f7-bc28-0328cb5504dd@0459a",
+      "displayName": "",
+      "id": "0459a",
+      "name": "road_curveIntersectionBarrier.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "7c7b65ed-6b14-45f7-bc28-0328cb5504dd@b3bb7"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "7c7b65ed-6b14-45f7-bc28-0328cb5504dd@e2243"
+      ],
+      "scenes": [
+        "7c7b65ed-6b14-45f7-bc28-0328cb5504dd@0459a"
+      ]
+    },
+    "redirect": "7c7b65ed-6b14-45f7-bc28-0328cb5504dd@0459a"
+  }
+}

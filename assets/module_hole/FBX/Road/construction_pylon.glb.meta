@@ -1,0 +1,111 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "0912abba-62ba-4de5-8792-9a4553e57b22",
+  "files": [],
+  "subMetas": {
+    "d403f": {
+      "importer": "gltf-mesh",
+      "uuid": "0912abba-62ba-4de5-8792-9a4553e57b22@d403f",
+      "displayName": "",
+      "id": "d403f",
+      "name": "Mesh construction_pylon.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 156
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d6de6": {
+      "importer": "gltf-material",
+      "uuid": "0912abba-62ba-4de5-8792-9a4553e57b22@d6de6",
+      "displayName": "",
+      "id": "d6de6",
+      "name": "cone.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "0912abba-62ba-4de5-8792-9a4553e57b22@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ac4dd": {
+      "importer": "gltf-scene",
+      "uuid": "0912abba-62ba-4de5-8792-9a4553e57b22@ac4dd",
+      "displayName": "",
+      "id": "ac4dd",
+      "name": "construction_pylon.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "0912abba-62ba-4de5-8792-9a4553e57b22@d403f"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "0912abba-62ba-4de5-8792-9a4553e57b22@d6de6",
+        "0912abba-62ba-4de5-8792-9a4553e57b22@e2243"
+      ],
+      "scenes": [
+        "0912abba-62ba-4de5-8792-9a4553e57b22@ac4dd"
+      ]
+    },
+    "redirect": "0912abba-62ba-4de5-8792-9a4553e57b22@ac4dd"
+  }
+}

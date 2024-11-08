@@ -1,0 +1,145 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a6038": {
+      "importer": "gltf-mesh",
+      "uuid": "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@a6038",
+      "displayName": "",
+      "id": "a6038",
+      "name": "Mesh road_sideEntry.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 306
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0f044": {
+      "importer": "gltf-scene",
+      "uuid": "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@0f044",
+      "displayName": "",
+      "id": "0f044",
+      "name": "road_sideEntry.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@a6038"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@e2243",
+        "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@787bd",
+        "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@ca6d7",
+        "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@34703"
+      ],
+      "scenes": [
+        "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@0f044"
+      ]
+    },
+    "redirect": "18a1db01-97f5-4ec0-a6c6-f5205ac21a5f@0f044"
+  }
+}

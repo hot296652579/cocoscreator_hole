@@ -1,0 +1,162 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "06e5682e-b54d-4252-b5ca-3cf8bd71f02e",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 4
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "fbe2a": {
+      "importer": "gltf-mesh",
+      "uuid": "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@fbe2a",
+      "displayName": "",
+      "id": "fbe2a",
+      "name": "Mesh road_curveIntersection.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 298
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0ee4f": {
+      "importer": "gltf-material",
+      "uuid": "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@0ee4f",
+      "displayName": "",
+      "id": "0ee4f",
+      "name": "_defaultMat.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ec114": {
+      "importer": "gltf-scene",
+      "uuid": "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@ec114",
+      "displayName": "",
+      "id": "ec114",
+      "name": "road_curveIntersection.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@fbe2a"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@e2243",
+        "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@787bd",
+        "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@ca6d7",
+        "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@0ee4f",
+        "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@34703"
+      ],
+      "scenes": [
+        "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@ec114"
+      ]
+    },
+    "redirect": "06e5682e-b54d-4252-b5ca-3cf8bd71f02e@ec114"
+  }
+}

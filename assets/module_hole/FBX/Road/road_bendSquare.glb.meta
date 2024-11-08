@@ -1,0 +1,145 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "5b8cc98d-a338-4635-bcf2-971cef7188c5",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "5b8cc98d-a338-4635-bcf2-971cef7188c5@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e6944": {
+      "importer": "gltf-mesh",
+      "uuid": "5b8cc98d-a338-4635-bcf2-971cef7188c5@e6944",
+      "displayName": "",
+      "id": "e6944",
+      "name": "Mesh road_bendSquare.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 60
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "5b8cc98d-a338-4635-bcf2-971cef7188c5@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "5b8cc98d-a338-4635-bcf2-971cef7188c5@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "5b8cc98d-a338-4635-bcf2-971cef7188c5@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f183c": {
+      "importer": "gltf-scene",
+      "uuid": "5b8cc98d-a338-4635-bcf2-971cef7188c5@f183c",
+      "displayName": "",
+      "id": "f183c",
+      "name": "road_bendSquare.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "5b8cc98d-a338-4635-bcf2-971cef7188c5@e6944"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "5b8cc98d-a338-4635-bcf2-971cef7188c5@e2243",
+        "5b8cc98d-a338-4635-bcf2-971cef7188c5@787bd",
+        "5b8cc98d-a338-4635-bcf2-971cef7188c5@ca6d7",
+        "5b8cc98d-a338-4635-bcf2-971cef7188c5@34703"
+      ],
+      "scenes": [
+        "5b8cc98d-a338-4635-bcf2-971cef7188c5@f183c"
+      ]
+    },
+    "redirect": "5b8cc98d-a338-4635-bcf2-971cef7188c5@f183c"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "4bf12708-dbe7-4e8f-ba99-9dcf6f065463",
+  "files": [],
+  "subMetas": {
+    "c0baa": {
+      "importer": "gltf-mesh",
+      "uuid": "4bf12708-dbe7-4e8f-ba99-9dcf6f065463@c0baa",
+      "displayName": "",
+      "id": "c0baa",
+      "name": "Mesh road_curveBarrier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 200
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "4bf12708-dbe7-4e8f-ba99-9dcf6f065463@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "976d2": {
+      "importer": "gltf-scene",
+      "uuid": "4bf12708-dbe7-4e8f-ba99-9dcf6f065463@976d2",
+      "displayName": "",
+      "id": "976d2",
+      "name": "road_curveBarrier.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "4bf12708-dbe7-4e8f-ba99-9dcf6f065463@c0baa"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "4bf12708-dbe7-4e8f-ba99-9dcf6f065463@e2243"
+      ],
+      "scenes": [
+        "4bf12708-dbe7-4e8f-ba99-9dcf6f065463@976d2"
+      ]
+    },
+    "redirect": "4bf12708-dbe7-4e8f-ba99-9dcf6f065463@976d2"
+  }
+}

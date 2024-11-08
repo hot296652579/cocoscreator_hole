@@ -1,0 +1,145 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "ba803091-c2c6-450b-89b9-585ea156c8c9",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "ba803091-c2c6-450b-89b9-585ea156c8c9@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "804b1": {
+      "importer": "gltf-mesh",
+      "uuid": "ba803091-c2c6-450b-89b9-585ea156c8c9@804b1",
+      "displayName": "",
+      "id": "804b1",
+      "name": "Mesh road_slantCurve.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 544
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "ba803091-c2c6-450b-89b9-585ea156c8c9@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "ba803091-c2c6-450b-89b9-585ea156c8c9@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "ba803091-c2c6-450b-89b9-585ea156c8c9@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0187c": {
+      "importer": "gltf-scene",
+      "uuid": "ba803091-c2c6-450b-89b9-585ea156c8c9@0187c",
+      "displayName": "",
+      "id": "0187c",
+      "name": "road_slantCurve.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "ba803091-c2c6-450b-89b9-585ea156c8c9@804b1"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "ba803091-c2c6-450b-89b9-585ea156c8c9@e2243",
+        "ba803091-c2c6-450b-89b9-585ea156c8c9@ca6d7",
+        "ba803091-c2c6-450b-89b9-585ea156c8c9@787bd",
+        "ba803091-c2c6-450b-89b9-585ea156c8c9@34703"
+      ],
+      "scenes": [
+        "ba803091-c2c6-450b-89b9-585ea156c8c9@0187c"
+      ]
+    },
+    "redirect": "ba803091-c2c6-450b-89b9-585ea156c8c9@0187c"
+  }
+}

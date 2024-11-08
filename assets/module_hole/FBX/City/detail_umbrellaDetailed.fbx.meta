@@ -1,0 +1,131 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "b65275a5-a949-429f-937d-d080b42dfac8",
+  "files": [],
+  "subMetas": {
+    "0b8b3": {
+      "importer": "gltf-mesh",
+      "uuid": "b65275a5-a949-429f-937d-d080b42dfac8@0b8b3",
+      "displayName": "",
+      "id": "0b8b3",
+      "name": "detail_umbrellaDetailed.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 100
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "accad": {
+      "importer": "gltf-material",
+      "uuid": "b65275a5-a949-429f-937d-d080b42dfac8@accad",
+      "displayName": "",
+      "id": "accad",
+      "name": "roof.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "b65275a5-a949-429f-937d-d080b42dfac8@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0ee4f": {
+      "importer": "gltf-material",
+      "uuid": "b65275a5-a949-429f-937d-d080b42dfac8@0ee4f",
+      "displayName": "",
+      "id": "0ee4f",
+      "name": "_defaultMat.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "52b6d": {
+      "importer": "gltf-scene",
+      "uuid": "b65275a5-a949-429f-937d-d080b42dfac8@52b6d",
+      "displayName": "",
+      "id": "52b6d",
+      "name": "detail_umbrellaDetailed.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "b65275a5-a949-429f-937d-d080b42dfac8@0b8b3"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "b65275a5-a949-429f-937d-d080b42dfac8@accad",
+        "b65275a5-a949-429f-937d-d080b42dfac8@e2243",
+        "b65275a5-a949-429f-937d-d080b42dfac8@0ee4f"
+      ],
+      "scenes": [
+        "b65275a5-a949-429f-937d-d080b42dfac8@52b6d"
+      ]
+    },
+    "redirect": "b65275a5-a949-429f-937d-d080b42dfac8@52b6d"
+  }
+}

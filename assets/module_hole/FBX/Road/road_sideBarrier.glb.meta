@@ -1,0 +1,94 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "c4c26632-92fc-4c52-90db-883ec6fe744e",
+  "files": [],
+  "subMetas": {
+    "d9bcc": {
+      "importer": "gltf-mesh",
+      "uuid": "c4c26632-92fc-4c52-90db-883ec6fe744e@d9bcc",
+      "displayName": "",
+      "id": "d9bcc",
+      "name": "Mesh road_sideBarrier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 24
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "c4c26632-92fc-4c52-90db-883ec6fe744e@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6eccc": {
+      "importer": "gltf-scene",
+      "uuid": "c4c26632-92fc-4c52-90db-883ec6fe744e@6eccc",
+      "displayName": "",
+      "id": "6eccc",
+      "name": "road_sideBarrier.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "c4c26632-92fc-4c52-90db-883ec6fe744e@d9bcc"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "c4c26632-92fc-4c52-90db-883ec6fe744e@e2243"
+      ],
+      "scenes": [
+        "c4c26632-92fc-4c52-90db-883ec6fe744e@6eccc"
+      ]
+    },
+    "redirect": "c4c26632-92fc-4c52-90db-883ec6fe744e@6eccc"
+  }
+}

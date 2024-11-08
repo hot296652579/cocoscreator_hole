@@ -1,0 +1,97 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "32bd19e8-d607-4def-8037-a1dad5708642",
+  "files": [],
+  "subMetas": {
+    "a9374": {
+      "importer": "gltf-mesh",
+      "uuid": "32bd19e8-d607-4def-8037-a1dad5708642@a9374",
+      "displayName": "",
+      "id": "a9374",
+      "name": "fence_medium.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 64
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e4014": {
+      "importer": "gltf-material",
+      "uuid": "32bd19e8-d607-4def-8037-a1dad5708642@e4014",
+      "displayName": "",
+      "id": "e4014",
+      "name": "wood.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b419f": {
+      "importer": "gltf-scene",
+      "uuid": "32bd19e8-d607-4def-8037-a1dad5708642@b419f",
+      "displayName": "",
+      "id": "b419f",
+      "name": "fence_medium.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "32bd19e8-d607-4def-8037-a1dad5708642@a9374"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "32bd19e8-d607-4def-8037-a1dad5708642@e4014"
+      ],
+      "scenes": [
+        "32bd19e8-d607-4def-8037-a1dad5708642@b419f"
+      ]
+    },
+    "redirect": "32bd19e8-d607-4def-8037-a1dad5708642@b419f"
+  }
+}

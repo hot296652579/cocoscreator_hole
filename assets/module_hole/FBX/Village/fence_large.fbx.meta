@@ -1,0 +1,97 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "d09f60ca-f4b0-4032-b534-5ae753f62bbc",
+  "files": [],
+  "subMetas": {
+    "0fc04": {
+      "importer": "gltf-mesh",
+      "uuid": "d09f60ca-f4b0-4032-b534-5ae753f62bbc@0fc04",
+      "displayName": "",
+      "id": "0fc04",
+      "name": "fence_large.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 64
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e4014": {
+      "importer": "gltf-material",
+      "uuid": "d09f60ca-f4b0-4032-b534-5ae753f62bbc@e4014",
+      "displayName": "",
+      "id": "e4014",
+      "name": "wood.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "fcbcf": {
+      "importer": "gltf-scene",
+      "uuid": "d09f60ca-f4b0-4032-b534-5ae753f62bbc@fcbcf",
+      "displayName": "",
+      "id": "fcbcf",
+      "name": "fence_large.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "d09f60ca-f4b0-4032-b534-5ae753f62bbc@0fc04"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "d09f60ca-f4b0-4032-b534-5ae753f62bbc@e4014"
+      ],
+      "scenes": [
+        "d09f60ca-f4b0-4032-b534-5ae753f62bbc@fcbcf"
+      ]
+    },
+    "redirect": "d09f60ca-f4b0-4032-b534-5ae753f62bbc@fcbcf"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "332db276-23a5-4208-94a3-c17119d5d967",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "332db276-23a5-4208-94a3-c17119d5d967@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b2b8e": {
+      "importer": "gltf-mesh",
+      "uuid": "332db276-23a5-4208-94a3-c17119d5d967@b2b8e",
+      "displayName": "",
+      "id": "b2b8e",
+      "name": "Mesh road_slantFlatHigh.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 44
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "332db276-23a5-4208-94a3-c17119d5d967@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "332db276-23a5-4208-94a3-c17119d5d967@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "332db276-23a5-4208-94a3-c17119d5d967@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "3f5ab": {
+      "importer": "gltf-scene",
+      "uuid": "332db276-23a5-4208-94a3-c17119d5d967@3f5ab",
+      "displayName": "",
+      "id": "3f5ab",
+      "name": "road_slantFlatHigh.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "332db276-23a5-4208-94a3-c17119d5d967@b2b8e"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "332db276-23a5-4208-94a3-c17119d5d967@787bd",
+        "332db276-23a5-4208-94a3-c17119d5d967@e2243",
+        "332db276-23a5-4208-94a3-c17119d5d967@ca6d7",
+        "332db276-23a5-4208-94a3-c17119d5d967@34703"
+      ],
+      "scenes": [
+        "332db276-23a5-4208-94a3-c17119d5d967@3f5ab"
+      ]
+    },
+    "redirect": "332db276-23a5-4208-94a3-c17119d5d967@3f5ab"
+  }
+}

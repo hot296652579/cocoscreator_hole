@@ -1,0 +1,145 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8fafb": {
+      "importer": "gltf-mesh",
+      "uuid": "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@8fafb",
+      "displayName": "",
+      "id": "8fafb",
+      "name": "Mesh road_slant.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 44
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "dbe2f": {
+      "importer": "gltf-scene",
+      "uuid": "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@dbe2f",
+      "displayName": "",
+      "id": "dbe2f",
+      "name": "road_slant.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@8fafb"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@e2243",
+        "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@ca6d7",
+        "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@34703",
+        "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@787bd"
+      ],
+      "scenes": [
+        "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@dbe2f"
+      ]
+    },
+    "redirect": "f7d6a07a-a7dd-4d93-bd5d-a7800d96cb8c@dbe2f"
+  }
+}

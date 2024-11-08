@@ -1,0 +1,145 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "6dbee684-28bf-4e4f-8448-01606a94e43d",
+  "files": [],
+  "subMetas": {
+    "34703": {
+      "importer": "gltf-material",
+      "uuid": "6dbee684-28bf-4e4f-8448-01606a94e43d@34703",
+      "displayName": "",
+      "id": "34703",
+      "name": "line.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "60969": {
+      "importer": "gltf-scene",
+      "uuid": "6dbee684-28bf-4e4f-8448-01606a94e43d@60969",
+      "displayName": "",
+      "id": "60969",
+      "name": "road_drivewaySingle.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "2b825": {
+      "importer": "gltf-mesh",
+      "uuid": "6dbee684-28bf-4e4f-8448-01606a94e43d@2b825",
+      "displayName": "",
+      "id": "2b825",
+      "name": "Mesh road_drivewaySingle.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 60
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "6dbee684-28bf-4e4f-8448-01606a94e43d@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca6d7": {
+      "importer": "gltf-material",
+      "uuid": "6dbee684-28bf-4e4f-8448-01606a94e43d@ca6d7",
+      "displayName": "",
+      "id": "ca6d7",
+      "name": "asphaltEdge.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "787bd": {
+      "importer": "gltf-material",
+      "uuid": "6dbee684-28bf-4e4f-8448-01606a94e43d@787bd",
+      "displayName": "",
+      "id": "787bd",
+      "name": "asphalt.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "6dbee684-28bf-4e4f-8448-01606a94e43d@2b825"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "6dbee684-28bf-4e4f-8448-01606a94e43d@e2243",
+        "6dbee684-28bf-4e4f-8448-01606a94e43d@ca6d7",
+        "6dbee684-28bf-4e4f-8448-01606a94e43d@787bd",
+        "6dbee684-28bf-4e4f-8448-01606a94e43d@34703"
+      ],
+      "scenes": [
+        "6dbee684-28bf-4e4f-8448-01606a94e43d@60969"
+      ]
+    },
+    "redirect": "6dbee684-28bf-4e4f-8448-01606a94e43d@60969"
+  }
+}

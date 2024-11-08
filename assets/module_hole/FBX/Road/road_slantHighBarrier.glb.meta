@@ -1,0 +1,94 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "07437892-de2f-46b8-a25a-54af8c4b6adb",
+  "files": [],
+  "subMetas": {
+    "6d3e7": {
+      "importer": "gltf-mesh",
+      "uuid": "07437892-de2f-46b8-a25a-54af8c4b6adb@6d3e7",
+      "displayName": "",
+      "id": "6d3e7",
+      "name": "Mesh road_slantHighBarrier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 24
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "07437892-de2f-46b8-a25a-54af8c4b6adb@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a478d": {
+      "importer": "gltf-scene",
+      "uuid": "07437892-de2f-46b8-a25a-54af8c4b6adb@a478d",
+      "displayName": "",
+      "id": "a478d",
+      "name": "road_slantHighBarrier.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "07437892-de2f-46b8-a25a-54af8c4b6adb@6d3e7"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "07437892-de2f-46b8-a25a-54af8c4b6adb@e2243"
+      ],
+      "scenes": [
+        "07437892-de2f-46b8-a25a-54af8c4b6adb@a478d"
+      ]
+    },
+    "redirect": "07437892-de2f-46b8-a25a-54af8c4b6adb@a478d"
+  }
+}

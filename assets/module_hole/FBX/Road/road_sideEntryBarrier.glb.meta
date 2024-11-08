@@ -1,0 +1,94 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "3a79626e-10f7-4eb6-bc86-25694e99ca85",
+  "files": [],
+  "subMetas": {
+    "8a8a3": {
+      "importer": "gltf-mesh",
+      "uuid": "3a79626e-10f7-4eb6-bc86-25694e99ca85@8a8a3",
+      "displayName": "",
+      "id": "8a8a3",
+      "name": "Mesh road_sideEntryBarrier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 232
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "3a79626e-10f7-4eb6-bc86-25694e99ca85@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "afeeb": {
+      "importer": "gltf-scene",
+      "uuid": "3a79626e-10f7-4eb6-bc86-25694e99ca85@afeeb",
+      "displayName": "",
+      "id": "afeeb",
+      "name": "road_sideEntryBarrier.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "3a79626e-10f7-4eb6-bc86-25694e99ca85@8a8a3"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "3a79626e-10f7-4eb6-bc86-25694e99ca85@e2243"
+      ],
+      "scenes": [
+        "3a79626e-10f7-4eb6-bc86-25694e99ca85@afeeb"
+      ]
+    },
+    "redirect": "3a79626e-10f7-4eb6-bc86-25694e99ca85@afeeb"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "e19ad388-4e98-41ce-9c89-3c0734cfe5e1",
+  "files": [],
+  "subMetas": {
+    "dc7a2": {
+      "importer": "gltf-mesh",
+      "uuid": "e19ad388-4e98-41ce-9c89-3c0734cfe5e1@dc7a2",
+      "displayName": "",
+      "id": "dc7a2",
+      "name": "Mesh road_drivewaySingleBarrier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 36
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "e19ad388-4e98-41ce-9c89-3c0734cfe5e1@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "af208": {
+      "importer": "gltf-scene",
+      "uuid": "e19ad388-4e98-41ce-9c89-3c0734cfe5e1@af208",
+      "displayName": "",
+      "id": "af208",
+      "name": "road_drivewaySingleBarrier.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "e19ad388-4e98-41ce-9c89-3c0734cfe5e1@dc7a2"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "e19ad388-4e98-41ce-9c89-3c0734cfe5e1@e2243"
+      ],
+      "scenes": [
+        "e19ad388-4e98-41ce-9c89-3c0734cfe5e1@af208"
+      ]
+    },
+    "redirect": "e19ad388-4e98-41ce-9c89-3c0734cfe5e1@af208"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "3ff10439-0aec-4f0d-8d2c-27cb4dcfc944",
+  "files": [],
+  "subMetas": {
+    "e56f4": {
+      "importer": "gltf-mesh",
+      "uuid": "3ff10439-0aec-4f0d-8d2c-27cb4dcfc944@e56f4",
+      "displayName": "",
+      "id": "e56f4",
+      "name": "Mesh road_sideExitBarrier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 232
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "3ff10439-0aec-4f0d-8d2c-27cb4dcfc944@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "26ab6": {
+      "importer": "gltf-scene",
+      "uuid": "3ff10439-0aec-4f0d-8d2c-27cb4dcfc944@26ab6",
+      "displayName": "",
+      "id": "26ab6",
+      "name": "road_sideExitBarrier.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "3ff10439-0aec-4f0d-8d2c-27cb4dcfc944@e56f4"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "3ff10439-0aec-4f0d-8d2c-27cb4dcfc944@e2243"
+      ],
+      "scenes": [
+        "3ff10439-0aec-4f0d-8d2c-27cb4dcfc944@26ab6"
+      ]
+    },
+    "redirect": "3ff10439-0aec-4f0d-8d2c-27cb4dcfc944@26ab6"
+  }
+}

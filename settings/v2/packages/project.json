@@ -1,0 +1,50 @@
+{
+  "general": {
+    "highQuality": true,
+    "designResolution": {
+      "width": 750,
+      "height": 1600
+    }
+  },
+  "__version__": "1.0.6",
+  "fbx": {
+    "legacyFbxImporter": {
+      "visible": true
+    }
+  },
+  "script": {
+    "preserveSymlinks": true
+  },
+  "physics": {
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "Ground"
+      },
+      {
+        "index": 2,
+        "name": "Ring"
+      },
+      {
+        "index": 3,
+        "name": "EdibleThing"
+      },
+      {
+        "index": 4,
+        "name": "InedibleThing"
+      },
+      {
+        "index": 5,
+        "name": "Hole"
+      }
+    ],
+    "collisionMatrix": {
+      "0": 1,
+      "1": 16,
+      "2": 24,
+      "3": 60,
+      "4": 62,
+      "5": 24
+    }
+  }
+}

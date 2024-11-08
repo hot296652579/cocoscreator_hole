@@ -1,0 +1,182 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "5c5616d1-8389-4271-9e63-b3899b854829",
+  "files": [],
+  "subMetas": {
+    "85f06": {
+      "importer": "gltf-mesh",
+      "uuid": "5c5616d1-8389-4271-9e63-b3899b854829@85f06",
+      "displayName": "",
+      "id": "85f06",
+      "name": "skyscraperD.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 986
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "cb799": {
+      "importer": "gltf-material",
+      "uuid": "5c5616d1-8389-4271-9e63-b3899b854829@cb799",
+      "displayName": "",
+      "id": "cb799",
+      "name": "border.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ad0bb": {
+      "importer": "gltf-material",
+      "uuid": "5c5616d1-8389-4271-9e63-b3899b854829@ad0bb",
+      "displayName": "",
+      "id": "ad0bb",
+      "name": "trim.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7bf25": {
+      "importer": "gltf-material",
+      "uuid": "5c5616d1-8389-4271-9e63-b3899b854829@7bf25",
+      "displayName": "",
+      "id": "7bf25",
+      "name": "door.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d4d9d": {
+      "importer": "gltf-material",
+      "uuid": "5c5616d1-8389-4271-9e63-b3899b854829@d4d9d",
+      "displayName": "",
+      "id": "d4d9d",
+      "name": "window.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0ee4f": {
+      "importer": "gltf-material",
+      "uuid": "5c5616d1-8389-4271-9e63-b3899b854829@0ee4f",
+      "displayName": "",
+      "id": "0ee4f",
+      "name": "_defaultMat.material",
+      "userData": {
+        "gltfIndex": 4
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "accad": {
+      "importer": "gltf-material",
+      "uuid": "5c5616d1-8389-4271-9e63-b3899b854829@accad",
+      "displayName": "",
+      "id": "accad",
+      "name": "roof.material",
+      "userData": {
+        "gltfIndex": 5
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "738ae": {
+      "importer": "gltf-scene",
+      "uuid": "5c5616d1-8389-4271-9e63-b3899b854829@738ae",
+      "displayName": "",
+      "id": "738ae",
+      "name": "skyscraperD.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "5c5616d1-8389-4271-9e63-b3899b854829@85f06"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "5c5616d1-8389-4271-9e63-b3899b854829@cb799",
+        "5c5616d1-8389-4271-9e63-b3899b854829@ad0bb",
+        "5c5616d1-8389-4271-9e63-b3899b854829@7bf25",
+        "5c5616d1-8389-4271-9e63-b3899b854829@d4d9d",
+        "5c5616d1-8389-4271-9e63-b3899b854829@0ee4f",
+        "5c5616d1-8389-4271-9e63-b3899b854829@accad"
+      ],
+      "scenes": [
+        "5c5616d1-8389-4271-9e63-b3899b854829@738ae"
+      ]
+    },
+    "redirect": "5c5616d1-8389-4271-9e63-b3899b854829@738ae"
+  }
+}

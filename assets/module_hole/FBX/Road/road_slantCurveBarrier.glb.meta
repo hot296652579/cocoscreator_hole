@@ -1,0 +1,94 @@
+{
+  "ver": "2.3.12",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "10d07068-da43-46c3-9f5a-44d345bab177",
+  "files": [],
+  "subMetas": {
+    "53820": {
+      "importer": "gltf-scene",
+      "uuid": "10d07068-da43-46c3-9f5a-44d345bab177@53820",
+      "displayName": "",
+      "id": "53820",
+      "name": "road_slantCurveBarrier.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a180c": {
+      "importer": "gltf-mesh",
+      "uuid": "10d07068-da43-46c3-9f5a-44d345bab177@a180c",
+      "displayName": "",
+      "id": "a180c",
+      "name": "Mesh road_slantCurveBarrier.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 420
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e2243": {
+      "importer": "gltf-material",
+      "uuid": "10d07068-da43-46c3-9f5a-44d345bab177@e2243",
+      "displayName": "",
+      "id": "e2243",
+      "name": "pavement.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "10d07068-da43-46c3-9f5a-44d345bab177@a180c"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "10d07068-da43-46c3-9f5a-44d345bab177@e2243"
+      ],
+      "scenes": [
+        "10d07068-da43-46c3-9f5a-44d345bab177@53820"
+      ]
+    },
+    "redirect": "10d07068-da43-46c3-9f5a-44d345bab177@53820"
+  }
+}
