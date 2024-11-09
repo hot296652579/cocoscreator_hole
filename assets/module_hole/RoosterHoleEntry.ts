@@ -44,6 +44,7 @@ export class RoosterHoleEntry extends Component {
     onGameStart() {
         if (this.gaming) return;
 
+        this.gaming = true;
         const levelTimeTotal = LevelManager.instance.levelModel.levelTimeTotal;
         this.countdown = levelTimeTotal;
         this.schedule(this.updateCountdown, 1);

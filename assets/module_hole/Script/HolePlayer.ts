@@ -45,7 +45,9 @@ export class HolePlayer extends Component {
         if (event.otherCollider.getGroup() == 1 << 4) {
             if (distance <= holeRadius * coefficient) {
                 //EdibleThing 层组不与地面碰撞交集 就可通过刚体重力掉落
-                event.otherCollider.setGroup(1 << 3)
+                event.otherCollider.setGroup(1 << 3);
+
+                console.log(`吞噬的道具:${event.otherCollider.node.name}`)
             }
         }
     }
