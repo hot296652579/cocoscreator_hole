@@ -7,7 +7,7 @@
 */
 export class UserModel {
     private _level: number = 1;
-    private _money: number = 1000;
+    private _money: number = 500;
     private _nickName: string = '落山鸡';
 
     constructor() {

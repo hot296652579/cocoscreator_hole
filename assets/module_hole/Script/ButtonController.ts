@@ -1,8 +1,13 @@
 import { _decorator, Component, CCFloat, EventTouch, Input, math, Sprite, v3, Vec3, Button, NodeEventType, Label } from 'cc';
 import { LevelManager } from './Manager/LevelMgr';
-import { LevelModel, TYPE_BLESSINGS } from './Model/LevelModel';
+import { IAttributeConfig, LevelModel, TYPE_BLESSINGS } from './Model/LevelModel';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
+import { tgxUIAlert, tgxUIMgr } from '../../core_tgx/tgx';
+import { UI_AboutMe } from '../../scripts/UIDef';
+import { UIAlert_Impl } from '../../module_basic/ui_alert/UI_Alert_Impl';
+import { UI_HUD } from '../../module_basic/ui_hud/UI_HUD';
+import { UIAlertOptions } from '../../core_tgx/easy_ui_framework/alert/UIAlert';
 const { ccclass, property } = _decorator;
 
 /**
@@ -37,16 +42,26 @@ export class ButtonController extends Component {
     private setupUIListeners(): void {
         EventDispatcher.instance.on(GameEvent.EVENT_UI_INITILIZE, this.initilizeUI, this);
         EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateBtTimeLv, this);
-        EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateBtTimeLv, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateBtSizeLv, this);
     }
 
     private upgradeTimeButton(): void {
-        //DOTO 判断用户钱够不够
+        const { money } = this.getCurLevTimeJsonParam();
+        let userMoney = LevelManager.instance.userModel.money;
+        if (userMoney < money) {
+            tgxUIAlert.show('穷逼充钱!');
+            return;
+        }
         this.upgradeButton(TYPE_BLESSINGS.TIME);
     }
 
     private upgradeSizeButton(): void {
-        //DOTO 判断用户钱够不够
+        const { money } = this.getCurLevSizeJsonParam();
+        let userMoney = LevelManager.instance.userModel.money;
+        if (userMoney < money) {
+            tgxUIAlert.show('穷逼充钱!');
+            return;
+        }
         this.upgradeButton(TYPE_BLESSINGS.SIZE);
     }
 
@@ -72,15 +87,38 @@ export class ButtonController extends Component {
         this.updateUpTimeView();
     }
 
+    private updateBtSizeLv(): void {
+        this.updateUpSizeView();
+    }
+
     private updateUpTimeView(): void {
-        const levelModel = LevelManager.instance.levelModel;
-        const { timesLevel } = levelModel;
-        const attributeConfig = levelModel.getByTypeAndLevel(TYPE_BLESSINGS.TIME, timesLevel);
-        const { level, money } = attributeConfig;
+        const { level, money } = this.getCurLevTimeJsonParam();
         let LbLevel: Label = this.btUpTime.node.getChildByName('LbLevel').getComponent(Label)!;
         let LbMoney: Label = this.btUpTime.node.getChildByName('LbMoney').getComponent(Label)!;
         LbLevel.string = `TIMER LVL.${level}`;
         LbMoney.string = `金币:${money}`;
+    }
+
+    private updateUpSizeView(): void {
+        const { level, money } = this.getCurLevSizeJsonParam();
+        let LbLevel: Label = this.btUpSize.node.getChildByName('LbLevel').getComponent(Label)!;
+        let LbMoney: Label = this.btUpSize.node.getChildByName('LbMoney').getComponent(Label)!;
+        LbLevel.string = `TIMER LVL.${level}`;
+        LbMoney.string = `金币:${money}`;
+    }
+
+    private getCurLevTimeJsonParam(): IAttributeConfig {
+        const levelModel = LevelManager.instance.levelModel;
+        const { timesLevel } = levelModel;
+        const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.TIME, timesLevel);
+        return attributeConfig;
+    }
+
+    private getCurLevSizeJsonParam(): IAttributeConfig {
+        const holeModel = LevelManager.instance.holeModel;
+        const { holeLevel } = holeModel;
+        const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.SIZE, holeLevel);
+        return attributeConfig;
     }
 }
 

@@ -40,4 +40,10 @@ export class BlackholeModel {
         this.holeLevel += up;
         this.config.init(this.holeLevel);
     }
+
+    /** 黑洞重生*/
+    reBornLevel() {
+        this.holeLevel = 1;
+        this.config.init(this.holeLevel);
+    }
 }

@@ -1,6 +1,7 @@
 import { JsonUtil } from "../../../core_tgx/base/utils/JsonUtil";
 import { Tablecultivate_config } from "../../../module_basic/table/Tablecultivate_config";
 import { Tablelevels_config } from "../../../module_basic/table/Tablelevels_config";
+import { LevelManager } from "../Manager/LevelMgr";
 
 /**加持类型
  * @param TIME 时间提升
@@ -31,8 +32,6 @@ export class LevelModel {
 
     /** 关卡时间等级*/
     public timesLevel: number = 1;
-    /** 黑洞大小等级*/
-    public holeSizeLevel: number = 1;
     /** 经验加成等级*/
     public expMulLevel: number = 1;
 
@@ -45,8 +44,8 @@ export class LevelModel {
 
     /** 初始化数据*/
     private initilizeData(): void {
-        const attributeConfig_Time = this.getByTypeAndLevel(TYPE_BLESSINGS.TIME, this.timesLevel);
-        const attributeConfig_Exp = this.getByTypeAndLevel(TYPE_BLESSINGS.EXP, this.expMulLevel);
+        const attributeConfig_Time = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.TIME, this.timesLevel);
+        const attributeConfig_Exp = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.EXP, this.expMulLevel);
         this.levelTimeTotal = attributeConfig_Time.param;
         this.expMultiplier = attributeConfig_Exp.param;
     }
@@ -64,25 +63,9 @@ export class LevelModel {
         this.level += up;
         this.levelConfig.init(this.level);
     }
-
-    /**
-     * 获取指定类型和等级的配置数据
-     * @param type 类型：1 表示时间, 2 表示尺寸大小, 3 表示经验加成
-     * @param level 等级
-     * @returns 对应的属性值对象 { param, money }
-     */
-    getByTypeAndLevel(type: number, level: number): IAttributeConfig | null {
-        const table = JsonUtil.get(Tablecultivate_config.TableName);
-        for (let id in table) {
-            const entry = table[id];
-            if (entry.type === type && entry.level === level) {
-                return entry;
-            }
-        }
-        return null;
-    }
 }
 
+/** 属性接口*/
 export interface IAttributeConfig {
     id: number,
     level: number,

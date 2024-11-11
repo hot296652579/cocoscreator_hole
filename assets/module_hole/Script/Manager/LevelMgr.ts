@@ -1,9 +1,12 @@
 import { _decorator, Node, Prefab, instantiate, Component } from 'cc';
-import { LevelModel, TYPE_BLESSINGS } from '../Model/LevelModel';
+import { IAttributeConfig, LevelModel, TYPE_BLESSINGS } from '../Model/LevelModel';
 import { EventDispatcher } from '../../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from '../Enum/GameEvent';
 import { Tablecultivate_config } from '../../../module_basic/table/Tablecultivate_config';
 import { BlackholeModel } from '../Model/HoleModel';
+import { UserModel } from '../Model/UserModel';
+import { userInfo } from 'os';
+import { JsonUtil } from '../../../core_tgx/base/utils/JsonUtil';
 const { ccclass, property } = _decorator;
 
 @ccclass('LevelManager')
@@ -17,11 +20,13 @@ export class LevelManager {
     levelPrefabs: Prefab[] = [];
     parent: Node = null!;
 
+    public userModel: UserModel = null;
     public levelModel: LevelModel = null;
     public holeModel: BlackholeModel = null;
     private currentLevelNode: Node = null;
 
     initilizeModel(): void {
+        this.userModel = new UserModel();
         this.holeModel = new BlackholeModel();
         this.levelModel = new LevelModel();
     }
@@ -44,7 +49,7 @@ export class LevelManager {
     upgradeLevelTime(up: number = 1): void {
         this.levelModel.timesLevel += up;
         const model = this.levelModel;
-        const attributeConfig = model.getByTypeAndLevel(TYPE_BLESSINGS.TIME, this.levelModel.timesLevel);
+        const attributeConfig = this.getByTypeAndLevel(TYPE_BLESSINGS.TIME, this.levelModel.timesLevel);
         this.levelModel.levelTimeTotal = attributeConfig.param;
         EventDispatcher.instance.emit(GameEvent.EVENT_TIME_LEVEL_UP);
     }
@@ -53,6 +58,23 @@ export class LevelManager {
     upgradeHoleLevelSize(up: number = 1): void {
         this.holeModel.upgradeLevel(up);
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP);
+    }
+
+    /**
+ * 获取指定类型和等级的配置数据
+ * @param type 类型：1 表示时间, 2 表示尺寸大小, 3 表示经验加成
+ * @param level 等级
+ * @returns 对应的属性值对象 { param, money }
+ */
+    getByTypeAndLevel(type: number, level: number): IAttributeConfig | null {
+        const table = JsonUtil.get(Tablecultivate_config.TableName);
+        for (let id in table) {
+            const entry = table[id];
+            if (entry.type === type && entry.level === level) {
+                return entry;
+            }
+        }
+        return null;
     }
 
     getCurrentLevelNode(): Node {

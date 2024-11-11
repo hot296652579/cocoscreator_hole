@@ -3,6 +3,7 @@ import { UIJoyStick } from './UIJoyStick';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
 import { LevelManager } from './Manager/LevelMgr';
+import { PropManager } from './Manager/PropMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('HolePlayer')
@@ -46,8 +47,8 @@ export class HolePlayer extends Component {
             if (distance <= holeRadius * coefficient) {
                 //EdibleThing 层组不与地面碰撞交集 就可通过刚体重力掉落
                 event.otherCollider.setGroup(1 << 3);
-
-                console.log(`吞噬的道具:${event.otherCollider.node.name}`)
+                const otherNode = event.otherCollider.node;
+                PropManager.instance.addExpPrefab(otherNode);
             }
         }
     }
@@ -88,7 +89,8 @@ export class HolePlayer extends Component {
     }
 
     onUpSize(): void {
-        console.log('提升黑洞size');
+        //DOTO 
+        console.log('黑洞等级提升 修改视野大小和直径');
     }
 }
 
