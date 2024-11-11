@@ -1,8 +1,9 @@
-import { _decorator, Component, Label, Prefab, Node, Game } from 'cc';
+import { _decorator, Component, Label, Prefab, Node, Game, ProgressBar } from 'cc';
 import { LevelManager } from './Script/Manager/LevelMgr';
 import { EventDispatcher } from '../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Script/Enum/GameEvent';
 import { PropManager } from './Script/Manager/PropMgr';
+import { HoleManager } from './Script/Manager/HoleMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('RoosterHoleEntry')
@@ -19,6 +20,9 @@ export class RoosterHoleEntry extends Component {
     @property(Label)
     lbTimes: Label = null!;
 
+    @property(ProgressBar)
+    expProgress: ProgressBar = null!;
+
     private countdown: number = 0;
     private gaming: boolean = false;
     private isWin: boolean = false;
@@ -34,6 +38,7 @@ export class RoosterHoleEntry extends Component {
         LevelManager.instance.levelPrefabs = this.levelPrefabs;
 
         LevelManager.instance.initilizeModel();
+        HoleManager.instance.initilizeModel();
         const { level } = LevelManager.instance.levelModel;
         LevelManager.instance.loadLevel(level);
 
@@ -41,11 +46,18 @@ export class RoosterHoleEntry extends Component {
         EventDispatcher.instance.emit(GameEvent.EVENT_UI_INITILIZE);//去通知界面初始化
 
         this.updateCountLb();
+        this.updateExpProgress();
     }
 
     addEventListen() {
         EventDispatcher.instance.on(GameEvent.EVENT_GAME_START, this.onGameStart, this);
         EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateCountLb, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_HOLE_EXP_UPDATE, this.updateExpProgress, this);
+    }
+
+    protected onDestroy(): void {
+        EventDispatcher.instance.off(GameEvent.EVENT_GAME_START, this.onGameStart);
+        EventDispatcher.instance.off(GameEvent.EVENT_TIME_LEVEL_UP, this.updateCountLb);
     }
 
     onGameStart() {
@@ -84,6 +96,18 @@ export class RoosterHoleEntry extends Component {
         this.lbTimes.string = `倒计时:${levelTimeTotal}`;
     }
 
+    private updateExpProgress(): void {
+        const total = this.expProgress.totalLength;
+        const holeUpExp = HoleManager.instance.holeModel.exp;//需要升级的经验
+        const curExp = HoleManager.instance.holeModel.curHoleExpL;
+        console.log(`当前经验:${curExp} ,需要升级的经验:${holeUpExp}`);
+        // 计算当前进度长度，使用整数来避免小数精度问题
+        const lb = this.expProgress.node.getChildByName('LbExp');
+        lb.getComponent(Label).string = `${curExp}/${holeUpExp}`;
+        const progressLength = Math.round((curExp / holeUpExp) * total);
+        this.expProgress.progress = progressLength / total;
+    }
+
     /** 重载当前关卡*/
     private resetGame() {
         this.gaming = false;
@@ -94,10 +118,6 @@ export class RoosterHoleEntry extends Component {
 
         const { level } = LevelManager.instance.levelModel;
         LevelManager.instance.loadLevel(level);
-    }
-
-    update(deltaTime: number) {
-
     }
 }
 

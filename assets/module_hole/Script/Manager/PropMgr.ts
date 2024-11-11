@@ -1,4 +1,4 @@
-import { _decorator, Node, Prefab, instantiate, Component, Camera, UITransform, v3, game, view, screen, tween, Vec3 } from 'cc';
+import { _decorator, Node, Prefab, instantiate, Component, Camera, UITransform, v3, game, view, screen, tween, Vec3, Label } from 'cc';
 import { ResLoader } from '../../../core_tgx/base/ResLoader';
 import { RoosterHoleEntry } from '../../RoosterHoleEntry';
 import * as exp from 'constants';
@@ -25,9 +25,10 @@ export class PropManager {
     }
 
     /** 添加经验Prefab
-     * @param targetModel 3D模型
+     * @param exp 经验值
+     * @param targetModel 3d模型
     */
-    addExpPrefab(targetModel: Node): void {
+    addExpPrefab(exp: number, targetModel?: Node): void {
         // const worldPos = targetModel.worldPosition.clone();
         // //转为屏幕坐标
         // const screenPos = this.camera.worldToScreen(worldPos);
@@ -41,6 +42,9 @@ export class PropManager {
 
         const origin = view.getVisibleOrigin();
         const expNode = instantiate(this.expPrefab)!;
+        const lb = expNode.getChildByName('LbExp').getComponent(Label)!;
+        lb.string = `+${exp}`;
+
         this.propParent.addChild(expNode);
         expNode.setPosition(v3(origin.x, origin.y, 0));
         tween(expNode)

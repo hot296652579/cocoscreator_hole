@@ -28,12 +28,13 @@ export class LevelModel {
     public level: number = 1;
     /** 当前关卡游戏总时间*/
     public levelTimeTotal: number = 0;
-    public expMultiplier: number = 100;
 
     /** 关卡时间等级*/
     public timesLevel: number = 1;
     /** 经验加成等级*/
     public expMulLevel: number = 1;
+    /**  经验加成倍数*/
+    public expMultiplier: number = 100;
 
     constructor() {
         this.levelConfig = new Tablelevels_config();

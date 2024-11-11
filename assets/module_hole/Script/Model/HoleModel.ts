@@ -6,11 +6,13 @@ import { Tableblackhole_config } from "../../../module_basic/table/Tableblackhol
  * @param view 视野大小
 */
 export class BlackholeModel {
-    private config: Tableblackhole_config;
+    public config: Tableblackhole_config;
     public holeLevel: number;
+    public curHoleExpL: number;
 
     constructor(holeLevel: number = 1) {
         this.holeLevel = holeLevel;
+        this.curHoleExpL = 0;
         this.config = new Tableblackhole_config();
         this.config.init(holeLevel);
     }
@@ -33,17 +35,5 @@ export class BlackholeModel {
     /** 黑洞升级所需经验*/
     get exp(): number {
         return this.config.exp;
-    }
-
-    /** 黑洞等级升级*/
-    upgradeLevel(up: number = 1) {
-        this.holeLevel += up;
-        this.config.init(this.holeLevel);
-    }
-
-    /** 黑洞重生*/
-    reBornLevel() {
-        this.holeLevel = 1;
-        this.config.init(this.holeLevel);
     }
 }

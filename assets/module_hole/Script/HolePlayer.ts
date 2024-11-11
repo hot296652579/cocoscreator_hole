@@ -4,6 +4,8 @@ import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatche
 import { GameEvent } from './Enum/GameEvent';
 import { LevelManager } from './Manager/LevelMgr';
 import { PropManager } from './Manager/PropMgr';
+import { HoleManager } from './Manager/HoleMgr';
+import { PropItem } from './PropItem';
 const { ccclass, property } = _decorator;
 
 @ccclass('HolePlayer')
@@ -13,20 +15,19 @@ export class HolePlayer extends Component {
     diameter: number = 1;
     speed: number = 1;
     view: number = 1;
-    exp: number = 1;
 
     start() {
         this.initilizeData();
+        this.updateHoleView();
         this.initilizeUI();
         this.addEventListener();
     }
 
     initilizeData(): void {
-        const holeModel = LevelManager.instance.holeModel;
+        const holeModel = HoleManager.instance.holeModel;
         this.speed = holeModel.speed;
         this.diameter = holeModel.diameter;
         this.view = holeModel.view;
-        this.exp = holeModel.exp;
     }
 
     initilizeUI(): void {
@@ -36,7 +37,7 @@ export class HolePlayer extends Component {
     }
 
     addEventListener(): void {
-        EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.onUpSize, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateHoleView, this);
     }
 
     onTriggerEnter(event: ITriggerEvent): void {
@@ -47,10 +48,20 @@ export class HolePlayer extends Component {
             if (distance <= holeRadius * coefficient) {
                 //EdibleThing 层组不与地面碰撞交集 就可通过刚体重力掉落
                 event.otherCollider.setGroup(1 << 3);
-                const otherNode = event.otherCollider.node;
-                PropManager.instance.addExpPrefab(otherNode);
+
+                //DOTO 最终吞噬判定
+                this.eatProp(event);
             }
         }
+    }
+
+    eatProp(event: ITriggerEvent): void {
+        const otherNode = event.otherCollider.node;
+        const exp = otherNode.getComponent(PropItem)?.exp;
+        console.log(`吃掉的道具经验:${exp}`);
+
+        PropManager.instance.addExpPrefab(exp);
+        HoleManager.instance.addExp(exp);
     }
 
     onTriggerStay(event: ITriggerEvent): void {
@@ -88,9 +99,9 @@ export class HolePlayer extends Component {
         this.node.setPosition(this.node.position.x + playerX, 0, this.node.position.z - playerZ);
     }
 
-    onUpSize(): void {
+    updateHoleView(): void {
         //DOTO 
-        console.log('黑洞等级提升 修改视野大小和直径');
+        console.log('根据黑洞等级 刷新对应视野大小和直径');
     }
 }
 

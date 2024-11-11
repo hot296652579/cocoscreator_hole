@@ -8,6 +8,7 @@ import { UI_AboutMe } from '../../scripts/UIDef';
 import { UIAlert_Impl } from '../../module_basic/ui_alert/UI_Alert_Impl';
 import { UI_HUD } from '../../module_basic/ui_hud/UI_HUD';
 import { UIAlertOptions } from '../../core_tgx/easy_ui_framework/alert/UIAlert';
+import { HoleManager } from './Manager/HoleMgr';
 const { ccclass, property } = _decorator;
 
 /**
@@ -42,6 +43,7 @@ export class ButtonController extends Component {
     private setupUIListeners(): void {
         EventDispatcher.instance.on(GameEvent.EVENT_UI_INITILIZE, this.initilizeUI, this);
         EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateBtTimeLv, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_EXP_LEVEL_UP, this.updateBtExpLv, this);
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateBtSizeLv, this);
     }
 
@@ -66,6 +68,12 @@ export class ButtonController extends Component {
     }
 
     private upgradeExpButton(): void {
+        const { money } = this.getCurLevExpJsonParam();
+        let userMoney = LevelManager.instance.userModel.money;
+        if (userMoney < money) {
+            tgxUIAlert.show('穷逼充钱!');
+            return;
+        }
         this.upgradeButton(TYPE_BLESSINGS.EXP);
     }
 
@@ -75,7 +83,10 @@ export class ButtonController extends Component {
                 LevelManager.instance.upgradeLevelTime();
                 break;
             case TYPE_BLESSINGS.SIZE:
-                LevelManager.instance.upgradeHoleLevelSize();
+                HoleManager.instance.upgradeLevel();
+                break;
+            case TYPE_BLESSINGS.EXP:
+                LevelManager.instance.upgradeLevelExp();
                 break;
 
             default:
@@ -91,6 +102,11 @@ export class ButtonController extends Component {
         this.updateUpSizeView();
     }
 
+    private updateBtExpLv(): void {
+        this.updateUpExpView();
+    }
+
+    //刷新时间加成按钮UI
     private updateUpTimeView(): void {
         const { level, money } = this.getCurLevTimeJsonParam();
         let LbLevel: Label = this.btUpTime.node.getChildByName('LbLevel').getComponent(Label)!;
@@ -99,10 +115,20 @@ export class ButtonController extends Component {
         LbMoney.string = `金币:${money}`;
     }
 
+    //刷新黑洞等级加成按钮UI
     private updateUpSizeView(): void {
         const { level, money } = this.getCurLevSizeJsonParam();
         let LbLevel: Label = this.btUpSize.node.getChildByName('LbLevel').getComponent(Label)!;
         let LbMoney: Label = this.btUpSize.node.getChildByName('LbMoney').getComponent(Label)!;
+        LbLevel.string = `TIMER LVL.${level}`;
+        LbMoney.string = `金币:${money}`;
+    }
+
+    //刷新时间加成按钮UI
+    private updateUpExpView(): void {
+        const { level, money } = this.getCurLevExpJsonParam();
+        let LbLevel: Label = this.btUpExp.node.getChildByName('LbLevel').getComponent(Label)!;
+        let LbMoney: Label = this.btUpExp.node.getChildByName('LbMoney').getComponent(Label)!;
         LbLevel.string = `TIMER LVL.${level}`;
         LbMoney.string = `金币:${money}`;
     }
@@ -115,9 +141,16 @@ export class ButtonController extends Component {
     }
 
     private getCurLevSizeJsonParam(): IAttributeConfig {
-        const holeModel = LevelManager.instance.holeModel;
+        const holeModel = HoleManager.instance.holeModel;
         const { holeLevel } = holeModel;
         const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.SIZE, holeLevel);
+        return attributeConfig;
+    }
+
+    private getCurLevExpJsonParam(): IAttributeConfig {
+        const levelModel = LevelManager.instance.levelModel;
+        const { expMulLevel } = levelModel;
+        const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.EXP, expMulLevel);
         return attributeConfig;
     }
 }
