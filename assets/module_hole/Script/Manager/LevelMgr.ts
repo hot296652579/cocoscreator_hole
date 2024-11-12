@@ -7,6 +7,7 @@ import { Tablecultivate_config } from '../../../module_basic/table/Tablecultivat
 import { UserModel } from '../Model/UserModel';
 import { userInfo } from 'os';
 import { JsonUtil } from '../../../core_tgx/base/utils/JsonUtil';
+import { HoleManager } from './HoleMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('LevelManager')
@@ -57,6 +58,14 @@ export class LevelManager {
         const attributeConfig = this.getByTypeAndLevel(TYPE_BLESSINGS.EXP, this.levelModel.expMulLevel);
         this.levelModel.expMultiplier = attributeConfig.param;
         EventDispatcher.instance.emit(GameEvent.EVENT_EXP_LEVEL_UP);
+    }
+
+    /** 重设加成等级*/
+    resetAddition(): void {
+        this.levelModel.timesLevel = 1;
+        this.levelModel.expMulLevel = 1;
+        this.userModel.level = 1;
+        EventDispatcher.instance.emit(GameEvent.EVENT_LEVEL_UP_RESET);
     }
 
     /**

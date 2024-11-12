@@ -36,4 +36,16 @@ export class BlackholeModel {
     get exp(): number {
         return this.config.exp;
     }
+
+    /** 黑洞等级升级*/
+    upgradeLevel(up: number = 1) {
+        this.holeLevel += up;
+        this.config.init(this.holeLevel);
+    }
+
+    /** 黑洞重设等级*/
+    resetBornLevel() {
+        this.holeLevel = 1;
+        this.config.init(this.holeLevel);
+    }
 }

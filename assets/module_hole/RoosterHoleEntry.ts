@@ -79,11 +79,9 @@ export class RoosterHoleEntry extends Component {
             this.unschedule(this.updateCountdown);
             //DOTO 进入战斗场景
             if (this.isWin) {
-                LevelManager.instance.upgradeLevel();
-                const { level } = LevelManager.instance.levelModel;
-                LevelManager.instance.loadLevel(level);
+                this.levelUpHandler();
             } else {
-                this.resetGame();
+                this.resetGameByLose();
                 return
             }
         }
@@ -108,16 +106,34 @@ export class RoosterHoleEntry extends Component {
         this.expProgress.progress = progressLength / total;
     }
 
-    /** 重载当前关卡*/
-    private resetGame() {
-        this.gaming = false;
+    /** 关卡升级*/
+    private levelUpHandler(): void {
+        LevelManager.instance.upgradeLevel();
+        this.loadLevelInfo();
 
+        HoleManager.instance.reBornLevel();
+        LevelManager.instance.resetAddition();
+
+        this.showBtnsLayout();
+    }
+
+    /** 失败重载当前关卡*/
+    private resetGameByLose(): void {
+        this.loadLevelInfo();
+        this.showBtnsLayout();
+        HoleManager.instance.resetExPByLose();
+    }
+
+    private loadLevelInfo(): void {
+        const { level } = LevelManager.instance.levelModel;
+        LevelManager.instance.loadLevel(level);
+    }
+
+    private showBtnsLayout(): void {
+        this.gaming = false;
         const layoutBtns = this.gameUI.getChildByName('BtnsLayout');
         layoutBtns.active = true;
         this.updateCountLb();
-
-        const { level } = LevelManager.instance.levelModel;
-        LevelManager.instance.loadLevel(level);
     }
 }
 

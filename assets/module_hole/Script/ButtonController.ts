@@ -45,6 +45,7 @@ export class ButtonController extends Component {
         EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateBtTimeLv, this);
         EventDispatcher.instance.on(GameEvent.EVENT_EXP_LEVEL_UP, this.updateBtExpLv, this);
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateBtSizeLv, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_LEVEL_UP_RESET, this.onResetAddition, this);
     }
 
     private upgradeTimeButton(): void {
@@ -92,6 +93,12 @@ export class ButtonController extends Component {
             default:
                 break;
         }
+    }
+
+    private onResetAddition(): void {
+        this.updateBtTimeLv();
+        this.updateBtSizeLv();
+        this.updateBtExpLv();
     }
 
     private updateBtTimeLv(): void {

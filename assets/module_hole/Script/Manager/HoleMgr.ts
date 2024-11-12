@@ -20,9 +20,14 @@ export class HoleManager {
     }
 
     /** 增加经验*/
-    addExp(exp: number): void {
-        //DOTO 判断是否升级
-        this.holeModel.curHoleExpL += exp;
+    addExp(addExp: number): void {
+        this.holeModel.curHoleExpL += addExp;
+        if (this.holeModel.curHoleExpL >= this.holeModel.exp) {
+            this.holeModel.curHoleExpL = 0;
+            this.holeModel.upgradeLevel();
+
+            EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP);
+        }
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_EXP_UPDATE);
     }
 
@@ -32,6 +37,12 @@ export class HoleManager {
         const { holeLevel } = this.holeModel;
         this.holeModel.config.init(holeLevel);
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP);
+    }
+
+    /** 闯关失败重设经验*/
+    resetExPByLose(): void {
+        this.holeModel.curHoleExpL = 0;
+        EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_EXP_UPDATE);
     }
 
     /** 黑洞重生*/
