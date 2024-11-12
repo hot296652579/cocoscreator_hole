@@ -1,3 +1,4 @@
+
 import { JsonUtil } from "db://assets/core_tgx/base/utils/JsonUtil";
 
 export class Tablecultivate_config {
@@ -30,5 +31,4 @@ export class Tablecultivate_config {
     get money(): number {
         return this.data.money;
     }
-
 }

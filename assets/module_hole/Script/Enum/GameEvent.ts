@@ -18,4 +18,7 @@ export class GameEvent {
 
     /** 关卡升级 各加成等级恢复到level1*/
     static readonly EVENT_LEVEL_UP_RESET = 'EVENT_LEVEL_UP_RESET';
+
+    /** 用户余额更新*/
+    static readonly EVENT_USER_MONEY_UPDATE = 'EVENT_USER_MONEY_UPDATE';
 }

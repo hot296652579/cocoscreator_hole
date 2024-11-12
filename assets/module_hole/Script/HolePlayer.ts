@@ -16,6 +16,8 @@ export class HolePlayer extends Component {
     speed: number = 1;
     view: number = 1;
 
+    coefficient: number = 15;
+
     start() {
         this.initilizeData();
         this.updateHoleView();
@@ -41,17 +43,25 @@ export class HolePlayer extends Component {
     }
 
     onTriggerEnter(event: ITriggerEvent): void {
-        const coefficient: number = 12;
         const holeRadius = this.holeTigger.radius;
         const distance = this.getPlanceVec3(event).length();
         if (event.otherCollider.getGroup() == 1 << 4) {
-            if (distance <= holeRadius * coefficient) {
+            if (distance <= holeRadius * this.coefficient) {
                 //EdibleThing 层组不与地面碰撞交集 就可通过刚体重力掉落
                 event.otherCollider.setGroup(1 << 3);
-
-                //DOTO 最终吞噬判定
+                this.pullTowardsHole(event);
                 this.eatProp(event);
             }
+        }
+    }
+
+    private pullTowardsHole(event: ITriggerEvent): void {
+        const otherRigidBody = event.otherCollider.attachedRigidBody;
+        if (otherRigidBody) {
+            // 获取黑洞和物体的位置差向量，并将物体朝黑洞中心拉动
+            const directionToHole = this.getPlanceVec3(event).normalize().negative();
+            // 应用一个较大的冲量，使物体快速移动到黑洞
+            otherRigidBody.applyImpulse(directionToHole.multiplyScalar(5), directionToHole);
         }
     }
 
@@ -64,15 +74,20 @@ export class HolePlayer extends Component {
         HoleManager.instance.addExp(exp);
     }
 
-    onTriggerStay(event: ITriggerEvent): void {
-        if (event.otherCollider.getGroup() == 1 << 3) {
-            const otherPos = event.otherCollider.worldBounds.center;
-            const heloToOtherDir = this.getPlanceVec3(event).normalize();
-            heloToOtherDir.y = otherPos.y;
-            const heloActtion = heloToOtherDir.clone().negative();
-            event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.1), heloToOtherDir);
-        }
-    }
+    // onTriggerStay(event: ITriggerEvent): void {
+    //     if (event.otherCollider.getGroup() == 1 << 3) {
+    //         const otherPos = event.otherCollider.worldBounds.center;
+    //         const heloToOtherDir = this.getPlanceVec3(event).normalize();
+    //         heloToOtherDir.y = otherPos.y;
+    //         const heloActtion = heloToOtherDir.clone().negative();
+
+    //         //根据距离增加吸引力，距离越近，吸引力越强
+    //         // const pullStrength = Math.max(0.2, (holeRadius * coefficient - distance) / (holeRadius * coefficient)) * 5;
+    //         // const pullAction = heloToOtherDir.clone().negative().multiplyScalar(pullStrength);
+
+    //         event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.2), heloToOtherDir);
+    //     }
+    // }
 
     onTriggerExit(event: ITriggerEvent): void {
         if (event.otherCollider.getGroup() == 1 << 3) {

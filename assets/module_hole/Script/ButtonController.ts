@@ -1,4 +1,4 @@
-import { _decorator, Component, CCFloat, EventTouch, Input, math, Sprite, v3, Vec3, Button, NodeEventType, Label } from 'cc';
+import { _decorator, Component, CCFloat, EventTouch, math, Sprite, v3, Vec3, Button, NodeEventType, Label, Node } from 'cc';
 import { LevelManager } from './Manager/LevelMgr';
 import { IAttributeConfig, LevelModel, TYPE_BLESSINGS } from './Model/LevelModel';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
@@ -9,6 +9,7 @@ import { UIAlert_Impl } from '../../module_basic/ui_alert/UI_Alert_Impl';
 import { UI_HUD } from '../../module_basic/ui_hud/UI_HUD';
 import { UIAlertOptions } from '../../core_tgx/easy_ui_framework/alert/UIAlert';
 import { HoleManager } from './Manager/HoleMgr';
+import { UserManager } from './Manager/UserMgr';
 const { ccclass, property } = _decorator;
 
 /**
@@ -49,32 +50,35 @@ export class ButtonController extends Component {
     }
 
     private upgradeTimeButton(): void {
-        const { money } = this.getCurLevTimeJsonParam();
-        let userMoney = LevelManager.instance.userModel.money;
-        if (userMoney < money) {
-            tgxUIAlert.show('穷逼充钱!');
+        const { money } = this.getCurrentLevelParam(TYPE_BLESSINGS.TIME);
+        const enough = UserManager.instance.checkEnough(money);
+        if (!enough) {
             return;
         }
+
+        UserManager.instance.deductMoney(money);
         this.upgradeButton(TYPE_BLESSINGS.TIME);
     }
 
     private upgradeSizeButton(): void {
-        const { money } = this.getCurLevSizeJsonParam();
-        let userMoney = LevelManager.instance.userModel.money;
-        if (userMoney < money) {
-            tgxUIAlert.show('穷逼充钱!');
+        const { money } = this.getCurrentLevelParam(TYPE_BLESSINGS.SIZE);
+        const enough = UserManager.instance.checkEnough(money);
+        if (!enough) {
             return;
         }
+
+        UserManager.instance.deductMoney(money);
         this.upgradeButton(TYPE_BLESSINGS.SIZE);
     }
 
     private upgradeExpButton(): void {
-        const { money } = this.getCurLevExpJsonParam();
-        let userMoney = LevelManager.instance.userModel.money;
-        if (userMoney < money) {
-            tgxUIAlert.show('穷逼充钱!');
+        const { money } = this.getCurrentLevelParam(TYPE_BLESSINGS.EXP);
+        const enough = UserManager.instance.checkEnough(money);
+        if (!enough) {
             return;
         }
+
+        UserManager.instance.deductMoney(money);
         this.upgradeButton(TYPE_BLESSINGS.EXP);
     }
 
@@ -89,9 +93,6 @@ export class ButtonController extends Component {
             case TYPE_BLESSINGS.EXP:
                 LevelManager.instance.upgradeLevelExp();
                 break;
-
-            default:
-                break;
         }
     }
 
@@ -102,63 +103,69 @@ export class ButtonController extends Component {
     }
 
     private updateBtTimeLv(): void {
-        this.updateUpTimeView();
+        this.updateButtonView(TYPE_BLESSINGS.TIME);
     }
 
     private updateBtSizeLv(): void {
-        this.updateUpSizeView();
+        this.updateButtonView(TYPE_BLESSINGS.SIZE);
     }
 
     private updateBtExpLv(): void {
-        this.updateUpExpView();
+        this.updateButtonView(TYPE_BLESSINGS.EXP);
     }
 
-    //刷新时间加成按钮UI
+    private updateButtonView(type: number): void {
+        const { level, money } = this.getCurrentLevelParam(type);
+        const buttonNode = this.getButtonNodeByType(type);
+        const LbLevel: Label = buttonNode.getChildByName('LbLevel').getComponent(Label)!;
+        const LbMoney: Label = buttonNode.getChildByName('LbMoney').getComponent(Label)!;
+
+        LbLevel.string = `${this.getLabelPrefix(type)} LVL.${level}`;
+        LbMoney.string = `金币:${money}`;
+    }
+
+    private getLabelPrefix(type: number): string {
+        switch (type) {
+            case TYPE_BLESSINGS.TIME:
+                return "TIMER";
+            case TYPE_BLESSINGS.SIZE:
+                return "SIZE";
+            case TYPE_BLESSINGS.EXP:
+                return "EXP";
+        }
+    }
+
     private updateUpTimeView(): void {
-        const { level, money } = this.getCurLevTimeJsonParam();
+        const { level, money } = this.getCurrentLevelParam(TYPE_BLESSINGS.TIME);
         let LbLevel: Label = this.btUpTime.node.getChildByName('LbLevel').getComponent(Label)!;
         let LbMoney: Label = this.btUpTime.node.getChildByName('LbMoney').getComponent(Label)!;
         LbLevel.string = `TIMER LVL.${level}`;
         LbMoney.string = `金币:${money}`;
     }
 
-    //刷新黑洞等级加成按钮UI
-    private updateUpSizeView(): void {
-        const { level, money } = this.getCurLevSizeJsonParam();
-        let LbLevel: Label = this.btUpSize.node.getChildByName('LbLevel').getComponent(Label)!;
-        let LbMoney: Label = this.btUpSize.node.getChildByName('LbMoney').getComponent(Label)!;
-        LbLevel.string = `TIMER LVL.${level}`;
-        LbMoney.string = `金币:${money}`;
+    private getButtonNodeByType(type: number): Node {
+        switch (type) {
+            case TYPE_BLESSINGS.TIME:
+                return this.btUpTime.node;
+            case TYPE_BLESSINGS.SIZE:
+                return this.btUpSize.node;
+            case TYPE_BLESSINGS.EXP:
+                return this.btUpExp.node;
+        }
     }
 
-    //刷新时间加成按钮UI
-    private updateUpExpView(): void {
-        const { level, money } = this.getCurLevExpJsonParam();
-        let LbLevel: Label = this.btUpExp.node.getChildByName('LbLevel').getComponent(Label)!;
-        let LbMoney: Label = this.btUpExp.node.getChildByName('LbMoney').getComponent(Label)!;
-        LbLevel.string = `TIMER LVL.${level}`;
-        LbMoney.string = `金币:${money}`;
-    }
-
-    private getCurLevTimeJsonParam(): IAttributeConfig {
-        const levelModel = LevelManager.instance.levelModel;
-        const { timesLevel } = levelModel;
-        const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.TIME, timesLevel);
-        return attributeConfig;
-    }
-
-    private getCurLevSizeJsonParam(): IAttributeConfig {
-        const holeModel = HoleManager.instance.holeModel;
-        const { holeLevel } = holeModel;
-        const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.SIZE, holeLevel);
-        return attributeConfig;
-    }
-
-    private getCurLevExpJsonParam(): IAttributeConfig {
-        const levelModel = LevelManager.instance.levelModel;
-        const { expMulLevel } = levelModel;
-        const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.EXP, expMulLevel);
-        return attributeConfig;
+    private getCurrentLevelParam(type: number): IAttributeConfig {
+        switch (type) {
+            case TYPE_BLESSINGS.TIME:
+                const { timesLevel } = LevelManager.instance.levelModel;
+                return LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.TIME, timesLevel);
+            case TYPE_BLESSINGS.SIZE:
+                const { holeLevel } = HoleManager.instance.holeModel;
+                return LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.SIZE, holeLevel);
+            case TYPE_BLESSINGS.EXP:
+                const { expMulLevel } = LevelManager.instance.levelModel;
+                return LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.EXP, expMulLevel);
+        }
     }
 }
 

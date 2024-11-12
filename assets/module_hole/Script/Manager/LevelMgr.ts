@@ -21,12 +21,10 @@ export class LevelManager {
     levelPrefabs: Prefab[] = [];
     parent: Node = null!;
 
-    public userModel: UserModel = null;
     public levelModel: LevelModel = null;
     private currentLevelNode: Node = null;
 
     initilizeModel(): void {
-        this.userModel = new UserModel();
         this.levelModel = new LevelModel();
     }
 
@@ -64,7 +62,7 @@ export class LevelManager {
     resetAddition(): void {
         this.levelModel.timesLevel = 1;
         this.levelModel.expMulLevel = 1;
-        this.userModel.level = 1;
+        HoleManager.instance.reBornLevel();
         EventDispatcher.instance.emit(GameEvent.EVENT_LEVEL_UP_RESET);
     }
 

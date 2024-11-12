@@ -107,7 +107,7 @@ export class Start extends Component {
                 if (bundle) {
                     director.loadScene(info.entryScene, () => {
                         tgxUIMgr.inst.hideAll();
-                        tgxUIMgr.inst.showUI(UI_HUD);
+                        // tgxUIMgr.inst.showUI(UI_HUD);
                     });
                 }
             });

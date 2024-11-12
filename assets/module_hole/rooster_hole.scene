@@ -381,7 +381,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "LbUser",
+    "_name": "LbUserMoney",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -3376,6 +3376,7 @@
     "expProgress": {
       "__id__": 77
     },
+    "isWin": false,
     "_id": "6eyzXEl3BPd71WiJOuLKBo"
   },
   {

@@ -1,9 +1,10 @@
-import { _decorator, Component, Label, Prefab, Node, Game, ProgressBar } from 'cc';
+import { _decorator, Component, Label, Prefab, Node, Game, ProgressBar, CCBoolean } from 'cc';
 import { LevelManager } from './Script/Manager/LevelMgr';
 import { EventDispatcher } from '../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Script/Enum/GameEvent';
 import { PropManager } from './Script/Manager/PropMgr';
 import { HoleManager } from './Script/Manager/HoleMgr';
+import { UserManager } from './Script/Manager/UserMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('RoosterHoleEntry')
@@ -25,7 +26,9 @@ export class RoosterHoleEntry extends Component {
 
     private countdown: number = 0;
     private gaming: boolean = false;
-    private isWin: boolean = false;
+
+    @property({ type: CCBoolean, visible: true, displayName: '测试输赢' })
+    isWin: boolean = false;
 
     start() {
         this.initilize();
@@ -37,6 +40,7 @@ export class RoosterHoleEntry extends Component {
         PropManager.instance.parent = this.node;
         LevelManager.instance.levelPrefabs = this.levelPrefabs;
 
+        UserManager.instance.initilizeModel();
         LevelManager.instance.initilizeModel();
         HoleManager.instance.initilizeModel();
         const { level } = LevelManager.instance.levelModel;
@@ -53,11 +57,14 @@ export class RoosterHoleEntry extends Component {
         EventDispatcher.instance.on(GameEvent.EVENT_GAME_START, this.onGameStart, this);
         EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateCountLb, this);
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_EXP_UPDATE, this.updateExpProgress, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_USER_MONEY_UPDATE, this.updateUserInfo, this);
     }
 
     protected onDestroy(): void {
         EventDispatcher.instance.off(GameEvent.EVENT_GAME_START, this.onGameStart);
         EventDispatcher.instance.off(GameEvent.EVENT_TIME_LEVEL_UP, this.updateCountLb);
+        EventDispatcher.instance.off(GameEvent.EVENT_HOLE_EXP_UPDATE, this.updateExpProgress);
+        EventDispatcher.instance.off(GameEvent.EVENT_USER_MONEY_UPDATE, this.updateUserInfo);
     }
 
     onGameStart() {
@@ -86,6 +93,12 @@ export class RoosterHoleEntry extends Component {
             }
         }
         this.lbTimes.string = `倒计时:${this.countdown}`;
+    }
+
+    private updateUserInfo(): void {
+        const lb = this.gameUI.getChildByName('LbUserMoney').getComponent(Label)!;
+        const { money } = UserManager.instance.userModel;
+        lb.string = `金币:${money}`;
     }
 
     private updateCountLb(): void {
