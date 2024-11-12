@@ -2,6 +2,7 @@ import { _decorator, Node, Prefab, instantiate, Component, Camera, UITransform, 
 import { ResLoader } from '../../../core_tgx/base/ResLoader';
 import { RoosterHoleEntry } from '../../RoosterHoleEntry';
 import * as exp from 'constants';
+import { PropItem } from '../PropItem';
 const { ccclass, property } = _decorator;
 
 /** 道具管理器*/
@@ -17,6 +18,8 @@ export class PropManager {
     parent: Node = null!;
     propParent: Node = null!;
     expPrefab: Prefab = null!;
+
+    eatsMap: Map<number, number> = new Map();
 
     initilizeUI(): void {
         this.camera = this.parent.getComponentInChildren(Camera)!;
@@ -51,5 +54,30 @@ export class PropManager {
             .to(1, { position: new Vec3(origin.x, origin.y + 50, 0) })
             .call(() => { expNode.removeFromParent() })
             .start()
+
+        let id = targetModel.getComponent(PropItem).id;
+        this.savePropItems(id);
     }
+
+    /** 记录吞噬的道具*/
+    savePropItems(id: number): void {
+        if (this.eatsMap.has(id)) {
+            this.eatsMap.set(id, 1);
+        } else {
+            let count = this.eatsMap.get(id);
+            count++;
+
+            this.eatsMap.set(id, count);
+        }
+    }
+
+    /** 获取某个道具数量*/
+    getItemCount(itemId: number): number {
+        return this.eatsMap.get(itemId) || 0;
+    }
+
+    clearEatsMap(): void {
+        this.eatsMap.clear();
+    }
+
 }

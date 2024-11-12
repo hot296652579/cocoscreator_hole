@@ -67,10 +67,10 @@ export class HolePlayer extends Component {
 
     eatProp(event: ITriggerEvent): void {
         const otherNode = event.otherCollider.node;
+        //DOTO 乘以经验加成倍数
         const exp = otherNode.getComponent(PropItem)?.exp;
-        console.log(`吃掉的道具经验:${exp}`);
 
-        PropManager.instance.addExpPrefab(exp);
+        PropManager.instance.addExpPrefab(exp, event.otherCollider.node);
         HoleManager.instance.addExp(exp);
     }
 

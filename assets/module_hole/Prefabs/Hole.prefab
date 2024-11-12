@@ -523,14 +523,14 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Exp",
+    "_name": "Mouth",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
       "__id__": 1
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 23
@@ -542,7 +542,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": 0.027,
       "z": 0
     },
     "_lrot": {
@@ -554,9 +554,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1.6,
+      "x": 0.06,
       "y": 1,
-      "z": 1.6
+      "z": 0.06
     },
     "_mobility": 0,
     "_layer": 1073741824,
@@ -570,7 +570,7 @@
   },
   {
     "__type__": "cc.MeshRenderer",
-    "_name": "Torus<ModelComponent>",
+    "_name": "Plane<ModelComponent>",
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
@@ -582,7 +582,7 @@
     },
     "_materials": [
       {
-        "__uuid__": "5ef6c8c2-99fd-4982-a6eb-fab48834890e",
+        "__uuid__": "a32eb9ec-1ba2-4d4f-bc1b-cbf49a4c6ec9",
         "__expectedType__": "cc.Material"
       }
     ],
@@ -591,7 +591,7 @@
       "__id__": 25
     },
     "_mesh": {
-      "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@40ece",
+      "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@2e76e",
       "__expectedType__": "cc.Mesh"
     },
     "_shadowCastingMode": 1,
@@ -607,7 +607,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "daEL+ruaJHpJOu8UCmRdgW"
+    "fileId": "b08WkixkFKGYH//HP+fA/z"
   },
   {
     "__type__": "cc.ModelBakeSettings",
@@ -637,7 +637,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "b5Bw4cWl1LgZ1XTmrt8HgJ",
+    "fileId": "01DvFYMB9AHJRTINt11q0b",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null

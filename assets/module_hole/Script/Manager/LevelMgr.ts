@@ -19,21 +19,28 @@ export class LevelManager {
     }
 
     levelPrefabs: Prefab[] = [];
+    battlePrefab: Prefab = null!;
     parent: Node = null!;
 
     public levelModel: LevelModel = null;
-    private currentLevelNode: Node = null;
 
     initilizeModel(): void {
         this.levelModel = new LevelModel();
     }
 
     loadLevel(level: number): void {
-        if (this.currentLevelNode) this.currentLevelNode.destroy();
         const levelPrefab = this.levelPrefabs[level - 1];
-        this.currentLevelNode = instantiate(levelPrefab);
-        this.parent.addChild(this.currentLevelNode);
+        const currentLevelNode = instantiate(levelPrefab);
+        this.parent.removeAllChildren();
+        this.parent.addChild(currentLevelNode);
         console.log(`Loaded level ${level}.`);
+    }
+
+    /** 添加战斗场景*/
+    loadBattle(): void {
+        const currentBattleNode = instantiate(this.battlePrefab);
+        this.parent.removeAllChildren();
+        this.parent.addChild(currentBattleNode);
     }
 
     /** 关卡等级升级 */
@@ -81,9 +88,5 @@ export class LevelManager {
             }
         }
         return null;
-    }
-
-    getCurrentLevelNode(): Node {
-        return this.currentLevelNode;
     }
 }

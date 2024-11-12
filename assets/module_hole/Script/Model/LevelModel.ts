@@ -36,6 +36,9 @@ export class LevelModel {
     /**  经验加成倍数*/
     public expMultiplier: number = 100;
 
+    /** 输赢*/
+    public battleWin: boolean = false;
+
     constructor() {
         this.levelConfig = new Tablelevels_config();
         this.cultivateConfig = new Tablecultivate_config();

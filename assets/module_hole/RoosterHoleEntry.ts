@@ -11,15 +11,21 @@ const { ccclass, property } = _decorator;
 export class RoosterHoleEntry extends Component {
     @property(Prefab)
     levelPrefabs: Prefab[] = [];
+    @property(Prefab)
+    battlePrefab: Prefab = null!;
+    @property(Prefab)
+    expPrefab: Prefab = null!;
 
     @property(Node)
     gameUI: Node = null;
 
-    @property(Prefab)
-    expPrefab: Prefab = null!;
-
     @property(Label)
     lbTimes: Label = null!;
+
+    @property(Node)
+    battleBottom: Node = null!;
+    @property(Node)
+    btnsLayout: Node = null!;
 
     @property(ProgressBar)
     expProgress: ProgressBar = null!;
@@ -27,18 +33,16 @@ export class RoosterHoleEntry extends Component {
     private countdown: number = 0;
     private gaming: boolean = false;
 
-    @property({ type: CCBoolean, visible: true, displayName: '测试输赢' })
-    isWin: boolean = false;
-
     start() {
         this.initilize();
         this.addEventListen();
     }
 
     initilize() {
-        LevelManager.instance.parent = this.node;
         PropManager.instance.parent = this.node;
+        LevelManager.instance.parent = this.node;
         LevelManager.instance.levelPrefabs = this.levelPrefabs;
+        LevelManager.instance.battlePrefab = this.battlePrefab;
 
         UserManager.instance.initilizeModel();
         LevelManager.instance.initilizeModel();
@@ -58,6 +62,9 @@ export class RoosterHoleEntry extends Component {
         EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateCountLb, this);
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_EXP_UPDATE, this.updateExpProgress, this);
         EventDispatcher.instance.on(GameEvent.EVENT_USER_MONEY_UPDATE, this.updateUserInfo, this);
+
+        EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose, this);
     }
 
     protected onDestroy(): void {
@@ -72,8 +79,7 @@ export class RoosterHoleEntry extends Component {
 
         this.gaming = true;
 
-        const layoutBtns = this.gameUI.getChildByName('BtnsLayout');
-        layoutBtns.active = false;
+        this.btnsLayout.active = false;
         //倒计时启动
         const levelTimeTotal = LevelManager.instance.levelModel.levelTimeTotal;
         this.countdown = levelTimeTotal;
@@ -84,15 +90,15 @@ export class RoosterHoleEntry extends Component {
         this.countdown--;
         if (this.countdown <= 0) {
             this.unschedule(this.updateCountdown);
-            //DOTO 进入战斗场景
-            if (this.isWin) {
-                this.levelUpHandler();
-            } else {
-                this.resetGameByLose();
-                return
-            }
+            this.enterBattle();
+            return
         }
         this.lbTimes.string = `倒计时:${this.countdown}`;
+    }
+
+    private enterBattle(): void {
+        LevelManager.instance.loadBattle();
+        this.battleBottom.active = true;
     }
 
     private updateUserInfo(): void {
@@ -127,13 +133,13 @@ export class RoosterHoleEntry extends Component {
         HoleManager.instance.reBornLevel();
         LevelManager.instance.resetAddition();
 
-        this.showBtnsLayout();
+        this.prepStageView();
     }
 
-    /** 失败重载当前关卡*/
+    /** 闯关失败重载当前关卡*/
     private resetGameByLose(): void {
         this.loadLevelInfo();
-        this.showBtnsLayout();
+        this.prepStageView();
         HoleManager.instance.resetExPByLose();
     }
 
@@ -142,10 +148,10 @@ export class RoosterHoleEntry extends Component {
         LevelManager.instance.loadLevel(level);
     }
 
-    private showBtnsLayout(): void {
+    private prepStageView(): void {
         this.gaming = false;
-        const layoutBtns = this.gameUI.getChildByName('BtnsLayout');
-        layoutBtns.active = true;
+        this.battleBottom.active = false;
+        this.btnsLayout.active = true;
         this.updateCountLb();
     }
 }
