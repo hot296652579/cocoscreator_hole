@@ -31,7 +31,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 78
+      "__id__": 80
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -1085,6 +1085,9 @@
       },
       {
         "__id__": 76
+      },
+      {
+        "__id__": 78
       }
     ],
     "removedComponents": []
@@ -1170,6 +1173,22 @@
     "__type__": "cc.TargetInfo",
     "localID": [
       "ff+8JL19BA5p095mdxIzqe"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 79
+    },
+    "propertyPath": [
+      "_enabled"
+    ],
+    "value": false
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "b99FAp1XBMi6Co26Q21Hxs"
     ]
   },
   {

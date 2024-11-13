@@ -1,4 +1,4 @@
-import { _decorator, assetManager, Component, director, game, Label, Prefab, Node, AssetManager } from 'cc';
+import { _decorator, assetManager, Component, director, game, Label, Prefab, Node, AssetManager, Asset } from 'cc';
 import { tgxModuleContext, tgxUIMgr, tgxUIWaiting } from '../core_tgx/tgx';
 import { GameUILayers, GameUILayerNames } from '../scripts/GameUILayers';
 
@@ -12,7 +12,7 @@ const _preloadBundles = [ModuleDef.BASIC];
 
 const _preloadRes = [
     { bundle: ModuleDef.BASIC, url: 'ui_alert/UI_Alert', type: 'prefab' },
-    { bundle: ModuleDef.BASIC, url: 'ui_waiting/UI_Waiting', type: 'prefab' },
+    { bundle: ModuleDef.BASIC, url: 'ui_waiting/UI_Waiting', type: 'prefab' }
 ];
 
 const _loadingText = ['Loading.', 'Loading..', 'Loading...'];
@@ -100,7 +100,7 @@ export class Start extends Component {
 
             const info = {
                 bundle: 'module_hole',
-                entryScene: 'test'
+                entryScene: 'rooster_hole'
             }
             tgxUIWaiting.show();
             assetManager.loadBundle(info.bundle, (err, bundle: AssetManager.Bundle) => {

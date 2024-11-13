@@ -343,7 +343,7 @@
         "__id__": 78
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 94
@@ -3533,7 +3533,7 @@
       "__id__": 1
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 100
