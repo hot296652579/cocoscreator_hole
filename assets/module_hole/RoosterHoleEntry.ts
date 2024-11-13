@@ -34,7 +34,7 @@ export class RoosterHoleEntry extends Component {
     private gaming: boolean = false;
 
     start() {
-        this.initilize();
+        // this.initilize();
         this.addEventListen();
     }
 

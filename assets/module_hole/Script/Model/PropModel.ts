@@ -1,4 +1,3 @@
-import { Tableblackhole_config } from "../../../module_basic/table/Tableblackhole_config";
 import { Tableprop_config } from "../../../module_basic/table/Tableprop_config";
 
 /**道具数据模型

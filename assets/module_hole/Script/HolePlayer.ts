@@ -1,12 +1,10 @@
-import { _decorator, BoxCollider, Button, Component, game, ITriggerEvent, Node, SphereCollider, Vec3 } from 'cc';
+import { _decorator, BoxCollider, Button, Component, game, ITriggerEvent, Node, sp, SphereCollider, v3, Vec3 } from 'cc';
 import { UIJoyStick } from './UIJoyStick';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
-import { LevelManager } from './Manager/LevelMgr';
 import { PropManager } from './Manager/PropMgr';
 import { HoleManager } from './Manager/HoleMgr';
 import { PropItem } from './PropItem';
-import { IAttributeConfig, TYPE_BLESSINGS } from './Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 @ccclass('HolePlayer')
@@ -19,7 +17,7 @@ export class HolePlayer extends Component {
 
     coefficient: number = 15;
 
-    start() {
+    protected start(): void {
         this.initilizeData();
         this.updateHoleView();
         this.initilizeUI();
@@ -43,7 +41,12 @@ export class HolePlayer extends Component {
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateHoleView, this);
     }
 
+    protected onDestroy(): void {
+        EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateHoleView);
+    }
+
     onTriggerEnter(event: ITriggerEvent): void {
+        console.log(`碰撞enter otherGroup->:${event.otherCollider.getGroup()}`);
         const holeRadius = this.holeTigger.radius;
         const distance = this.getPlanceVec3(event).length();
         if (event.otherCollider.getGroup() == 1 << 4) {
@@ -74,22 +77,19 @@ export class HolePlayer extends Component {
         HoleManager.instance.addExp(expBonus);
     }
 
-    // onTriggerStay(event: ITriggerEvent): void {
-    //     if (event.otherCollider.getGroup() == 1 << 3) {
-    //         const otherPos = event.otherCollider.worldBounds.center;
-    //         const heloToOtherDir = this.getPlanceVec3(event).normalize();
-    //         heloToOtherDir.y = otherPos.y;
-    //         const heloActtion = heloToOtherDir.clone().negative();
-
-    //         //根据距离增加吸引力，距离越近，吸引力越强
-    //         // const pullStrength = Math.max(0.2, (holeRadius * coefficient - distance) / (holeRadius * coefficient)) * 5;
-    //         // const pullAction = heloToOtherDir.clone().negative().multiplyScalar(pullStrength);
-
-    //         event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.2), heloToOtherDir);
-    //     }
-    // }
+    onTriggerStay(event: ITriggerEvent): void {
+        // console.log(`碰撞持续stay otherGroup->:${event.otherCollider.getGroup()}`);
+        // if (event.otherCollider.getGroup() == 1 << 3) {
+        //     const otherPos = event.otherCollider.worldBounds.center;
+        //     const heloToOtherDir = this.getPlanceVec3(event).normalize();
+        //     heloToOtherDir.y = otherPos.y;
+        //     const heloActtion = heloToOtherDir.clone().negative();
+        //     event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.5), heloToOtherDir);
+        // }
+    }
 
     onTriggerExit(event: ITriggerEvent): void {
+        // console.log(`碰撞离开exit otherGroup->:${event.otherCollider.getGroup()}`);
         if (event.otherCollider.getGroup() == 1 << 3) {
             event.otherCollider.setGroup(1 << 4)
         }
@@ -115,8 +115,10 @@ export class HolePlayer extends Component {
     }
 
     updateHoleView(): void {
-        //DOTO 
-        console.log('根据黑洞等级 刷新对应视野大小和直径');
+        const model = HoleManager.instance.holeModel;
+        const { holeLevel, speed, view, diameter } = model;
+        this.speed = speed;
+        this.node.setScale(v3(diameter * 5, 1, diameter * 5));
     }
 }
 

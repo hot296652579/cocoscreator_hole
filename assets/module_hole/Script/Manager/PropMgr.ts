@@ -1,9 +1,6 @@
 import { _decorator, Node, Prefab, instantiate, Component, Camera, UITransform, v3, game, view, screen, tween, Vec3, Label } from 'cc';
-import { ResLoader } from '../../../core_tgx/base/ResLoader';
 import { RoosterHoleEntry } from '../../RoosterHoleEntry';
-import * as exp from 'constants';
 import { PropItem } from '../PropItem';
-import { count } from 'console';
 import { LevelManager } from './LevelMgr';
 import { IAttributeConfig, TYPE_BLESSINGS } from '../Model/LevelModel';
 const { ccclass, property } = _decorator;

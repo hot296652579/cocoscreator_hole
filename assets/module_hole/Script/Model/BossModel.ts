@@ -1,4 +1,3 @@
-import { Tableblackhole_config } from "../../../module_basic/table/Tableblackhole_config";
 import { Tableboss_config } from "../../../module_basic/table/Tableboss_config";
 
 /**BOSS数据模型

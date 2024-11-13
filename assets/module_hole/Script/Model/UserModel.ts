@@ -1,5 +1,3 @@
-
-
 /**玩家数据模型
  * @param level 等级
  * @param money 金币

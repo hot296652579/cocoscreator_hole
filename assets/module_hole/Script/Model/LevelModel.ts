@@ -1,4 +1,3 @@
-import { JsonUtil } from "../../../core_tgx/base/utils/JsonUtil";
 import { Tablecultivate_config } from "../../../module_basic/table/Tablecultivate_config";
 import { Tablelevels_config } from "../../../module_basic/table/Tablelevels_config";
 import { LevelManager } from "../Manager/LevelMgr";

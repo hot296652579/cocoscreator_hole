@@ -1,6 +1,5 @@
 import { _decorator, Node, Prefab, instantiate, Component, Camera, UITransform, v3, game, view, screen, tween, Vec3 } from 'cc';
 import { BlackholeModel } from '../Model/HoleModel';
-import * as exp from 'constants';
 import { EventDispatcher } from '../../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from '../Enum/GameEvent';
 const { ccclass, property } = _decorator;

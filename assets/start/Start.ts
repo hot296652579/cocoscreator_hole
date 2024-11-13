@@ -100,7 +100,7 @@ export class Start extends Component {
 
             const info = {
                 bundle: 'module_hole',
-                entryScene: 'rooster_hole'
+                entryScene: 'test'
             }
             tgxUIWaiting.show();
             assetManager.loadBundle(info.bundle, (err, bundle: AssetManager.Bundle) => {
