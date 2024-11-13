@@ -130,6 +130,7 @@ export class RoosterHoleEntry extends Component {
         LevelManager.instance.upgradeLevel();
         this.loadLevelInfo();
 
+        PropManager.instance.clearEatsMap();
         HoleManager.instance.reBornLevel();
         LevelManager.instance.resetAddition();
 

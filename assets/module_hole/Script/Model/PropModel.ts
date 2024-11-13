@@ -36,4 +36,10 @@ export class PropModel {
     get weight(): number {
         return this.config.weight;
     }
+
+    /** 根据id获取当前道具重量*/
+    getWeightById(id: number = 1): number {
+        this.config.init(id);
+        return this.weight;
+    }
 }

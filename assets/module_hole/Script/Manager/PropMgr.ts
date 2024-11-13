@@ -3,6 +3,7 @@ import { ResLoader } from '../../../core_tgx/base/ResLoader';
 import { RoosterHoleEntry } from '../../RoosterHoleEntry';
 import * as exp from 'constants';
 import { PropItem } from '../PropItem';
+import { count } from 'console';
 const { ccclass, property } = _decorator;
 
 /** 道具管理器*/
@@ -19,7 +20,7 @@ export class PropManager {
     propParent: Node = null!;
     expPrefab: Prefab = null!;
 
-    eatsMap: Map<number, number> = new Map();
+    eatsMap: Map<number, IPropTotal> = new Map();
 
     initilizeUI(): void {
         this.camera = this.parent.getComponentInChildren(Camera)!;
@@ -52,32 +53,55 @@ export class PropManager {
         expNode.setPosition(v3(origin.x, origin.y, 0));
         tween(expNode)
             .to(1, { position: new Vec3(origin.x, origin.y + 50, 0) })
-            .call(() => { expNode.removeFromParent() })
+            .call(() => {
+                expNode.removeFromParent();
+                expNode.destroy();
+            })
             .start()
 
-        let id = targetModel.getComponent(PropItem).id;
-        this.savePropItems(id);
+        let data = targetModel.getComponent(PropItem);
+        this.savePropItems(data);
     }
 
     /** 记录吞噬的道具*/
-    savePropItems(id: number): void {
-        if (this.eatsMap.has(id)) {
-            this.eatsMap.set(id, 1);
+    savePropItems(data: PropItem): void {
+        const { id, name, weight } = data;
+        if (!this.eatsMap.has(id)) {
+            const obj = {
+                count: 1,
+                totalWeight: weight
+            }
+            this.eatsMap.set(id, obj);
         } else {
-            let count = this.eatsMap.get(id);
+            let obj = this.eatsMap.get(id);
+            let { count } = obj;
             count++;
 
-            this.eatsMap.set(id, count);
+            const totalWeight = count * weight;
+            obj.count = count;
+            obj.totalWeight = totalWeight;
+
+            this.eatsMap.set(id, obj);
         }
+        console.log(this.eatsMap);
     }
 
-    /** 获取某个道具数量*/
-    getItemCount(itemId: number): number {
-        return this.eatsMap.get(itemId) || 0;
+    /** 获取某个道具数量和总重量*/
+    getItemCount(itemId: number): IPropTotal {
+        return this.eatsMap.get(itemId) || null;
     }
 
     clearEatsMap(): void {
         this.eatsMap.clear();
     }
 
+}
+
+/** 单个道具接口
+ * @param count 总数量
+ * @param totalWeight 总重量
+*/
+interface IPropTotal {
+    count: number,//总数
+    totalWeight: number //总重量
 }

@@ -2,6 +2,7 @@ import { JsonUtil } from "../../../core_tgx/base/utils/JsonUtil";
 import { Tablecultivate_config } from "../../../module_basic/table/Tablecultivate_config";
 import { Tablelevels_config } from "../../../module_basic/table/Tablelevels_config";
 import { LevelManager } from "../Manager/LevelMgr";
+import { BossModel } from "./BossModel";
 
 /**加持类型
  * @param TIME 时间提升
@@ -23,6 +24,7 @@ export enum TYPE_BLESSINGS {
 export class LevelModel {
     public levelConfig: Tablelevels_config;
     public cultivateConfig: Tablecultivate_config;
+    public bossModel: BossModel;
 
     /** 当前关卡等级*/
     public level: number = 1;
@@ -52,6 +54,9 @@ export class LevelModel {
         const attributeConfig_Exp = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.EXP, this.expMulLevel);
         this.levelTimeTotal = attributeConfig_Time.param;
         this.expMultiplier = attributeConfig_Exp.param;
+
+        //初始当前boss
+        this.bossModel = new BossModel();
     }
 
     get reward_basics(): number {
