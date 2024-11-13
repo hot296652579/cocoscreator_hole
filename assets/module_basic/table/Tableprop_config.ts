@@ -32,3 +32,4 @@ export class Tableprop_config {
         return this.data.weight;
     }
 }
+    

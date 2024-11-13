@@ -24,3 +24,4 @@ export class Tablemain_config {
         return this.data.content;
     }
 }
+    

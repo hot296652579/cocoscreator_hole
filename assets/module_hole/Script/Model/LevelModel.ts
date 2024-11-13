@@ -38,9 +38,6 @@ export class LevelModel {
     /**  经验加成倍数*/
     public expMultiplier: number = 100;
 
-    /** 输赢*/
-    public battleWin: boolean = false;
-
     constructor() {
         this.levelConfig = new Tablelevels_config();
         this.cultivateConfig = new Tablecultivate_config();
@@ -74,7 +71,13 @@ export class LevelModel {
     }
 }
 
-/** 属性接口*/
+/** 属性接口
+ * @param id 配置表id
+ * @param level 对应等级
+ * @param type 加成类型:时间,大小,经验
+ * @param param 对应类型等级属性
+ * @param money 金额
+*/
 export interface IAttributeConfig {
     id: number,
     level: number,

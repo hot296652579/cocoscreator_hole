@@ -2,19 +2,19 @@
     "1": {
         "level": 1,
         "type": 1,
-        "param": 6,
-        "money": 0
+        "param": 20,
+        "money": 100
     },
     "2": {
         "level": 2,
         "type": 1,
-        "param": 10,
+        "param": 22,
         "money": 200
     },
     "3": {
         "level": 3,
         "type": 1,
-        "param": 14,
+        "param": 24,
         "money": 500
     },
     "4": {
@@ -63,7 +63,7 @@
         "level": 1,
         "type": 2,
         "param": 20,
-        "money": 0
+        "money": 100
     },
     "12": {
         "level": 2,
@@ -122,61 +122,61 @@
     "21": {
         "level": 1,
         "type": 3,
-        "param": 20,
-        "money": 0
+        "param": 100,
+        "money": 100
     },
     "22": {
         "level": 2,
         "type": 3,
-        "param": 22,
+        "param": 110,
         "money": 200
     },
     "23": {
         "level": 3,
         "type": 3,
-        "param": 24,
+        "param": 120,
         "money": 500
     },
     "24": {
         "level": 4,
         "type": 3,
-        "param": 26,
+        "param": 130,
         "money": 800
     },
     "25": {
         "level": 5,
         "type": 3,
-        "param": 28,
+        "param": 140,
         "money": 1100
     },
     "26": {
         "level": 6,
         "type": 3,
-        "param": 30,
+        "param": 150,
         "money": 1400
     },
     "27": {
         "level": 7,
         "type": 3,
-        "param": 32,
+        "param": 160,
         "money": 1700
     },
     "28": {
         "level": 8,
         "type": 3,
-        "param": 34,
+        "param": 170,
         "money": 2000
     },
     "29": {
         "level": 9,
         "type": 3,
-        "param": 36,
+        "param": 180,
         "money": 2300
     },
     "30": {
         "level": 10,
         "type": 3,
-        "param": 38,
+        "param": 200,
         "money": 2600
     }
 }

@@ -32,3 +32,4 @@ export class Tablecultivate_config {
         return this.data.money;
     }
 }
+    

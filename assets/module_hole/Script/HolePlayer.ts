@@ -6,6 +6,7 @@ import { LevelManager } from './Manager/LevelMgr';
 import { PropManager } from './Manager/PropMgr';
 import { HoleManager } from './Manager/HoleMgr';
 import { PropItem } from './PropItem';
+import { IAttributeConfig, TYPE_BLESSINGS } from './Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 @ccclass('HolePlayer')
@@ -67,11 +68,10 @@ export class HolePlayer extends Component {
 
     eatProp(event: ITriggerEvent): void {
         const otherNode = event.otherCollider.node;
-        //DOTO 乘以经验加成倍数
-        const exp = otherNode.getComponent(PropItem)?.exp;
-
-        PropManager.instance.addExpPrefab(exp, event.otherCollider.node);
-        HoleManager.instance.addExp(exp);
+        let exp = otherNode.getComponent(PropItem)?.exp;
+        const expBonus = PropManager.instance.expAfterBonus(exp);
+        PropManager.instance.addExpPrefab(expBonus, event.otherCollider.node);
+        HoleManager.instance.addExp(expBonus);
     }
 
     // onTriggerStay(event: ITriggerEvent): void {

@@ -23,7 +23,7 @@ export class BattleController extends Component {
             } else {
                 EventDispatcher.instance.emit(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET);
             }
-        }, 3)
+        }, 3);
     }
 
     //DOTO 吃道具动画

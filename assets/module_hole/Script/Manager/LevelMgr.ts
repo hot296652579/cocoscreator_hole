@@ -33,7 +33,7 @@ export class LevelManager {
         const currentLevelNode = instantiate(levelPrefab);
         this.parent.removeAllChildren();
         this.parent.addChild(currentLevelNode);
-        console.log(`Loaded level ${level}.`);
+        console.log(`Loaded level: ${level}.`);
     }
 
     /** 添加战斗场景*/

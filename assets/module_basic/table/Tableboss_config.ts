@@ -28,3 +28,4 @@ export class Tableboss_config {
         return this.data.weight;
     }
 }
+    

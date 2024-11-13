@@ -28,3 +28,4 @@ export class Tablemusic_config {
         return this.data.content;
     }
 }
+    

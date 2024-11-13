@@ -4,6 +4,8 @@ import { RoosterHoleEntry } from '../../RoosterHoleEntry';
 import * as exp from 'constants';
 import { PropItem } from '../PropItem';
 import { count } from 'console';
+import { LevelManager } from './LevelMgr';
+import { IAttributeConfig, TYPE_BLESSINGS } from '../Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 /** 道具管理器*/
@@ -63,6 +65,17 @@ export class PropManager {
         this.savePropItems(data);
     }
 
+    /** 加成倍数后的经验*/
+    expAfterBonus(exp: number): number {
+        const { expMulLevel } = LevelManager.instance.levelModel;
+        const config: IAttributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.EXP, expMulLevel);
+        const { param } = config;
+        const multiplier = param / 100;
+        let expBonus = Math.round(exp * multiplier * 100) / 100;
+        // console.log(`道具原本经验exp:${exp} 加成倍数:${multiplier} 加成后exp:${expBonus}`);
+        return expBonus;
+    }
+
     /** 记录吞噬的道具*/
     savePropItems(data: PropItem): void {
         const { id, name, weight } = data;
@@ -83,7 +96,7 @@ export class PropManager {
 
             this.eatsMap.set(id, obj);
         }
-        console.log(this.eatsMap);
+        // console.log(this.eatsMap);
     }
 
     /** 获取某个道具数量和总重量*/
