@@ -118,7 +118,7 @@ export class HolePlayer extends Component {
         const model = HoleManager.instance.holeModel;
         const { holeLevel, speed, view, diameter } = model;
         this.speed = speed;
-        this.node.setScale(v3(diameter * 5, 1, diameter * 5));
+        this.node.setScale(v3(diameter * 3, 1, diameter * 3));
     }
 }
 
