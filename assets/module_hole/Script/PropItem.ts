@@ -16,6 +16,9 @@ export class PropItem extends Component {
     @property({ type: CCInteger, displayName: '道具id' })
     id: number = 1;
 
+    @property
+    propName: string = '';
+
     content: string = null!;
     model: string = null!;
     exp: number = null!;

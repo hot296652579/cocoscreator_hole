@@ -1,0 +1,79 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "e7f932e7-826e-4c7e-bcf2-507192c11510",
+  "files": [],
+  "subMetas": {
+    "a5293": {
+      "importer": "gltf-mesh",
+      "uuid": "e7f932e7-826e-4c7e-bcf2-507192c11510@a5293",
+      "displayName": "",
+      "id": "a5293",
+      "name": "cheese.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 418
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "188e3": {
+      "importer": "gltf-scene",
+      "uuid": "e7f932e7-826e-4c7e-bcf2-507192c11510@188e3",
+      "displayName": "",
+      "id": "188e3",
+      "name": "cheese.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "e7f932e7-826e-4c7e-bcf2-507192c11510@a5293"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [],
+      "scenes": [
+        "e7f932e7-826e-4c7e-bcf2-507192c11510@188e3"
+      ]
+    },
+    "redirect": "e7f932e7-826e-4c7e-bcf2-507192c11510@188e3"
+  }
+}

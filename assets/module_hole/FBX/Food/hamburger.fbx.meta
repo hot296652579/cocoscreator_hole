@@ -1,0 +1,79 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "231c856f-f218-4445-8191-02082ddf7102",
+  "files": [],
+  "subMetas": {
+    "6dfe2": {
+      "importer": "gltf-mesh",
+      "uuid": "231c856f-f218-4445-8191-02082ddf7102@6dfe2",
+      "displayName": "",
+      "id": "6dfe2",
+      "name": "hamburger.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 252
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f11bb": {
+      "importer": "gltf-scene",
+      "uuid": "231c856f-f218-4445-8191-02082ddf7102@f11bb",
+      "displayName": "",
+      "id": "f11bb",
+      "name": "hamburger.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "231c856f-f218-4445-8191-02082ddf7102@6dfe2"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [],
+      "scenes": [
+        "231c856f-f218-4445-8191-02082ddf7102@f11bb"
+      ]
+    },
+    "redirect": "231c856f-f218-4445-8191-02082ddf7102@f11bb"
+  }
+}

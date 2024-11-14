@@ -128,11 +128,7 @@
         "_value": false
       },
       "render-pipeline": {
-        "_value": true,
         "_option": "legacy-pipeline"
-      },
-      "custom-pipeline": {
-        "_value": true
       },
       "legacy-pipeline": {
         "_value": false
@@ -148,7 +144,6 @@
       "animation",
       "audio",
       "base",
-      "custom-pipeline",
       "gfx-webgl",
       "intersection-2d",
       "physics-ammo",

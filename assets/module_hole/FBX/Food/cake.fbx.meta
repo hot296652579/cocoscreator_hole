@@ -1,0 +1,79 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "6666e92c-716f-4ba3-b9ff-829c2eadb90b",
+  "files": [],
+  "subMetas": {
+    "4fb01": {
+      "importer": "gltf-mesh",
+      "uuid": "6666e92c-716f-4ba3-b9ff-829c2eadb90b@4fb01",
+      "displayName": "",
+      "id": "4fb01",
+      "name": "cakes.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 159
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "5d8bf": {
+      "importer": "gltf-scene",
+      "uuid": "6666e92c-716f-4ba3-b9ff-829c2eadb90b@5d8bf",
+      "displayName": "",
+      "id": "5d8bf",
+      "name": "cake.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "6666e92c-716f-4ba3-b9ff-829c2eadb90b@4fb01"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [],
+      "scenes": [
+        "6666e92c-716f-4ba3-b9ff-829c2eadb90b@5d8bf"
+      ]
+    },
+    "redirect": "6666e92c-716f-4ba3-b9ff-829c2eadb90b@5d8bf"
+  }
+}

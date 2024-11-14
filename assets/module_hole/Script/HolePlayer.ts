@@ -68,7 +68,7 @@ export class HolePlayer extends Component {
             // 获取黑洞和物体的位置差向量，并将物体朝黑洞中心拉动
             const directionToHole = this.getPlanceVec3(event).normalize().negative();
             // 应用一个较大的冲量，使物体快速移动到黑洞
-            otherRigidBody.applyImpulse(directionToHole.multiplyScalar(5), directionToHole);
+            otherRigidBody.applyImpulse(directionToHole.multiplyScalar(3), directionToHole);
         }
     }
 
@@ -120,11 +120,13 @@ export class HolePlayer extends Component {
     updateHoleView(): void {
         const model = HoleManager.instance.holeModel;
         const { holeLevel, speed, view, diameter } = model;
+        console.log(`直径diameter:${diameter}`)
         this.speed = speed;
-        this.node.setScale(v3(diameter * 3, 1, diameter * 3));
+        // this.node.setScale(v3(diameter * 3, 1, diameter * 3));
+        this.node.setScale(v3(3, 1, 3));
 
         const sence = director.getScene();
-        sence.emit(EasyControllerEvent.CAMERA_ZOOM, view + 10);
+        // sence.emit(EasyControllerEvent.CAMERA_ZOOM, view + 10);
     }
 }
 

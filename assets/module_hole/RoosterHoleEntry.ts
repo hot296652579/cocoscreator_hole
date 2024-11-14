@@ -135,21 +135,20 @@ export class RoosterHoleEntry extends Component {
 
     /** 关卡升级*/
     private levelUpHandler(): void {
-        LevelManager.instance.upgradeLevel();
-        this.loadLevelInfo();
-
         PropManager.instance.clearEatsMap();
         HoleManager.instance.reBornLevel();
         LevelManager.instance.resetAddition();
+        LevelManager.instance.upgradeLevel();
 
+        this.loadLevelInfo();
         this.prepStageView();
     }
 
     /** 闯关失败重载当前关卡*/
     private resetGameByLose(): void {
-        HoleManager.instance.reBornLevel();
         this.loadLevelInfo();
         this.prepStageView();
+        HoleManager.instance.reBornLevel();
         HoleManager.instance.resetExPByLose();
     }
 

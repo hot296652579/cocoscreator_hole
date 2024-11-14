@@ -1,0 +1,79 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "c24b004f-5720-4313-9c23-a616c98313f1",
+  "files": [],
+  "subMetas": {
+    "31ded": {
+      "importer": "gltf-mesh",
+      "uuid": "c24b004f-5720-4313-9c23-a616c98313f1@31ded",
+      "displayName": "",
+      "id": "31ded",
+      "name": "chocolates.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 140
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e8918": {
+      "importer": "gltf-scene",
+      "uuid": "c24b004f-5720-4313-9c23-a616c98313f1@e8918",
+      "displayName": "",
+      "id": "e8918",
+      "name": "chocolates.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "c24b004f-5720-4313-9c23-a616c98313f1@31ded"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [],
+      "scenes": [
+        "c24b004f-5720-4313-9c23-a616c98313f1@e8918"
+      ]
+    },
+    "redirect": "c24b004f-5720-4313-9c23-a616c98313f1@e8918"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "43a2c47c-caee-4a7e-be9b-c259ea56359b",
+  "files": [],
+  "subMetas": {
+    "8a870": {
+      "importer": "gltf-mesh",
+      "uuid": "43a2c47c-caee-4a7e-be9b-c259ea56359b@8a870",
+      "displayName": "",
+      "id": "8a870",
+      "name": "steak.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 180
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6c916": {
+      "importer": "gltf-scene",
+      "uuid": "43a2c47c-caee-4a7e-be9b-c259ea56359b@6c916",
+      "displayName": "",
+      "id": "6c916",
+      "name": "steak.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "43a2c47c-caee-4a7e-be9b-c259ea56359b@8a870"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [],
+      "scenes": [
+        "43a2c47c-caee-4a7e-be9b-c259ea56359b@6c916"
+      ]
+    },
+    "redirect": "43a2c47c-caee-4a7e-be9b-c259ea56359b@6c916"
+  }
+}
