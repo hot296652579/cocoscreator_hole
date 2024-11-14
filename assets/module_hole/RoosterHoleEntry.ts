@@ -1,10 +1,12 @@
-import { _decorator, Component, Label, Prefab, Node, Game, ProgressBar, CCBoolean } from 'cc';
+import { _decorator, Component, Label, Prefab, Node, Game, ProgressBar, CCBoolean, NodeEventType } from 'cc';
 import { LevelManager } from './Script/Manager/LevelMgr';
 import { EventDispatcher } from '../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Script/Enum/GameEvent';
 import { PropManager } from './Script/Manager/PropMgr';
 import { HoleManager } from './Script/Manager/HoleMgr';
 import { UserManager } from './Script/Manager/UserMgr';
+import { tgxUIMgr } from '../core_tgx/tgx';
+import { UI_AboutMe, UI_Setting } from '../scripts/UIDef';
 const { ccclass, property } = _decorator;
 
 @ccclass('RoosterHoleEntry')
@@ -18,18 +20,16 @@ export class RoosterHoleEntry extends Component {
 
     @property(Node)
     gameUI: Node = null;
-
+    @property(Node)
+    btSet: Node = null!;
     @property(Label)
     lbTimes: Label = null!;
-
     @property(Label)
     lbLevel: Label = null!;
-
     @property(Node)
     battleBottom: Node = null!;
     @property(Node)
     btnsLayout: Node = null!;
-
     @property(ProgressBar)
     expProgress: ProgressBar = null!;
 
@@ -67,6 +67,9 @@ export class RoosterHoleEntry extends Component {
 
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose, this);
+
+        //按钮
+        this.btSet.on(NodeEventType.TOUCH_END, this.onClickSet, this);
     }
 
     protected onDestroy(): void {
@@ -165,5 +168,11 @@ export class RoosterHoleEntry extends Component {
         this.updateLevelLb();
         this.updateExpProgress();
     }
+
+    //-------------------------UI点击---------------
+    private onClickSet(): void {
+        tgxUIMgr.inst.showUI(UI_Setting);
+    }
+    //-------------------------end---------------
 }
 

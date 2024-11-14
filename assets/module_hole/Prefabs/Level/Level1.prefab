@@ -28,13 +28,13 @@
         "__id__": 92
       },
       {
-        "__id__": 102
+        "__id__": 103
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 108
+      "__id__": 109
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -439,7 +439,7 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": -1.079,
+      "x": -1.048,
       "y": 0,
       "z": 8.161
     }
@@ -1433,6 +1433,9 @@
       },
       {
         "__id__": 100
+      },
+      {
+        "__id__": 102
       }
     ],
     "removedComponents": []
@@ -1521,6 +1524,22 @@
     ]
   },
   {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 101
+    },
+    "propertyPath": [
+      "_lrot"
+    ],
+    "value": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    }
+  },
+  {
     "__type__": "cc.Node",
     "_name": "Camera",
     "_objFlags": 0,
@@ -1532,14 +1551,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 103
+        "__id__": 104
       },
       {
-        "__id__": 105
+        "__id__": 106
       }
     ],
     "_prefab": {
-      "__id__": 107
+      "__id__": 108
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -1576,11 +1595,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 102
+      "__id__": 103
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 104
+      "__id__": 105
     },
     "_projection": 1,
     "_priority": 0,
@@ -1628,11 +1647,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 102
+      "__id__": 103
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 106
+      "__id__": 107
     },
     "target": {
       "__id__": 92
