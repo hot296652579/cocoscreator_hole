@@ -139,6 +139,7 @@ export class RoosterHoleEntry extends Component {
 
     /** 闯关失败重载当前关卡*/
     private resetGameByLose(): void {
+        HoleManager.instance.reBornLevel();
         this.loadLevelInfo();
         this.prepStageView();
         HoleManager.instance.resetExPByLose();

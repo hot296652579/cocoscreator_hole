@@ -1,10 +1,11 @@
-import { _decorator, BoxCollider, Button, Component, game, ITriggerEvent, Node, sp, SphereCollider, v3, Vec3 } from 'cc';
+import { _decorator, BoxCollider, Button, Component, director, game, ITriggerEvent, Node, sp, SphereCollider, v3, Vec3 } from 'cc';
 import { UIJoyStick } from './UIJoyStick';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
 import { PropManager } from './Manager/PropMgr';
 import { HoleManager } from './Manager/HoleMgr';
 import { PropItem } from './PropItem';
+import { EasyController, EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
 const { ccclass, property } = _decorator;
 
 @ccclass('HolePlayer')
@@ -39,10 +40,12 @@ export class HolePlayer extends Component {
 
     addEventListener(): void {
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateHoleView, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET, this.updateHoleView, this);
     }
 
     protected onDestroy(): void {
         EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateHoleView);
+        EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET, this.updateHoleView);
     }
 
     onTriggerEnter(event: ITriggerEvent): void {
@@ -119,6 +122,9 @@ export class HolePlayer extends Component {
         const { holeLevel, speed, view, diameter } = model;
         this.speed = speed;
         this.node.setScale(v3(diameter * 3, 1, diameter * 3));
+
+        const sence = director.getScene();
+        sence.emit(EasyControllerEvent.CAMERA_ZOOM, view + 10);
     }
 }
 
