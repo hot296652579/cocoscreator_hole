@@ -28,20 +28,20 @@
         "__id__": 14
       },
       {
-        "__id__": 22
+        "__id__": 23
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 30
+        "__id__": 32
       },
       {
-        "__id__": 32
+        "__id__": 34
       }
     ],
     "_prefab": {
-      "__id__": 34
+      "__id__": 36
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -344,7 +344,11 @@
         "__id__": 21
       }
     ],
-    "removedComponents": []
+    "removedComponents": [
+      {
+        "__id__": 22
+      }
+    ]
   },
   {
     "__type__": "CCPropertyOverrideInfo",
@@ -354,7 +358,7 @@
     "propertyPath": [
       "_name"
     ],
-    "value": "delivery"
+    "value": "Player"
   },
   {
     "__type__": "cc.TargetInfo",
@@ -409,20 +413,26 @@
     }
   },
   {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "c2cmkzE+JJO7cwQ5Dm5lE4"
+    ]
+  },
+  {
     "__type__": "cc.Node",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
     },
     "_prefab": {
-      "__id__": 23
+      "__id__": 24
     },
     "__editorExtras__": {}
   },
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 22
+      "__id__": 23
     },
     "asset": {
       "__uuid__": "7ab1c750-579d-4b0b-9f37-f3fc8e17882e",
@@ -430,7 +440,7 @@
     },
     "fileId": "9csiHXjINQvJzpUHzJuAka",
     "instance": {
-      "__id__": 24
+      "__id__": 25
     },
     "targetOverrides": null
   },
@@ -444,29 +454,33 @@
     "mountedComponents": [],
     "propertyOverrides": [
       {
-        "__id__": 25
-      },
-      {
-        "__id__": 27
+        "__id__": 26
       },
       {
         "__id__": 28
       },
       {
         "__id__": 29
+      },
+      {
+        "__id__": 30
       }
     ],
-    "removedComponents": []
+    "removedComponents": [
+      {
+        "__id__": 31
+      }
+    ]
   },
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 26
+      "__id__": 27
     },
     "propertyPath": [
       "_name"
     ],
-    "value": "taxi"
+    "value": "Boss"
   },
   {
     "__type__": "cc.TargetInfo",
@@ -477,7 +491,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 26
+      "__id__": 27
     },
     "propertyPath": [
       "_lpos"
@@ -492,7 +506,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 26
+      "__id__": 27
     },
     "propertyPath": [
       "_lrot"
@@ -508,7 +522,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 26
+      "__id__": 27
     },
     "propertyPath": [
       "_euler"
@@ -521,6 +535,12 @@
     }
   },
   {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "3eZSwL9ThPWICKNAydQieL"
+    ]
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -530,7 +550,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 31
+      "__id__": 33
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -558,9 +578,56 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 33
+      "__id__": 35
     },
-    "isWin": true,
+    "levelPrefabs": [
+      {
+        "__uuid__": "721cc647-3be0-49b9-a2aa-b1c9dfbe77bd",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "7e9bc01f-88d1-4db6-8b9f-92f9d8d4fde7",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "cf64f38e-50d9-4cfd-834c-64c80958694d",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "be0583d9-2a65-430a-bca3-c8d51c6b781e",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "6716df0a-fc83-424e-b1d8-b6d5d902f31e",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "a55f15db-bd8d-4c32-b250-d5a81d65b995",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "cb6eac8f-3773-425a-aa59-3cfad19af091",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "d303f32c-cf23-46dd-b003-cb1f1fe546ab",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "be27d309-9df4-452f-a725-3f7c5786064c",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "97952db5-536f-46a5-8f23-fcd1d91f8d4d",
+        "__expectedType__": "cc.Prefab"
+      }
+    ],
+    "player": {
+      "__id__": 14
+    },
+    "boss": {
+      "__id__": 23
+    },
     "_id": ""
   },
   {
@@ -580,7 +647,7 @@
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": [
       {
-        "__id__": 22
+        "__id__": 23
       },
       {
         "__id__": 14

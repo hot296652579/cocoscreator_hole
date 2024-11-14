@@ -123,7 +123,7 @@ export class HolePlayer extends Component {
         // console.log(`直径diameter:${diameter}`);
         this.speed = speed;
         this.node.setScale(v3(diameter * 3, 1, diameter * 3));
-        this.node.setScale(v3(3, 1, 3));
+        // this.node.setScale(v3(3, 1, 3));
 
         const sence = director.getScene();
         sence.emit(EasyControllerEvent.CAMERA_ZOOM, view + 10);

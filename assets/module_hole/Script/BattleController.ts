@@ -1,4 +1,4 @@
-import { _decorator, Component, CCFloat, EventTouch, math, Sprite, v3, Vec3, Button, NodeEventType, Label, Node, CCBoolean, game, find, Toggle } from 'cc';
+import { _decorator, Component, CCFloat, EventTouch, math, Sprite, v3, Vec3, Button, NodeEventType, Label, Node, CCBoolean, game, find, Toggle, Prefab } from 'cc';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
 import { LevelManager } from './Manager/LevelMgr';
@@ -11,6 +11,14 @@ const { ccclass, property } = _decorator;
  */
 @ccclass('BattleController')
 export class BattleController extends Component {
+    @property(Prefab)
+    levelPrefabs: Prefab[] = [];
+
+    @property(Node)
+    player: Node = null!;
+
+    @property(Node)
+    boss: Node = null!;
 
     protected start(): void {
         this.scheduleOnce(() => {
