@@ -1,17 +1,18 @@
-import { _decorator, BoxCollider, Button, Component, director, game, ITriggerEvent, Node, sp, SphereCollider, v3, Vec3 } from 'cc';
-import { UIJoyStick } from './UIJoyStick';
+import { _decorator, BoxCollider, Component, director, game, isValid, ITriggerEvent, SphereCollider, v3, Vec3 } from 'cc';
+import { EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
-import { PropManager } from './Manager/PropMgr';
 import { HoleManager } from './Manager/HoleMgr';
+import { PropManager } from './Manager/PropMgr';
 import { PropItem } from './PropItem';
-import { EasyController, EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
+import { UIJoyStick } from './UIJoyStick';
 const { ccclass, property } = _decorator;
 
 @ccclass('HolePlayer')
 export class HolePlayer extends Component {
 
     holeTigger: SphereCollider = null!;
+    getScoreTigger: BoxCollider = null!;
     diameter: number = 1;
     speed: number = 1;
     view: number = 1;
@@ -34,8 +35,10 @@ export class HolePlayer extends Component {
 
     initilizeUI(): void {
         this.holeTigger = this.node.getChildByName('HoleTrigger')?.getComponent(SphereCollider)!;
+        this.getScoreTigger = this.node.getComponent(BoxCollider)!;
         this.holeTigger.on('onTriggerEnter', this.onTriggerEnter, this);
         this.holeTigger.on('onTriggerExit', this.onTriggerExit, this);
+        this.getScoreTigger.on('onTriggerEnter', this.onGetScoreTriggerEnter, this);
     }
 
     addEventListener(): void {
@@ -49,7 +52,6 @@ export class HolePlayer extends Component {
     }
 
     onTriggerEnter(event: ITriggerEvent): void {
-        console.log(`碰撞enter otherGroup->:${event.otherCollider.getGroup()}`);
         const holeRadius = this.holeTigger.radius;
         const distance = this.getPlanceVec3(event).length();
         if (event.otherCollider.getGroup() == 1 << 4) {
@@ -57,9 +59,18 @@ export class HolePlayer extends Component {
                 //EdibleThing 层组不与地面碰撞交集 就可通过刚体重力掉落
                 event.otherCollider.setGroup(1 << 3);
                 this.pullTowardsHole(event);
-                this.eatProp(event);
             }
         }
+    }
+
+    onGetScoreTriggerEnter(event: ITriggerEvent): void {
+        const other = event.otherCollider.node;
+        this.eatProp(event);
+        setTimeout(() => {
+            if (isValid(other) && other.getComponent(BoxCollider).worldBounds.center.y <= -2) {
+                other.destroy();
+            }
+        }, 500);
     }
 
     private pullTowardsHole(event: ITriggerEvent): void {
@@ -92,7 +103,6 @@ export class HolePlayer extends Component {
     }
 
     onTriggerExit(event: ITriggerEvent): void {
-        // console.log(`碰撞离开exit otherGroup->:${event.otherCollider.getGroup()}`);
         if (event.otherCollider.getGroup() == 1 << 3) {
             event.otherCollider.setGroup(1 << 4)
         }

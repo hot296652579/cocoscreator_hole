@@ -1,8 +1,8 @@
-import { _decorator, Node, Prefab, instantiate, Component, Camera, UITransform, v3, game, view, screen, tween, Vec3, Label } from 'cc';
+import { Camera, Label, Node, Prefab, Vec3, _decorator, instantiate, isValid, tween, v3, view } from 'cc';
 import { RoosterHoleEntry } from '../../RoosterHoleEntry';
+import { IAttributeConfig, TYPE_BLESSINGS } from '../Model/LevelModel';
 import { PropItem } from '../PropItem';
 import { LevelManager } from './LevelMgr';
-import { IAttributeConfig, TYPE_BLESSINGS } from '../Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 /** 道具管理器*/
@@ -53,10 +53,12 @@ export class PropManager {
         tween(expNode)
             .to(1, { position: new Vec3(origin.x, origin.y + 50, 0) })
             .call(() => {
-                expNode.removeFromParent();
-                expNode.destroy();
+                if (isValid(expNode)) {
+                    expNode.removeFromParent();
+                    expNode.destroy();
+                }
             })
-            .start()
+            .start();
 
         let data = targetModel.getComponent(PropItem);
         this.savePropItems(data);
