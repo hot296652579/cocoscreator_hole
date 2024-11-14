@@ -1,4 +1,4 @@
-import { _decorator, Component, CCFloat, EventTouch, math, Sprite, v3, Vec3, Button, NodeEventType, Label, Node, CCBoolean } from 'cc';
+import { _decorator, Component, CCFloat, EventTouch, math, Sprite, v3, Vec3, Button, NodeEventType, Label, Node, CCBoolean, game, find, Toggle } from 'cc';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
 import { LevelManager } from './Manager/LevelMgr';
@@ -13,8 +13,8 @@ const { ccclass, property } = _decorator;
 export class BattleController extends Component {
 
     protected start(): void {
-        const win = this.judgingIsWin();
         this.scheduleOnce(() => {
+            const win = this.judgingIsWin();
             this.node.removeFromParent();
             this.node.destroy();
 
@@ -24,6 +24,14 @@ export class BattleController extends Component {
                 EventDispatcher.instance.emit(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET);
             }
         }, 3);
+    }
+
+    /** 获取物理外挂是否勾选*/
+    getPlugCheck(): boolean {
+        const canvas = this.node.parent.parent.getChildByName('Canvas');
+        const toggle = canvas.getChildByPath('GameUI/BattleBottom/TogglePlug')?.getComponent(Toggle);
+        const { isChecked } = toggle;
+        return isChecked;
     }
 
     //DOTO 吃道具动画
@@ -43,7 +51,7 @@ export class BattleController extends Component {
             total += totalWeight;
         });
 
-        return total >= bossWeight;
+        return this.getPlugCheck() ?? total >= bossWeight;
     }
 
     protected onDestroy(): void {

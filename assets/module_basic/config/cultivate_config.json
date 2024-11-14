@@ -2,13 +2,13 @@
     "1": {
         "level": 1,
         "type": 1,
-        "param": 20,
+        "param": 5,
         "money": 100
     },
     "2": {
         "level": 2,
         "type": 1,
-        "param": 22,
+        "param": 8,
         "money": 200
     },
     "3": {

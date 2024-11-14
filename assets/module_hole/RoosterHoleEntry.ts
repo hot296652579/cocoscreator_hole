@@ -22,6 +22,9 @@ export class RoosterHoleEntry extends Component {
     @property(Label)
     lbTimes: Label = null!;
 
+    @property(Label)
+    lbLevel: Label = null!;
+
     @property(Node)
     battleBottom: Node = null!;
     @property(Node)
@@ -53,8 +56,7 @@ export class RoosterHoleEntry extends Component {
         PropManager.instance.initilizeUI();
         EventDispatcher.instance.emit(GameEvent.EVENT_UI_INITILIZE);//去通知界面初始化
 
-        this.updateCountLb();
-        this.updateExpProgress();
+        this.prepStageView();
     }
 
     addEventListen() {
@@ -113,6 +115,12 @@ export class RoosterHoleEntry extends Component {
         this.lbTimes.string = `倒计时:${levelTimeTotal}`;
     }
 
+    private updateLevelLb(): void {
+        const { level } = LevelManager.instance.levelModel;
+        console.log(`当前关卡等级:${level}`);
+        this.lbLevel.string = `关卡:${level}`;
+    }
+
     private updateExpProgress(): void {
         const total = this.expProgress.totalLength;
         const holeUpExp = HoleManager.instance.holeModel.exp;//需要升级的经验
@@ -155,6 +163,8 @@ export class RoosterHoleEntry extends Component {
         this.battleBottom.active = false;
         this.btnsLayout.active = true;
         this.updateCountLb();
+        this.updateLevelLb();
+        this.updateExpProgress();
     }
 }
 
