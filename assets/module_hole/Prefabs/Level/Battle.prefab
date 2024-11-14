@@ -580,7 +580,7 @@
     "__prefab": {
       "__id__": 35
     },
-    "levelPrefabs": [
+    "propsPrefabs": [
       {
         "__uuid__": "721cc647-3be0-49b9-a2aa-b1c9dfbe77bd",
         "__expectedType__": "cc.Prefab"
