@@ -21,6 +21,8 @@ export class RoosterHoleEntry extends Component {
     @property(Node)
     gameUI: Node = null;
     @property(Node)
+    battleUI: Node = null;
+    @property(Node)
     topNode: Node = null;
     @property(Node)
     btSet: Node = null!;
@@ -101,14 +103,14 @@ export class RoosterHoleEntry extends Component {
     }
 
     private enterBattle(): void {
-        this.lbTimes.node.active = false;
+        this.battleStageView();
         LevelManager.instance.loadBattle();
     }
 
     private updateUserInfo(): void {
         const lb = this.topNode.getChildByPath('UserInfo/LbUserMoney').getComponent(Label)!;
         const { money } = UserManager.instance.userModel;
-        lb.string = `金币:${money}`;
+        lb.string = `${money}`;
     }
 
     private updateCountLb(): void {
@@ -159,15 +161,23 @@ export class RoosterHoleEntry extends Component {
         LevelManager.instance.loadLevel(level);
     }
 
+    /** 准备阶段界面*/
     private prepStageView(): void {
         this.gaming = false;
+        this.battleUI.active = false;
         this.btnsLayout.active = true;
         this.lbTimes.node.active = true;
         this.updateCountLb();
         this.updateLevelLb();
         this.updateExpProgress();
+        this.updateUserInfo();
     }
 
+    /** 战斗阶段界面*/
+    private battleStageView(): void {
+        this.battleUI.active = true;
+        this.lbTimes.node.active = false;
+    }
     //-------------------------UI点击---------------
     private onClickSet(): void {
         tgxUIMgr.inst.showUI(UI_Setting);

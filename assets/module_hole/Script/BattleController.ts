@@ -4,6 +4,8 @@ import { GameEvent } from './Enum/GameEvent';
 import { LevelManager } from './Manager/LevelMgr';
 import { PropManager } from './Manager/PropMgr';
 import { GlobalConfig } from './Config/GlobalConfig';
+import { tgxUIMgr } from '../../core_tgx/tgx';
+import { UI_BattleResult } from '../../scripts/UIDef';
 
 const { ccclass, property } = _decorator;
 
@@ -21,19 +23,17 @@ export class BattleController extends Component {
     @property(Node)
     boss: Node = null!;
 
-    protected start(): void {
-        this.spawnAllProps();
-        this.scheduleOnce(() => {
-            const win = this.judgingIsWin();
-            this.node.removeFromParent();
-            this.node.destroy();
+    battleWin: boolean = false;
 
-            if (win) {
-                EventDispatcher.instance.emit(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP);
-            } else {
-                EventDispatcher.instance.emit(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET);
-            }
-        }, 3);
+    protected start(): void {
+        this.battleWin = this.judgingIsWin();
+        this.spawnAllProps();
+        this.addListener();
+    }
+
+    private addListener(): void {
+        EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.onCloseMyself, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.onCloseMyself, this);
     }
 
     /**
@@ -60,12 +60,17 @@ export class BattleController extends Component {
             // 掉落动画（从随机位置到玩家位置）
             const playerPos = this.player.getWorldPosition();
             tween(propNode)
-                .to(2, { position: playerPos }, { easing: 'sineIn' })
+                .to(3, { position: playerPos }, { easing: 'sineIn' })
                 .call(() => {
                     this.onPropCollected(propNode);
+                    this.onBattle();
                 })
                 .start();
         }
+    }
+
+    private onBattle(): void {
+        tgxUIMgr.inst.showUI(UI_BattleResult);
     }
 
     /**
@@ -92,8 +97,14 @@ export class BattleController extends Component {
         return GlobalConfig.plug ?? total >= bossWeight;
     }
 
-    protected onDestroy(): void {
+    private onCloseMyself(): void {
+        this.node.removeFromParent();
+        this.node.destroy();
+    }
 
+    protected onDestroy(): void {
+        EventDispatcher.instance.off(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.onCloseMyself);
+        EventDispatcher.instance.off(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.onCloseMyself);
     }
 }
 

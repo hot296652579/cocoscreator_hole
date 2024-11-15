@@ -5,5 +5,7 @@ import { ModuleDef } from "./ModuleDef";
 
 export class UI_AboutMe extends tgxUIController { }
 export class UI_Setting extends tgxUIController { }
+export class UI_BattleResult extends tgxUIController { }
 tgxModuleContext.attachModule(UI_AboutMe, ModuleDef.EXTRA);
 tgxModuleContext.attachModule(UI_Setting, ModuleDef.EXTRA);
+tgxModuleContext.attachModule(UI_BattleResult, ModuleDef.MODULE_HOLE);

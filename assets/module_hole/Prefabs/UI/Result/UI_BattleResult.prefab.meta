@@ -2,12 +2,12 @@
   "ver": "1.1.50",
   "importer": "prefab",
   "imported": true,
-  "uuid": "80928d9a-3357-4dd8-971a-86007f3034d8",
+  "uuid": "d6678b55-2635-45df-bdce-51e04632740e",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "BattlePropItem"
+    "syncNodeName": "UI_BattleResult"
   }
 }
