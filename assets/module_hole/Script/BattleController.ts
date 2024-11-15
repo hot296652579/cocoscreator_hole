@@ -67,7 +67,6 @@ export class BattleController extends Component {
         const targetPosition = new Vec3(3, 5, 30);
         const duration = 2;
 
-        // 当前摄像机位置
         const startPosition = this.camera.node.getPosition();
         tween(this.camera.node)
             .to(
@@ -75,6 +74,7 @@ export class BattleController extends Component {
                 { position: targetPosition },
                 {
                     onUpdate: (target, ratio) => {
+                        console.log(`ratio:${ratio}`);
                         const newPosition = startPosition.lerp(targetPosition, ratio);
                         this.camera!.node.setPosition(newPosition);
 
@@ -84,7 +84,6 @@ export class BattleController extends Component {
                 }
             )
             .call(() => {
-                // 动画结束后，确保摄像机位置和旋转正确
                 this.camera!.node.setPosition(targetPosition);
                 this.camera!.node.lookAt(Vec3.ZERO);
             })
