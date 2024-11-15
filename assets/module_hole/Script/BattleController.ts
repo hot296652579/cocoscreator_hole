@@ -3,6 +3,7 @@ import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatche
 import { GameEvent } from './Enum/GameEvent';
 import { LevelManager } from './Manager/LevelMgr';
 import { PropManager } from './Manager/PropMgr';
+import { GlobalConfig } from './Config/GlobalConfig';
 
 const { ccclass, property } = _decorator;
 
@@ -76,14 +77,6 @@ export class BattleController extends Component {
         propNode.destroy();
     }
 
-    /** 获取物理外挂是否勾选*/
-    getPlugCheck(): boolean {
-        const canvas = this.node.parent.parent.getChildByName('Canvas');
-        const toggle = canvas.getChildByPath('GameUI/BattleBottom/TogglePlug')?.getComponent(Toggle);
-        const { isChecked } = toggle;
-        return isChecked;
-    }
-
     /** 判断是否输赢*/
     private judgingIsWin(): boolean {
         const { bossModel } = LevelManager.instance.levelModel;
@@ -96,7 +89,7 @@ export class BattleController extends Component {
             total += totalWeight;
         });
 
-        return this.getPlugCheck() ?? total >= bossWeight;
+        return GlobalConfig.plug ?? total >= bossWeight;
     }
 
     protected onDestroy(): void {

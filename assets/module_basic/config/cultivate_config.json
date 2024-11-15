@@ -2,25 +2,25 @@
     "1": {
         "level": 1,
         "type": 1,
-        "param": 10,
+        "param": 8,
         "money": 100
     },
     "2": {
         "level": 2,
         "type": 1,
-        "param": 8,
+        "param": 10,
         "money": 200
     },
     "3": {
         "level": 3,
         "type": 1,
-        "param": 24,
+        "param": 12,
         "money": 500
     },
     "4": {
         "level": 4,
         "type": 1,
-        "param": 26,
+        "param": 24,
         "money": 800
     },
     "5": {

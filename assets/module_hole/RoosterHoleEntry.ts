@@ -83,7 +83,6 @@ export class RoosterHoleEntry extends Component {
         if (this.gaming) return;
 
         this.gaming = true;
-
         this.btnsLayout.active = false;
         //倒计时启动
         const levelTimeTotal = LevelManager.instance.levelModel.levelTimeTotal;
@@ -102,6 +101,7 @@ export class RoosterHoleEntry extends Component {
     }
 
     private enterBattle(): void {
+        this.lbTimes.node.active = false;
         LevelManager.instance.loadBattle();
     }
 
@@ -162,6 +162,7 @@ export class RoosterHoleEntry extends Component {
     private prepStageView(): void {
         this.gaming = false;
         this.btnsLayout.active = true;
+        this.lbTimes.node.active = true;
         this.updateCountLb();
         this.updateLevelLb();
         this.updateExpProgress();

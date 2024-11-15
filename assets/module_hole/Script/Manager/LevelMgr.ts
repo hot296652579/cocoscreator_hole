@@ -8,6 +8,7 @@ import { UserModel } from '../Model/UserModel';
 import { userInfo } from 'os';
 import { JsonUtil } from '../../../core_tgx/base/utils/JsonUtil';
 import { HoleManager } from './HoleMgr';
+import { GlobalConfig } from '../Config/GlobalConfig';
 const { ccclass, property } = _decorator;
 
 @ccclass('LevelManager')
@@ -46,6 +47,10 @@ export class LevelManager {
     /** 关卡等级升级 */
     upgradeLevel(up: number = 1): void {
         this.levelModel.level += up;
+        if (this.levelModel.level > GlobalConfig.levelTotal) {
+            const level = Math.floor(Math.random() * 3) + 1;
+            this.levelModel.level = level;
+        }
         this.levelModel.levelConfig.init(this.levelModel.level);
     }
 
