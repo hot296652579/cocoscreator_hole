@@ -21,13 +21,13 @@ export class RoosterHoleEntry extends Component {
     @property(Node)
     gameUI: Node = null;
     @property(Node)
+    topNode: Node = null;
+    @property(Node)
     btSet: Node = null!;
     @property(Label)
     lbTimes: Label = null!;
     @property(Label)
     lbLevel: Label = null!;
-    @property(Node)
-    battleBottom: Node = null!;
     @property(Node)
     btnsLayout: Node = null!;
     @property(ProgressBar)
@@ -103,24 +103,23 @@ export class RoosterHoleEntry extends Component {
 
     private enterBattle(): void {
         LevelManager.instance.loadBattle();
-        this.battleBottom.active = true;
     }
 
     private updateUserInfo(): void {
-        const lb = this.gameUI.getChildByName('LbUserMoney').getComponent(Label)!;
+        const lb = this.topNode.getChildByPath('UserInfo/LbUserMoney').getComponent(Label)!;
         const { money } = UserManager.instance.userModel;
         lb.string = `金币:${money}`;
     }
 
     private updateCountLb(): void {
         const { levelTimeTotal } = LevelManager.instance.levelModel;
-        console.log(`levelTimeTotal:${levelTimeTotal}`);
+        // console.log(`levelTimeTotal:${levelTimeTotal}`);
         this.lbTimes.string = `倒计时:${levelTimeTotal}`;
     }
 
     private updateLevelLb(): void {
         const { level } = LevelManager.instance.levelModel;
-        console.log(`当前关卡等级:${level}`);
+        // console.log(`当前关卡等级:${level}`);
         this.lbLevel.string = `关卡:${level}`;
     }
 
@@ -162,7 +161,6 @@ export class RoosterHoleEntry extends Component {
 
     private prepStageView(): void {
         this.gaming = false;
-        this.battleBottom.active = false;
         this.btnsLayout.active = true;
         this.updateCountLb();
         this.updateLevelLb();

@@ -39,6 +39,26 @@
       ],
       "subMetas": {}
     },
+    "fd73d": {
+      "importer": "gltf-embeded-image",
+      "uuid": "6cf6f7c6-6ea7-437e-a1b0-a06e13eac8c1@fd73d",
+      "displayName": "",
+      "id": "fd73d",
+      "name": "DiffuseColor_Texture.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
     "4f17a": {
       "importer": "texture",
       "uuid": "6cf6f7c6-6ea7-437e-a1b0-a06e13eac8c1@4f17a",
@@ -52,8 +72,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/module_hole/FBX/Car/Textures/colormap.png"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "6cf6f7c6-6ea7-437e-a1b0-a06e13eac8c1@fd73d"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -83,7 +103,7 @@
     "imageMetas": [
       {
         "name": "DiffuseColor_Texture",
-        "uri": "db://assets/module_hole/FBX/Car/Textures/colormap.png"
+        "uri": "6cf6f7c6-6ea7-437e-a1b0-a06e13eac8c1@fd73d"
       }
     ],
     "fbx": {

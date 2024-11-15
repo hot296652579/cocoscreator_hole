@@ -27,7 +27,8 @@ export class ButtonController extends Component {
 
     private initilizeUI(): void {
         console.log(LevelManager.instance.levelModel.timesLevel);
-        this.updateUpTimeView();
+        // this.updateUpTimeView();
+        this.onResetAddition();
     }
 
     private addUIEvent(): void {
@@ -112,30 +113,12 @@ export class ButtonController extends Component {
     private updateButtonView(type: number): void {
         const { level, money } = this.getCurrentLevelParam(type);
         const buttonNode = this.getButtonNodeByType(type);
-        const LbLevel: Label = buttonNode.getChildByName('LbLevel').getComponent(Label)!;
-        const LbMoney: Label = buttonNode.getChildByName('LbMoney').getComponent(Label)!;
+        const lbLevel: Label = buttonNode.getChildByName('LbLevel').getComponent(Label)!;
+        const bt = buttonNode.getChildByName('Bt');
+        const lbMoney: Label = bt.getChildByPath('Used/LbMoney')?.getComponent(Label)!;
 
-        LbLevel.string = `${this.getLabelPrefix(type)} LVL.${level}`;
-        LbMoney.string = `金币:${money}`;
-    }
-
-    private getLabelPrefix(type: number): string {
-        switch (type) {
-            case TYPE_BLESSINGS.TIME:
-                return "TIMER";
-            case TYPE_BLESSINGS.SIZE:
-                return "SIZE";
-            case TYPE_BLESSINGS.EXP:
-                return "EXP";
-        }
-    }
-
-    private updateUpTimeView(): void {
-        const { level, money } = this.getCurrentLevelParam(TYPE_BLESSINGS.TIME);
-        let LbLevel: Label = this.btUpTime.node.getChildByName('LbLevel').getComponent(Label)!;
-        let LbMoney: Label = this.btUpTime.node.getChildByName('LbMoney').getComponent(Label)!;
-        LbLevel.string = `TIMER LVL.${level}`;
-        LbMoney.string = `金币:${money}`;
+        lbLevel.string = `LVL.${level}`;
+        lbMoney.string = `金币:${money}`;
     }
 
     private getButtonNodeByType(type: number): Node {
