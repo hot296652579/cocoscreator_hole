@@ -1,4 +1,4 @@
-import { BoxCollider, Component, Node, Prefab, Toggle, Vec3, _decorator, instantiate, math, tween } from 'cc';
+import { BoxCollider, Component, Node, Prefab, Toggle, Vec3, _decorator, instantiate, isValid, math, tween } from 'cc';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
 import { LevelManager } from './Manager/LevelMgr';
@@ -98,6 +98,8 @@ export class BattleController extends Component {
     }
 
     private onCloseMyself(): void {
+        if (!isValid(this.node)) return;
+
         this.node.removeFromParent();
         this.node.destroy();
     }

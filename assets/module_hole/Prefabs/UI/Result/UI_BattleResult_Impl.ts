@@ -7,6 +7,7 @@ import { UI_BattleResult } from "../../../../scripts/UIDef";
 import { GameEvent } from "../../../Script/Enum/GameEvent";
 import { LevelManager } from "../../../Script/Manager/LevelMgr";
 import { Layout_BattleResult } from "./Layout_BattleResult";
+import { isValid } from "cc";
 
 const delday = 3000;
 
@@ -42,18 +43,22 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
     private closeByTimeout(): void {
         const win = this.getBattleWin();
         setTimeout(() => {
-            this.node.removeFromParent();
-            this.node.destroy();
-            if (this.timeoutID) {
-                this.clearTimeoutHandler();
-            }
-
             if (win) {
                 EventDispatcher.instance.emit(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP);
             } else {
                 EventDispatcher.instance.emit(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET);
             }
+
+            this.clearTimeoutHandler();
+            this.destoryMyself();
         }, delday);
+    }
+
+    private destoryMyself(): void {
+        if (isValid(this.node)) {
+            this.node.removeFromParent();
+            this.node.destroy();
+        }
     }
 
     private getBattleWin(): boolean {
@@ -63,8 +68,10 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
     }
 
     private clearTimeoutHandler(): void {
-        clearTimeout(this.timeoutID);
-        this.timeoutID = null;
+        if (this.timeoutID) {
+            clearTimeout(this.timeoutID);
+            this.timeoutID = null;
+        }
     }
 }
 

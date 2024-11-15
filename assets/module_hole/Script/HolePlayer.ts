@@ -6,6 +6,7 @@ import { HoleManager } from './Manager/HoleMgr';
 import { PropManager } from './Manager/PropMgr';
 import { PropItem } from './PropItem';
 import { UIJoyStick } from './UIJoyStick';
+import { HoleGameAudioMgr } from './Manager/HoleGameAudioMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('HolePlayer')
@@ -84,6 +85,7 @@ export class HolePlayer extends Component {
     }
 
     eatProp(event: ITriggerEvent): void {
+        HoleGameAudioMgr.playOneShot('Audio/Eat', 1.0);
         const otherNode = event.otherCollider.node;
         let exp = otherNode.getComponent(PropItem)?.exp;
         const expBonus = PropManager.instance.expAfterBonus(exp);

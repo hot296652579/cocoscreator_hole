@@ -7,6 +7,7 @@ import { HoleManager } from './Script/Manager/HoleMgr';
 import { UserManager } from './Script/Manager/UserMgr';
 import { tgxUIMgr } from '../core_tgx/tgx';
 import { UI_AboutMe, UI_Setting } from '../scripts/UIDef';
+import { HoleGameAudioMgr } from './Script/Manager/HoleGameAudioMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('RoosterHoleEntry')
@@ -39,6 +40,7 @@ export class RoosterHoleEntry extends Component {
     private gaming: boolean = false;
 
     start() {
+        HoleGameAudioMgr.play('Audio/Bgm', 1.0);
         this.initilize();
         this.addEventListen();
     }
