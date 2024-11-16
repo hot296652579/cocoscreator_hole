@@ -74,7 +74,6 @@ export class BattleController extends Component {
                 { position: targetPosition },
                 {
                     onUpdate: (target, ratio) => {
-                        console.log(`ratio:${ratio}`);
                         const newPosition = startPosition.lerp(targetPosition, ratio);
                         this.camera!.node.setPosition(newPosition);
 

@@ -21,6 +21,7 @@ export class HoleManager {
     /** 增加经验*/
     addExp(addExp: number): void {
         this.holeModel.curHoleExpL += addExp;
+        console.log(`当前经验:${this.holeModel.curHoleExpL} ,增加的经验:${addExp} ,需要经验:${this.holeModel.exp}`);
         if (this.holeModel.curHoleExpL >= this.holeModel.exp) {
             this.holeModel.curHoleExpL = 0;
             this.holeModel.upgradeLevel();
@@ -32,6 +33,7 @@ export class HoleManager {
 
     /** 黑洞等级升级*/
     upgradeLevel(up: number = 1) {
+        this.holeModel.curHoleExpL = 0;
         this.holeModel.holeLevel += up;
         const { holeLevel } = this.holeModel;
         this.holeModel.config.init(holeLevel);

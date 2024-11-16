@@ -131,7 +131,6 @@ export class RoosterHoleEntry extends Component {
         const total = this.expProgress.totalLength;
         const holeUpExp = HoleManager.instance.holeModel.exp;//需要升级的经验
         const curExp = HoleManager.instance.holeModel.curHoleExpL;
-        console.log(`当前经验:${curExp} ,需要升级的经验:${holeUpExp}`);
         // 计算当前进度长度，使用整数来避免小数精度问题
         const lb = this.expProgress.node.getChildByName('LbExp');
         lb.getComponent(Label).string = `${curExp}/${holeUpExp}`;

@@ -132,13 +132,12 @@ export class HolePlayer extends Component {
     updateHoleView(): void {
         const model = HoleManager.instance.holeModel;
         const { holeLevel, speed, view, diameter } = model;
-        // console.log(`直径diameter:${diameter}`);
         this.speed = speed;
         this.node.setScale(v3(diameter * 2, 1, diameter * 2));
-        // this.node.setScale(v3(3, 1, 3));
+        console.log(`黑洞等级:${holeLevel} diameter:${diameter} view:${view} speed:${speed}`);
 
         const sence = director.getScene();
-        sence.emit(EasyControllerEvent.CAMERA_ZOOM, view + 10);
+        sence.emit(EasyControllerEvent.CAMERA_ZOOM, view);
     }
 }
 
