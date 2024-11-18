@@ -2,7 +2,7 @@
   "ver": "1.0.26",
   "importer": "image",
   "imported": true,
-  "uuid": "6201c70e-7e40-44fc-be56-4d45b7c48679",
+  "uuid": "88813a39-4dca-4bd4-ab60-50800043dd5f",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "6201c70e-7e40-44fc-be56-4d45b7c48679@6c48a",
-      "displayName": "Advertising player",
+      "uuid": "88813a39-4dca-4bd4-ab60-50800043dd5f@6c48a",
+      "displayName": "Happy icon",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "6201c70e-7e40-44fc-be56-4d45b7c48679",
+        "imageUuidOrDatabaseUri": "88813a39-4dca-4bd4-ab60-50800043dd5f",
         "isUuid": true,
         "visible": false,
         "minfilter": "linear",
@@ -34,8 +34,8 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "6201c70e-7e40-44fc-be56-4d45b7c48679@f9941",
-      "displayName": "Advertising player",
+      "uuid": "88813a39-4dca-4bd4-ab60-50800043dd5f@f9941",
+      "displayName": "Happy icon",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
@@ -46,10 +46,10 @@
         "offsetY": 0,
         "trimX": 0,
         "trimY": 0,
-        "width": 30,
-        "height": 33,
-        "rawWidth": 30,
-        "rawHeight": 33,
+        "width": 355,
+        "height": 354,
+        "rawWidth": 355,
+        "rawHeight": 354,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
@@ -61,17 +61,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -15,
-            -16.5,
+            -177.5,
+            -177,
             0,
-            15,
-            -16.5,
+            177.5,
+            -177,
             0,
-            -15,
-            16.5,
+            -177.5,
+            177,
             0,
-            15,
-            16.5,
+            177.5,
+            177,
             0
           ],
           "indexes": [
@@ -84,12 +84,12 @@
           ],
           "uv": [
             0,
-            33,
-            30,
-            33,
+            354,
+            355,
+            354,
             0,
             0,
-            30,
+            355,
             0
           ],
           "nuv": [
@@ -103,18 +103,18 @@
             1
           ],
           "minPos": [
-            -15,
-            -16.5,
+            -177.5,
+            -177,
             0
           ],
           "maxPos": [
-            15,
-            16.5,
+            177.5,
+            177,
             0
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "6201c70e-7e40-44fc-be56-4d45b7c48679@6c48a",
+        "imageUuidOrDatabaseUri": "88813a39-4dca-4bd4-ab60-50800043dd5f@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.12",
@@ -129,6 +129,6 @@
     "type": "sprite-frame",
     "hasAlpha": true,
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "6201c70e-7e40-44fc-be56-4d45b7c48679@f9941"
+    "redirect": "88813a39-4dca-4bd4-ab60-50800043dd5f@f9941"
   }
 }
