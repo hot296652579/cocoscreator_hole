@@ -9,6 +9,7 @@ import { tgxUIMgr } from '../core_tgx/tgx';
 import { UI_AboutMe, UI_Setting, UI_TopInfo } from '../scripts/UIDef';
 import { HoleGameAudioMgr } from './Script/Manager/HoleGameAudioMgr';
 import { UIMgr } from '../core_tgx/easy_ui_framework/UIMgr';
+import { GameUtil } from './Script/Utils';
 const { ccclass, property } = _decorator;
 
 @ccclass('RoosterHoleEntry')
@@ -24,10 +25,12 @@ export class RoosterHoleEntry extends Component {
     gameUI: Node = null;
     @property(Node)
     battleUI: Node = null;
-    @property(Label)
-    lbTimes: Label = null!;
+    @property(Node)
+    countExpUI: Node = null;
     @property(Node)
     btnsLayout: Node = null!;
+    lbTimes: Label = null!;
+    expProgress: ProgressBar = null!;
 
     private countdown: number = 0;
     private gaming: boolean = false;
@@ -39,6 +42,7 @@ export class RoosterHoleEntry extends Component {
     }
 
     initilize() {
+        this.initilizeUI();
         PropManager.instance.parent = this.node;
         LevelManager.instance.parent = this.node;
         LevelManager.instance.levelPrefabs = this.levelPrefabs;
@@ -57,10 +61,16 @@ export class RoosterHoleEntry extends Component {
         tgxUIMgr.inst.showUI(UI_TopInfo);
     }
 
+    private initilizeUI(): void {
+        this.lbTimes = this.countExpUI.getChildByName('LbTimes')!.getComponent(Label);
+        this.expProgress = this.countExpUI.getChildByName('ExpProgress')!.getComponent(ProgressBar);
+    }
+
     addEventListen() {
         EventDispatcher.instance.on(GameEvent.EVENT_GAME_START, this.onGameStart, this);
         EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateCountLb, this);
 
+        EventDispatcher.instance.on(GameEvent.EVENT_HOLE_EXP_UPDATE, this.updateUserHoleExp, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose, this);
     }
@@ -88,7 +98,9 @@ export class RoosterHoleEntry extends Component {
             this.enterBattle();
             return
         }
-        this.lbTimes.string = `倒计时:${this.countdown}`;
+
+        const formatStr = GameUtil.formatToTimeString(this.countdown);
+        this.lbTimes.string = `${formatStr}`;
     }
 
     private enterBattle(): void {
@@ -98,8 +110,16 @@ export class RoosterHoleEntry extends Component {
 
     private updateCountLb(): void {
         const { levelTimeTotal } = LevelManager.instance.levelModel;
-        // console.log(`levelTimeTotal:${levelTimeTotal}`);
-        this.lbTimes.string = `倒计时:${levelTimeTotal}`;
+        const formatStr = GameUtil.formatToTimeString(levelTimeTotal);
+        this.lbTimes.string = `${formatStr}`;
+    }
+
+    private updateUserHoleExp(): void {
+        const total = this.expProgress.totalLength;
+        const holeModel = HoleManager.instance.holeModel;
+        const { exp, curHoleExpL } = holeModel;
+        const progresLenth = Math.round((curHoleExpL / exp) * total);
+        this.expProgress.progress = progresLenth / total;
     }
 
     /** 关卡升级*/
@@ -131,7 +151,7 @@ export class RoosterHoleEntry extends Component {
         this.gaming = false;
         this.battleUI.active = false;
         this.btnsLayout.active = true;
-        this.lbTimes.node.active = true;
+        this.countExpUI.active = true;
         this.updateCountLb();
     }
 
@@ -139,11 +159,7 @@ export class RoosterHoleEntry extends Component {
     private battleStageView(): void {
         this.battleUI.active = true;
         this.lbTimes.node.active = false;
+        this.countExpUI.active = false;
     }
-    //-------------------------UI点击---------------
-    private onClickSet(): void {
-        tgxUIMgr.inst.showUI(UI_Setting);
-    }
-    //-------------------------end---------------
 }
 
