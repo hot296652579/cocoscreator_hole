@@ -467,7 +467,7 @@
       "y": 0,
       "z": 0
     },
-    "_radius": 0.4,
+    "_radius": 0.517,
     "_id": ""
   },
   {
@@ -546,7 +546,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0.027,
-      "z": 0
+      "z": -0.017
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -557,9 +557,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 0.08,
+      "x": 0.106,
       "y": 1,
-      "z": 0.08
+      "z": 0.106
     },
     "_mobility": 0,
     "_layer": 1073741824,
@@ -641,8 +641,6 @@
       "__id__": 0
     },
     "fileId": "01DvFYMB9AHJRTINt11q0b",
-    "instance": null,
-    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
