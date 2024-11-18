@@ -153,12 +153,12 @@ export class RoosterHoleEntry extends Component {
         this.btnsLayout.active = true;
         this.countExpUI.active = true;
         this.updateCountLb();
+        this.updateUserHoleExp();
     }
 
     /** 战斗阶段界面*/
     private battleStageView(): void {
         this.battleUI.active = true;
-        this.lbTimes.node.active = false;
         this.countExpUI.active = false;
     }
 }
