@@ -1,4 +1,4 @@
-import { _decorator, BoxCollider, Component, director, game, isValid, ITriggerEvent, SphereCollider, v3, Vec3 } from 'cc';
+import { _decorator, BoxCollider, Component, CylinderCollider, director, game, isValid, ITriggerEvent, SphereCollider, v3, Vec3 } from 'cc';
 import { EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
@@ -68,7 +68,8 @@ export class HolePlayer extends Component {
         const other = event.otherCollider.node;
         this.eatProp(event);
         setTimeout(() => {
-            if (isValid(other) && other.getComponent(BoxCollider).worldBounds.center.y <= -2) {
+            const collider = other.getComponent(BoxCollider) || other.getComponent(CylinderCollider) || other.getComponent(SphereCollider);
+            if (isValid(other) && collider.center.y <= -2) {
                 other.destroy();
             }
         }, 500);
@@ -133,7 +134,7 @@ export class HolePlayer extends Component {
         const model = HoleManager.instance.holeModel;
         const { holeLevel, speed, view, diameter } = model;
         this.speed = speed;
-        this.node.setScale(v3(diameter * 2, 1, diameter * 2));
+        this.node.setScale(v3(diameter, 1, diameter));
         console.log(`黑洞等级:${holeLevel} diameter:${diameter} view:${view} speed:${speed}`);
 
         const sence = director.getScene();

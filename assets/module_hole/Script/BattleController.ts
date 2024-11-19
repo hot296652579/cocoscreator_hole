@@ -1,4 +1,4 @@
-import { BoxCollider, Camera, Component, Node, Prefab, Quat, Toggle, Vec3, _decorator, director, instantiate, isValid, math, tween, v3 } from 'cc';
+import { BoxCollider, Camera, Component, CylinderCollider, Node, Prefab, Quat, SphereCollider, Toggle, Vec3, _decorator, director, instantiate, isValid, math, tween, v3 } from 'cc';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
 import { LevelManager } from './Manager/LevelMgr';
@@ -99,6 +99,7 @@ export class BattleController extends Component {
             const randomIndex = Math.floor(Math.random() * this.propsPrefabs.length);
             const propPrefab = this.propsPrefabs[randomIndex];
             const propNode = instantiate(propPrefab);
+            const collider = propNode.getComponent(BoxCollider) || propNode.getComponent(CylinderCollider) || propNode.getComponent(SphereCollider);
             propNode.getComponent(BoxCollider).isTrigger = true;
 
             // 生成初始位置的随机坐标 (3D 空间)

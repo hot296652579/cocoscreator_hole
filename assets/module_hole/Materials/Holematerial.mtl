@@ -10,7 +10,9 @@
   },
   "_techIdx": 0,
   "_defines": [
-    {},
+    {
+      "USE_ALPHA_TEST": true
+    },
     {},
     {},
     {},
@@ -20,7 +22,9 @@
   "_states": [
     {
       "priority": 125,
-      "rasterizerState": {},
+      "rasterizerState": {
+        "cullMode": 0
+      },
       "depthStencilState": {
         "stencilTestFront": true
       },
@@ -80,10 +84,17 @@
     {
       "mainColor": {
         "__type__": "cc.Color",
+        "r": 255,
+        "g": 17,
+        "b": 17,
+        "a": 0
+      },
+      "emissive": {
+        "__type__": "cc.Color",
         "r": 0,
         "g": 0,
         "b": 0,
-        "a": 255
+        "a": 0
       }
     },
     {},
