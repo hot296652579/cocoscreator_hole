@@ -36,8 +36,11 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
 
     private initilizeResult(): void {
         const win = this.getBattleWin();
-        //DOTO 根据配置表显示奖励 输赢显示
-
+        let layout = this.layout as Layout_BattleResult;
+        let winNode = layout.winNode;
+        let LoseNode = layout.LoseNode;
+        winNode.active = win;
+        LoseNode.active = !win;
     }
 
     private closeByTimeout(): void {
