@@ -3,6 +3,7 @@ import { EventDispatcher } from '../../../core_tgx/easy_ui_framework/EventDispat
 import { GameEvent } from '../Enum/GameEvent';
 import { UserModel } from '../Model/UserModel';
 import { tgxUIAlert } from '../../../core_tgx/tgx';
+import { LevelManager } from './LevelMgr';
 const { ccclass, property } = _decorator;
 
 /** 用户管理*/
@@ -17,6 +18,9 @@ export class UserManager {
     public userModel: UserModel;
     initilizeModel(): void {
         this.userModel = new UserModel();
+
+        //设置玩家初始货币
+        this.userModel.money = LevelManager.instance.levelModel.mainConfigModel.initMoeny;
     }
 
     /** 检测余额是否足够*/

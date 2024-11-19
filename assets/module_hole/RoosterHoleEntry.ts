@@ -48,8 +48,8 @@ export class RoosterHoleEntry extends Component {
         LevelManager.instance.levelPrefabs = this.levelPrefabs;
         LevelManager.instance.battlePrefab = this.battlePrefab;
 
-        UserManager.instance.initilizeModel();
         LevelManager.instance.initilizeModel();
+        UserManager.instance.initilizeModel();
         HoleManager.instance.initilizeModel();
         const { level } = LevelManager.instance.levelModel;
         LevelManager.instance.loadLevel(level);

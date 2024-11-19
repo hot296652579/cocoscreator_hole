@@ -179,10 +179,10 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 155
+      "r": 153,
+      "g": 153,
+      "b": 153,
+      "a": 255
     },
     "_spriteFrame": {
       "__uuid__": "7d8f9b89-4fd1-4c9f-a3ab-38ec7cded7ca@f9941",
@@ -1697,9 +1697,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 252,
+      "g": 189,
+      "b": 67,
       "a": 255
     },
     "_string": "Win!",
@@ -1830,7 +1830,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 200,
+      "y": 50,
       "z": 0
     },
     "_lrot": {
@@ -1920,8 +1920,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80,
-      "height": 100
+      "width": 357,
+      "height": 357
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1932,7 +1932,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "23tw9Xzc9Jc4ag2UWnxZEZ"
+    "fileId": "c5rw1Wg/FDX4ER/X8B9CjW"
   },
   {
     "__type__": "cc.Sprite",
@@ -1957,12 +1957,12 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "57520716-48c8-4a19-8acf-41c9f8777fb0@f9941",
+      "__uuid__": "403942ab-25ce-4a5f-a1a0-d045cea6c948@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
     "_fillType": 0,
-    "_sizeMode": 0,
+    "_sizeMode": 2,
     "_fillCenter": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -1970,14 +1970,14 @@
     },
     "_fillStart": 0,
     "_fillRange": 0,
-    "_isTrimmedMode": true,
+    "_isTrimmedMode": false,
     "_useGrayscale": false,
     "_atlas": null,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "5eEaXyu4hFJ7th1c8Qqswp"
+    "fileId": "e5GYdVDGJMM6vkZXlQRIo6"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -1987,7 +1987,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "8dwGsrnn5J16ndiJjQ27Hr",
+    "fileId": "7fXBiYIQNI7YdqQ1lBa2I1",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -2016,7 +2016,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 104.926,
+      "y": 245,
       "z": 0
     },
     "_lrot": {
@@ -2056,8 +2056,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 195.703125,
-      "height": 100.8
+      "width": 391.40625,
+      "height": 201.6
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2068,7 +2068,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "19GAUvi4pDC6sFmFH6OE7T"
+    "fileId": "4dStdBcpRDQJ0janqvpGJD"
   },
   {
     "__type__": "cc.Label",
@@ -2095,10 +2095,10 @@
     "_string": "Lose!",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 80,
-    "_fontSize": 80,
+    "_actualFontSize": 160,
+    "_fontSize": 160,
     "_fontFamily": "Arial",
-    "_lineHeight": 80,
+    "_lineHeight": 160,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": null,
@@ -2108,7 +2108,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
-    "_cacheMode": 0,
+    "_cacheMode": 1,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -2136,7 +2136,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "b06RmPMsBDPIFk+jF+oZdt"
+    "fileId": "72/9qhoqBAFLq5FqPeeHWQ"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -2146,7 +2146,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "601nuXCYdAY4I7G5mDtX5G",
+    "fileId": "cdJQDr01dMC5OXFMj/RtM5",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
@@ -2177,7 +2177,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "d75qUpK7VE0ozmhCoZCuJb"
+    "fileId": "4bd326ZARNEIn4L+u6l5k2"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -2187,7 +2187,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "daxT1Dv6JM1IhALDarpZT8",
+    "fileId": "452UFUGjxIG5Gqyi4mQppn",
     "instance": null,
     "targetOverrides": null,
     "nestedPrefabInstanceRoots": null

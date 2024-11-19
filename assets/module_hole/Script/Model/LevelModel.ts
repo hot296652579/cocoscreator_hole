@@ -2,6 +2,7 @@ import { Tablecultivate_config } from "../../../module_basic/table/Tablecultivat
 import { Tablelevels_config } from "../../../module_basic/table/Tablelevels_config";
 import { LevelManager } from "../Manager/LevelMgr";
 import { BossModel } from "./BossModel";
+import { MainConfigModel } from "./MainConfigModel";
 
 /**加持类型
  * @param TIME 时间提升
@@ -23,6 +24,7 @@ export enum TYPE_BLESSINGS {
 export class LevelModel {
     public levelConfig: Tablelevels_config;
     public cultivateConfig: Tablecultivate_config;
+    public mainConfigModel: IMainConfig;
     public bossModel: BossModel;
 
     /** 当前关卡等级*/
@@ -41,6 +43,9 @@ export class LevelModel {
     public battleIsWin: boolean = false;
 
     constructor() {
+        const mainConfig = new MainConfigModel();
+        this.mainConfigModel = mainConfig.initilizeModel();
+        // console.log(`加时extraTime:${this.mainConfigModel.extraTime} 磁力倍数magentic:${this.mainConfigModel.magentic} 初始金币:${this.mainConfigModel.initMoeny}`)
         this.levelConfig = new Tablelevels_config();
         this.cultivateConfig = new Tablecultivate_config();
         this.levelConfig.init(this.level);
@@ -86,4 +91,17 @@ export interface IAttributeConfig {
     type: number,
     param: number,
     money: number,
+}
+
+/** main属性接口
+ * @param extraTime 加时
+ * @param magentic 磁力范围 黑洞直径的倍数
+ * @param gameUpLve 游戏内黑洞等级提升大小
+ * @param initMoeny 玩家初始货币
+*/
+export interface IMainConfig {
+    extraTime: number,
+    magentic: number,
+    gameUpLve: number,
+    initMoeny: number
 }
