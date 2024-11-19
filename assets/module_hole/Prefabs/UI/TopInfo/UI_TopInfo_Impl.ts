@@ -6,6 +6,7 @@ import { GameUILayers } from "../../../../scripts/GameUILayers";
 import { UI_Setting, UI_TopInfo } from "../../../../scripts/UIDef";
 import { GameEvent } from "../../../Script/Enum/GameEvent";
 import { LevelManager } from "../../../Script/Manager/LevelMgr";
+import { PropManager } from "../../../Script/Manager/PropMgr";
 import { UserManager } from "../../../Script/Manager/UserMgr";
 import { Layout_TopInfo } from "./Layout_TopInfo";
 
@@ -27,6 +28,7 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
 
     private initilizeUI(): void {
         this.updateUserInfo();
+        this.updateLevProgress();
 
         let layout = this.layout as Layout_TopInfo;
         this.onButtonEvent(layout.btSet, () => {
@@ -42,6 +44,7 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
 
     private addListener(): void {
         EventDispatcher.instance.on(GameEvent.EVENT_USER_MONEY_UPDATE, this.updateUserInfo, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_LEVEL_PROGRESS_UPDATE, this.updateLevProgress, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose, this);
     }
@@ -59,16 +62,32 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
         lbLevel.string = `关卡:${level}`;
     }
 
+    /** 更新关卡当前进度*/
+    private updateLevProgress(): void {
+        const { expProgress } = this.layout;
+        const total = expProgress.totalLength;
+
+        const { quality } = LevelManager.instance.levelModel; //关卡总质量
+        let eatTotalWeight = 0;
+        const eatsMap = PropManager.instance.eatsMap;
+        eatsMap.forEach(element => {
+            const { count, totalWeight } = element;
+            eatTotalWeight += totalWeight;
+        });
+        const progresLenth = Math.round((eatTotalWeight / quality) * total);
+        expProgress.progress = progresLenth / total;
+    }
+
     //关卡升级事件
     private levelUpHandler(): void {
-        //DOTO 重设当前关卡进度
         this.updateLevelLb();
+        this.updateLevProgress();
     }
 
     //闯关失败事件
     private resetGameByLose(): void {
-        //DOTO 重设当前关卡进度
         this.updateLevelLb();
+        this.updateLevProgress();
     }
 
     protected onDispose(): void {

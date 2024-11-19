@@ -7,6 +7,8 @@ import { PropManager } from './Manager/PropMgr';
 import { PropItem } from './PropItem';
 import { UIJoyStick } from './UIJoyStick';
 import { HoleGameAudioMgr } from './Manager/HoleGameAudioMgr';
+import { LevelManager } from './Manager/LevelMgr';
+import { TYPE_GAME_STATE } from './Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 @ccclass('HolePlayer')
@@ -81,7 +83,7 @@ export class HolePlayer extends Component {
             // 获取黑洞和物体的位置差向量，并将物体朝黑洞中心拉动
             const directionToHole = this.getPlanceVec3(event).normalize().negative();
             // 应用一个较大的冲量，使物体快速移动到黑洞
-            otherRigidBody.applyImpulse(directionToHole.multiplyScalar(3), directionToHole);
+            otherRigidBody.applyImpulse(directionToHole.multiplyScalar(2), directionToHole);
         }
     }
 
@@ -119,7 +121,10 @@ export class HolePlayer extends Component {
     }
 
     update(deltaTime: number) {
-        this.MoveHandler();
+        const curGameState = LevelManager.instance.levelModel.curGameState;
+        if (curGameState == TYPE_GAME_STATE.GAME_STATE_INIT || curGameState == TYPE_GAME_STATE.GAME_STATE_START) {
+            this.MoveHandler();
+        }
     }
 
     MoveHandler(): void {

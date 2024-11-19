@@ -142,7 +142,7 @@ export class BattleController extends Component {
 
         tween(targetNode)
             .to(duration, { position: endPos }, { easing: 'cubicOut' }) // 击飞动作
-            // .by(0.3, { position: new Vec3(0, -2, 0) }, { easing: 'bounceOut' }) // 下落动作
+            .by(0.3, { position: new Vec3(0, -2, 0) }, { easing: 'bounceOut' }) // 下落动作
             .start();
 
         tween(targetNode)

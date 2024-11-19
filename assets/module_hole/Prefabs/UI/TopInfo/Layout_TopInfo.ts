@@ -1,4 +1,4 @@
-import { _decorator, Component, Label, Node } from 'cc';
+import { _decorator, Component, Label, Node, ProgressBar } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Layout_TopInfo')
@@ -12,6 +12,9 @@ export class Layout_TopInfo extends Component {
     lbLevel: Label = null!;
     @property(Label)
     lbMoeny: Label = null!;
+
+    @property(ProgressBar)
+    expProgress: ProgressBar = null!;
 
     start() {
 

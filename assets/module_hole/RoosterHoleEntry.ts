@@ -6,10 +6,11 @@ import { PropManager } from './Script/Manager/PropMgr';
 import { HoleManager } from './Script/Manager/HoleMgr';
 import { UserManager } from './Script/Manager/UserMgr';
 import { tgxUIMgr } from '../core_tgx/tgx';
-import { UI_AboutMe, UI_Setting, UI_TopInfo } from '../scripts/UIDef';
+import { UI_AboutMe, UI_ExtraTime, UI_Setting, UI_TopInfo } from '../scripts/UIDef';
 import { HoleGameAudioMgr } from './Script/Manager/HoleGameAudioMgr';
 import { UIMgr } from '../core_tgx/easy_ui_framework/UIMgr';
 import { GameUtil } from './Script/Utils';
+import { TYPE_GAME_STATE } from './Script/Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 @ccclass('RoosterHoleEntry')
@@ -69,8 +70,8 @@ export class RoosterHoleEntry extends Component {
     addEventListen() {
         EventDispatcher.instance.on(GameEvent.EVENT_GAME_START, this.onGameStart, this);
         EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateCountLb, this);
-
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_EXP_UPDATE, this.updateUserHoleExp, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_ADD_EXTRATIME, this.addExtraTime, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose, this);
     }
@@ -78,24 +79,60 @@ export class RoosterHoleEntry extends Component {
     protected onDestroy(): void {
         EventDispatcher.instance.off(GameEvent.EVENT_GAME_START, this.onGameStart);
         EventDispatcher.instance.off(GameEvent.EVENT_TIME_LEVEL_UP, this.updateCountLb);
+        EventDispatcher.instance.off(GameEvent.EVENT_HOLE_EXP_UPDATE, this.updateUserHoleExp);
+        EventDispatcher.instance.off(GameEvent.EVENT_ADD_EXTRATIME, this.addExtraTime, this);
+        EventDispatcher.instance.off(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler);
+        EventDispatcher.instance.off(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose);
     }
 
     onGameStart() {
+        const levelTimeTotal = LevelManager.instance.levelModel.levelTimeTotal;
+        this.startCountdown(levelTimeTotal);
+    }
+
+    startCountdown(count: number) {
         if (this.gaming) return;
 
         this.gaming = true;
         this.btnsLayout.active = false;
         //倒计时启动
-        const levelTimeTotal = LevelManager.instance.levelModel.levelTimeTotal;
+        const levelTimeTotal = count;
         this.countdown = levelTimeTotal;
         this.schedule(this.updateCountdown, 1);
+    }
+
+    private addExtraTime(add: Boolean): void {
+        if (add) {
+            this.gaming = false;
+            const { extraTime } = LevelManager.instance.levelModel.mainConfigModel;
+            this.updateCountLb(extraTime);
+            this.startCountdown(extraTime);
+
+            LevelManager.instance.levelModel.curGameState = TYPE_GAME_STATE.GAME_STATE_START;
+        } else {
+            this.unschedule(this.updateCountdown);
+            this.enterBattle();
+        }
     }
 
     private updateCountdown() {
         this.countdown--;
         if (this.countdown <= 0) {
+            LevelManager.instance.levelModel.curGameState = TYPE_GAME_STATE.GAME_STATE_END;
             this.unschedule(this.updateCountdown);
-            this.enterBattle();
+            const isExceed = LevelManager.instance.isExceedingPercent();
+            const { extraTimePop } = LevelManager.instance.levelModel;
+
+            if (extraTimePop) {
+                this.enterBattle(); //弹过时间加成弹窗直接进去战斗
+            } else {
+                if (isExceed) {
+                    this.enterBattle(); // 超过关卡比例直接进入战斗
+                } else {
+                    tgxUIMgr.inst.showUI(UI_ExtraTime);
+                    LevelManager.instance.levelModel.extraTimePop = true;
+                }
+            }
             return
         }
 
@@ -108,9 +145,9 @@ export class RoosterHoleEntry extends Component {
         LevelManager.instance.loadBattle();
     }
 
-    private updateCountLb(): void {
-        const { levelTimeTotal } = LevelManager.instance.levelModel;
-        const formatStr = GameUtil.formatToTimeString(levelTimeTotal);
+    private updateCountLb(addTime?: number): void {
+        let timeCount = addTime ?? LevelManager.instance.levelModel.levelTimeTotal;
+        const formatStr = GameUtil.formatToTimeString(timeCount);
         this.lbTimes.string = `${formatStr}`;
     }
 
@@ -118,6 +155,7 @@ export class RoosterHoleEntry extends Component {
         const total = this.expProgress.totalLength;
         const holeModel = HoleManager.instance.holeModel;
         const { exp, curHoleExpL } = holeModel;
+        console.log(`当前玩家经验:${curHoleExpL} 需要升级exp:${exp}`);
         const progresLenth = Math.round((curHoleExpL / exp) * total);
         this.expProgress.progress = progresLenth / total;
     }
@@ -137,8 +175,10 @@ export class RoosterHoleEntry extends Component {
     private resetGameByLose(): void {
         this.loadLevelInfo();
         this.prepStageView();
+        PropManager.instance.clearEatsMap();
         HoleManager.instance.reBornLevel();
         HoleManager.instance.resetExPByLose();
+        LevelManager.instance.levelModel.curGameState = TYPE_GAME_STATE.GAME_STATE_INIT;
     }
 
     private loadLevelInfo(): void {

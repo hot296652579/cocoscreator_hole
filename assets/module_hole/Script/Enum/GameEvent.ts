@@ -5,6 +5,12 @@ export class GameEvent {
     static readonly EVENT_GAME_START = 'EVENT_GAME_START';
     /** 时间加成等级提升*/
     static readonly EVENT_TIME_LEVEL_UP = 'EVENT_TIME_LEVEL_UP';
+    /** 吞噬道具关卡进度更新*/
+    static readonly EVENT_LEVEL_PROGRESS_UPDATE = 'EVENT_LEVEL_PROGRESS_UPDATE';
+    /** 时间增加更新游戏倒计时*/
+    static readonly EVENT_ADD_EXTRATIME = 'EVENT_ADD_EXTRATIME';
+    /** 时间增加更新游戏倒计时关闭*/
+    static readonly EVENT_ADD_EXTRATIME_CLOSE = 'EVENT_ADD_EXTRATIME_CLOSE';
     /** 经验加成等级提升*/
     static readonly EVENT_EXP_LEVEL_UP = 'EVENT_EXP_LEVEL_UP';
     /** 黑洞尺寸大小提升 等级提升*/

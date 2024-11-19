@@ -9,6 +9,7 @@ import { userInfo } from 'os';
 import { JsonUtil } from '../../../core_tgx/base/utils/JsonUtil';
 import { HoleManager } from './HoleMgr';
 import { GlobalConfig } from '../Config/GlobalConfig';
+import { PropManager } from './PropMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('LevelManager')
@@ -22,6 +23,7 @@ export class LevelManager {
     levelPrefabs: Prefab[] = [];
     battlePrefab: Prefab = null!;
     parent: Node = null!;
+    percent: number = 80;//当前关卡进度比值
 
     public levelModel: LevelModel = null;
 
@@ -75,7 +77,20 @@ export class LevelManager {
         this.levelModel.timesLevel = 1;
         this.levelModel.expMulLevel = 1;
         HoleManager.instance.reBornLevel();
+        PropManager.instance.clearEatsMap();
         EventDispatcher.instance.emit(GameEvent.EVENT_LEVEL_UP_RESET);
+    }
+
+    /** 是否超过当前关卡进度*/
+    isExceedingPercent(): boolean {
+        const { quality } = LevelManager.instance.levelModel; //关卡总质量
+        const currentMass = PropManager.instance.getLevelTotalWeight()
+        const totalMassScaled = quality * 100; // 将总质量放大100倍
+        const thresholdScaled = totalMassScaled * this.percent; // 计算80%的值（放大后的）
+        const currentMassScaled = currentMass * 100; // 当前质量也放大100倍
+
+        // 判断是否超过阈值
+        return currentMassScaled > thresholdScaled;
     }
 
     /**

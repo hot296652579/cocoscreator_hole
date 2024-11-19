@@ -15,6 +15,15 @@ export enum TYPE_BLESSINGS {
     EXP = 3,
 }
 
+export enum TYPE_GAME_STATE {
+    GAME_STATE_INIT = 0, //准备阶段
+    GAME_STATE_START = 1, //开始
+    GAME_STATE_END = 2, //结束(倒计时结束)
+    GAME_STATE_BATTLE = 3, //战斗
+    GAME_STATE_RESULT = 4, //结算
+    GAME_STATE_PAUSE = 5, //暂停
+}
+
 /**关卡数据模型
  * @param reward_basics 基础奖励
  * @param reward_additional 额外奖励
@@ -38,9 +47,14 @@ export class LevelModel {
     public expMulLevel: number = 1;
     /**  经验加成倍数*/
     public expMultiplier: number = 100;
+    /** 是否弹过时间加成弹窗*/
+    public extraTimePop: boolean = false;
 
     /** 输赢*/
     public battleIsWin: boolean = false;
+
+    /** 当前游戏状态*/
+    public curGameState: TYPE_GAME_STATE = TYPE_GAME_STATE.GAME_STATE_INIT;
 
     constructor() {
         const mainConfig = new MainConfigModel();
@@ -69,6 +83,14 @@ export class LevelModel {
 
     get reward_additional(): number {
         return this.levelConfig.reward_additional;
+    }
+
+    get level_boss(): number {
+        return this.levelConfig.boss;
+    }
+
+    get quality(): number {
+        return this.levelConfig.quality;
     }
 
     /** 关卡等级升级*/

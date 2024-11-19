@@ -1365,7 +1365,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 200,
+      "width": 0,
       "height": 50
     },
     "_anchorPoint": {
@@ -1663,8 +1663,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 85.01,
-      "height": 40
+      "width": 85.01953125,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1715,7 +1715,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
-    "_cacheMode": 2,
+    "_cacheMode": 1,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -1761,7 +1761,7 @@
     "_target": null,
     "_left": 309.726,
     "_right": 0,
-    "_top": 4.999999999999999,
+    "_top": -0.20000000000000018,
     "_bottom": 0,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
@@ -1884,7 +1884,7 @@
     },
     "_mode": 0,
     "_totalLength": 400,
-    "_progress": 0.5,
+    "_progress": 0,
     "_reverse": false,
     "_id": ""
   },
@@ -1992,6 +1992,9 @@
     },
     "lbMoeny": {
       "__id__": 12
+    },
+    "expProgress": {
+      "__id__": 75
     },
     "_id": ""
   },

@@ -3,6 +3,8 @@ import { RoosterHoleEntry } from '../../RoosterHoleEntry';
 import { IAttributeConfig, TYPE_BLESSINGS } from '../Model/LevelModel';
 import { PropItem } from '../PropItem';
 import { LevelManager } from './LevelMgr';
+import { EventDispatcher } from '../../../core_tgx/easy_ui_framework/EventDispatcher';
+import { GameEvent } from '../Enum/GameEvent';
 const { ccclass, property } = _decorator;
 
 /** 道具管理器*/
@@ -95,12 +97,22 @@ export class PropManager {
 
             this.eatsMap.set(id, obj);
         }
+        EventDispatcher.instance.emit(GameEvent.EVENT_LEVEL_PROGRESS_UPDATE);
         // console.log(this.eatsMap);
     }
 
     /** 获取某个道具数量和总重量*/
     getItemCount(itemId: number): IPropTotal {
         return this.eatsMap.get(itemId) || null;
+    }
+
+    /** 获取当前关卡总重量*/
+    getLevelTotalWeight(): number {
+        let totalWeight = 0;
+        this.eatsMap.forEach((value, key) => {
+            totalWeight += value.totalWeight;
+        })
+        return totalWeight;
     }
 
     clearEatsMap(): void {
