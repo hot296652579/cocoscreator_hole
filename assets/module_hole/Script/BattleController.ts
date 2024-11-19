@@ -1,4 +1,4 @@
-import { BoxCollider, Camera, Component, CylinderCollider, Node, Prefab, Quat, SphereCollider, Toggle, Vec3, _decorator, director, instantiate, isValid, math, tween, v3 } from 'cc';
+import { BoxCollider, Camera, CharacterController, Component, CylinderCollider, Node, Prefab, Quat, SphereCollider, Toggle, Vec3, _decorator, director, instantiate, isValid, math, tween, v3 } from 'cc';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
 import { LevelManager } from './Manager/LevelMgr';
@@ -7,6 +7,7 @@ import { GlobalConfig } from './Config/GlobalConfig';
 import { tgxUIMgr } from '../../core_tgx/tgx';
 import { UI_BattleResult } from '../../scripts/UIDef';
 import { EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
+import { ActionState, CharacterCtrl } from './Character/CharacterCtrl';
 
 const { ccclass, property } = _decorator;
 
@@ -28,6 +29,8 @@ export class BattleController extends Component {
     boss: Node = null!;
 
     battleWin: boolean = false;
+    playerWeight: number = 0;
+    bossWeight: number = 0;
 
     scheduledCallbacks: (() => void)[] = []; // 存储定时器 ID
 
@@ -51,7 +54,7 @@ export class BattleController extends Component {
             return;
         }
 
-        const pos = v3(6, 1.6, 0);
+        const pos = v3(2.7, 1, 0.2);
         const targetAngles = v3(0, 90, 0);
         this.camera.node.setPosition(pos);
         this.camera.node.setRotationFromEuler(targetAngles);
@@ -93,14 +96,16 @@ export class BattleController extends Component {
      * 一次性生成所有道具并开始掉落
      */
     private spawnAllProps(): void {
-        const totalProps = Math.floor(Math.random() * 5) + 3; // 随机生成 3 到 7 个道具
+        const totalProps = Math.floor(Math.random() * 10) + 5; // 随机生成 3 到 7 个道具
 
         for (let i = 0; i < totalProps; i++) {
             const randomIndex = Math.floor(Math.random() * this.propsPrefabs.length);
             const propPrefab = this.propsPrefabs[randomIndex];
             const propNode = instantiate(propPrefab);
             const collider = propNode.getComponent(BoxCollider) || propNode.getComponent(CylinderCollider) || propNode.getComponent(SphereCollider);
-            propNode.getComponent(BoxCollider).isTrigger = true;
+            collider.isTrigger = true;
+            // console.log('初始scale:' + propNode.getScale());
+            propNode.setScale(0.7, 0.7, 0.7);
 
             // 生成初始位置的随机坐标 (3D 空间)
             const rangeX = 10; // X 轴范围
@@ -114,13 +119,57 @@ export class BattleController extends Component {
             // 掉落动画（从随机位置到玩家位置）
             const playerPos = this.player.getWorldPosition();
             tween(propNode)
-                .to(2, { position: playerPos }, { easing: 'sineIn' })
+                .to(2, { position: v3(playerPos.x, playerPos.y + 1, playerPos.z) }, { easing: 'sineOut' })
                 .call(() => {
                     this.onPropCollected(propNode);
+                    this.bigScaleTween();
                 })
                 .start();
         }
     }
+
+    /** 击飞动画*/
+    playPunchFlyAnimation() {
+        const targetNode = this.battleWin ? this.boss : this.player;
+        if (!targetNode) return
+
+        const dir = this.battleWin ? 1 : -1
+        const startPos = targetNode.position.clone();
+        const flyDirection = new Vec3(dir, 1, 0).normalize(); // 击飞方向
+        const flyDistance = 20;
+        const endPos = startPos.add(flyDirection.multiplyScalar(flyDistance));
+        const duration = 1;
+
+        tween(targetNode)
+            .to(duration, { position: endPos }, { easing: 'cubicOut' }) // 击飞动作
+            // .by(0.3, { position: new Vec3(0, -2, 0) }, { easing: 'bounceOut' }) // 下落动作
+            .start();
+
+        tween(targetNode)
+            .to(duration, { eulerAngles: new Vec3(360, 0, 0) }, { easing: 'linear' })
+            .start();
+    }
+
+    /** 变大动画*/
+    private bigScaleTween(): void {
+        const bigTarget = this.battleWin ? this.player : this.boss;
+        const bigScale: number = 2;
+        tween(bigTarget)
+            .to(1, { scale: new Vec3(bigScale, bigScale, bigScale) })
+            .call(() => {
+                this.playAttackAniamtion();
+            })
+            .start()
+    }
+
+    /** 播放攻击动画*/
+    private playAttackAniamtion(): void {
+        this.player.getComponent(CharacterCtrl)?.doAnimation(ActionState.Attack);
+        this.boss.getComponent(CharacterCtrl)?.doAnimation(ActionState.Attack);
+        this.scheduleTask(() => this.playPunchFlyAnimation(), 1);
+    }
+
+    /** 击飞效果*/
 
     private startSchedule(): void {
         // 设置定时任务
@@ -169,6 +218,9 @@ export class BattleController extends Component {
             total += totalWeight;
         });
 
+        this.playerWeight = total;
+        this.bossWeight = bossWeight;
+        console.log(`玩家吃到道具重量:${total} boss重量:${bossWeight}`);
         return GlobalConfig.plug ?? total >= bossWeight;
     }
 
