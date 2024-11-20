@@ -374,7 +374,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "999999",
+    "_string": "0",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 40,
@@ -1990,7 +1990,7 @@
     "lbLevel": {
       "__id__": 66
     },
-    "lbMoeny": {
+    "lbMoney": {
       "__id__": 12
     },
     "expProgress": {

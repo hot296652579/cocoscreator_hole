@@ -11,7 +11,7 @@ export class Layout_TopInfo extends Component {
     @property(Label)
     lbLevel: Label = null!;
     @property(Label)
-    lbMoeny: Label = null!;
+    lbMoney: Label = null!;
 
     @property(ProgressBar)
     expProgress: ProgressBar = null!;
