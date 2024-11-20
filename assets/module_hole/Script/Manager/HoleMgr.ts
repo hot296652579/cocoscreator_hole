@@ -2,6 +2,8 @@ import { _decorator, Node, Prefab, instantiate, Component, Camera, UITransform, 
 import { BlackholeModel } from '../Model/HoleModel';
 import { EventDispatcher } from '../../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from '../Enum/GameEvent';
+import { LevelManager } from './LevelMgr';
+import { TYPE_BLESSINGS } from '../Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 /** 黑洞管理器*/
@@ -35,6 +37,12 @@ export class HoleManager {
         this.holeModel.curHoleExpL = 0;
         this.holeModel.holeLevel += up;
         const { holeLevel } = this.holeModel;
+
+        const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.SIZE, holeLevel);
+        if (!attributeConfig) {
+            EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_MAX);
+            return;
+        }
         this.holeModel.config.init(holeLevel);
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP);
     }

@@ -44,6 +44,7 @@ export class ButtonController extends Component {
         EventDispatcher.instance.on(GameEvent.EVENT_EXP_LEVEL_UP, this.updateBtExpLv, this);
         EventDispatcher.instance.on(GameEvent.EVENT_EXP_LEVEL_MAX, this.updateBtExpLvMax, this);
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateBtSizeLv, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_MAX, this.updateBtSizeLvMax, this);
         EventDispatcher.instance.on(GameEvent.EVENT_LEVEL_UP_RESET, this.onResetAddition, this);
     }
 
@@ -115,6 +116,10 @@ export class ButtonController extends Component {
 
     private updateBtSizeLv(): void {
         this.updateButtonView(TYPE_BLESSINGS.SIZE);
+    }
+
+    private updateBtSizeLvMax(): void {
+        this.updateButtonView(TYPE_BLESSINGS.SIZE, true);
     }
 
     private updateBtExpLv(): void {

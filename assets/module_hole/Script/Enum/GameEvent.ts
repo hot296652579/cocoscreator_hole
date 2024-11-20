@@ -19,6 +19,8 @@ export class GameEvent {
     static readonly EVENT_EXP_LEVEL_MAX = 'EVENT_EXP_LEVEL_MAX';
     /** 黑洞尺寸大小提升 等级提升*/
     static readonly EVENT_HOLE_LEVEL_SIEZE_UP = 'EVENT_HOLE_LEVEL_SIEZE_UP';
+    /** 黑洞尺寸大小提升 等级MAX*/
+    static readonly EVENT_HOLE_LEVEL_SIEZE_MAX = 'EVENT_HOLE_LEVEL_SIEZE_MAX';
 
     /** 黑洞重生 恢复level1*/
     static readonly EVENT_HOLE_LEVEL_SIEZE_RESET = 'EVENT_HOLE_LEVEL_SIEZE_RESET';
