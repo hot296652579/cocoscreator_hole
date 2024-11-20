@@ -72,13 +72,20 @@ export class LevelManager {
         EventDispatcher.instance.emit(GameEvent.EVENT_EXP_LEVEL_UP);
     }
 
-    /** 重设加成等级*/
+    /** 升级关卡重设加成等级*/
     resetAddition(): void {
         this.levelModel.timesLevel = 1;
         this.levelModel.expMulLevel = 1;
         HoleManager.instance.reBornLevel();
         PropManager.instance.clearEatsMap();
         EventDispatcher.instance.emit(GameEvent.EVENT_LEVEL_UP_RESET);
+    }
+
+    /** 清除关卡数据*/
+    clearLevelData(): void {
+        LevelManager.instance.levelModel.extraTimePop = false;
+        PropManager.instance.clearEatsMap();
+        HoleManager.instance.reBornLevel();
     }
 
     /** 是否超过当前关卡进度*/

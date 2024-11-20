@@ -51,9 +51,6 @@ export class LevelModel {
     /** 是否弹过时间加成弹窗*/
     public extraTimePop: boolean = false;
 
-    /** 输赢*/
-    public battleIsWin: boolean = false;
-
     /** 当前游戏状态*/
     public curGameState: TYPE_GAME_STATE = TYPE_GAME_STATE.GAME_STATE_INIT;
 

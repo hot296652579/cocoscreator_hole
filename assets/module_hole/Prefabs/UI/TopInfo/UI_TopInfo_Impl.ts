@@ -62,7 +62,7 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
         const { level } = LevelManager.instance.levelModel;
         console.log(`当前关卡等级:${level}`);
         const { lbLevel } = this.layout;
-        lbLevel.string = `关卡:${level}`;
+        lbLevel.string = `关卡${level}`;
     }
 
     /** 更新关卡当前进度*/

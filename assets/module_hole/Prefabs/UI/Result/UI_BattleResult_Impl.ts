@@ -14,8 +14,6 @@ import { UserManager } from "../../../Script/Manager/UserMgr";
 const delday = 30000;
 
 export class UI_BattleResult_Impl extends UI_BattleResult {
-    timeoutID: number;
-
     rewardBase: number = 0; //基础奖励
     rewardAdditional: number = 0; //额外奖励
     win: boolean = false;
@@ -38,7 +36,6 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
             this.onClickRewardAdditional(); //领取额外奖励
         });
         this.initilizeResult();
-        this.closeByTimeout();
     }
 
     private initilizeResult(): void {
@@ -51,13 +48,6 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
 
         layout.btGet.node.getChildByName('lbGet').getComponent(Label).string = `${this.rewardBase}`;
         layout.btExtra.node.getChildByName('lbExtra').getComponent(Label).string = `${this.rewardAdditional}`;
-    }
-
-    //30s 无操作默认领取基础奖励
-    private closeByTimeout(): void {
-        setTimeout(() => {
-            this.onClickRewardBase();
-        }, delday);
     }
 
     private emitEvent(): void {
@@ -84,7 +74,6 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
     }
 
     private destoryMyself(): void {
-        this.clearTimeoutHandler();
         if (isValid(this.node)) {
             this.node.removeFromParent();
             this.node.destroy();
@@ -102,13 +91,6 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         const rewardAdditional = Math.round((reward_basics * 100 + (reward_additional * percent)) / 100);
         this.rewardBase = reward_basics;
         this.rewardAdditional = rewardAdditional;
-    }
-
-    private clearTimeoutHandler(): void {
-        if (this.timeoutID) {
-            clearTimeout(this.timeoutID);
-            this.timeoutID = null;
-        }
     }
 }
 

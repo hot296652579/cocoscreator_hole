@@ -1663,7 +1663,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 85.01953125,
+      "width": 76.6845703125,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -1699,7 +1699,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "关卡:1",
+    "_string": "关卡1",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 30,

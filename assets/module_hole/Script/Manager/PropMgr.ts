@@ -115,6 +115,7 @@ export class PropManager {
         return totalWeight;
     }
 
+    /** 清除吞噬道具*/
     clearEatsMap(): void {
         this.eatsMap.clear();
     }
