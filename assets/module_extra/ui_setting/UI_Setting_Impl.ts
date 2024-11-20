@@ -31,9 +31,6 @@ export class UI_Setting_Impl extends UI_Setting {
     private initilizeUI(): void {
         let layout = this.layout as Layout_Setting;
         let { musicToggle, soundToggle } = layout;
-        let { musicSwitch, soundSwitch } = AudioMgr.inst;
-        musicToggle.isChecked = musicSwitch;
-        soundToggle.isChecked = soundSwitch;
     }
 }
 
