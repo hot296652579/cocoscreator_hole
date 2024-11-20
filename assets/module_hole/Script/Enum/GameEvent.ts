@@ -30,6 +30,8 @@ export class GameEvent {
 
     /** 闯关失败 关卡重载*/
     static readonly EVENT_BATTLE_FAIL_LEVEL_RESET = 'EVENT_BATTLE_FAIL_LEVEL_RESET';
+    /** 刷新战斗UI 重量显示*/
+    static readonly EVENT_UPDATE_BATTLE_WEIGHT = 'EVENT_UPDATE_BATTLE_WEIGHT';
 
     /** 用户余额更新*/
     static readonly EVENT_USER_MONEY_UPDATE = 'EVENT_USER_MONEY_UPDATE';

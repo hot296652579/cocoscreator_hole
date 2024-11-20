@@ -41,6 +41,7 @@ export class BattleController extends Component {
         this.takeCameraToPlayer();
         this.spawnAllProps();
         this.startSchedule();
+        EventDispatcher.instance.emit(GameEvent.EVENT_UPDATE_BATTLE_WEIGHT);
     }
 
     private addListener(): void {

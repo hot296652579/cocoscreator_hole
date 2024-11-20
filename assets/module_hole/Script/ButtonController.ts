@@ -118,7 +118,7 @@ export class ButtonController extends Component {
         const lbMoney: Label = bt.getChildByPath('Used/LbMoney')?.getComponent(Label)!;
 
         lbLevel.string = `LVL.${level}`;
-        lbMoney.string = `金币:${money}`;
+        lbMoney.string = `${money}`;
     }
 
     private getButtonNodeByType(type: number): Node {

@@ -1,4 +1,4 @@
-import { _decorator, BoxCollider, Component, CylinderCollider, director, game, isValid, ITriggerEvent, SphereCollider, v3, Vec3 } from 'cc';
+import { _decorator, BoxCollider, Component, CylinderCollider, director, game, isValid, ITriggerEvent, ParticleSystem, SphereCollider, v3, Vec3 } from 'cc';
 import { EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
@@ -14,6 +14,7 @@ const { ccclass, property } = _decorator;
 @ccclass('HolePlayer')
 export class HolePlayer extends Component {
 
+    particle: ParticleSystem = null!;
     holeTigger: SphereCollider = null!;
     getScoreTigger: BoxCollider = null!;
     diameter: number = 1;
@@ -37,6 +38,7 @@ export class HolePlayer extends Component {
     }
 
     initilizeUI(): void {
+        this.particle = this.node.getComponentInChildren(ParticleSystem)!;
         this.holeTigger = this.node.getChildByName('HoleTrigger')?.getComponent(SphereCollider)!;
         this.getScoreTigger = this.node.getComponent(BoxCollider)!;
         this.holeTigger.on('onTriggerEnter', this.onTriggerEnter, this);
@@ -45,12 +47,12 @@ export class HolePlayer extends Component {
     }
 
     addEventListener(): void {
-        EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateHoleView, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.upLevHole, this);
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET, this.updateHoleView, this);
     }
 
     protected onDestroy(): void {
-        EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateHoleView);
+        EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.upLevHole);
         EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET, this.updateHoleView);
     }
 
@@ -133,6 +135,11 @@ export class HolePlayer extends Component {
         const playerZ = playerDir.y * this.speed * game.deltaTime;
 
         this.node.setPosition(this.node.position.x + playerX, 0, this.node.position.z - playerZ);
+    }
+
+    upLevHole(): void {
+        this.particle.play();
+        this.updateHoleView();
     }
 
     updateHoleView(): void {
