@@ -26,13 +26,7 @@ export class BattleUI extends Component {
         const { bossModel } = LevelManager.instance.levelModel;
         const { bossWeight } = bossModel;
 
-        let total = 0;
-        const eatsMap = PropManager.instance.eatsMap;
-        eatsMap.forEach(element => {
-            const { count, totalWeight } = element;
-            total += totalWeight;
-        });
-
+        let total = PropManager.instance.getLevelTotalWeight() || 0;
         this.lbBossWeight.string = ` ${bossWeight}KG`;
         this.lbPlayerWeight.string = `${total}KG`;
     }

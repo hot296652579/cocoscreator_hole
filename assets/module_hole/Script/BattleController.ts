@@ -170,8 +170,6 @@ export class BattleController extends Component {
         this.scheduleTask(() => this.playPunchFlyAnimation(), 1);
     }
 
-    /** 击飞效果*/
-
     private startSchedule(): void {
         // 设置定时任务
         this.scheduleTask(() => this.takeCameraToBother(), 3);
