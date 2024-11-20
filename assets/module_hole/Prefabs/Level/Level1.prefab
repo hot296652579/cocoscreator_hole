@@ -28,13 +28,13 @@
         "__id__": 212
       },
       {
-        "__id__": 229
+        "__id__": 224
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 235
+      "__id__": 230
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3133,11 +3133,15 @@
     "instance": {
       "__id__": 214
     },
-    "targetOverrides": null
+    "targetOverrides": [
+      {
+        "__id__": 220
+      }
+    ]
   },
   {
     "__type__": "cc.PrefabInstance",
-    "fileId": "c0Esbxg5pI3Yc3KeQ2LTJK",
+    "fileId": "48adIM1CpDp6vo0Ia2vKMM",
     "prefabRootNode": {
       "__id__": 1
     },
@@ -3151,19 +3155,10 @@
         "__id__": 217
       },
       {
+        "__id__": 218
+      },
+      {
         "__id__": 219
-      },
-      {
-        "__id__": 221
-      },
-      {
-        "__id__": 223
-      },
-      {
-        "__id__": 225
-      },
-      {
-        "__id__": 227
       }
     ],
     "removedComponents": []
@@ -3187,7 +3182,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 218
+      "__id__": 216
     },
     "propertyPath": [
       "_lpos"
@@ -3195,20 +3190,14 @@
     "value": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -0.112,
+      "y": -0.111,
       "z": 15
     }
   },
   {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "19JO229jxK6pTCbYzVRV2g"
-    ]
-  },
-  {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 220
+      "__id__": 216
     },
     "propertyPath": [
       "_lrot"
@@ -3222,15 +3211,9 @@
     }
   },
   {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "19JO229jxK6pTCbYzVRV2g"
-    ]
-  },
-  {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 222
+      "__id__": 216
     },
     "propertyPath": [
       "_euler"
@@ -3243,68 +3226,38 @@
     }
   },
   {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "19JO229jxK6pTCbYzVRV2g"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 224
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 221
+    },
+    "sourceInfo": {
+      "__id__": 222
     },
     "propertyPath": [
-      "_lpos"
+      "_trailModule",
+      "_particleSystem"
     ],
-    "value": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 1.8894672396130296e-8,
-      "z": 0
+    "target": {
+      "__id__": 221
+    },
+    "targetInfo": {
+      "__id__": 223
     }
   },
   {
+    "__type__": "cc.Node",
+    "__editorExtras__": {}
+  },
+  {
     "__type__": "cc.TargetInfo",
     "localID": [
-      "83JskwHNtHMbIe104Z5UEu"
+      "d4KU0ImGFEdK5E/a2cQDQd"
     ]
   },
   {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 226
-    },
-    "propertyPath": [
-      "_lrot"
-    ],
-    "value": {
-      "__type__": "cc.Quat",
-      "x": 0,
-      "y": 0,
-      "z": 0,
-      "w": 1
-    }
-  },
-  {
     "__type__": "cc.TargetInfo",
     "localID": [
-      "83JskwHNtHMbIe104Z5UEu"
-    ]
-  },
-  {
-    "__type__": "CCPropertyOverrideInfo",
-    "targetInfo": {
-      "__id__": 228
-    },
-    "propertyPath": [
-      "_radius"
-    ],
-    "value": 0.35
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "63eVN15VhDF7IAXbhkZPA6"
+      "d4KU0ImGFEdK5E/a2cQDQd"
     ]
   },
   {
@@ -3319,14 +3272,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 230
+        "__id__": 225
       },
       {
-        "__id__": 232
+        "__id__": 227
       }
     ],
     "_prefab": {
-      "__id__": 234
+      "__id__": 229
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -3363,11 +3316,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 229
+      "__id__": 224
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 231
+      "__id__": 226
     },
     "_projection": 1,
     "_priority": 0,
@@ -3415,11 +3368,11 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 229
+      "__id__": 224
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 233
+      "__id__": 228
     },
     "target": {
       "__id__": 212

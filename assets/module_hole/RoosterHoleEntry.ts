@@ -155,9 +155,16 @@ export class RoosterHoleEntry extends Component {
         const total = this.expProgress.totalLength;
         const holeModel = HoleManager.instance.holeModel;
         const { exp, curHoleExpL } = holeModel;
-        console.log(`当前玩家经验:${curHoleExpL} 需要升级exp:${exp}`);
-        const progresLenth = Math.round((curHoleExpL / exp) * total);
-        this.expProgress.progress = progresLenth / total;
+
+        if (exp <= 0) {
+            return;
+        }
+
+        const precision = 10000;
+        const progressRatio = Math.floor((curHoleExpL * precision) / exp) / precision;
+        const progressLength = progressRatio * total;
+        // console.log(`当前经验进度: ${progressLength}, 总进度: ${total} progressLength:${progressLength / total}`)
+        this.expProgress.progress = progressLength / total;
     }
 
     /** 关卡升级*/

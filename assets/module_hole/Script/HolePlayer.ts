@@ -21,6 +21,8 @@ export class HolePlayer extends Component {
     speed: number = 1;
     view: number = 1;
 
+    ringScale: Vec3 = v3(1.5, 0.01, 1.5); //刚体环形初始大小
+    holeTriggerRadius: number = 0.4;      //碰撞器触发初始半径
     coefficient: number = 15;
 
     protected start(): void {
@@ -42,6 +44,7 @@ export class HolePlayer extends Component {
         this.holeTigger = this.node.getChildByName('HoleTrigger')?.getComponent(SphereCollider)!;
         this.getScoreTigger = this.node.getComponent(BoxCollider)!;
         this.holeTigger.on('onTriggerEnter', this.onTriggerEnter, this);
+        // this.holeTigger.on('onTriggerStay', this.onTriggerStay, this);
         this.holeTigger.on('onTriggerExit', this.onTriggerExit, this);
         this.getScoreTigger.on('onTriggerEnter', this.onGetScoreTriggerEnter, this);
     }
@@ -85,7 +88,7 @@ export class HolePlayer extends Component {
             // 获取黑洞和物体的位置差向量，并将物体朝黑洞中心拉动
             const directionToHole = this.getPlanceVec3(event).normalize().negative();
             // 应用一个较大的冲量，使物体快速移动到黑洞
-            otherRigidBody.applyImpulse(directionToHole.multiplyScalar(2), directionToHole);
+            otherRigidBody.applyImpulse(directionToHole.multiplyScalar(1), directionToHole);
         }
     }
 
@@ -100,13 +103,13 @@ export class HolePlayer extends Component {
 
     onTriggerStay(event: ITriggerEvent): void {
         // console.log(`碰撞持续stay otherGroup->:${event.otherCollider.getGroup()}`);
-        // if (event.otherCollider.getGroup() == 1 << 3) {
-        //     const otherPos = event.otherCollider.worldBounds.center;
-        //     const heloToOtherDir = this.getPlanceVec3(event).normalize();
-        //     heloToOtherDir.y = otherPos.y;
-        //     const heloActtion = heloToOtherDir.clone().negative();
-        //     event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.5), heloToOtherDir);
-        // }
+        if (event.otherCollider.getGroup() == 1 << 3) {
+            const otherPos = event.otherCollider.worldBounds.center;
+            const heloToOtherDir = this.getPlanceVec3(event).normalize();
+            heloToOtherDir.y = otherPos.y;
+            const heloActtion = heloToOtherDir.clone().negative();
+            event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.2), heloToOtherDir);
+        }
     }
 
     onTriggerExit(event: ITriggerEvent): void {

@@ -23,7 +23,8 @@
     {
       "priority": 125,
       "rasterizerState": {
-        "cullMode": 0
+        "cullMode": 0,
+        "lineWidth": 0.1
       },
       "depthStencilState": {
         "stencilTestFront": true

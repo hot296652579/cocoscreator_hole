@@ -1,5 +1,6 @@
 import { Tablecultivate_config } from "../../../module_basic/table/Tablecultivate_config";
 import { Tablelevels_config } from "../../../module_basic/table/Tablelevels_config";
+import { GlobalConfig } from "../Config/GlobalConfig";
 import { LevelManager } from "../Manager/LevelMgr";
 import { BossModel } from "./BossModel";
 import { MainConfigModel } from "./MainConfigModel";
@@ -62,6 +63,8 @@ export class LevelModel {
         // console.log(`加时extraTime:${this.mainConfigModel.extraTime} 磁力倍数magentic:${this.mainConfigModel.magentic} 初始金币:${this.mainConfigModel.initMoeny}`)
         this.levelConfig = new Tablelevels_config();
         this.cultivateConfig = new Tablecultivate_config();
+
+        this.level = GlobalConfig.initilizeLevel;
         this.levelConfig.init(this.level);
         this.initilizeData();
     }

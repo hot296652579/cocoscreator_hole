@@ -67,12 +67,12 @@ export class PropManager {
     }
 
     /** 加成倍数后的经验*/
-    expAfterBonus(exp: number): number {
+    expAfterBonus(propExp: number): number {
         const { expMulLevel } = LevelManager.instance.levelModel;
         const config: IAttributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.EXP, expMulLevel);
         const { param } = config;
         const multiplier = param / 100;
-        let expBonus = Math.round(exp * multiplier * 100) / 100;
+        let expBonus = propExp + Math.round(propExp * multiplier * 100) / 100;
         // console.log(`道具原本经验exp:${exp} 加成倍数:${multiplier} 加成后exp:${expBonus}`);
         return expBonus;
     }

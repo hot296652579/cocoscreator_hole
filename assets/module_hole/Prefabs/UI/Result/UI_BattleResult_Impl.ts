@@ -42,7 +42,7 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
     }
 
     private initilizeResult(): void {
-        this.win = this.getBattleWin();
+        this.win = LevelManager.instance.judgeWin();
         let layout = this.layout as Layout_BattleResult;
         let winNode = layout.winNode;
         let LoseNode = layout.LoseNode;
@@ -91,12 +91,6 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         }
     }
 
-    private getBattleWin(): boolean {
-        const levelModel = LevelManager.instance.levelModel;
-        const { battleIsWin } = levelModel;
-        return battleIsWin;
-    }
-
     /** 计算基础奖励和额外奖励*/
     private calculateReward(): void {
         const levelModel = LevelManager.instance.levelModel;
@@ -105,7 +99,7 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         let total = PropManager.instance.getLevelTotalWeight() || 0;
         const { quality } = LevelManager.instance.levelModel; //关卡总质量
         const percent = (total * 100) / quality; // 放大到整数范围
-        const rewardAdditional = Math.round(reward_basics * 100 + (reward_additional * percent)) / 100;
+        const rewardAdditional = Math.round((reward_basics * 100 + (reward_additional * percent)) / 100);
         this.rewardBase = reward_basics;
         this.rewardAdditional = rewardAdditional;
     }

@@ -29,6 +29,7 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
 
     private initilizeUI(): void {
         this.updateUserInfo();
+        this.updateLevelLb();
         this.updateLevProgress();
 
         let layout = this.layout as Layout_TopInfo;
@@ -54,12 +55,12 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
         const { money } = UserManager.instance.userModel;
         const { lbMoney } = this.layout;
         const from = parseFloat(lbMoney.string) || 0;
-        this.startRolling(from, money, 0.5);
+        this.startRolling(from, money, 0.2);
     }
 
     private updateLevelLb(): void {
         const { level } = LevelManager.instance.levelModel;
-        // console.log(`当前关卡等级:${level}`);
+        console.log(`当前关卡等级:${level}`);
         const { lbLevel } = this.layout;
         lbLevel.string = `关卡:${level}`;
     }

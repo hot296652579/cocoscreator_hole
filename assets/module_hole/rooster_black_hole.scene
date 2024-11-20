@@ -6461,7 +6461,7 @@
       "__id__": 160
     },
     "_mode": 0,
-    "_totalLength": 200,
+    "_totalLength": 130,
     "_progress": 1,
     "_reverse": false,
     "_id": "70cVd5vNZOfpVrdPJNpAXP"
@@ -6699,11 +6699,11 @@
         "__expectedType__": "cc.Prefab"
       },
       {
-        "__uuid__": "f3505898-5ae5-4daf-b025-794b255d54e7",
+        "__uuid__": "db92c707-efc0-4e5e-aeeb-e070d6d93cb5",
         "__expectedType__": "cc.Prefab"
       },
       {
-        "__uuid__": "a08eedfc-e230-48cb-8659-ee1aa8a546b2",
+        "__uuid__": "3bd669b6-862e-41ab-af88-9055225bbb54",
         "__expectedType__": "cc.Prefab"
       }
     ],

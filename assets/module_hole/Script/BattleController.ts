@@ -35,13 +35,19 @@ export class BattleController extends Component {
     scheduledCallbacks: (() => void)[] = []; // 存储定时器 ID
 
     protected start(): void {
+        this.initilize();
         this.addListener();
-
-        this.battleWin = this.judgingIsWin();
         this.takeCameraToPlayer();
         this.spawnAllProps();
         this.startSchedule();
         EventDispatcher.instance.emit(GameEvent.EVENT_UPDATE_BATTLE_WEIGHT);
+    }
+
+    private initilize(): void {
+        this.playerWeight = PropManager.instance.getLevelTotalWeight();
+        const { bossModel } = LevelManager.instance.levelModel;
+        this.bossWeight = bossModel.bossWeight;
+        this.battleWin = LevelManager.instance.judgeWin();
     }
 
     private addListener(): void {
@@ -203,24 +209,6 @@ export class BattleController extends Component {
         // 销毁道具节点
         propNode.removeFromParent();
         propNode.destroy();
-    }
-
-    /** 判断是否输赢*/
-    private judgingIsWin(): boolean {
-        const { bossModel } = LevelManager.instance.levelModel;
-        const { bossWeight } = bossModel;
-
-        let total = 0;
-        const eatsMap = PropManager.instance.eatsMap;
-        eatsMap.forEach(element => {
-            const { count, totalWeight } = element;
-            total += totalWeight;
-        });
-
-        this.playerWeight = total;
-        this.bossWeight = bossWeight;
-        console.log(`玩家吃到道具重量:${total} boss重量:${bossWeight}`);
-        return GlobalConfig.plug ?? total >= bossWeight;
     }
 
     private onCloseMyself(): void {

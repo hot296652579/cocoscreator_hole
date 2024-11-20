@@ -93,6 +93,21 @@ export class LevelManager {
         return currentMassScaled > thresholdScaled;
     }
 
+    /** 判断本次关卡输赢*/
+    judgeWin(): boolean {
+        const { bossModel } = LevelManager.instance.levelModel;
+        const { bossWeight } = bossModel;
+
+        let total = 0;
+        const eatsMap = PropManager.instance.eatsMap;
+        eatsMap.forEach(element => {
+            const { count, totalWeight } = element;
+            total += totalWeight;
+        });
+        // console.log(`玩家吃到道具重量:${total} boss重量:${bossWeight}`);
+        return GlobalConfig.plug ?? total >= bossWeight;
+    }
+
     /**
      * 获取指定类型和等级的配置数据
      * @param type 类型：1 表示时间, 2 表示尺寸大小, 3 表示经验加成
