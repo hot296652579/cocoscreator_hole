@@ -1,4 +1,4 @@
-import { _decorator, Button, Component, Node, Toggle } from 'cc';
+import { _decorator, Button, Component, Node, Toggle, ToggleComponent } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Layout_Setting')
