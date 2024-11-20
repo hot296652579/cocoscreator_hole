@@ -3,6 +3,7 @@ import { UserModel } from '../Model/UserModel';
 import { LevelManager } from './LevelMgr';
 import { EventDispatcher } from '../../../core_tgx/easy_ui_framework/EventDispatcher';
 import { ADEvent } from '../Enum/ADEvent';
+import { AudioMgr } from '../../../core_tgx/base/AudioMgr';
 const { ccclass, property } = _decorator;
 
 /** 广告管理*/
@@ -31,19 +32,23 @@ export class AdvertMgr {
             beforeAd() {
                 console.log('The ad starts playing, and the game should pause.');
                 EventDispatcher.instance.emit(ADEvent.REWARD_VIDEO_PLAY);
+                AudioMgr.inst.pause();
             },
             adDismissed() {
                 console.log('Player dismissed the ad before completion.');
                 EventDispatcher.instance.emit(ADEvent.REWARD_VIDEO_DISMISSED);
+                AudioMgr.inst.resume();
             },
             adViewed() {
                 console.log('Ad was viewed and closed.');
-                EventDispatcher.instance.emit(ADEvent.REWARD_VIDEO_CLOSEED);
                 if (cb) cb();
+                EventDispatcher.instance.emit(ADEvent.REWARD_VIDEO_CLOSEED);
+                AudioMgr.inst.resume();
             },
             error(err: any) {
                 console.log(`激励广告错误:${err}`);
                 EventDispatcher.instance.emit(ADEvent.REWARD_VIDEO_ERROR);
+                AudioMgr.inst.resume();
             }
         });
     }

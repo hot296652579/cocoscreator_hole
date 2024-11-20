@@ -2135,6 +2135,15 @@
     "btnClose": {
       "__id__": 20
     },
+    "content": {
+      "__id__": 14
+    },
+    "musicToggle": {
+      "__id__": 37
+    },
+    "soundToggle": {
+      "__id__": 67
+    },
     "_id": ""
   },
   {
