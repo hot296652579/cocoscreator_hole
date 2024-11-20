@@ -5,6 +5,7 @@ import { Layout_ExtraTime } from './Layout_ExtraTime';
 import { tgxModuleContext } from '../../../../core_tgx/tgx';
 import { EventDispatcher } from '../../../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from '../../../Script/Enum/GameEvent';
+import { AdvertMgr } from '../../../Script/Manager/AdvertMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('UI_ExtraTime_Impl')
@@ -20,13 +21,19 @@ export class UI_ExtraTime_Impl extends UI_ExtraTime {
     protected onCreated(): void {
         let layout = this.layout as Layout_ExtraTime;
         this.onButtonEvent(layout.btGet, () => {
-            this.destoryMyself();
-            EventDispatcher.instance.emit(GameEvent.EVENT_ADD_EXTRATIME, true);
+            this.addAdverHandler();
         });
         this.onButtonEvent(layout.btNo, () => {
             this.destoryMyself();
             EventDispatcher.instance.emit(GameEvent.EVENT_ADD_EXTRATIME, false);
         });
+    }
+
+    private addAdverHandler(): void {
+        AdvertMgr.instance.showReawardVideo(() => {
+            this.destoryMyself();
+            EventDispatcher.instance.emit(GameEvent.EVENT_ADD_EXTRATIME, true);
+        })
     }
 
     private destoryMyself(): void {

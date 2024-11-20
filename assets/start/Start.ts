@@ -5,10 +5,9 @@ import { GameUILayers, GameUILayerNames } from '../scripts/GameUILayers';
 import { ModuleDef } from '../scripts/ModuleDef';
 import { SceneDef } from '../scripts/SceneDef';
 import { JsonUtil } from '../core_tgx/base/utils/JsonUtil';
-import { UI_HUD } from '../module_basic/ui_hud/UI_HUD';
 const { ccclass, property } = _decorator;
 
-const _preloadBundles = [ModuleDef.BASIC];
+const _preloadBundles = [ModuleDef.BASIC, ModuleDef.MODULE_HOLE];
 
 const _preloadRes = [
     { bundle: ModuleDef.BASIC, url: 'ui_alert/UI_Alert', type: 'prefab' },
@@ -93,8 +92,8 @@ export class Start extends Component {
     }
 
     onPreloadingComplete() {
-        let bundle = assetManager.getBundle(ModuleDef.BASIC);
-        bundle.preloadScene(SceneDef.MAIN_MENU, () => {
+        let bundle = assetManager.getBundle(ModuleDef.MODULE_HOLE);
+        bundle.preloadScene(SceneDef.ROOSTER_HOLE, () => {
             this.onResLoaded();
             // director.loadScene(SceneDef.MAIN_MENU);
 
