@@ -60,6 +60,10 @@ export class LevelManager {
     upgradeLevelTime(up: number = 1): void {
         this.levelModel.timesLevel += up;
         const attributeConfig = this.getByTypeAndLevel(TYPE_BLESSINGS.TIME, this.levelModel.timesLevel);
+        if (!attributeConfig) {
+            EventDispatcher.instance.emit(GameEvent.EVENT_TIME_LEVEL_MAX);
+            return;
+        }
         this.levelModel.levelTimeTotal = attributeConfig.param;
         EventDispatcher.instance.emit(GameEvent.EVENT_TIME_LEVEL_UP);
     }
@@ -68,6 +72,10 @@ export class LevelManager {
     upgradeLevelExp(up: number = 1): void {
         this.levelModel.expMulLevel += up;
         const attributeConfig = this.getByTypeAndLevel(TYPE_BLESSINGS.EXP, this.levelModel.expMulLevel);
+        if (!attributeConfig) {
+            EventDispatcher.instance.emit(GameEvent.EVENT_EXP_LEVEL_MAX);
+            return;
+        }
         this.levelModel.expMultiplier = attributeConfig.param;
         EventDispatcher.instance.emit(GameEvent.EVENT_EXP_LEVEL_UP);
     }
@@ -122,7 +130,7 @@ export class LevelManager {
      * @returns 对应的属性值对象 { param, money }
      */
     getByTypeAndLevel(type: number, level: number): IAttributeConfig | null {
-        const table = JsonUtil.get(Tablecultivate_config.TableName);
+        const table = JsonUtil.get(Tablecultivate_config.TableName) || null;
         for (let id in table) {
             const entry = table[id];
             if (entry.type === type && entry.level === level) {

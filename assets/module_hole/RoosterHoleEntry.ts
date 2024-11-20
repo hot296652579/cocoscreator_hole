@@ -37,7 +37,7 @@ export class RoosterHoleEntry extends Component {
     private gaming: boolean = false;
 
     start() {
-        HoleGameAudioMgr.play('Audio/Bgm', 1.0);
+        // HoleGameAudioMgr.play('Audio/Bgm', 1.0);
         this.initilize();
         this.addEventListen();
     }

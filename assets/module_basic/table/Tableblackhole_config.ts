@@ -36,4 +36,3 @@ export class Tableblackhole_config {
         return this.data.exp;
     }
 }
-    

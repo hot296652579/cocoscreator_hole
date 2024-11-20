@@ -40,13 +40,16 @@ export class ButtonController extends Component {
     private setupUIListeners(): void {
         EventDispatcher.instance.on(GameEvent.EVENT_UI_INITILIZE, this.initilizeUI, this);
         EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateBtTimeLv, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_MAX, this.updateBtTimeLvMax, this);
         EventDispatcher.instance.on(GameEvent.EVENT_EXP_LEVEL_UP, this.updateBtExpLv, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_EXP_LEVEL_MAX, this.updateBtExpLvMax, this);
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateBtSizeLv, this);
         EventDispatcher.instance.on(GameEvent.EVENT_LEVEL_UP_RESET, this.onResetAddition, this);
     }
 
     private upgradeTimeButton(): void {
-        const { money } = this.getCurrentLevelParam(TYPE_BLESSINGS.TIME);
+        const config = this.getCurrentLevelParam(TYPE_BLESSINGS.TIME);
+        const { money } = config;
         const enough = UserManager.instance.checkEnough(money);
         if (!enough) {
             return;
@@ -102,6 +105,14 @@ export class ButtonController extends Component {
         this.updateButtonView(TYPE_BLESSINGS.TIME);
     }
 
+    private updateBtTimeLvMax(): void {
+        this.updateButtonView(TYPE_BLESSINGS.TIME, true);
+    }
+
+    private updateBtExpLvMax(): void {
+        this.updateButtonView(TYPE_BLESSINGS.EXP, true);
+    }
+
     private updateBtSizeLv(): void {
         this.updateButtonView(TYPE_BLESSINGS.SIZE);
     }
@@ -110,15 +121,29 @@ export class ButtonController extends Component {
         this.updateButtonView(TYPE_BLESSINGS.EXP);
     }
 
-    private updateButtonView(type: number): void {
-        const { level, money } = this.getCurrentLevelParam(type);
+    private updateButtonView(type: number, max?: boolean): void {
         const buttonNode = this.getButtonNodeByType(type);
         const lbLevel: Label = buttonNode.getChildByName('LbLevel').getComponent(Label)!;
         const bt = buttonNode.getChildByName('Bt');
         const lbMoney: Label = bt.getChildByPath('Used/LbMoney')?.getComponent(Label)!;
+        if (!max) {
+            const { level, money } = this.getCurrentLevelParam(type);
+            lbLevel.string = `LVL.${level}`;
+            lbMoney.string = `${money}`;
+        } else {
+            lbLevel.string = `LVL.Max`;
+            lbMoney.string = `Max`;
 
-        lbLevel.string = `LVL.${level}`;
-        lbMoney.string = `${money}`;
+            if (buttonNode.name == 'BtnUpTime') {
+                buttonNode.off(NodeEventType.TOUCH_END, this.upgradeTimeButton, this);
+            } else if (buttonNode.name == 'BtnUpExp') {
+                buttonNode.off(NodeEventType.TOUCH_END, this.upgradeExpButton, this);
+            } else {
+                buttonNode.off(NodeEventType.TOUCH_END, this.upgradeSizeButton, this);
+            }
+
+            buttonNode.getComponent(Button)!.enabled = false;
+        }
     }
 
     private getButtonNodeByType(type: number): Node {
