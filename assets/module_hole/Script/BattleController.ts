@@ -9,7 +9,7 @@ import { LevelManager } from './Manager/LevelMgr';
 import { PropManager } from './Manager/PropMgr';
 
 const { ccclass, property } = _decorator;
-
+const duration: number = 2;
 /**
  * 战斗控制器
  */
@@ -126,13 +126,17 @@ export class BattleController extends Component {
             // 掉落动画（从随机位置到玩家位置）
             const playerPos = this.player.getWorldPosition();
             tween(propNode)
-                .to(2, { position: v3(playerPos.x, playerPos.y + 1, playerPos.z) }, { easing: 'sineOut' })
+                .to(duration, { position: v3(playerPos.x, playerPos.y + 1, playerPos.z) }, { easing: 'sineOut' })
                 .call(() => {
                     this.onPropCollected(propNode);
-                    this.bigScaleTween();
+
                 })
                 .start();
         }
+
+        this.scheduleOnce(() => {
+            this.bigScaleTween();
+        }, duration);
     }
 
     /** 击飞动画*/
@@ -162,7 +166,7 @@ export class BattleController extends Component {
         const bigTarget = this.battleWin ? this.player : this.boss;
         const bigScale: number = 2;
         tween(bigTarget)
-            .to(1, { scale: new Vec3(bigScale, bigScale, bigScale) })
+            .to(duration, { scale: new Vec3(bigScale, bigScale, bigScale) })
             .call(() => {
                 this.playAttackAniamtion();
             })
