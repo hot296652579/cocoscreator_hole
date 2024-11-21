@@ -18,6 +18,19 @@ export class HoleManager {
     public holeModel: BlackholeModel;
     initilizeModel(): void {
         this.holeModel = new BlackholeModel();
+
+        EventDispatcher.instance.on(GameEvent.EVENT_MAGNET_ON, this.onMagnetOn, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_MAGNET_OFF, this.onMagnetOff, this);
+    }
+
+    private onMagnetOn(): void {
+        HoleManager._instance.holeModel.isMagment = true;
+        EventDispatcher.instance.emit(GameEvent.EVENT_MAGNET_EFFECT_SHOW);
+    }
+
+    private onMagnetOff(): void {
+        HoleManager._instance.holeModel.isMagment = false;
+        EventDispatcher.instance.emit(GameEvent.EVENT_MAGNET_EFFECT_HIDE);
     }
 
     /** 增加经验*/
@@ -51,6 +64,7 @@ export class HoleManager {
     /** 闯关失败重设经验*/
     resetExPByLose(): void {
         this.holeModel.curHoleExpL = 0;
+        this.onMagnetOff();
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_EXP_UPDATE);
     }
 
@@ -60,6 +74,7 @@ export class HoleManager {
         this.holeModel.curHoleExpL = 0;
         const { holeLevel } = this.holeModel;
         this.holeModel.config.init(holeLevel);
+        this.onMagnetOff();
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET);
     }
 }

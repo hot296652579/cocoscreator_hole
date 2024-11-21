@@ -1,10 +1,11 @@
-import { _decorator, assetManager, Component, director, game, Label, Prefab, Node, AssetManager, Asset } from 'cc';
+import { _decorator, assetManager, Component, director, game, Label, Prefab, Node, AssetManager, Asset, PhysicsSystem, PhysicsSystem2D, EPhysics2DDrawFlags } from 'cc';
 import { tgxModuleContext, tgxUIMgr, tgxUIWaiting } from '../core_tgx/tgx';
 import { GameUILayers, GameUILayerNames } from '../scripts/GameUILayers';
 
 import { ModuleDef } from '../scripts/ModuleDef';
 import { SceneDef } from '../scripts/SceneDef';
 import { JsonUtil } from '../core_tgx/base/utils/JsonUtil';
+import { platform } from 'os';
 const { ccclass, property } = _decorator;
 
 const _preloadBundles = [ModuleDef.BASIC, ModuleDef.MODULE_HOLE];
@@ -31,6 +32,17 @@ export class Start extends Component {
     private _percent: string = '';
     private _numCurrentLoaded = 0;
     start() {
+
+        // // 确保物理系统启用
+        // PhysicsSystem2D.instance.enable = true;
+
+        // // 开启调试信息
+        // PhysicsSystem2D.instance.debugDrawFlags = EPhysics2DDrawFlags.Aabb |
+        //     EPhysics2DDrawFlags.Pair |
+        //     EPhysics2DDrawFlags.CenterOfMass |
+        //     EPhysics2DDrawFlags.Joint |
+        //     EPhysics2DDrawFlags.Shape;
+
         tgxModuleContext.setDefaultModule(ModuleDef.BASIC);
 
         game.frameRate = 61;

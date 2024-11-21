@@ -378,7 +378,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": 100,
       "z": 0
     },
     "_lrot": {
@@ -460,7 +460,7 @@
     },
     "_fillStart": 0,
     "_fillRange": 0,
-    "_isTrimmedMode": true,
+    "_isTrimmedMode": false,
     "_useGrayscale": false,
     "_atlas": null,
     "_id": "0d/FZCEuBCWre1Zey3s9Qx"
@@ -497,7 +497,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -582.104,
+      "y": -510,
       "z": 0
     },
     "_lrot": {
@@ -587,7 +587,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 749.9999999999998,
-      "height": 40
+      "height": 60
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -689,7 +689,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -374.9999999999999,
+      "x": -375,
       "y": 0,
       "z": 0
     },
@@ -728,8 +728,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1500,
-      "height": 40
+      "width": 1499.9999999999998,
+      "height": 60
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -789,8 +789,8 @@
     "__prefab": null,
     "_alignFlags": 40,
     "_target": null,
-    "_left": 0,
-    "_right": -2.2737367544323206e-13,
+    "_left": -1.1368683772161603e-13,
+    "_right": 0,
     "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,
@@ -831,8 +831,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0.023,
-      "y": 47.95700000000001,
+      "x": 0,
+      "y": 70,
       "z": 0
     },
     "_lrot": {
@@ -957,7 +957,7 @@
     "_left": 0,
     "_right": 0,
     "_top": 0,
-    "_bottom": 72.757,
+    "_bottom": 94.8,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -1006,10 +1006,10 @@
     "__prefab": null,
     "_alignFlags": 44,
     "_target": null,
-    "_left": 0,
-    "_right": 0,
+    "_left": -1.4210854715202004e-14,
+    "_right": 1.4210854715202004e-14,
     "_top": 0,
-    "_bottom": 34.896000000000015,
+    "_bottom": 107,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,

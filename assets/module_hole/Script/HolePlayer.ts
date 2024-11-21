@@ -15,6 +15,7 @@ const { ccclass, property } = _decorator;
 @ccclass('HolePlayer')
 export class HolePlayer extends Component {
     holeTigger: SphereCollider = null!;
+    magmentTigger: SphereCollider = null!;
     getScoreTigger: BoxCollider = null!;
     diameter: number = 1;
     speed: number = 1;
@@ -23,6 +24,7 @@ export class HolePlayer extends Component {
     ringScale: Vec3 = v3(1.5, 0.01, 1.5); //刚体环形初始scale大小
     holeTriggerRadius: number = 0.4;      //碰撞器触发初始半径
     coefficient: number = 15;
+    isMagment: boolean = false;
 
     @property(Node)
     magnetNode: Node = null!;
@@ -53,37 +55,40 @@ export class HolePlayer extends Component {
 
     initilizeUI(): void {
         this.holeTigger = this.node.getChildByName('HoleTrigger')?.getComponent(SphereCollider)!;
+        this.magmentTigger = this.node.getChildByName('MagmentTrigger')?.getComponent(SphereCollider)!;
         this.getScoreTigger = this.node.getComponent(BoxCollider)!;
         this.holeTigger.on('onTriggerEnter', this.onTriggerEnter, this);
-        // this.holeTigger.on('onTriggerStay', this.onTriggerStay, this);
+        this.holeTigger.on('onTriggerStay', this.onTriggerStay, this);
         this.holeTigger.on('onTriggerExit', this.onTriggerExit, this);
+        this.magmentTigger.on('onTriggerStay', this.onMagmentTriggerStay, this);
         this.getScoreTigger.on('onTriggerEnter', this.onGetScoreTriggerEnter, this);
     }
 
     addEventListener(): void {
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.upLevHole, this);
         EventDispatcher.instance.on(GameEvent.EVENT_TIME_ENERGY_EFFECT, this.playEnegryUpEffect, this);
-        EventDispatcher.instance.on(GameEvent.EVENT_TIME_MAGNET_EFFECT_SHOW, this.showMagnetEffect, this);
-        EventDispatcher.instance.on(GameEvent.EVENT_TIME_MAGNET_EFFECT_HIDE, this.hideMagnetEffect, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_MAGNET_EFFECT_SHOW, this.showMagnetEffect, this);
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET, this.updateHoleView, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_MAGNET_EFFECT_HIDE, this.hideMagnetEffect, this);
     }
 
     protected onDestroy(): void {
         EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.upLevHole);
         EventDispatcher.instance.off(GameEvent.EVENT_TIME_ENERGY_EFFECT, this.playEnegryUpEffect);
-        EventDispatcher.instance.off(GameEvent.EVENT_TIME_MAGNET_EFFECT_SHOW, this.showMagnetEffect);
-        EventDispatcher.instance.off(GameEvent.EVENT_TIME_MAGNET_EFFECT_HIDE, this.hideMagnetEffect);
+        EventDispatcher.instance.off(GameEvent.EVENT_MAGNET_EFFECT_SHOW, this.showMagnetEffect);
         EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET, this.updateHoleView);
+        EventDispatcher.instance.off(GameEvent.EVENT_MAGNET_EFFECT_HIDE, this.hideMagnetEffect);
     }
 
     onTriggerEnter(event: ITriggerEvent): void {
         const holeRadius = this.holeTigger.radius;
         const distance = this.getPlanceVec3(event).length();
         if (event.otherCollider.getGroup() == 1 << 4) {
+            console.log(`distance:${distance}`);
             if (distance <= holeRadius * this.coefficient) {
                 //EdibleThing 层组不与地面碰撞交集 就可通过刚体重力掉落
                 event.otherCollider.setGroup(1 << 3);
-                this.pullTowardsHole(event);
+                // this.pullTowardsHole(event);
             }
         }
     }
@@ -109,6 +114,17 @@ export class HolePlayer extends Component {
         }
     }
 
+    private onMagmentTriggerStay(event: ITriggerEvent): void {
+        const { isMagment } = HoleManager.instance.holeModel;
+        if (isMagment) {
+            const otherPos = event.otherCollider.worldBounds.center;
+            const heloToOtherDir = this.getPlanceVec3(event).normalize();
+            heloToOtherDir.y = otherPos.y;
+            const heloActtion = heloToOtherDir.clone().negative();
+            event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.1), heloToOtherDir);
+        }
+    }
+
     eatProp(event: ITriggerEvent): void {
         HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(4), 1.0);
         const otherNode = event.otherCollider.node;
@@ -120,12 +136,14 @@ export class HolePlayer extends Component {
 
     onTriggerStay(event: ITriggerEvent): void {
         // console.log(`碰撞持续stay otherGroup->:${event.otherCollider.getGroup()}`);
+        const { isMagment } = HoleManager.instance.holeModel;
+        // if (isMagment) return;
         if (event.otherCollider.getGroup() == 1 << 3) {
             const otherPos = event.otherCollider.worldBounds.center;
             const heloToOtherDir = this.getPlanceVec3(event).normalize();
             heloToOtherDir.y = otherPos.y;
             const heloActtion = heloToOtherDir.clone().negative();
-            event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.2), heloToOtherDir);
+            event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.1), heloToOtherDir);
         }
     }
 
@@ -176,6 +194,7 @@ export class HolePlayer extends Component {
         this.magnetNode.active = true;
     }
     private hideMagnetEffect(): void {
+        console.log('关闭特效!!!!!!!!!!!!!!')
         this.magnetNode.active = false;
     }
 

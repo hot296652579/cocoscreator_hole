@@ -48,9 +48,13 @@ export class GameEvent {
     /** 经验加成增加播放特效*/
     static readonly EVENT_TIME_ENERGY_EFFECT = 'EVENT_TIME_ENERGY_EFFECT';
 
+    /** 磁力加成增加打开*/
+    static readonly EVENT_MAGNET_ON = 'EVENT_TIME_MAGNET_ON';
+    /** 磁力加成增加关闭*/
+    static readonly EVENT_MAGNET_OFF = 'EVENT_MAGNET_OFF';
     /** 磁力加成增加播放特效*/
-    static readonly EVENT_TIME_MAGNET_EFFECT_SHOW = 'EVENT_TIME_MAGNET_EFFECT_SHOW';
+    static readonly EVENT_MAGNET_EFFECT_SHOW = 'EVENT_MAGNET_EFFECT_SHOW';
 
     /** 磁力加成增加关闭特效*/
-    static readonly EVENT_TIME_MAGNET_EFFECT_HIDE = 'EVENT_TIME_MAGNET_EFFECT_HIDE';
+    static readonly EVENT_MAGNET_EFFECT_HIDE = 'EVENT_MAGNET_EFFECT_HIDE';
 }

@@ -6,7 +6,7 @@ import { PropManager } from './Script/Manager/PropMgr';
 import { HoleManager } from './Script/Manager/HoleMgr';
 import { UserManager } from './Script/Manager/UserMgr';
 import { tgxUIMgr } from '../core_tgx/tgx';
-import { UI_AboutMe, UI_ExtraTime, UI_Setting, UI_TopInfo } from '../scripts/UIDef';
+import { UI_AboutMe, UI_ExtraTime, UI_Magnetic, UI_Setting, UI_TopInfo } from '../scripts/UIDef';
 import { HoleGameAudioMgr } from './Script/Manager/HoleGameAudioMgr';
 import { UIMgr } from '../core_tgx/easy_ui_framework/UIMgr';
 import { GameUtil } from './Script/Utils';
@@ -226,6 +226,7 @@ export class RoosterHoleEntry extends Component {
         this.countExpUI.active = true;
         this.updateCountLb();
         this.updateUserHoleExp();
+        tgxUIMgr.inst.showUI(UI_Magnetic);
     }
 
     /** 战斗阶段界面*/
