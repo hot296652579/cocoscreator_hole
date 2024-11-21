@@ -61,6 +61,7 @@ export class LevelManager {
         this.levelModel.timesLevel += up;
         const attributeConfig = this.getByTypeAndLevel(TYPE_BLESSINGS.TIME, this.levelModel.timesLevel);
         if (!attributeConfig) {
+            this.levelModel.timesLevel = this.levelModel.timesLevel - up;
             EventDispatcher.instance.emit(GameEvent.EVENT_TIME_LEVEL_MAX);
             return;
         }
@@ -73,6 +74,7 @@ export class LevelManager {
         this.levelModel.expMulLevel += up;
         const attributeConfig = this.getByTypeAndLevel(TYPE_BLESSINGS.EXP, this.levelModel.expMulLevel);
         if (!attributeConfig) {
+            this.levelModel.expMulLevel = this.levelModel.expMulLevel - up;
             EventDispatcher.instance.emit(GameEvent.EVENT_EXP_LEVEL_MAX);
             return;
         }

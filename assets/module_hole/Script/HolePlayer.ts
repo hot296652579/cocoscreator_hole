@@ -1,4 +1,4 @@
-import { _decorator, BoxCollider, Component, CylinderCollider, director, game, isValid, ITriggerEvent, ParticleSystem, SphereCollider, v3, Vec3 } from 'cc';
+import { _decorator, BoxCollider, Component, CylinderCollider, director, game, isValid, ITriggerEvent, ParticleSystem, SphereCollider, v3, Vec3, Node } from 'cc';
 import { EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
@@ -13,8 +13,6 @@ const { ccclass, property } = _decorator;
 
 @ccclass('HolePlayer')
 export class HolePlayer extends Component {
-
-    particle: ParticleSystem = null!;
     holeTigger: SphereCollider = null!;
     getScoreTigger: BoxCollider = null!;
     diameter: number = 1;
@@ -24,6 +22,19 @@ export class HolePlayer extends Component {
     ringScale: Vec3 = v3(1.5, 0.01, 1.5); //刚体环形初始大小
     holeTriggerRadius: number = 0.4;      //碰撞器触发初始半径
     coefficient: number = 15;
+
+    @property(Node)
+    magnetNode: Node = null!;
+
+    @property(ParticleSystem)
+    parLevUp0: ParticleSystem = null!;
+    @property(ParticleSystem)
+    parLevUp1: ParticleSystem = null!;
+
+    @property(ParticleSystem)
+    parEnergy0: ParticleSystem = null!;
+    @property(ParticleSystem)
+    parEnergy1: ParticleSystem = null!;
 
     protected start(): void {
         this.initilizeData();
@@ -40,7 +51,6 @@ export class HolePlayer extends Component {
     }
 
     initilizeUI(): void {
-        this.particle = this.node.getComponentInChildren(ParticleSystem)!;
         this.holeTigger = this.node.getChildByName('HoleTrigger')?.getComponent(SphereCollider)!;
         this.getScoreTigger = this.node.getComponent(BoxCollider)!;
         this.holeTigger.on('onTriggerEnter', this.onTriggerEnter, this);
@@ -51,11 +61,15 @@ export class HolePlayer extends Component {
 
     addEventListener(): void {
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.upLevHole, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_TIME_ENERGY_EFFECT, this.playEnegryUpEffect, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_TIME_MAGNET_EFFECT_SHOW, this.showMagnetEffect, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_TIME_MAGNET_EFFECT_HIDE, this.hideMagnetEffect, this);
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET, this.updateHoleView, this);
     }
 
     protected onDestroy(): void {
         EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.upLevHole);
+        EventDispatcher.instance.off(GameEvent.EVENT_TIME_ENERGY_EFFECT, this.playEnegryUpEffect);
         EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET, this.updateHoleView);
     }
 
@@ -141,8 +155,25 @@ export class HolePlayer extends Component {
     }
 
     upLevHole(): void {
-        this.particle.play();
+        this.playLevUpEffect();
         this.updateHoleView();
+    }
+
+    private playLevUpEffect(): void {
+        this.parLevUp0.play();
+        this.parLevUp1.play();
+    }
+
+    private playEnegryUpEffect(): void {
+        this.parEnergy0.play();
+        this.parEnergy1.play();
+    }
+
+    private showMagnetEffect(): void {
+        this.magnetNode.active = true;
+    }
+    private hideMagnetEffect(): void {
+        this.magnetNode.active = false;
     }
 
     updateHoleView(): void {

@@ -40,6 +40,7 @@ export class HoleManager {
 
         const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.SIZE, holeLevel);
         if (!attributeConfig) {
+            this.holeModel.holeLevel = this.holeModel.holeLevel - up;
             EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_MAX);
             return;
         }

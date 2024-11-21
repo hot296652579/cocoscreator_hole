@@ -75,6 +75,7 @@ export class ButtonController extends Component {
                 break;
             case TYPE_BLESSINGS.EXP:
                 LevelManager.instance.upgradeLevelExp();
+                EventDispatcher.instance.emit(GameEvent.EVENT_TIME_ENERGY_EFFECT);
                 break;
         }
     }

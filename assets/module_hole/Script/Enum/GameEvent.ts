@@ -41,4 +41,16 @@ export class GameEvent {
 
     /** 用户余额更新*/
     static readonly EVENT_USER_MONEY_UPDATE = 'EVENT_USER_MONEY_UPDATE';
+
+    /** 时间加成增加播放特效*/
+    static readonly EVENT_TIME_ADD_EFFECT = 'EVENT_TIME_ADD_EFFECT';
+
+    /** 经验加成增加播放特效*/
+    static readonly EVENT_TIME_ENERGY_EFFECT = 'EVENT_TIME_ENERGY_EFFECT';
+
+    /** 磁力加成增加播放特效*/
+    static readonly EVENT_TIME_MAGNET_EFFECT_SHOW = 'EVENT_TIME_MAGNET_EFFECT_SHOW';
+
+    /** 磁力加成增加关闭特效*/
+    static readonly EVENT_TIME_MAGNET_EFFECT_HIDE = 'EVENT_TIME_MAGNET_EFFECT_HIDE';
 }
