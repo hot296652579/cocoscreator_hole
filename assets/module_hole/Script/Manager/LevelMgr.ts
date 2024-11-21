@@ -66,7 +66,7 @@ export class LevelManager {
             return;
         }
         this.levelModel.levelTimeTotal = attributeConfig.param;
-        EventDispatcher.instance.emit(GameEvent.EVENT_TIME_LEVEL_UP);
+        EventDispatcher.instance.emit(GameEvent.EVENT_TIME_LEVEL_UP, attributeConfig.param);
     }
 
     /** 经验等级升级 */
