@@ -5,6 +5,7 @@ import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatche
 import { GameEvent } from './Enum/GameEvent';
 import { HoleManager } from './Manager/HoleMgr';
 import { UserManager } from './Manager/UserMgr';
+import { AdvertMgr } from './Manager/AdvertMgr';
 const { ccclass, property } = _decorator;
 
 /**
@@ -46,13 +47,19 @@ export class ButtonController extends Component {
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateBtSizeLv, this);
         EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_MAX, this.updateBtSizeLvMax, this);
         EventDispatcher.instance.on(GameEvent.EVENT_LEVEL_UP_RESET, this.onResetAddition, this);
+
+        EventDispatcher.instance.on(GameEvent.EVENT_USER_MONEY_UPDATE, this.updateUserMoeny, this);
     }
 
     private upgradeTimeButton(): void {
         const config = this.getCurrentLevelParam(TYPE_BLESSINGS.TIME);
         const { money } = config;
         const enough = UserManager.instance.checkEnough(money);
+
         if (!enough) {
+            this.showAdHandler(() => {
+                this.upgradeButton(TYPE_BLESSINGS.TIME);
+            })
             return;
         }
 
@@ -60,10 +67,31 @@ export class ButtonController extends Component {
         this.upgradeButton(TYPE_BLESSINGS.TIME);
     }
 
+    private timeEnoughShowFree(): void {
+        const config = this.getCurrentLevelParam(TYPE_BLESSINGS.TIME);
+        const { money } = config;
+        const enough = UserManager.instance.checkEnough(money);
+
+        let used = this.btUpTime.node.getChildByPath('Bt/Used')!;
+        let free = this.btUpTime.node.getChildByPath('Bt/Free')!;
+
+        if (!enough) {
+            used.active = enough;
+            free.active = !enough;
+        } else {
+            used.active = enough;
+            free.active = !enough;
+        }
+    }
+
     private upgradeSizeButton(): void {
         const { money } = this.getCurrentLevelParam(TYPE_BLESSINGS.SIZE);
         const enough = UserManager.instance.checkEnough(money);
+
         if (!enough) {
+            this.showAdHandler(() => {
+                this.upgradeButton(TYPE_BLESSINGS.SIZE);
+            })
             return;
         }
 
@@ -71,15 +99,59 @@ export class ButtonController extends Component {
         this.upgradeButton(TYPE_BLESSINGS.SIZE);
     }
 
+    private sizeEnoughShowFree(): void {
+        const config = this.getCurrentLevelParam(TYPE_BLESSINGS.SIZE);
+        const { money } = config;
+        const enough = UserManager.instance.checkEnough(money);
+
+        let used = this.btUpSize.node.getChildByPath('Bt/Used')!;
+        let free = this.btUpSize.node.getChildByPath('Bt/Free')!;
+
+        if (!enough) {
+            used.active = enough;
+            free.active = !enough;
+        } else {
+            used.active = enough;
+            free.active = !enough;
+        }
+    }
+
     private upgradeExpButton(): void {
         const { money } = this.getCurrentLevelParam(TYPE_BLESSINGS.EXP);
         const enough = UserManager.instance.checkEnough(money);
+
         if (!enough) {
+            this.showAdHandler(() => {
+                this.upgradeButton(TYPE_BLESSINGS.EXP);
+            })
             return;
         }
 
         UserManager.instance.deductMoney(money);
         this.upgradeButton(TYPE_BLESSINGS.EXP);
+    }
+
+    private expEnoughShowFree(): void {
+        const config = this.getCurrentLevelParam(TYPE_BLESSINGS.EXP);
+        const { money } = config;
+        const enough = UserManager.instance.checkEnough(money);
+
+        let used = this.btUpExp.node.getChildByPath('Bt/Used')!;
+        let free = this.btUpExp.node.getChildByPath('Bt/Free')!;
+
+        if (!enough) {
+            used.active = enough;
+            free.active = !enough;
+        } else {
+            used.active = enough;
+            free.active = !enough;
+        }
+    }
+
+    private showAdHandler(cb: () => void): void {
+        AdvertMgr.instance.showReawardVideo(() => {
+            cb && cb();
+        });
     }
 
     private upgradeButton(type: number): void {
@@ -96,35 +168,49 @@ export class ButtonController extends Component {
         }
     }
 
+    private updateUserMoeny(): void {
+        this.timeEnoughShowFree();
+        this.sizeEnoughShowFree();
+        this.expEnoughShowFree();
+    }
+
     private onResetAddition(): void {
         this.updateBtTimeLv();
         this.updateBtSizeLv();
         this.updateBtExpLv();
     }
 
+    private updateButtonViewByType(type: TYPE_BLESSINGS, isMax: boolean = false): void {
+        this.updateButtonView(type, isMax);
+    }
+
     private updateBtTimeLv(): void {
-        this.updateButtonView(TYPE_BLESSINGS.TIME);
+        this.updateButtonViewByType(TYPE_BLESSINGS.TIME);
+        this.timeEnoughShowFree();
     }
 
     private updateBtTimeLvMax(): void {
-        this.updateButtonView(TYPE_BLESSINGS.TIME, true);
-    }
-
-    private updateBtExpLvMax(): void {
-        this.updateButtonView(TYPE_BLESSINGS.EXP, true);
-    }
-
-    private updateBtSizeLv(): void {
-        this.updateButtonView(TYPE_BLESSINGS.SIZE);
-    }
-
-    private updateBtSizeLvMax(): void {
-        this.updateButtonView(TYPE_BLESSINGS.SIZE, true);
+        this.updateButtonViewByType(TYPE_BLESSINGS.TIME, true);
     }
 
     private updateBtExpLv(): void {
-        this.updateButtonView(TYPE_BLESSINGS.EXP);
+        this.updateButtonViewByType(TYPE_BLESSINGS.EXP);
+        this.expEnoughShowFree();
     }
+
+    private updateBtExpLvMax(): void {
+        this.updateButtonViewByType(TYPE_BLESSINGS.EXP, true);
+    }
+
+    private updateBtSizeLv(): void {
+        this.updateButtonViewByType(TYPE_BLESSINGS.SIZE);
+        this.sizeEnoughShowFree();
+    }
+
+    private updateBtSizeLvMax(): void {
+        this.updateButtonViewByType(TYPE_BLESSINGS.SIZE, true);
+    }
+
 
     private updateButtonView(type: number, max?: boolean): void {
         const buttonNode = this.getButtonNodeByType(type);

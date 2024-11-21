@@ -25,12 +25,8 @@ export class UserManager {
 
     /** 检测余额是否足够*/
     checkEnough(deductMoney: number): boolean {
-        console.log(`用户余额:${this.userModel.money} ,扣除金额:${deductMoney}`);
-        const bool = this.userModel.money - deductMoney >= 0;
-        if (!bool) {
-            tgxUIAlert.show('穷逼充钱!');
-        }
-        return bool;
+        // console.log(`用户余额:${this.userModel.money} ,扣除金额:${deductMoney}`);
+        return this.userModel.money - deductMoney >= 0;
     }
 
     /** 扣钱*/

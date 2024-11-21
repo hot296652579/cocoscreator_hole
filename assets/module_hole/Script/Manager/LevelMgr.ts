@@ -93,7 +93,6 @@ export class LevelManager {
     clearLevelData(): void {
         LevelManager.instance.levelModel.extraTimePop = false;
         PropManager.instance.clearEatsMap();
-        HoleManager.instance.reBornLevel();
     }
 
     /** 是否超过当前关卡进度*/
@@ -129,8 +128,8 @@ export class LevelManager {
      * @param level 等级
      * @returns 对应的属性值对象 { param, money }
      */
-    getByTypeAndLevel(type: number, level: number): IAttributeConfig | null {
-        const table = JsonUtil.get(Tablecultivate_config.TableName) || null;
+    getByTypeAndLevel(type: number, level: number): IAttributeConfig {
+        const table = JsonUtil.get(Tablecultivate_config.TableName);
         for (let id in table) {
             const entry = table[id];
             if (entry.type === type && entry.level === level) {
