@@ -191,10 +191,9 @@ export class HolePlayer extends Component {
     }
 
     private showMagnetEffect(): void {
-        this.magnetNode.active = true;
+        this.magnetNode.active = false;//DOTO 特效问题关闭
     }
     private hideMagnetEffect(): void {
-        console.log('关闭特效!!!!!!!!!!!!!!')
         this.magnetNode.active = false;
     }
 
