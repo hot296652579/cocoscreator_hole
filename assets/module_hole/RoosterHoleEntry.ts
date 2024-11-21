@@ -1,4 +1,4 @@
-import { _decorator, Component, Label, Prefab, Node, Game, ProgressBar, CCBoolean, NodeEventType, tween, Vec3, v3, Tween } from 'cc';
+import { _decorator, Component, Label, Prefab, Node, Game, ProgressBar, CCBoolean, NodeEventType, tween, Vec3, v3, Tween, director } from 'cc';
 import { LevelManager } from './Script/Manager/LevelMgr';
 import { EventDispatcher } from '../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Script/Enum/GameEvent';
