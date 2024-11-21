@@ -20,7 +20,6 @@
 
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link rel="icon" href="favicon.ico" />
-  <script async src="https://www.cpsense.com/public/PRESDK3.0.1.js"></script>
 </head>
 
 <body>
@@ -34,27 +33,50 @@
   <p class="footer">
     Created with <a href="https://www.cocos.com/products" title="Cocos Creator">Cocos Creator</a>
   </p>
+
   <!-- Polyfills bundle. -->
-  <script>
-    var adSdkConfig = {
-      el: document.querySelector("#abs"),
-      client: 'cpsense',
-      is_test: true
-    }
-    var adInstance = new adSdk(adSdkConfig);
-  </script>
-
-  <script src="src/polyfills.bundle.js" charset="utf-8"> </script>
-
+  <script src="src/polyfills.bundle.js" charset="utf-8"></script>
 
   <!-- SystemJS support. -->
-  <script src="src/system.bundle.js" charset="utf-8"> </script>
+  <script src="src/system.bundle.js" charset="utf-8"></script>
 
   <!-- Import map -->
-  <script src="src/import-map.json" type="systemjs-importmap" charset="utf-8"> </script>
+  <script src="src/import-map.json" type="systemjs-importmap" charset="utf-8"></script>
 
   <script>
-    System.import('./index.js').catch(function (err) { console.error(err); })
+    // 动态加载外部脚本的方法
+    function loadScript(url) {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = url;
+        script.async = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
+        document.head.appendChild(script);
+      });
+    }
+
+    // 加载 PRESDK3.0.1.js，然后启动项目
+    loadScript('https://www.cpsense.com/public/PRESDK3.0.1.js')
+      .then(() => {
+        console.log('PRESDK3.0.1.js loaded successfully');
+        // 初始化广告 SDK
+        var adSdkConfig = {
+          el: document.querySelector("#abs"),
+          client: 'cpsense',
+          is_test: true
+        };
+        var adInstance = new adSdk(adSdkConfig);
+
+        // 加载项目主入口
+        return System.import('./index.js');
+      })
+      .then(() => {
+        console.log('Game initialized successfully');
+      })
+      .catch(err => {
+        console.error('Error during initialization:', err);
+      });
   </script>
 </body>
 
