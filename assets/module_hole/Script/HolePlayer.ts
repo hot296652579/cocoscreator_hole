@@ -55,7 +55,7 @@ export class HolePlayer extends Component {
         this.holeTigger = this.node.getChildByName('HoleTrigger')?.getComponent(SphereCollider)!;
         this.getScoreTigger = this.node.getComponent(BoxCollider)!;
         this.holeTigger.on('onTriggerEnter', this.onTriggerEnter, this);
-        this.holeTigger.on('onTriggerStay', this.onTriggerStay, this);
+        // this.holeTigger.on('onTriggerStay', this.onTriggerStay, this);
         this.holeTigger.on('onTriggerExit', this.onTriggerExit, this);
         this.getScoreTigger.on('onTriggerEnter', this.onGetScoreTriggerEnter, this);
     }
@@ -83,7 +83,7 @@ export class HolePlayer extends Component {
             if (distance <= holeRadius * this.coefficient) {
                 //EdibleThing 层组不与地面碰撞交集 就可通过刚体重力掉落
                 event.otherCollider.setGroup(1 << 3);
-                // this.pullTowardsHole(event);
+                this.pullTowardsHole(event);
             }
         }
     }
