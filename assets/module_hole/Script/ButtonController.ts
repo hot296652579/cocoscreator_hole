@@ -6,6 +6,8 @@ import { GameEvent } from './Enum/GameEvent';
 import { HoleManager } from './Manager/HoleMgr';
 import { UserManager } from './Manager/UserMgr';
 import { AdvertMgr } from './Manager/AdvertMgr';
+import { HoleGameAudioMgr } from './Manager/HoleGameAudioMgr';
+import { AudioMgr } from '../../core_tgx/base/AudioMgr';
 const { ccclass, property } = _decorator;
 
 /**
@@ -59,6 +61,7 @@ export class ButtonController extends Component {
         if (!enough) {
             AdvertMgr.instance.showReawardVideo(() => this.performUpgrade(type));
         } else {
+            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
             UserManager.instance.deductMoney(money);
             this.performUpgrade(type);
         }

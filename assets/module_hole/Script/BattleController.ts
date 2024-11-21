@@ -8,6 +8,8 @@ import { tgxUIMgr } from '../../core_tgx/tgx';
 import { UI_BattleResult } from '../../scripts/UIDef';
 import { EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
 import { ActionState, CharacterCtrl } from './Character/CharacterCtrl';
+import { HoleGameAudioMgr } from './Manager/HoleGameAudioMgr';
+import { AudioMgr } from '../../core_tgx/base/AudioMgr';
 
 const { ccclass, property } = _decorator;
 
@@ -35,6 +37,7 @@ export class BattleController extends Component {
     scheduledCallbacks: (() => void)[] = []; // 存储定时器 ID
 
     protected start(): void {
+        HoleGameAudioMgr.play(AudioMgr.inst.getMusicIdName(1), 1.0);
         this.initilize();
         this.addListener();
         this.takeCameraToPlayer();
@@ -171,6 +174,7 @@ export class BattleController extends Component {
 
     /** 播放攻击动画*/
     private playAttackAniamtion(): void {
+        HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(9), 1.0);
         this.player.getComponent(CharacterCtrl)?.doAnimation(ActionState.Attack);
         this.boss.getComponent(CharacterCtrl)?.doAnimation(ActionState.Attack);
         this.scheduleTask(() => this.playPunchFlyAnimation(), 1);

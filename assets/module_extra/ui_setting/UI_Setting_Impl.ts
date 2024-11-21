@@ -5,6 +5,7 @@ import { tgxModuleContext } from "../../core_tgx/tgx";
 import { GameUILayers } from "../../scripts/GameUILayers";
 import { UI_AboutMe, UI_Setting } from "../../scripts/UIDef";
 import { Layout_Setting } from "./Layout_Setting";
+import { HoleGameAudioMgr } from "../../module_hole/Script/Manager/HoleGameAudioMgr";
 
 export class UI_Setting_Impl extends UI_Setting {
     constructor() {
@@ -18,6 +19,7 @@ export class UI_Setting_Impl extends UI_Setting {
     protected onCreated(): void {
         let layout = this.layout as Layout_Setting;
         this.onButtonEvent(layout.btnClose, () => {
+            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
             this.hide();
         });
 

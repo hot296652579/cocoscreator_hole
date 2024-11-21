@@ -12,6 +12,7 @@ import { UIMgr } from '../core_tgx/easy_ui_framework/UIMgr';
 import { GameUtil } from './Script/Utils';
 import { TYPE_GAME_STATE } from './Script/Model/LevelModel';
 import { AdvertMgr } from './Script/Manager/AdvertMgr';
+import { AudioMgr } from '../core_tgx/base/AudioMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('RoosterHoleEntry')
@@ -39,7 +40,6 @@ export class RoosterHoleEntry extends Component {
 
     start() {
         AdvertMgr.instance.initilize();
-        HoleGameAudioMgr.play('Audio/Bgm', 1.0);
         this.initilize();
         this.addEventListen();
     }
@@ -219,6 +219,7 @@ export class RoosterHoleEntry extends Component {
 
     /** 准备阶段界面*/
     private prepStageView(): void {
+        HoleGameAudioMgr.play(AudioMgr.inst.getMusicIdName(2), 1.0);
         this.gaming = false;
         this.battleUI.active = false;
         this.btnsLayout.active = true;

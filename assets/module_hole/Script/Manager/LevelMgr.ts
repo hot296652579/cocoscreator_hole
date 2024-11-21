@@ -120,7 +120,7 @@ export class LevelManager {
             const { count, totalWeight } = element;
             total += totalWeight;
         });
-        // console.log(`玩家吃到道具重量:${total} boss重量:${bossWeight}`);
+        // console.log(`玩家吃到道具重量:${total} boss重量:${bossWeight} 输赢:${total >= bossWeight}`);
         return GlobalConfig.plug ?? total >= bossWeight;
     }
 

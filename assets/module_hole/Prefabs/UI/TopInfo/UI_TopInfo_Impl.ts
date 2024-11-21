@@ -10,6 +10,8 @@ import { LevelManager } from "../../../Script/Manager/LevelMgr";
 import { PropManager } from "../../../Script/Manager/PropMgr";
 import { UserManager } from "../../../Script/Manager/UserMgr";
 import { Layout_TopInfo } from "./Layout_TopInfo";
+import { HoleGameAudioMgr } from "../../../Script/Manager/HoleGameAudioMgr";
+import { AudioMgr } from "../../../../core_tgx/base/AudioMgr";
 
 export class UI_TopInfo_Impl extends UI_TopInfo {
     private rollingTween: Tween<any> | null = null; // 滚动动画的 tween 对象
@@ -34,6 +36,7 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
 
         let layout = this.layout as Layout_TopInfo;
         this.onButtonEvent(layout.btSet, () => {
+            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
             const show = tgxUIMgr.inst.isShowing(UI_Setting);
             if (!show) {
                 tgxUIMgr.inst.showUI(UI_Setting);

@@ -10,6 +10,8 @@ import { Layout_BattleResult } from "./Layout_BattleResult";
 import { isValid, Label } from "cc";
 import { PropManager } from "../../../Script/Manager/PropMgr";
 import { UserManager } from "../../../Script/Manager/UserMgr";
+import { HoleGameAudioMgr } from "../../../Script/Manager/HoleGameAudioMgr";
+import { AudioMgr } from "../../../../core_tgx/base/AudioMgr";
 
 const delday = 30000;
 
@@ -30,9 +32,11 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         this.calculateReward();
         let layout = this.layout as Layout_BattleResult;
         this.onButtonEvent(layout.btGet, () => {
+            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
             this.onClickRewardBase(); //领取基础奖励
         });
         this.onButtonEvent(layout.btExtra, () => {
+            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
             this.onClickRewardAdditional(); //领取额外奖励
         });
         this.initilizeResult();
@@ -48,6 +52,9 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
 
         layout.btGet.node.getChildByName('lbGet').getComponent(Label).string = `${this.rewardBase}`;
         layout.btExtra.node.getChildByName('lbExtra').getComponent(Label).string = `${this.rewardAdditional}`;
+
+        const soundId = this.win ? 11 : 12;
+        HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(soundId), 1.0);
     }
 
     private emitEvent(): void {

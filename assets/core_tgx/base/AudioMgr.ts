@@ -1,4 +1,5 @@
 import { Node, AudioSource, AudioClip, director, assetManager } from 'cc';
+import { MusicConfigModel } from '../../module_hole/Script/Model/MusicConfigModel';
 
 /**
  * @en
@@ -18,6 +19,7 @@ export class AudioMgr {
     private _audioSource: AudioSource;
     private _bgMusicEnabled: boolean = true; // 是否开启背景音乐
     private _soundEffectsEnabled: boolean = true; // 是否开启音效
+    private _musicConfigModel: MusicConfigModel = new MusicConfigModel();
 
     constructor() {
         // 创建一个节点作为 audioMgr
@@ -42,6 +44,10 @@ export class AudioMgr {
     }
     public get soundEffectsEnabled() {
         return this._soundEffectsEnabled;
+    }
+
+    public getMusicIdName(id: number): string {
+        return 'Audio/' + this._musicConfigModel.getNameById(id);
     }
 
     /**
@@ -89,6 +95,11 @@ export class AudioMgr {
             this._audioSource.play();
             this.audioSource.volume = volume;
         } else {
+            if (this._audioSource.clip) {
+                this._audioSource.stop();
+                this._audioSource.clip = null;
+            }
+
             let bundle = assetManager.getBundle(bundleName);
             bundle.load(sound, (err, clip: AudioClip) => {
                 if (err) {
