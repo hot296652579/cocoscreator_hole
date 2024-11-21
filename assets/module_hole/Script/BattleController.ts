@@ -1,15 +1,12 @@
-import { BoxCollider, Camera, CharacterController, Component, CylinderCollider, Node, Prefab, Quat, SphereCollider, Toggle, Vec3, _decorator, director, instantiate, isValid, math, tween, v3 } from 'cc';
+import { BoxCollider, Camera, Component, CylinderCollider, Node, Prefab, SphereCollider, Vec3, _decorator, instantiate, isValid, math, tween, v3 } from 'cc';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
-import { GameEvent } from './Enum/GameEvent';
-import { LevelManager } from './Manager/LevelMgr';
-import { PropManager } from './Manager/PropMgr';
-import { GlobalConfig } from './Config/GlobalConfig';
 import { tgxUIMgr } from '../../core_tgx/tgx';
 import { UI_BattleResult } from '../../scripts/UIDef';
-import { EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
 import { ActionState, CharacterCtrl } from './Character/CharacterCtrl';
+import { GameEvent } from './Enum/GameEvent';
 import { HoleGameAudioMgr } from './Manager/HoleGameAudioMgr';
-import { AudioMgr } from '../../core_tgx/base/AudioMgr';
+import { LevelManager } from './Manager/LevelMgr';
+import { PropManager } from './Manager/PropMgr';
 
 const { ccclass, property } = _decorator;
 
@@ -37,7 +34,7 @@ export class BattleController extends Component {
     scheduledCallbacks: (() => void)[] = []; // 存储定时器 ID
 
     protected start(): void {
-        HoleGameAudioMgr.play(AudioMgr.inst.getMusicIdName(1), 1.0);
+        HoleGameAudioMgr.play(HoleGameAudioMgr.getMusicIdName(1), 1.0);
         this.initilize();
         this.addListener();
         this.takeCameraToPlayer();
@@ -174,7 +171,7 @@ export class BattleController extends Component {
 
     /** 播放攻击动画*/
     private playAttackAniamtion(): void {
-        HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(9), 1.0);
+        HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(9), 1.0);
         this.player.getComponent(CharacterCtrl)?.doAnimation(ActionState.Attack);
         this.boss.getComponent(CharacterCtrl)?.doAnimation(ActionState.Attack);
         this.scheduleTask(() => this.playPunchFlyAnimation(), 1);

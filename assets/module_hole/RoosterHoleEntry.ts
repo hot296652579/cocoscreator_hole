@@ -1,18 +1,16 @@
-import { _decorator, Component, Label, Prefab, Node, Game, ProgressBar, CCBoolean, NodeEventType, tween, Vec3, v3, Tween, director } from 'cc';
-import { LevelManager } from './Script/Manager/LevelMgr';
+import { Component, Label, Node, Prefab, ProgressBar, Tween, Vec3, _decorator, tween, v3 } from 'cc';
 import { EventDispatcher } from '../core_tgx/easy_ui_framework/EventDispatcher';
-import { GameEvent } from './Script/Enum/GameEvent';
-import { PropManager } from './Script/Manager/PropMgr';
-import { HoleManager } from './Script/Manager/HoleMgr';
-import { UserManager } from './Script/Manager/UserMgr';
 import { tgxUIMgr } from '../core_tgx/tgx';
-import { UI_AboutMe, UI_ExtraTime, UI_Magnetic, UI_Setting, UI_TopInfo } from '../scripts/UIDef';
-import { HoleGameAudioMgr } from './Script/Manager/HoleGameAudioMgr';
-import { UIMgr } from '../core_tgx/easy_ui_framework/UIMgr';
-import { GameUtil } from './Script/Utils';
-import { TYPE_GAME_STATE } from './Script/Model/LevelModel';
+import { UI_ExtraTime, UI_Magnetic, UI_TopInfo } from '../scripts/UIDef';
+import { GameEvent } from './Script/Enum/GameEvent';
 import { AdvertMgr } from './Script/Manager/AdvertMgr';
-import { AudioMgr } from '../core_tgx/base/AudioMgr';
+import { HoleGameAudioMgr } from './Script/Manager/HoleGameAudioMgr';
+import { HoleManager } from './Script/Manager/HoleMgr';
+import { LevelManager } from './Script/Manager/LevelMgr';
+import { PropManager } from './Script/Manager/PropMgr';
+import { UserManager } from './Script/Manager/UserMgr';
+import { TYPE_GAME_STATE } from './Script/Model/LevelModel';
+import { GameUtil } from './Script/Utils';
 const { ccclass, property } = _decorator;
 
 @ccclass('RoosterHoleEntry')
@@ -39,6 +37,7 @@ export class RoosterHoleEntry extends Component {
     private gaming: boolean = false;
 
     start() {
+        HoleGameAudioMgr.initilize();
         AdvertMgr.instance.initilize();
         this.initilize();
         this.addEventListen();
@@ -219,7 +218,7 @@ export class RoosterHoleEntry extends Component {
 
     /** 准备阶段界面*/
     private prepStageView(): void {
-        HoleGameAudioMgr.play(AudioMgr.inst.getMusicIdName(2), 1.0);
+        HoleGameAudioMgr.play(HoleGameAudioMgr.getMusicIdName(2), 1.0);
         this.gaming = false;
         this.battleUI.active = false;
         this.btnsLayout.active = true;

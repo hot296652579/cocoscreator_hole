@@ -1,13 +1,12 @@
-import { _decorator, Component, Button, NodeEventType, Label, Node } from 'cc';
-import { LevelManager } from './Manager/LevelMgr';
-import { TYPE_BLESSINGS } from './Model/LevelModel';
+import { Button, Component, Label, Node, NodeEventType, _decorator } from 'cc';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
-import { HoleManager } from './Manager/HoleMgr';
-import { UserManager } from './Manager/UserMgr';
 import { AdvertMgr } from './Manager/AdvertMgr';
 import { HoleGameAudioMgr } from './Manager/HoleGameAudioMgr';
-import { AudioMgr } from '../../core_tgx/base/AudioMgr';
+import { HoleManager } from './Manager/HoleMgr';
+import { LevelManager } from './Manager/LevelMgr';
+import { UserManager } from './Manager/UserMgr';
+import { TYPE_BLESSINGS } from './Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 /**
@@ -61,7 +60,7 @@ export class ButtonController extends Component {
         if (!enough) {
             AdvertMgr.instance.showReawardVideo(() => this.performUpgrade(type));
         } else {
-            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
+            HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(5), 1.0);
             UserManager.instance.deductMoney(money);
             this.performUpgrade(type);
         }

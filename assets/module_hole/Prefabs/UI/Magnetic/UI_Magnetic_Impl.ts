@@ -1,13 +1,12 @@
 
 
-import { _decorator, Component, isValid, Node } from 'cc';
-import { UI_Magnetic } from '../../../../scripts/UIDef';
-import { GameUILayers } from '../../../../scripts/GameUILayers';
-import { tgxModuleContext } from '../../../../core_tgx/tgx';
+import { _decorator, isValid } from 'cc';
 import { EventDispatcher } from '../../../../core_tgx/easy_ui_framework/EventDispatcher';
+import { tgxModuleContext } from '../../../../core_tgx/tgx';
+import { GameUILayers } from '../../../../scripts/GameUILayers';
+import { UI_Magnetic } from '../../../../scripts/UIDef';
 import { GameEvent } from '../../../Script/Enum/GameEvent';
 import { AdvertMgr } from '../../../Script/Manager/AdvertMgr';
-import { AudioMgr } from '../../../../core_tgx/base/AudioMgr';
 import { HoleGameAudioMgr } from '../../../Script/Manager/HoleGameAudioMgr';
 import { Layout_Magnetic } from './Layout_Magnetic';
 const { ccclass, property } = _decorator;
@@ -25,11 +24,11 @@ export class UI_Magnetic_Impl extends UI_Magnetic {
     protected onCreated(): void {
         let layout = this.layout as Layout_Magnetic;
         this.onButtonEvent(layout.btGet, () => {
-            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
+            HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(5), 1.0);
             this.addAdverHandler();
         });
         this.onButtonEvent(layout.btNo, () => {
-            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
+            HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(5), 1.0);
             this.destoryMyself();
         });
     }

@@ -1,17 +1,14 @@
-import { WINDOWS } from "cc/env";
+import { isValid, Label } from "cc";
 import { EventDispatcher } from "../../../../core_tgx/easy_ui_framework/EventDispatcher";
 import { tgxModuleContext } from "../../../../core_tgx/tgx";
-import { Layout_Setting } from "../../../../module_extra/ui_setting/Layout_Setting";
 import { GameUILayers } from "../../../../scripts/GameUILayers";
 import { UI_BattleResult } from "../../../../scripts/UIDef";
 import { GameEvent } from "../../../Script/Enum/GameEvent";
+import { HoleGameAudioMgr } from "../../../Script/Manager/HoleGameAudioMgr";
 import { LevelManager } from "../../../Script/Manager/LevelMgr";
-import { Layout_BattleResult } from "./Layout_BattleResult";
-import { isValid, Label } from "cc";
 import { PropManager } from "../../../Script/Manager/PropMgr";
 import { UserManager } from "../../../Script/Manager/UserMgr";
-import { HoleGameAudioMgr } from "../../../Script/Manager/HoleGameAudioMgr";
-import { AudioMgr } from "../../../../core_tgx/base/AudioMgr";
+import { Layout_BattleResult } from "./Layout_BattleResult";
 
 const delday = 30000;
 
@@ -32,11 +29,11 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         this.calculateReward();
         let layout = this.layout as Layout_BattleResult;
         this.onButtonEvent(layout.btGet, () => {
-            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
+            HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(5), 1.0);
             this.onClickRewardBase(); //领取基础奖励
         });
         this.onButtonEvent(layout.btExtra, () => {
-            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
+            HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(5), 1.0);
             this.onClickRewardAdditional(); //领取额外奖励
         });
         this.initilizeResult();
@@ -54,7 +51,7 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         layout.btExtra.node.getChildByName('lbExtra').getComponent(Label).string = `${this.rewardAdditional}`;
 
         const soundId = this.win ? 11 : 12;
-        HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(soundId), 1.0);
+        HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(soundId), 1.0);
     }
 
     private emitEvent(): void {
