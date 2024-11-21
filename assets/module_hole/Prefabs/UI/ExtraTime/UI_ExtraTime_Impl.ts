@@ -6,6 +6,8 @@ import { tgxModuleContext } from '../../../../core_tgx/tgx';
 import { EventDispatcher } from '../../../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from '../../../Script/Enum/GameEvent';
 import { AdvertMgr } from '../../../Script/Manager/AdvertMgr';
+import { AudioMgr } from '../../../../core_tgx/base/AudioMgr';
+import { HoleGameAudioMgr } from '../../../Script/Manager/HoleGameAudioMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('UI_ExtraTime_Impl')
@@ -21,9 +23,11 @@ export class UI_ExtraTime_Impl extends UI_ExtraTime {
     protected onCreated(): void {
         let layout = this.layout as Layout_ExtraTime;
         this.onButtonEvent(layout.btGet, () => {
+            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
             this.addAdverHandler();
         });
         this.onButtonEvent(layout.btNo, () => {
+            HoleGameAudioMgr.playOneShot(AudioMgr.inst.getMusicIdName(5), 1.0);
             this.destoryMyself();
             EventDispatcher.instance.emit(GameEvent.EVENT_ADD_EXTRATIME, false);
         });
