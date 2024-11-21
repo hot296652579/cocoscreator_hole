@@ -20,7 +20,7 @@ export class HolePlayer extends Component {
     speed: number = 1;
     view: number = 1;
 
-    ringScale: Vec3 = v3(1.5, 0.01, 1.5); //刚体环形初始大小
+    ringScale: Vec3 = v3(1.5, 0.01, 1.5); //刚体环形初始scale大小
     holeTriggerRadius: number = 0.4;      //碰撞器触发初始半径
     coefficient: number = 15;
 
@@ -55,7 +55,7 @@ export class HolePlayer extends Component {
         this.holeTigger = this.node.getChildByName('HoleTrigger')?.getComponent(SphereCollider)!;
         this.getScoreTigger = this.node.getComponent(BoxCollider)!;
         this.holeTigger.on('onTriggerEnter', this.onTriggerEnter, this);
-        // this.holeTigger.on('onTriggerStay', this.onTriggerStay, this);
+        this.holeTigger.on('onTriggerStay', this.onTriggerStay, this);
         this.holeTigger.on('onTriggerExit', this.onTriggerExit, this);
         this.getScoreTigger.on('onTriggerEnter', this.onGetScoreTriggerEnter, this);
     }
@@ -71,6 +71,8 @@ export class HolePlayer extends Component {
     protected onDestroy(): void {
         EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.upLevHole);
         EventDispatcher.instance.off(GameEvent.EVENT_TIME_ENERGY_EFFECT, this.playEnegryUpEffect);
+        EventDispatcher.instance.off(GameEvent.EVENT_TIME_MAGNET_EFFECT_SHOW, this.showMagnetEffect);
+        EventDispatcher.instance.off(GameEvent.EVENT_TIME_MAGNET_EFFECT_HIDE, this.hideMagnetEffect);
         EventDispatcher.instance.off(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET, this.updateHoleView);
     }
 
@@ -81,7 +83,7 @@ export class HolePlayer extends Component {
             if (distance <= holeRadius * this.coefficient) {
                 //EdibleThing 层组不与地面碰撞交集 就可通过刚体重力掉落
                 event.otherCollider.setGroup(1 << 3);
-                this.pullTowardsHole(event);
+                // this.pullTowardsHole(event);
             }
         }
     }
