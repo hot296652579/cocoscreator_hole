@@ -141,6 +141,7 @@ export class BattleController extends Component {
 
     /** 击飞动画*/
     playPunchFlyAnimation() {
+        HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(9), 1.0);
         const targetNode = this.battleWin ? this.boss : this.player;
         if (!targetNode) return
 
@@ -174,7 +175,6 @@ export class BattleController extends Component {
 
     /** 播放攻击动画*/
     private playAttackAniamtion(): void {
-        HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(9), 1.0);
         this.player.getComponent(CharacterCtrl)?.doAnimation(ActionState.Attack);
         this.boss.getComponent(CharacterCtrl)?.doAnimation(ActionState.Attack);
         this.scheduleTask(() => this.playPunchFlyAnimation(), 1);
