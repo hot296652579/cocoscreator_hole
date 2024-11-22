@@ -206,7 +206,7 @@ export class HolePlayer extends Component {
         const { holeLevel, speed, view, diameter } = model;
         this.speed = speed;
         this.node.setScale(v3(diameter, 1, diameter));
-        // console.log(`黑洞等级:${holeLevel} diameter:${diameter} view:${view} speed:${speed}`);
+        console.log(`黑洞等级:${holeLevel} diameter:${diameter} view:${view} speed:${speed}`);
 
         const sence = director.getScene();
         sence.emit(EasyControllerEvent.CAMERA_ZOOM, view);
