@@ -120,6 +120,12 @@ export class HolePlayer extends Component {
             heloToOtherDir.y = otherPos.y;
             const heloActtion = heloToOtherDir.clone().negative();
             event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.1), heloToOtherDir);
+
+            const holeRadius = this.holeTigger.radius;
+            const distance = this.getPlanceVec3(event).length();
+            if (distance <= holeRadius) {
+                event.otherCollider.setGroup(1 << 3);
+            }
         }
     }
 

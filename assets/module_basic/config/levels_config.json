@@ -1,1 +1,72 @@
-{"1":{"level":1,"reward_basics":250,"reward_additional":250,"boss":1,"quality":25},"2":{"level":2,"reward_basics":800,"reward_additional":800,"boss":2,"quality":114},"3":{"level":3,"reward_basics":1000,"reward_additional":1200,"boss":3,"quality":235},"4":{"level":4,"reward_basics":1200,"reward_additional":1600,"boss":4,"quality":990},"5":{"level":5,"reward_basics":1500,"reward_additional":2000,"boss":5,"quality":2250},"6":{"level":6,"reward_basics":1600,"reward_additional":2400,"boss":6,"quality":6640},"7":{"level":7,"reward_basics":1800,"reward_additional":2800,"boss":7,"quality":19190},"8":{"level":8,"reward_basics":2000,"reward_additional":3200,"boss":8,"quality":52000},"9":{"level":9,"reward_basics":2200,"reward_additional":3600,"boss":9,"quality":155600},"10":{"level":10,"reward_basics":2400,"reward_additional":4000,"boss":10,"quality":575900}}
+{
+    "1": {
+        "level": 1,
+        "reward_basics": 250,
+        "reward_additional": 250,
+        "boss": 1,
+        "quality": 25
+    },
+    "2": {
+        "level": 2,
+        "reward_basics": 800,
+        "reward_additional": 800,
+        "boss": 2,
+        "quality": 114
+    },
+    "3": {
+        "level": 3,
+        "reward_basics": 1000,
+        "reward_additional": 1200,
+        "boss": 3,
+        "quality": 235
+    },
+    "4": {
+        "level": 4,
+        "reward_basics": 1200,
+        "reward_additional": 1600,
+        "boss": 4,
+        "quality": 990
+    },
+    "5": {
+        "level": 5,
+        "reward_basics": 1500,
+        "reward_additional": 2000,
+        "boss": 5,
+        "quality": 2250
+    },
+    "6": {
+        "level": 6,
+        "reward_basics": 1600,
+        "reward_additional": 2400,
+        "boss": 6,
+        "quality": 6640
+    },
+    "7": {
+        "level": 7,
+        "reward_basics": 1800,
+        "reward_additional": 2800,
+        "boss": 7,
+        "quality": 19190
+    },
+    "8": {
+        "level": 8,
+        "reward_basics": 2000,
+        "reward_additional": 3200,
+        "boss": 8,
+        "quality": 52000
+    },
+    "9": {
+        "level": 9,
+        "reward_basics": 2200,
+        "reward_additional": 3600,
+        "boss": 9,
+        "quality": 155600
+    },
+    "10": {
+        "level": 10,
+        "reward_basics": 2400,
+        "reward_additional": 4000,
+        "boss": 10,
+        "quality": 575900
+    }
+}

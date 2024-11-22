@@ -50,7 +50,7 @@ export class LevelManager {
     upgradeLevel(up: number = 1): void {
         this.levelModel.level += up;
         if (this.levelModel.level > GlobalConfig.levelTotal) {
-            const level = Math.floor(Math.random() * 3) + 1;
+            const level = Math.floor(Math.random() * GlobalConfig.levelTotal) + 1;
             this.levelModel.level = level;
         }
         this.levelModel.levelConfig.init(this.levelModel.level);
