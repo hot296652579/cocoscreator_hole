@@ -103,8 +103,12 @@ export class ButtonController extends Component {
 
     /** 显示金币按钮或广告图标*/
     private updateButtonFreeState(type: TYPE_BLESSINGS): void {
-        const { money } = this.getCurrentLevelParam(type);
-        const enough = UserManager.instance.checkEnough(money);
+        const config = this.getCurrentLevelParam(type);
+        if (!config) {
+            console.log(`config数据是null type:${type} 当前黑洞等级:${HoleManager.instance.holeModel.holeLevel}`);
+            return;
+        }
+        const enough = UserManager.instance.checkEnough(config.money);
 
         const buttonNode = this.getButtonNodeByType(type);
         const used = buttonNode.getChildByPath('Bt/Used')!;
