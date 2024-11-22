@@ -6838,7 +6838,35 @@
         "__expectedType__": "cc.Prefab"
       },
       {
-        "__uuid__": "3bd669b6-862e-41ab-af88-9055225bbb54",
+        "__uuid__": "6e68ebda-2d62-4a8c-b3da-5ecc3da633f6",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "71420121-f01b-4498-b263-ec2c1db030fe",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "29a5a7fb-e30c-4779-bd9c-625212832440",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "0f6d99d8-2266-4a34-8aa3-2c7ba8413469",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "da1a0b8d-332a-406b-b9f1-bbeee33ca2ba",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "73b07474-1461-48c1-b3af-19963c3ddc6f",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "487fe870-271e-482f-9cf2-a5cb68deecbb",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "07405aac-fda6-4089-9d19-0a036d881a45",
         "__expectedType__": "cc.Prefab"
       }
     ],

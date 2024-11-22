@@ -83,7 +83,6 @@ export class HolePlayer extends Component {
         const holeRadius = this.holeTigger.radius;
         const distance = this.getPlanceVec3(event).length();
         if (event.otherCollider.getGroup() == 1 << 4) {
-            console.log(`distance:${distance}`);
             if (distance <= holeRadius * this.coefficient) {
                 //EdibleThing 层组不与地面碰撞交集 就可通过刚体重力掉落
                 event.otherCollider.setGroup(1 << 3);
@@ -201,7 +200,7 @@ export class HolePlayer extends Component {
         const { holeLevel, speed, view, diameter } = model;
         this.speed = speed;
         this.node.setScale(v3(diameter, 1, diameter));
-        console.log(`黑洞等级:${holeLevel} diameter:${diameter} view:${view} speed:${speed}`);
+        // console.log(`黑洞等级:${holeLevel} diameter:${diameter} view:${view} speed:${speed}`);
 
         const sence = director.getScene();
         sence.emit(EasyControllerEvent.CAMERA_ZOOM, view);
