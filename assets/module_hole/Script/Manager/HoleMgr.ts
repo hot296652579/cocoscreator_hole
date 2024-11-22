@@ -62,11 +62,21 @@ export class HoleManager {
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP);
     }
 
+    timeoutId = null;
     /** 闯关失败重设经验*/
     resetExPByLose(): void {
         this.holeModel.curHoleExpL = 0;
         this.onMagnetOff();
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_EXP_UPDATE);
+
+        if (this.timeoutId) {
+            clearTimeout(this.timeoutId);
+            this.timeoutId = null;
+        }
+        //打补丁 重置视野
+        this.timeoutId = setTimeout(() => {
+            EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET);//刷新视野
+        }, 100)
     }
 
     /** 黑洞重生*/
