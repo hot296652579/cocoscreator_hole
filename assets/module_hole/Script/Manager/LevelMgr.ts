@@ -9,6 +9,7 @@ import { userInfo } from 'os';
 import { JsonUtil } from '../../../core_tgx/base/utils/JsonUtil';
 import { HoleManager } from './HoleMgr';
 import { GlobalConfig } from '../Config/GlobalConfig';
+import { PropManager } from './PropMgr';
 const { ccclass, property } = _decorator;
 
 @ccclass('LevelManager')
@@ -22,6 +23,7 @@ export class LevelManager {
     levelPrefabs: Prefab[] = [];
     battlePrefab: Prefab = null!;
     parent: Node = null!;
+    percent: number = 80;//当前关卡进度比值
 
     public levelModel: LevelModel = null;
 
@@ -58,24 +60,68 @@ export class LevelManager {
     upgradeLevelTime(up: number = 1): void {
         this.levelModel.timesLevel += up;
         const attributeConfig = this.getByTypeAndLevel(TYPE_BLESSINGS.TIME, this.levelModel.timesLevel);
+        if (!attributeConfig) {
+            this.levelModel.timesLevel = this.levelModel.timesLevel - up;
+            EventDispatcher.instance.emit(GameEvent.EVENT_TIME_LEVEL_MAX);
+            return;
+        }
         this.levelModel.levelTimeTotal = attributeConfig.param;
-        EventDispatcher.instance.emit(GameEvent.EVENT_TIME_LEVEL_UP);
+        EventDispatcher.instance.emit(GameEvent.EVENT_TIME_LEVEL_UP, attributeConfig.param);
     }
 
     /** 经验等级升级 */
     upgradeLevelExp(up: number = 1): void {
         this.levelModel.expMulLevel += up;
         const attributeConfig = this.getByTypeAndLevel(TYPE_BLESSINGS.EXP, this.levelModel.expMulLevel);
+        if (!attributeConfig) {
+            this.levelModel.expMulLevel = this.levelModel.expMulLevel - up;
+            EventDispatcher.instance.emit(GameEvent.EVENT_EXP_LEVEL_MAX);
+            return;
+        }
         this.levelModel.expMultiplier = attributeConfig.param;
         EventDispatcher.instance.emit(GameEvent.EVENT_EXP_LEVEL_UP);
     }
 
-    /** 重设加成等级*/
+    /** 升级关卡重设加成等级*/
     resetAddition(): void {
         this.levelModel.timesLevel = 1;
         this.levelModel.expMulLevel = 1;
         HoleManager.instance.reBornLevel();
+        PropManager.instance.clearEatsMap();
         EventDispatcher.instance.emit(GameEvent.EVENT_LEVEL_UP_RESET);
+    }
+
+    /** 清除关卡数据*/
+    clearLevelData(): void {
+        LevelManager.instance.levelModel.extraTimePop = false;
+        PropManager.instance.clearEatsMap();
+    }
+
+    /** 是否超过当前关卡进度*/
+    isExceedingPercent(): boolean {
+        const { quality } = LevelManager.instance.levelModel; //关卡总质量
+        const currentMass = PropManager.instance.getLevelTotalWeight()
+        const totalMassScaled = quality * 100; // 将总质量放大100倍
+        const thresholdScaled = totalMassScaled * this.percent; // 计算80%的值（放大后的）
+        const currentMassScaled = currentMass * 100; // 当前质量也放大100倍
+
+        // 判断是否超过阈值
+        return currentMassScaled > thresholdScaled;
+    }
+
+    /** 判断本次关卡输赢*/
+    judgeWin(): boolean {
+        const { bossModel } = LevelManager.instance.levelModel;
+        const { bossWeight } = bossModel;
+
+        let total = 0;
+        const eatsMap = PropManager.instance.eatsMap;
+        eatsMap.forEach(element => {
+            const { count, totalWeight } = element;
+            total += totalWeight;
+        });
+        // console.log(`玩家吃到道具重量:${total} boss重量:${bossWeight} 输赢:${total >= bossWeight}`);
+        return GlobalConfig.plug ?? total >= bossWeight;
     }
 
     /**
@@ -84,7 +130,7 @@ export class LevelManager {
      * @param level 等级
      * @returns 对应的属性值对象 { param, money }
      */
-    getByTypeAndLevel(type: number, level: number): IAttributeConfig | null {
+    getByTypeAndLevel(type: number, level: number): IAttributeConfig {
         const table = JsonUtil.get(Tablecultivate_config.TableName);
         for (let id in table) {
             const entry = table[id];

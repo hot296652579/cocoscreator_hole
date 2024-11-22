@@ -2,6 +2,8 @@ import { _decorator, Node, Prefab, instantiate, Component, Camera, UITransform, 
 import { BlackholeModel } from '../Model/HoleModel';
 import { EventDispatcher } from '../../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from '../Enum/GameEvent';
+import { LevelManager } from './LevelMgr';
+import { TYPE_BLESSINGS } from '../Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 /** 黑洞管理器*/
@@ -16,16 +18,28 @@ export class HoleManager {
     public holeModel: BlackholeModel;
     initilizeModel(): void {
         this.holeModel = new BlackholeModel();
+
+        EventDispatcher.instance.on(GameEvent.EVENT_MAGNET_ON, this.onMagnetOn, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_MAGNET_OFF, this.onMagnetOff, this);
+    }
+
+    private onMagnetOn(): void {
+        HoleManager._instance.holeModel.isMagment = true;
+        EventDispatcher.instance.emit(GameEvent.EVENT_MAGNET_EFFECT_SHOW);
+    }
+
+    private onMagnetOff(): void {
+        HoleManager._instance.holeModel.isMagment = false;
+        EventDispatcher.instance.emit(GameEvent.EVENT_MAGNET_EFFECT_HIDE);
     }
 
     /** 增加经验*/
     addExp(addExp: number): void {
         this.holeModel.curHoleExpL += addExp;
-        console.log(`当前经验:${this.holeModel.curHoleExpL} ,增加的经验:${addExp} ,需要经验:${this.holeModel.exp}`);
+        // console.log(`当前经验:${this.holeModel.curHoleExpL} ,增加的经验:${addExp} ,需要经验:${this.holeModel.exp}`);
         if (this.holeModel.curHoleExpL >= this.holeModel.exp) {
             this.holeModel.curHoleExpL = 0;
             this.holeModel.upgradeLevel();
-
             EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP);
         }
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_EXP_UPDATE);
@@ -36,6 +50,13 @@ export class HoleManager {
         this.holeModel.curHoleExpL = 0;
         this.holeModel.holeLevel += up;
         const { holeLevel } = this.holeModel;
+
+        const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.SIZE, holeLevel);
+        if (!attributeConfig) {
+            this.holeModel.holeLevel = this.holeModel.holeLevel - up;
+            EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_MAX);
+            return;
+        }
         this.holeModel.config.init(holeLevel);
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP);
     }
@@ -43,6 +64,7 @@ export class HoleManager {
     /** 闯关失败重设经验*/
     resetExPByLose(): void {
         this.holeModel.curHoleExpL = 0;
+        this.onMagnetOff();
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_EXP_UPDATE);
     }
 
@@ -52,6 +74,7 @@ export class HoleManager {
         this.holeModel.curHoleExpL = 0;
         const { holeLevel } = this.holeModel;
         this.holeModel.config.init(holeLevel);
+        this.onMagnetOff();
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET);
     }
 }

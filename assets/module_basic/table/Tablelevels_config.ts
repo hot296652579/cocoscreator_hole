@@ -31,5 +31,9 @@ export class Tablelevels_config {
     get boss(): number {
         return this.data.boss;
     }
+    /** 关卡总质量 */
+    get quality(): number {
+        return this.data.quality;
+    }
 }
     

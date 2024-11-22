@@ -1,10 +1,12 @@
-import { _decorator, Component, CCFloat, EventTouch, math, Sprite, v3, Vec3, Button, NodeEventType, Label, Node } from 'cc';
-import { LevelManager } from './Manager/LevelMgr';
-import { IAttributeConfig, LevelModel, TYPE_BLESSINGS } from './Model/LevelModel';
+import { Button, Component, Label, Node, NodeEventType, _decorator } from 'cc';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
+import { AdvertMgr } from './Manager/AdvertMgr';
+import { HoleGameAudioMgr } from './Manager/HoleGameAudioMgr';
 import { HoleManager } from './Manager/HoleMgr';
+import { LevelManager } from './Manager/LevelMgr';
 import { UserManager } from './Manager/UserMgr';
+import { TYPE_BLESSINGS } from './Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 /**
@@ -12,73 +14,60 @@ const { ccclass, property } = _decorator;
  */
 @ccclass('ButtonController')
 export class ButtonController extends Component {
-
-    @property(Button)
-    btUpTime: Button = null!;
-    @property(Button)
-    btUpSize: Button = null!;
-    @property(Button)
-    btUpExp: Button = null!;
+    @property(Button) btUpTime: Button = null!;
+    @property(Button) btUpSize: Button = null!;
+    @property(Button) btUpExp: Button = null!;
 
     protected start() {
         this.addUIEvent();
         this.setupUIListeners();
     }
 
-    private initilizeUI(): void {
-        console.log(LevelManager.instance.levelModel.timesLevel);
-        // this.updateUpTimeView();
-        this.onResetAddition();
+    private onResetAddition(): void {
+        this.updateBtTimeLv();
+        this.updateBtSizeLv();
+        this.updateBtExpLv();
     }
 
     private addUIEvent(): void {
-        this.btUpTime.node.on(NodeEventType.TOUCH_END, this.upgradeTimeButton, this);
-        this.btUpSize.node.on(NodeEventType.TOUCH_END, this.upgradeSizeButton, this);
-        this.btUpExp.node.on(NodeEventType.TOUCH_END, this.upgradeExpButton, this);
+        this.btUpTime.node.on(NodeEventType.TOUCH_END, () => this.handleUpgrade(TYPE_BLESSINGS.TIME), this);
+        this.btUpSize.node.on(NodeEventType.TOUCH_END, () => this.handleUpgrade(TYPE_BLESSINGS.SIZE), this);
+        this.btUpExp.node.on(NodeEventType.TOUCH_END, () => this.handleUpgrade(TYPE_BLESSINGS.EXP), this);
     }
 
     private setupUIListeners(): void {
-        EventDispatcher.instance.on(GameEvent.EVENT_UI_INITILIZE, this.initilizeUI, this);
-        EventDispatcher.instance.on(GameEvent.EVENT_TIME_LEVEL_UP, this.updateBtTimeLv, this);
-        EventDispatcher.instance.on(GameEvent.EVENT_EXP_LEVEL_UP, this.updateBtExpLv, this);
-        EventDispatcher.instance.on(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, this.updateBtSizeLv, this);
-        EventDispatcher.instance.on(GameEvent.EVENT_LEVEL_UP_RESET, this.onResetAddition, this);
+        const events = [
+            { event: GameEvent.EVENT_UI_INITILIZE, handler: this.onResetAddition },
+            { event: GameEvent.EVENT_TIME_LEVEL_UP, handler: this.updateBtTimeLv },
+            { event: GameEvent.EVENT_TIME_LEVEL_MAX, handler: () => this.updateBtLvMax(TYPE_BLESSINGS.TIME) },
+            { event: GameEvent.EVENT_EXP_LEVEL_UP, handler: this.updateBtExpLv },
+            { event: GameEvent.EVENT_EXP_LEVEL_MAX, handler: () => this.updateBtLvMax(TYPE_BLESSINGS.EXP) },
+            { event: GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, handler: this.updateBtSizeLv },
+            { event: GameEvent.EVENT_HOLE_LEVEL_SIEZE_MAX, handler: () => this.updateBtLvMax(TYPE_BLESSINGS.SIZE) },
+            { event: GameEvent.EVENT_LEVEL_UP_RESET, handler: this.onResetAddition },
+            { event: GameEvent.EVENT_USER_MONEY_UPDATE, handler: this.updateUserMoney },
+        ];
+
+        events.forEach(({ event, handler }) =>
+            EventDispatcher.instance.on(event, handler, this)
+        );
     }
 
-    private upgradeTimeButton(): void {
-        const { money } = this.getCurrentLevelParam(TYPE_BLESSINGS.TIME);
+    private handleUpgrade(type: TYPE_BLESSINGS): void {
+        const { money } = this.getCurrentLevelParam(type);
         const enough = UserManager.instance.checkEnough(money);
-        if (!enough) {
-            return;
-        }
 
-        UserManager.instance.deductMoney(money);
-        this.upgradeButton(TYPE_BLESSINGS.TIME);
+        if (!enough) {
+            AdvertMgr.instance.showReawardVideo(() => this.performUpgrade(type));
+        } else {
+            HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(5), 1.0);
+            UserManager.instance.deductMoney(money);
+            this.performUpgrade(type);
+        }
     }
 
-    private upgradeSizeButton(): void {
-        const { money } = this.getCurrentLevelParam(TYPE_BLESSINGS.SIZE);
-        const enough = UserManager.instance.checkEnough(money);
-        if (!enough) {
-            return;
-        }
-
-        UserManager.instance.deductMoney(money);
-        this.upgradeButton(TYPE_BLESSINGS.SIZE);
-    }
-
-    private upgradeExpButton(): void {
-        const { money } = this.getCurrentLevelParam(TYPE_BLESSINGS.EXP);
-        const enough = UserManager.instance.checkEnough(money);
-        if (!enough) {
-            return;
-        }
-
-        UserManager.instance.deductMoney(money);
-        this.upgradeButton(TYPE_BLESSINGS.EXP);
-    }
-
-    private upgradeButton(type: number): void {
+    /** 对应类型升级*/
+    private performUpgrade(type: TYPE_BLESSINGS): void {
         switch (type) {
             case TYPE_BLESSINGS.TIME:
                 LevelManager.instance.upgradeLevelTime();
@@ -88,62 +77,83 @@ export class ButtonController extends Component {
                 break;
             case TYPE_BLESSINGS.EXP:
                 LevelManager.instance.upgradeLevelExp();
+                EventDispatcher.instance.emit(GameEvent.EVENT_TIME_ENERGY_EFFECT);
                 break;
         }
     }
 
-    private onResetAddition(): void {
-        this.updateBtTimeLv();
-        this.updateBtSizeLv();
-        this.updateBtExpLv();
+    private updateBtLvMax(type: TYPE_BLESSINGS): void {
+        this.updateButtonView(type, true);
     }
 
     private updateBtTimeLv(): void {
         this.updateButtonView(TYPE_BLESSINGS.TIME);
+        this.updateButtonFreeState(TYPE_BLESSINGS.TIME);
     }
 
     private updateBtSizeLv(): void {
         this.updateButtonView(TYPE_BLESSINGS.SIZE);
+        this.updateButtonFreeState(TYPE_BLESSINGS.SIZE);
     }
 
     private updateBtExpLv(): void {
         this.updateButtonView(TYPE_BLESSINGS.EXP);
+        this.updateButtonFreeState(TYPE_BLESSINGS.EXP);
     }
 
-    private updateButtonView(type: number): void {
-        const { level, money } = this.getCurrentLevelParam(type);
+    /** 显示金币按钮或广告图标*/
+    private updateButtonFreeState(type: TYPE_BLESSINGS): void {
+        const { money } = this.getCurrentLevelParam(type);
+        const enough = UserManager.instance.checkEnough(money);
+
+        const buttonNode = this.getButtonNodeByType(type);
+        const used = buttonNode.getChildByPath('Bt/Used')!;
+        const free = buttonNode.getChildByPath('Bt/Free')!;
+
+        used.active = enough;
+        free.active = !enough;
+    }
+
+    private updateUserMoney(): void {
+        const typeArr = [TYPE_BLESSINGS.TIME, TYPE_BLESSINGS.SIZE, TYPE_BLESSINGS.EXP];
+        typeArr.forEach(type =>
+            this.updateButtonFreeState(type)
+        );
+    }
+
+    private updateButtonView(type: TYPE_BLESSINGS, max: boolean = false): void {
         const buttonNode = this.getButtonNodeByType(type);
         const lbLevel: Label = buttonNode.getChildByName('LbLevel').getComponent(Label)!;
-        const bt = buttonNode.getChildByName('Bt');
-        const lbMoney: Label = bt.getChildByPath('Used/LbMoney')?.getComponent(Label)!;
+        const lbMoney: Label = buttonNode.getChildByPath('Bt/Used/LbMoney')?.getComponent(Label)!;
 
-        lbLevel.string = `LVL.${level}`;
-        lbMoney.string = `金币:${money}`;
-    }
-
-    private getButtonNodeByType(type: number): Node {
-        switch (type) {
-            case TYPE_BLESSINGS.TIME:
-                return this.btUpTime.node;
-            case TYPE_BLESSINGS.SIZE:
-                return this.btUpSize.node;
-            case TYPE_BLESSINGS.EXP:
-                return this.btUpExp.node;
+        if (max) {
+            lbLevel.string = 'LVL.Max';
+            lbMoney.string = 'Max';
+            buttonNode.off(NodeEventType.TOUCH_END);
+            buttonNode.getComponent(Button)!.enabled = false;
+        } else {
+            const { level, money } = this.getCurrentLevelParam(type);
+            lbLevel.string = `LVL.${level}`;
+            lbMoney.string = `${money}`;
         }
     }
 
-    private getCurrentLevelParam(type: number): IAttributeConfig {
-        switch (type) {
-            case TYPE_BLESSINGS.TIME:
-                const { timesLevel } = LevelManager.instance.levelModel;
-                return LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.TIME, timesLevel);
-            case TYPE_BLESSINGS.SIZE:
-                const { holeLevel } = HoleManager.instance.holeModel;
-                return LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.SIZE, holeLevel);
-            case TYPE_BLESSINGS.EXP:
-                const { expMulLevel } = LevelManager.instance.levelModel;
-                return LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.EXP, expMulLevel);
-        }
+    private getButtonNodeByType(type: TYPE_BLESSINGS): Node {
+        return {
+            [TYPE_BLESSINGS.TIME]: this.btUpTime.node,
+            [TYPE_BLESSINGS.SIZE]: this.btUpSize.node,
+            [TYPE_BLESSINGS.EXP]: this.btUpExp.node,
+        }[type];
+    }
+
+    private getCurrentLevelParam(type: TYPE_BLESSINGS) {
+        const { timesLevel, expMulLevel } = LevelManager.instance.levelModel;
+        const { holeLevel } = HoleManager.instance.holeModel;
+
+        return LevelManager.instance.getByTypeAndLevel(
+            type,
+            type === TYPE_BLESSINGS.TIME ? timesLevel :
+                type === TYPE_BLESSINGS.SIZE ? holeLevel : expMulLevel
+        );
     }
 }
-

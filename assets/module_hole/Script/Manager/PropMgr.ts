@@ -3,6 +3,8 @@ import { RoosterHoleEntry } from '../../RoosterHoleEntry';
 import { IAttributeConfig, TYPE_BLESSINGS } from '../Model/LevelModel';
 import { PropItem } from '../PropItem';
 import { LevelManager } from './LevelMgr';
+import { EventDispatcher } from '../../../core_tgx/easy_ui_framework/EventDispatcher';
+import { GameEvent } from '../Enum/GameEvent';
 const { ccclass, property } = _decorator;
 
 /** 道具管理器*/
@@ -65,12 +67,12 @@ export class PropManager {
     }
 
     /** 加成倍数后的经验*/
-    expAfterBonus(exp: number): number {
+    expAfterBonus(propExp: number): number {
         const { expMulLevel } = LevelManager.instance.levelModel;
         const config: IAttributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.EXP, expMulLevel);
         const { param } = config;
         const multiplier = param / 100;
-        let expBonus = Math.round(exp * multiplier * 100) / 100;
+        let expBonus = propExp + Math.round(propExp * multiplier * 100) / 100;
         // console.log(`道具原本经验exp:${exp} 加成倍数:${multiplier} 加成后exp:${expBonus}`);
         return expBonus;
     }
@@ -95,6 +97,7 @@ export class PropManager {
 
             this.eatsMap.set(id, obj);
         }
+        EventDispatcher.instance.emit(GameEvent.EVENT_LEVEL_PROGRESS_UPDATE);
         // console.log(this.eatsMap);
     }
 
@@ -103,6 +106,16 @@ export class PropManager {
         return this.eatsMap.get(itemId) || null;
     }
 
+    /** 获取当前关卡总重量*/
+    getLevelTotalWeight(): number {
+        let totalWeight = 0;
+        this.eatsMap.forEach((value, key) => {
+            totalWeight += value.totalWeight;
+        })
+        return totalWeight;
+    }
+
+    /** 清除吞噬道具*/
     clearEatsMap(): void {
         this.eatsMap.clear();
     }

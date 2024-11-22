@@ -9,6 +9,7 @@ export class BlackholeModel {
     public config: Tableblackhole_config;
     public holeLevel: number;
     public curHoleExpL: number;
+    public isMagment: boolean = false;
 
     constructor(holeLevel: number = 1) {
         this.holeLevel = holeLevel;
@@ -46,6 +47,7 @@ export class BlackholeModel {
     /** 黑洞重设等级*/
     resetBornLevel() {
         this.holeLevel = 1;
+        this.isMagment = false;
         this.config.init(this.holeLevel);
     }
 }

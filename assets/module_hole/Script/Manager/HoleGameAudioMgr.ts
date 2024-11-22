@@ -1,11 +1,19 @@
-import { _decorator, assetManager, AudioClip, Component, Node } from 'cc';
-import { ModuleDef } from '../../../scripts/ModuleDef';
+import { AudioClip } from 'cc';
 import { tgxAudioMgr } from '../../../core_tgx/tgx';
+import { ModuleDef } from '../../../scripts/ModuleDef';
+import { MusicConfigModel } from '../Model/MusicConfigModel';
 
 
 const BundleName = ModuleDef.MODULE_HOLE;
 
 export class HoleGameAudioMgr {
+
+    static _musicConfigModel: MusicConfigModel;
+
+    public static initilize() {
+        this._musicConfigModel = new MusicConfigModel();
+    }
+
     /**
   * @en
   * play short audio, such as strikes,explosions
@@ -28,6 +36,10 @@ export class HoleGameAudioMgr {
      */
     public static play(sound: AudioClip | string, volume: number = 1.0,) {
         tgxAudioMgr.inst.play(sound, volume, BundleName);
+    }
+
+    public static getMusicIdName(id: number): string {
+        return 'Audio/' + this._musicConfigModel.getNameById(id);
     }
 
     /**

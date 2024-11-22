@@ -297,7 +297,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -64.96900000000001,
+      "x": 25.03099999999999,
       "y": 1.6479999999999961,
       "z": 0
     },
@@ -343,7 +343,7 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 0.5,
       "y": 0.5
     },
     "_id": ""
@@ -374,8 +374,8 @@
       "b": 255,
       "a": 255
     },
-    "_string": "999999",
-    "_horizontalAlign": 0,
+    "_string": "0",
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 40,
     "_fontSize": 40,
@@ -1365,7 +1365,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 200,
+      "width": 0,
       "height": 50
     },
     "_anchorPoint": {
@@ -1663,8 +1663,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 85.01,
-      "height": 40
+      "width": 76.6845703125,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1699,7 +1699,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "关卡:1",
+    "_string": "关卡1",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 30,
@@ -1715,7 +1715,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
-    "_cacheMode": 2,
+    "_cacheMode": 1,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -1761,7 +1761,7 @@
     "_target": null,
     "_left": 309.726,
     "_right": 0,
-    "_top": 4.999999999999999,
+    "_top": -0.20000000000000018,
     "_bottom": 0,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
@@ -1884,7 +1884,7 @@
     },
     "_mode": 0,
     "_totalLength": 400,
-    "_progress": 0.5,
+    "_progress": 0,
     "_reverse": false,
     "_id": ""
   },
@@ -1990,8 +1990,11 @@
     "lbLevel": {
       "__id__": 66
     },
-    "lbMoeny": {
+    "lbMoney": {
       "__id__": 12
+    },
+    "expProgress": {
+      "__id__": 75
     },
     "_id": ""
   },

@@ -1,7 +1,10 @@
 
+import { Toggle } from "cc";
+import { AudioMgr } from "../../core_tgx/base/AudioMgr";
 import { tgxModuleContext } from "../../core_tgx/tgx";
+import { HoleGameAudioMgr } from "../../module_hole/Script/Manager/HoleGameAudioMgr";
 import { GameUILayers } from "../../scripts/GameUILayers";
-import { UI_AboutMe, UI_Setting } from "../../scripts/UIDef";
+import { UI_Setting } from "../../scripts/UIDef";
 import { Layout_Setting } from "./Layout_Setting";
 
 export class UI_Setting_Impl extends UI_Setting {
@@ -16,8 +19,33 @@ export class UI_Setting_Impl extends UI_Setting {
     protected onCreated(): void {
         let layout = this.layout as Layout_Setting;
         this.onButtonEvent(layout.btnClose, () => {
+            HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(5), 1.0);
             this.hide();
         });
+
+        this.initilizeUI();
+    }
+
+    private initilizeUI(): void {
+        let layout = this.layout as Layout_Setting;
+        let { musicToggle, soundToggle } = layout;
+
+        musicToggle.node.on('toggle', this.musicSwitch, this);
+        soundToggle.node.on('toggle', this.soundSwitch, this);
+
+        const { bgMusicEnabled, soundEffectsEnabled } = AudioMgr.inst;
+        AudioMgr.inst.toggleBgMusic(bgMusicEnabled);
+        AudioMgr.inst.toggleBgMusic(soundEffectsEnabled);
+        musicToggle.isChecked = bgMusicEnabled;
+        soundToggle.isChecked = soundEffectsEnabled;
+    }
+
+    private musicSwitch(toggle: Toggle): void {
+        AudioMgr.inst.toggleBgMusic(toggle.isChecked);
+    }
+
+    private soundSwitch(toggle: Toggle): void {
+        AudioMgr.inst.toggleSoundEffects(toggle.isChecked);
     }
 }
 

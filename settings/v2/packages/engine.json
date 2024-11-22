@@ -5,13 +5,13 @@
       "base": {
         "_value": true
       },
+      "graphcis": {
+        "_value": true
+      },
       "gfx-webgl": {
         "_value": true
       },
       "gfx-webgl2": {
-        "_value": false
-      },
-      "gfx-webgpu": {
         "_value": false
       },
       "animation": {
@@ -23,9 +23,6 @@
       "3d": {
         "_value": true
       },
-      "meshopt": {
-        "_value": false
-      },
       "2d": {
         "_value": true
       },
@@ -36,7 +33,7 @@
         "_value": true
       },
       "particle": {
-        "_value": false
+        "_value": true
       },
       "physics": {
         "_value": true,
@@ -124,6 +121,15 @@
       "procedural-animation": {
         "_value": false
       },
+      "custom-pipeline": {
+        "_value": false
+      },
+      "gfx-webgpu": {
+        "_value": false
+      },
+      "meshopt": {
+        "_value": false
+      },
       "custom-pipeline-post-process": {
         "_value": false
       },
@@ -146,6 +152,7 @@
       "base",
       "gfx-webgl",
       "intersection-2d",
+      "particle",
       "physics-ammo",
       "primitive",
       "profiler",

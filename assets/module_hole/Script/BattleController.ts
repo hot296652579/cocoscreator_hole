@@ -1,15 +1,15 @@
-import { BoxCollider, Camera, Component, Node, Prefab, Quat, Toggle, Vec3, _decorator, director, instantiate, isValid, math, tween, v3 } from 'cc';
+import { BoxCollider, Camera, Component, CylinderCollider, Node, Prefab, SphereCollider, Vec3, _decorator, instantiate, isValid, math, tween, v3 } from 'cc';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
-import { GameEvent } from './Enum/GameEvent';
-import { LevelManager } from './Manager/LevelMgr';
-import { PropManager } from './Manager/PropMgr';
-import { GlobalConfig } from './Config/GlobalConfig';
 import { tgxUIMgr } from '../../core_tgx/tgx';
 import { UI_BattleResult } from '../../scripts/UIDef';
-import { EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
+import { ActionState, CharacterCtrl } from './Character/CharacterCtrl';
+import { GameEvent } from './Enum/GameEvent';
+import { HoleGameAudioMgr } from './Manager/HoleGameAudioMgr';
+import { LevelManager } from './Manager/LevelMgr';
+import { PropManager } from './Manager/PropMgr';
 
 const { ccclass, property } = _decorator;
-
+const duration: number = 2;
 /**
  * 战斗控制器
  */
@@ -28,16 +28,26 @@ export class BattleController extends Component {
     boss: Node = null!;
 
     battleWin: boolean = false;
+    playerWeight: number = 0;
+    bossWeight: number = 0;
 
     scheduledCallbacks: (() => void)[] = []; // 存储定时器 ID
 
     protected start(): void {
+        HoleGameAudioMgr.play(HoleGameAudioMgr.getMusicIdName(1), 1.0);
+        this.initilize();
         this.addListener();
-
-        this.battleWin = this.judgingIsWin();
         this.takeCameraToPlayer();
         this.spawnAllProps();
         this.startSchedule();
+        EventDispatcher.instance.emit(GameEvent.EVENT_UPDATE_BATTLE_WEIGHT);
+    }
+
+    private initilize(): void {
+        this.playerWeight = PropManager.instance.getLevelTotalWeight();
+        const { bossModel } = LevelManager.instance.levelModel;
+        this.bossWeight = bossModel.bossWeight;
+        this.battleWin = LevelManager.instance.judgeWin();
     }
 
     private addListener(): void {
@@ -51,7 +61,7 @@ export class BattleController extends Component {
             return;
         }
 
-        const pos = v3(6, 1.6, 0);
+        const pos = v3(2.7, 1, 0.2);
         const targetAngles = v3(0, 90, 0);
         this.camera.node.setPosition(pos);
         this.camera.node.setRotationFromEuler(targetAngles);
@@ -93,13 +103,16 @@ export class BattleController extends Component {
      * 一次性生成所有道具并开始掉落
      */
     private spawnAllProps(): void {
-        const totalProps = Math.floor(Math.random() * 5) + 3; // 随机生成 3 到 7 个道具
+        const totalProps = Math.floor(Math.random() * 10) + 5; // 随机生成 3 到 7 个道具
 
         for (let i = 0; i < totalProps; i++) {
             const randomIndex = Math.floor(Math.random() * this.propsPrefabs.length);
             const propPrefab = this.propsPrefabs[randomIndex];
             const propNode = instantiate(propPrefab);
-            propNode.getComponent(BoxCollider).isTrigger = true;
+            const collider = propNode.getComponent(BoxCollider) || propNode.getComponent(CylinderCollider) || propNode.getComponent(SphereCollider);
+            collider.isTrigger = true;
+            // console.log('初始scale:' + propNode.getScale());
+            propNode.setScale(0.7, 0.7, 0.7);
 
             // 生成初始位置的随机坐标 (3D 空间)
             const rangeX = 10; // X 轴范围
@@ -113,12 +126,59 @@ export class BattleController extends Component {
             // 掉落动画（从随机位置到玩家位置）
             const playerPos = this.player.getWorldPosition();
             tween(propNode)
-                .to(2, { position: playerPos }, { easing: 'sineIn' })
+                .to(duration, { position: v3(playerPos.x, playerPos.y + 1, playerPos.z) }, { easing: 'sineOut' })
                 .call(() => {
                     this.onPropCollected(propNode);
+
                 })
                 .start();
         }
+
+        this.scheduleOnce(() => {
+            this.bigScaleTween();
+        }, duration);
+    }
+
+    /** 击飞动画*/
+    playPunchFlyAnimation() {
+        const targetNode = this.battleWin ? this.boss : this.player;
+        if (!targetNode) return
+
+        const dir = this.battleWin ? 1 : -1
+        const startPos = targetNode.position.clone();
+        const flyDirection = new Vec3(dir, 1, 0).normalize(); // 击飞方向
+        const flyDistance = 20;
+        const endPos = startPos.add(flyDirection.multiplyScalar(flyDistance));
+        const duration = 1;
+
+        tween(targetNode)
+            .to(duration, { position: endPos }, { easing: 'cubicOut' }) // 击飞动作
+            .by(0.3, { position: new Vec3(0, -2, 0) }, { easing: 'bounceOut' }) // 下落动作
+            .start();
+
+        tween(targetNode)
+            .to(duration, { eulerAngles: new Vec3(360, 0, 0) }, { easing: 'linear' })
+            .start();
+    }
+
+    /** 变大动画*/
+    private bigScaleTween(): void {
+        const bigTarget = this.battleWin ? this.player : this.boss;
+        const bigScale: number = 2;
+        tween(bigTarget)
+            .to(duration, { scale: new Vec3(bigScale, bigScale, bigScale) })
+            .call(() => {
+                this.playAttackAniamtion();
+            })
+            .start()
+    }
+
+    /** 播放攻击动画*/
+    private playAttackAniamtion(): void {
+        HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(9), 1.0);
+        this.player.getComponent(CharacterCtrl)?.doAnimation(ActionState.Attack);
+        this.boss.getComponent(CharacterCtrl)?.doAnimation(ActionState.Attack);
+        this.scheduleTask(() => this.playPunchFlyAnimation(), 1);
     }
 
     private startSchedule(): void {
@@ -154,21 +214,6 @@ export class BattleController extends Component {
         // 销毁道具节点
         propNode.removeFromParent();
         propNode.destroy();
-    }
-
-    /** 判断是否输赢*/
-    private judgingIsWin(): boolean {
-        const { bossModel } = LevelManager.instance.levelModel;
-        const { bossWeight } = bossModel;
-
-        let total = 0;
-        const eatsMap = PropManager.instance.eatsMap;
-        eatsMap.forEach(element => {
-            const { count, totalWeight } = element;
-            total += totalWeight;
-        });
-
-        return GlobalConfig.plug ?? total >= bossWeight;
     }
 
     private onCloseMyself(): void {

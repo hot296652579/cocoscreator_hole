@@ -3,7 +3,8 @@
     "highQuality": true,
     "designResolution": {
       "width": 750,
-      "height": 1600
+      "height": 1334,
+      "fitHeight": false
     }
   },
   "__version__": "1.0.6",
@@ -46,8 +47,8 @@
       "0": 1,
       "1": 16,
       "2": 24,
-      "3": 108,
-      "4": 118,
+      "3": 124,
+      "4": 126,
       "5": 24,
       "6": 24
     }
