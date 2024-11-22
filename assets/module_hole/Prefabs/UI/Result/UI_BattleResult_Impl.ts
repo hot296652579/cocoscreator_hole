@@ -9,6 +9,7 @@ import { LevelManager } from "../../../Script/Manager/LevelMgr";
 import { PropManager } from "../../../Script/Manager/PropMgr";
 import { UserManager } from "../../../Script/Manager/UserMgr";
 import { Layout_BattleResult } from "./Layout_BattleResult";
+import { AdvertMgr } from "../../../Script/Manager/AdvertMgr";
 
 const delday = 30000;
 
@@ -34,7 +35,7 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         });
         this.onButtonEvent(layout.btExtra, () => {
             HoleGameAudioMgr.playOneShot(HoleGameAudioMgr.getMusicIdName(5), 1.0);
-            this.onClickRewardAdditional(); //领取额外奖励
+            this.addAdverHandler(); //看广告领取额外奖励
         });
         this.initilizeResult();
     }
@@ -69,12 +70,13 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         this.destoryMyself();
     }
 
-    onClickRewardAdditional(): void {
-        //DOTO 看广告
-        UserManager.instance.addMoney(this.rewardAdditional);
-        EventDispatcher.instance.emit(GameEvent.EVENT_USER_MONEY_UPDATE);
-        this.emitEvent();
-        this.destoryMyself();
+    private addAdverHandler(): void {
+        AdvertMgr.instance.showReawardVideo(() => {
+            UserManager.instance.addMoney(this.rewardAdditional);
+            EventDispatcher.instance.emit(GameEvent.EVENT_USER_MONEY_UPDATE);
+            this.emitEvent();
+            this.destoryMyself();
+        })
     }
 
     private destoryMyself(): void {

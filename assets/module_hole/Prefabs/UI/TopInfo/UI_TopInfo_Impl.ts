@@ -40,9 +40,6 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
                 tgxUIMgr.inst.showUI(UI_Setting);
             }
         });
-        this.onButtonEvent(layout.btReLoad, () => {
-            //DOTO
-        });
     }
 
     private addListener(): void {

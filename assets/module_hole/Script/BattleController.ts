@@ -9,7 +9,7 @@ import { LevelManager } from './Manager/LevelMgr';
 import { PropManager } from './Manager/PropMgr';
 
 const { ccclass, property } = _decorator;
-const duration: number = 2;
+const duration: number = 1.5;
 /**
  * 战斗控制器
  */
@@ -48,6 +48,7 @@ export class BattleController extends Component {
         const { bossModel } = LevelManager.instance.levelModel;
         this.bossWeight = bossModel.bossWeight;
         this.battleWin = LevelManager.instance.judgeWin();
+        // console.log(`battleWin:${this.battleWin}`);
     }
 
     private addListener(): void {
@@ -75,7 +76,6 @@ export class BattleController extends Component {
 
         // 定义目标位置和最终角度
         const targetPosition = new Vec3(3, 5, 30);
-        const duration = 2;
 
         const startPosition = this.camera.node.getPosition();
         tween(this.camera.node)
@@ -103,40 +103,41 @@ export class BattleController extends Component {
      * 一次性生成所有道具并开始掉落
      */
     private spawnAllProps(): void {
-        const totalProps = Math.floor(Math.random() * 10) + 5; // 随机生成 3 到 7 个道具
+        const eatsPropTotal = PropManager.instance.eatsMap.size;
+        if (eatsPropTotal > 0) {
+            const totalProps = Math.floor(Math.random() * 10) + 5; // 随机生成 3 到 7 个道具
 
-        for (let i = 0; i < totalProps; i++) {
-            const randomIndex = Math.floor(Math.random() * this.propsPrefabs.length);
-            const propPrefab = this.propsPrefabs[randomIndex];
-            const propNode = instantiate(propPrefab);
-            const collider = propNode.getComponent(BoxCollider) || propNode.getComponent(CylinderCollider) || propNode.getComponent(SphereCollider);
-            collider.isTrigger = true;
-            // console.log('初始scale:' + propNode.getScale());
-            propNode.setScale(0.7, 0.7, 0.7);
+            for (let i = 0; i < totalProps; i++) {
+                const randomIndex = Math.floor(Math.random() * this.propsPrefabs.length);
+                const propPrefab = this.propsPrefabs[randomIndex];
+                const propNode = instantiate(propPrefab);
+                const collider = propNode.getComponent(BoxCollider) || propNode.getComponent(CylinderCollider) || propNode.getComponent(SphereCollider);
+                collider.isTrigger = true;
+                // console.log('初始scale:' + propNode.getScale());
+                propNode.setScale(0.7, 0.7, 0.7);
 
-            // 生成初始位置的随机坐标 (3D 空间)
-            const rangeX = 10; // X 轴范围
-            const rangeZ = 10; // Z 轴范围
-            const startX = math.randomRange(-rangeX, rangeX);
-            const startZ = math.randomRange(-rangeZ, rangeZ);
-            const startPos = new Vec3(startX, 20, startZ);
-            propNode.setPosition(startPos);
-            this.node.addChild(propNode);
+                // 生成初始位置的随机坐标 (3D 空间)
+                const rangeX = 10; // X 轴范围
+                const rangeZ = 10; // Z 轴范围
+                const startX = math.randomRange(-rangeX, rangeX);
+                const startZ = math.randomRange(-rangeZ, rangeZ);
+                const startPos = new Vec3(startX, 20, startZ);
+                propNode.setPosition(startPos);
+                this.node.addChild(propNode);
 
-            // 掉落动画（从随机位置到玩家位置）
-            const playerPos = this.player.getWorldPosition();
-            tween(propNode)
-                .to(duration, { position: v3(playerPos.x, playerPos.y + 1, playerPos.z) }, { easing: 'sineOut' })
-                .call(() => {
-                    this.onPropCollected(propNode);
+                // 掉落动画（从随机位置到玩家位置）
+                const playerPos = this.player.getWorldPosition();
+                tween(propNode)
+                    .to(duration, { position: v3(playerPos.x, playerPos.y + 1, playerPos.z) }, { easing: 'sineOut' })
+                    .call(() => {
+                        this.onPropCollected(propNode);
 
-                })
-                .start();
+                    })
+                    .start();
+            }
         }
 
-        this.scheduleOnce(() => {
-            this.bigScaleTween();
-        }, duration);
+        this.scheduleTask(() => this.bigScaleTween(), duration);
     }
 
     /** 击飞动画*/
@@ -149,7 +150,6 @@ export class BattleController extends Component {
         const flyDirection = new Vec3(dir, 1, 0).normalize(); // 击飞方向
         const flyDistance = 20;
         const endPos = startPos.add(flyDirection.multiplyScalar(flyDistance));
-        const duration = 1;
 
         tween(targetNode)
             .to(duration, { position: endPos }, { easing: 'cubicOut' }) // 击飞动作

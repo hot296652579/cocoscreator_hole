@@ -2,351 +2,386 @@
     "1": {
         "level": 1,
         "diameter": 0.8,
-        "speed": 0.8,
-        "view": 8,
+        "speed": 1.6,
+        "view": 16,
         "exp": 15
     },
     "2": {
         "level": 2,
-        "diameter": 0.85,
-        "speed": 0.85,
-        "view": 8.5,
+        "diameter": 0.95,
+        "speed": 1.9,
+        "view": 19,
         "exp": 15
     },
     "3": {
         "level": 3,
-        "diameter": 0.9,
-        "speed": 0.9,
-        "view": 9,
+        "diameter": 1.1,
+        "speed": 2.2,
+        "view": 22,
         "exp": 15
     },
     "4": {
         "level": 4,
-        "diameter": 0.95,
-        "speed": 0.95,
-        "view": 9.5,
+        "diameter": 1.25,
+        "speed": 2.5,
+        "view": 25,
         "exp": 15
     },
     "5": {
         "level": 5,
-        "diameter": 1,
-        "speed": 1,
-        "view": 10,
+        "diameter": 1.4,
+        "speed": 2.8,
+        "view": 28,
         "exp": 15
     },
     "6": {
         "level": 6,
-        "diameter": 1.2,
-        "speed": 1.2,
-        "view": 12,
-        "exp": 45
+        "diameter": 1.5,
+        "speed": 3,
+        "view": 30,
+        "exp": 54
     },
     "7": {
         "level": 7,
-        "diameter": 1.3,
-        "speed": 1.3,
-        "view": 13,
-        "exp": 45
+        "diameter": 1.7,
+        "speed": 3.4,
+        "view": 34,
+        "exp": 54
     },
     "8": {
         "level": 8,
-        "diameter": 1.4,
-        "speed": 1.4,
-        "view": 14,
-        "exp": 45
+        "diameter": 1.9,
+        "speed": 3.8,
+        "view": 38,
+        "exp": 54
     },
     "9": {
         "level": 9,
-        "diameter": 1.5,
-        "speed": 1.5,
-        "view": 15,
-        "exp": 45
+        "diameter": 2.1,
+        "speed": 4.2,
+        "view": 42,
+        "exp": 54
     },
     "10": {
         "level": 10,
-        "diameter": 1.6,
-        "speed": 1.6,
-        "view": 16,
-        "exp": 45
+        "diameter": 2.3,
+        "speed": 4.6,
+        "view": 46,
+        "exp": 54
     },
     "11": {
         "level": 11,
         "diameter": 2.5,
-        "speed": 2.5,
-        "view": 25,
-        "exp": 105
+        "speed": 5,
+        "view": 50,
+        "exp": 126
     },
     "12": {
         "level": 12,
         "diameter": 2.6,
-        "speed": 2.6,
-        "view": 26,
-        "exp": 105
+        "speed": 5.2,
+        "view": 52,
+        "exp": 126
     },
     "13": {
         "level": 13,
         "diameter": 2.7,
-        "speed": 2.7,
-        "view": 27,
-        "exp": 105
+        "speed": 5.4,
+        "view": 54,
+        "exp": 126
     },
     "14": {
         "level": 14,
         "diameter": 2.8,
-        "speed": 2.8,
-        "view": 28,
-        "exp": 105
+        "speed": 5.6,
+        "view": 56,
+        "exp": 126
     },
     "15": {
         "level": 15,
         "diameter": 2.9,
-        "speed": 2.9,
-        "view": 29,
-        "exp": 105
+        "speed": 5.8,
+        "view": 58,
+        "exp": 126
     },
     "16": {
         "level": 16,
         "diameter": 3,
-        "speed": 3,
-        "view": 30,
-        "exp": 150
+        "speed": 6,
+        "view": 60,
+        "exp": 180
     },
     "17": {
         "level": 17,
         "diameter": 3.1,
-        "speed": 3.1,
-        "view": 31,
-        "exp": 150
+        "speed": 6.2,
+        "view": 62,
+        "exp": 180
     },
     "18": {
         "level": 18,
         "diameter": 3.2,
-        "speed": 3.2,
-        "view": 32,
-        "exp": 150
+        "speed": 6.4,
+        "view": 64,
+        "exp": 180
     },
     "19": {
         "level": 19,
         "diameter": 3.3,
-        "speed": 3.3,
-        "view": 33,
-        "exp": 150
+        "speed": 6.6,
+        "view": 66,
+        "exp": 180
     },
     "20": {
         "level": 20,
         "diameter": 3.4,
-        "speed": 3.4,
-        "view": 34,
-        "exp": 150
+        "speed": 6.8,
+        "view": 68,
+        "exp": 180
     },
     "21": {
         "level": 21,
         "diameter": 4,
-        "speed": 4,
-        "view": 40,
-        "exp": 750
+        "speed": 8,
+        "view": 80,
+        "exp": 900
     },
     "22": {
         "level": 22,
         "diameter": 4.2,
-        "speed": 4.2,
-        "view": 42,
-        "exp": 750
+        "speed": 8.4,
+        "view": 84,
+        "exp": 900
     },
     "23": {
         "level": 23,
         "diameter": 4.4,
-        "speed": 4.4,
-        "view": 44,
-        "exp": 750
+        "speed": 8.8,
+        "view": 88,
+        "exp": 900
     },
     "24": {
         "level": 24,
         "diameter": 4.6,
-        "speed": 4.6,
-        "view": 46,
-        "exp": 750
+        "speed": 9.2,
+        "view": 92,
+        "exp": 900
     },
     "25": {
         "level": 25,
         "diameter": 4.8,
-        "speed": 4.8,
-        "view": 48,
-        "exp": 750
+        "speed": 9.6,
+        "view": 96,
+        "exp": 900
     },
     "26": {
         "level": 26,
         "diameter": 5.5,
-        "speed": 5.5,
-        "view": 55,
-        "exp": 1500
+        "speed": 11,
+        "view": 110,
+        "exp": 1800
     },
     "27": {
         "level": 27,
         "diameter": 5.7,
-        "speed": 5.7,
-        "view": 57,
-        "exp": 1500
+        "speed": 11.4,
+        "view": 114,
+        "exp": 1800
     },
     "28": {
         "level": 28,
         "diameter": 5.9,
-        "speed": 5.9,
-        "view": 59,
-        "exp": 1500
+        "speed": 11.8,
+        "view": 118,
+        "exp": 1800
     },
     "29": {
         "level": 29,
         "diameter": 6.1,
-        "speed": 6.1,
-        "view": 61,
-        "exp": 1500
+        "speed": 12.2,
+        "view": 122,
+        "exp": 1800
     },
     "30": {
         "level": 30,
         "diameter": 6.3,
-        "speed": 6.3,
-        "view": 63,
-        "exp": 1500
+        "speed": 12.6,
+        "view": 126,
+        "exp": 1800
     },
     "31": {
         "level": 31,
         "diameter": 9,
-        "speed": 9,
-        "view": 90,
-        "exp": 4500
+        "speed": 18,
+        "view": 180,
+        "exp": 5400
     },
     "32": {
         "level": 32,
         "diameter": 9.3,
-        "speed": 9.3,
-        "view": 93,
-        "exp": 4500
+        "speed": 18.6,
+        "view": 186,
+        "exp": 5400
     },
     "33": {
         "level": 33,
         "diameter": 9.6,
-        "speed": 9.6,
-        "view": 96,
-        "exp": 4500
+        "speed": 19.2,
+        "view": 192,
+        "exp": 5400
     },
     "34": {
         "level": 34,
         "diameter": 9.9,
-        "speed": 9.9,
-        "view": 99,
-        "exp": 4500
+        "speed": 19.8,
+        "view": 198,
+        "exp": 5400
     },
     "35": {
         "level": 35,
         "diameter": 10.2,
-        "speed": 10.2,
-        "view": 102,
-        "exp": 4500
+        "speed": 20.4,
+        "view": 204,
+        "exp": 5400
     },
     "36": {
         "level": 36,
         "diameter": 11,
-        "speed": 11,
-        "view": 110,
-        "exp": 12000
+        "speed": 22,
+        "view": 220,
+        "exp": 14400
     },
     "37": {
         "level": 37,
         "diameter": 11.3,
-        "speed": 11.3,
-        "view": 113,
-        "exp": 12000
+        "speed": 22.6,
+        "view": 226,
+        "exp": 14400
     },
     "38": {
         "level": 38,
         "diameter": 11.6,
-        "speed": 11.6,
-        "view": 116,
-        "exp": 12000
+        "speed": 23.2,
+        "view": 232,
+        "exp": 14400
     },
     "39": {
         "level": 39,
         "diameter": 11.9,
-        "speed": 11.9,
-        "view": 119,
-        "exp": 12000
+        "speed": 23.8,
+        "view": 238,
+        "exp": 14400
     },
     "40": {
         "level": 40,
         "diameter": 12.2,
-        "speed": 12.2,
-        "view": 122,
-        "exp": 12000
+        "speed": 24.4,
+        "view": 244,
+        "exp": 14400
     },
     "41": {
         "level": 41,
         "diameter": 13.5,
-        "speed": 13.5,
-        "view": 135,
-        "exp": 22500
+        "speed": 27,
+        "view": 270,
+        "exp": 27000
     },
     "42": {
         "level": 42,
         "diameter": 13.9,
-        "speed": 13.9,
-        "view": 139,
-        "exp": 22500
+        "speed": 27.8,
+        "view": 278,
+        "exp": 27000
     },
     "43": {
         "level": 43,
         "diameter": 14.3,
-        "speed": 14.3,
-        "view": 143,
-        "exp": 22500
+        "speed": 28.6,
+        "view": 286,
+        "exp": 27000
     },
     "44": {
         "level": 44,
         "diameter": 14.7,
-        "speed": 14.7,
-        "view": 147,
-        "exp": 22500
+        "speed": 29.4,
+        "view": 294,
+        "exp": 27000
     },
     "45": {
         "level": 45,
         "diameter": 15.1,
-        "speed": 15.1,
-        "view": 151,
-        "exp": 22500
+        "speed": 30.2,
+        "view": 302,
+        "exp": 27000
     },
     "46": {
         "level": 46,
         "diameter": 18,
-        "speed": 18,
-        "view": 180,
-        "exp": 22500
+        "speed": 36,
+        "view": 360,
+        "exp": 54000
     },
     "47": {
         "level": 47,
         "diameter": 18.4,
-        "speed": 18.4,
-        "view": 184,
-        "exp": 22500
+        "speed": 36.8,
+        "view": 368,
+        "exp": 54000
     },
     "48": {
         "level": 48,
         "diameter": 18.8,
-        "speed": 18.8,
-        "view": 188,
-        "exp": 22500
+        "speed": 37.6,
+        "view": 376,
+        "exp": 54000
     },
     "49": {
         "level": 49,
         "diameter": 19.2,
-        "speed": 19.2,
-        "view": 192,
-        "exp": 22500
+        "speed": 38.4,
+        "view": 384,
+        "exp": 54000
     },
     "50": {
         "level": 50,
         "diameter": 19.6,
-        "speed": 19.6,
-        "view": 196,
-        "exp": 22500
+        "speed": 39.2,
+        "view": 392,
+        "exp": 54000
+    },
+    "51": {
+        "level": 51,
+        "diameter": 23,
+        "speed": 46,
+        "view": 460,
+        "exp": 999999999
+    },
+    "52": {
+        "level": 52,
+        "diameter": 23,
+        "speed": 46,
+        "view": 460,
+        "exp": 999999999
+    },
+    "53": {
+        "level": 53,
+        "diameter": 23,
+        "speed": 46,
+        "view": 460,
+        "exp": 999999999
+    },
+    "54": {
+        "level": 54,
+        "diameter": 23,
+        "speed": 46,
+        "view": 460,
+        "exp": 999999999
+    },
+    "55": {
+        "level": 55,
+        "diameter": 23,
+        "speed": 46,
+        "view": 460,
+        "exp": 999999999
     }
 }
