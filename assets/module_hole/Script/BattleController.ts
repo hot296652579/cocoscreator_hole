@@ -45,8 +45,7 @@ export class BattleController extends Component {
 
     private initilize(): void {
         this.playerWeight = PropManager.instance.getLevelTotalWeight();
-        const { bossModel } = LevelManager.instance.levelModel;
-        this.bossWeight = bossModel.bossWeight;
+        this.bossWeight = LevelManager.instance.getBossWeight();
         this.battleWin = LevelManager.instance.judgeWin();
         // console.log(`battleWin:${this.battleWin}`);
     }

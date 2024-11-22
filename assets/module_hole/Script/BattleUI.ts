@@ -24,7 +24,7 @@ export class BattleUI extends Component {
 
     private onUpdateLbWeight(): void {
         const { bossModel } = LevelManager.instance.levelModel;
-        const { bossWeight } = bossModel;
+        let bossWeight = LevelManager.instance.getBossWeight();
 
         let total = PropManager.instance.getLevelTotalWeight() || 0;
         this.lbBossWeight.string = ` ${bossWeight}KG`;

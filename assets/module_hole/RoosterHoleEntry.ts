@@ -225,7 +225,7 @@ export class RoosterHoleEntry extends Component {
         this.countExpUI.active = true;
         this.updateCountLb();
         this.updateUserHoleExp();
-        tgxUIMgr.inst.showUI(UI_Magnetic);
+        // tgxUIMgr.inst.showUI(UI_Magnetic);
     }
 
     /** 战斗阶段界面*/

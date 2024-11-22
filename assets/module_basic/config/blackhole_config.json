@@ -1,387 +1,387 @@
 {
     "1": {
         "level": 1,
-        "diameter": 0.8,
-        "speed": 1.6,
-        "view": 16,
+        "diameter": 1.3,
+        "speed": 2.6,
+        "view": 26,
         "exp": 15
     },
     "2": {
         "level": 2,
-        "diameter": 0.95,
-        "speed": 1.9,
-        "view": 19,
+        "diameter": 1.45,
+        "speed": 2.9,
+        "view": 29,
         "exp": 15
     },
     "3": {
         "level": 3,
-        "diameter": 1.1,
-        "speed": 2.2,
-        "view": 22,
+        "diameter": 1.6,
+        "speed": 3.2,
+        "view": 32,
         "exp": 15
     },
     "4": {
         "level": 4,
-        "diameter": 1.25,
-        "speed": 2.5,
-        "view": 25,
+        "diameter": 1.75,
+        "speed": 3.5,
+        "view": 35,
         "exp": 15
     },
     "5": {
         "level": 5,
-        "diameter": 1.4,
-        "speed": 2.8,
-        "view": 28,
+        "diameter": 1.9,
+        "speed": 3.8,
+        "view": 38,
         "exp": 15
     },
     "6": {
         "level": 6,
-        "diameter": 1.5,
-        "speed": 3,
-        "view": 30,
+        "diameter": 2,
+        "speed": 4,
+        "view": 40,
         "exp": 54
     },
     "7": {
         "level": 7,
-        "diameter": 1.7,
-        "speed": 3.4,
-        "view": 34,
+        "diameter": 2.2,
+        "speed": 4.4,
+        "view": 44,
         "exp": 54
     },
     "8": {
         "level": 8,
-        "diameter": 1.9,
-        "speed": 3.8,
-        "view": 38,
+        "diameter": 2.4,
+        "speed": 4.8,
+        "view": 48,
         "exp": 54
     },
     "9": {
         "level": 9,
-        "diameter": 2.1,
-        "speed": 4.2,
-        "view": 42,
+        "diameter": 2.6,
+        "speed": 5.2,
+        "view": 52,
         "exp": 54
     },
     "10": {
         "level": 10,
-        "diameter": 2.3,
-        "speed": 4.6,
-        "view": 46,
+        "diameter": 2.8,
+        "speed": 5.6,
+        "view": 56,
         "exp": 54
     },
     "11": {
         "level": 11,
-        "diameter": 2.5,
-        "speed": 5,
-        "view": 50,
+        "diameter": 3,
+        "speed": 6,
+        "view": 60,
         "exp": 126
     },
     "12": {
         "level": 12,
-        "diameter": 2.6,
-        "speed": 5.2,
-        "view": 52,
+        "diameter": 3.1,
+        "speed": 6.2,
+        "view": 62,
         "exp": 126
     },
     "13": {
         "level": 13,
-        "diameter": 2.7,
-        "speed": 5.4,
-        "view": 54,
+        "diameter": 3.2,
+        "speed": 6.4,
+        "view": 64,
         "exp": 126
     },
     "14": {
         "level": 14,
-        "diameter": 2.8,
-        "speed": 5.6,
-        "view": 56,
+        "diameter": 3.3,
+        "speed": 6.6,
+        "view": 66,
         "exp": 126
     },
     "15": {
         "level": 15,
-        "diameter": 2.9,
-        "speed": 5.8,
-        "view": 58,
+        "diameter": 3.4,
+        "speed": 6.8,
+        "view": 68,
         "exp": 126
     },
     "16": {
         "level": 16,
-        "diameter": 3,
-        "speed": 6,
-        "view": 60,
+        "diameter": 3.5,
+        "speed": 7,
+        "view": 70,
         "exp": 180
     },
     "17": {
         "level": 17,
-        "diameter": 3.1,
-        "speed": 6.2,
-        "view": 62,
+        "diameter": 3.6,
+        "speed": 7.2,
+        "view": 72,
         "exp": 180
     },
     "18": {
         "level": 18,
-        "diameter": 3.2,
-        "speed": 6.4,
-        "view": 64,
+        "diameter": 3.7,
+        "speed": 7.4,
+        "view": 74,
         "exp": 180
     },
     "19": {
         "level": 19,
-        "diameter": 3.3,
-        "speed": 6.6,
-        "view": 66,
+        "diameter": 3.8,
+        "speed": 7.6,
+        "view": 76,
         "exp": 180
     },
     "20": {
         "level": 20,
-        "diameter": 3.4,
-        "speed": 6.8,
-        "view": 68,
+        "diameter": 3.9,
+        "speed": 7.8,
+        "view": 78,
         "exp": 180
     },
     "21": {
         "level": 21,
-        "diameter": 4,
-        "speed": 8,
-        "view": 80,
+        "diameter": 4.5,
+        "speed": 9,
+        "view": 90,
         "exp": 900
     },
     "22": {
         "level": 22,
-        "diameter": 4.2,
-        "speed": 8.4,
-        "view": 84,
+        "diameter": 4.7,
+        "speed": 9.4,
+        "view": 94,
         "exp": 900
     },
     "23": {
         "level": 23,
-        "diameter": 4.4,
-        "speed": 8.8,
-        "view": 88,
+        "diameter": 4.9,
+        "speed": 9.8,
+        "view": 98,
         "exp": 900
     },
     "24": {
         "level": 24,
-        "diameter": 4.6,
-        "speed": 9.2,
-        "view": 92,
+        "diameter": 5.1,
+        "speed": 10.2,
+        "view": 102,
         "exp": 900
     },
     "25": {
         "level": 25,
-        "diameter": 4.8,
-        "speed": 9.6,
-        "view": 96,
+        "diameter": 5.3,
+        "speed": 10.6,
+        "view": 106,
         "exp": 900
     },
     "26": {
         "level": 26,
-        "diameter": 5.5,
-        "speed": 11,
-        "view": 110,
+        "diameter": 6,
+        "speed": 12,
+        "view": 120,
         "exp": 1800
     },
     "27": {
         "level": 27,
-        "diameter": 5.7,
-        "speed": 11.4,
-        "view": 114,
+        "diameter": 6.2,
+        "speed": 12.4,
+        "view": 124,
         "exp": 1800
     },
     "28": {
         "level": 28,
-        "diameter": 5.9,
-        "speed": 11.8,
-        "view": 118,
+        "diameter": 6.4,
+        "speed": 12.8,
+        "view": 128,
         "exp": 1800
     },
     "29": {
         "level": 29,
-        "diameter": 6.1,
-        "speed": 12.2,
-        "view": 122,
+        "diameter": 6.6,
+        "speed": 13.2,
+        "view": 132,
         "exp": 1800
     },
     "30": {
         "level": 30,
-        "diameter": 6.3,
-        "speed": 12.6,
-        "view": 126,
+        "diameter": 6.8,
+        "speed": 13.6,
+        "view": 136,
         "exp": 1800
     },
     "31": {
         "level": 31,
-        "diameter": 9,
-        "speed": 18,
-        "view": 180,
+        "diameter": 9.5,
+        "speed": 19,
+        "view": 190,
         "exp": 5400
     },
     "32": {
         "level": 32,
-        "diameter": 9.3,
-        "speed": 18.6,
-        "view": 186,
+        "diameter": 9.8,
+        "speed": 19.6,
+        "view": 196,
         "exp": 5400
     },
     "33": {
         "level": 33,
-        "diameter": 9.6,
-        "speed": 19.2,
-        "view": 192,
+        "diameter": 10.1,
+        "speed": 20.2,
+        "view": 202,
         "exp": 5400
     },
     "34": {
         "level": 34,
-        "diameter": 9.9,
-        "speed": 19.8,
-        "view": 198,
+        "diameter": 10.4,
+        "speed": 20.8,
+        "view": 208,
         "exp": 5400
     },
     "35": {
         "level": 35,
-        "diameter": 10.2,
-        "speed": 20.4,
-        "view": 204,
+        "diameter": 10.7,
+        "speed": 21.4,
+        "view": 214,
         "exp": 5400
     },
     "36": {
         "level": 36,
-        "diameter": 11,
-        "speed": 22,
-        "view": 220,
+        "diameter": 11.5,
+        "speed": 23,
+        "view": 230,
         "exp": 14400
     },
     "37": {
         "level": 37,
-        "diameter": 11.3,
-        "speed": 22.6,
-        "view": 226,
+        "diameter": 11.8,
+        "speed": 23.6,
+        "view": 236,
         "exp": 14400
     },
     "38": {
         "level": 38,
-        "diameter": 11.6,
-        "speed": 23.2,
-        "view": 232,
+        "diameter": 12.1,
+        "speed": 24.2,
+        "view": 242,
         "exp": 14400
     },
     "39": {
         "level": 39,
-        "diameter": 11.9,
-        "speed": 23.8,
-        "view": 238,
+        "diameter": 12.4,
+        "speed": 24.8,
+        "view": 248,
         "exp": 14400
     },
     "40": {
         "level": 40,
-        "diameter": 12.2,
-        "speed": 24.4,
-        "view": 244,
+        "diameter": 12.7,
+        "speed": 25.4,
+        "view": 254,
         "exp": 14400
     },
     "41": {
         "level": 41,
-        "diameter": 13.5,
-        "speed": 27,
-        "view": 270,
+        "diameter": 14,
+        "speed": 28,
+        "view": 280,
         "exp": 27000
     },
     "42": {
         "level": 42,
-        "diameter": 13.9,
-        "speed": 27.8,
-        "view": 278,
+        "diameter": 14.4,
+        "speed": 28.8,
+        "view": 288,
         "exp": 27000
     },
     "43": {
         "level": 43,
-        "diameter": 14.3,
-        "speed": 28.6,
-        "view": 286,
+        "diameter": 14.8,
+        "speed": 29.6,
+        "view": 296,
         "exp": 27000
     },
     "44": {
         "level": 44,
-        "diameter": 14.7,
-        "speed": 29.4,
-        "view": 294,
+        "diameter": 15.2,
+        "speed": 30.4,
+        "view": 304,
         "exp": 27000
     },
     "45": {
         "level": 45,
-        "diameter": 15.1,
-        "speed": 30.2,
-        "view": 302,
+        "diameter": 15.6,
+        "speed": 31.2,
+        "view": 312,
         "exp": 27000
     },
     "46": {
         "level": 46,
-        "diameter": 18,
-        "speed": 36,
-        "view": 360,
+        "diameter": 18.5,
+        "speed": 37,
+        "view": 370,
         "exp": 54000
     },
     "47": {
         "level": 47,
-        "diameter": 18.4,
-        "speed": 36.8,
-        "view": 368,
+        "diameter": 18.9,
+        "speed": 37.8,
+        "view": 378,
         "exp": 54000
     },
     "48": {
         "level": 48,
-        "diameter": 18.8,
-        "speed": 37.6,
-        "view": 376,
+        "diameter": 19.3,
+        "speed": 38.6,
+        "view": 386,
         "exp": 54000
     },
     "49": {
         "level": 49,
-        "diameter": 19.2,
-        "speed": 38.4,
-        "view": 384,
+        "diameter": 19.7,
+        "speed": 39.4,
+        "view": 394,
         "exp": 54000
     },
     "50": {
         "level": 50,
-        "diameter": 19.6,
-        "speed": 39.2,
-        "view": 392,
+        "diameter": 20.1,
+        "speed": 40.2,
+        "view": 402,
         "exp": 54000
     },
     "51": {
         "level": 51,
-        "diameter": 23,
-        "speed": 46,
-        "view": 460,
+        "diameter": 23.5,
+        "speed": 47,
+        "view": 470,
         "exp": 999999999
     },
     "52": {
         "level": 52,
-        "diameter": 23,
-        "speed": 46,
-        "view": 460,
+        "diameter": 23.5,
+        "speed": 47,
+        "view": 470,
         "exp": 999999999
     },
     "53": {
         "level": 53,
-        "diameter": 23,
-        "speed": 46,
-        "view": 460,
+        "diameter": 23.5,
+        "speed": 47,
+        "view": 470,
         "exp": 999999999
     },
     "54": {
         "level": 54,
-        "diameter": 23,
-        "speed": 46,
-        "view": 460,
+        "diameter": 23.5,
+        "speed": 47,
+        "view": 470,
         "exp": 999999999
     },
     "55": {
         "level": 55,
-        "diameter": 23,
-        "speed": 46,
-        "view": 460,
+        "diameter": 23.5,
+        "speed": 47,
+        "view": 470,
         "exp": 999999999
     }
 }

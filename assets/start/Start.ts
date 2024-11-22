@@ -5,14 +5,14 @@ import { GameUILayers, GameUILayerNames } from '../scripts/GameUILayers';
 import { ModuleDef } from '../scripts/ModuleDef';
 import { SceneDef } from '../scripts/SceneDef';
 import { JsonUtil } from '../core_tgx/base/utils/JsonUtil';
-import { platform } from 'os';
 const { ccclass, property } = _decorator;
 
 const _preloadBundles = [ModuleDef.BASIC, ModuleDef.MODULE_HOLE];
 
 const _preloadRes = [
     { bundle: ModuleDef.BASIC, url: 'ui_alert/UI_Alert', type: 'prefab' },
-    { bundle: ModuleDef.BASIC, url: 'ui_waiting/UI_Waiting', type: 'prefab' }
+    { bundle: ModuleDef.BASIC, url: 'ui_waiting/UI_Waiting', type: 'prefab' },
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Prefabs/Level/Level1.prefab', type: 'prefab' }
 ];
 
 const _loadingText = ['Loading.', 'Loading..', 'Loading...'];

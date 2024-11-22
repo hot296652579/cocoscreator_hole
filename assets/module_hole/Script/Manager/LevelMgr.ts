@@ -109,10 +109,17 @@ export class LevelManager {
         return currentMassScaled > thresholdScaled;
     }
 
+    /** 获取boss体重*/
+    getBossWeight(): number {
+        const { level_boss } = LevelManager.instance.levelModel;
+        const bossWeight = LevelManager.instance.levelModel.bossModel.gettBossById(level_boss);
+        return bossWeight;
+    }
+
     /** 判断本次关卡输赢*/
     judgeWin(): boolean {
         const { bossModel } = LevelManager.instance.levelModel;
-        const { bossWeight } = bossModel;
+        let bossWeight = this.getBossWeight();
 
         let total = 0;
         const eatsMap = PropManager.instance.eatsMap;

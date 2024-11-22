@@ -27,7 +27,7 @@ export class Tablelevels_config {
     get reward_additional(): number {
         return this.data.reward_additional;
     }
-    /** boss */
+    /** boss id */
     get boss(): number {
         return this.data.boss;
     }
@@ -36,4 +36,3 @@ export class Tablelevels_config {
         return this.data.quality;
     }
 }
-    

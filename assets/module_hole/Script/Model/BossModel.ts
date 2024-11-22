@@ -32,7 +32,8 @@ export class BossModel {
     }
 
     /** 根据id设置当前boss属性*/
-    set setBossById(id: number) {
+    gettBossById(id: number) {
         this.config.init(id);
+        return this.config.weight;
     }
 }
