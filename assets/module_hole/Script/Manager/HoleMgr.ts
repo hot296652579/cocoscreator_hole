@@ -3,7 +3,7 @@ import { BlackholeModel } from '../Model/HoleModel';
 import { EventDispatcher } from '../../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from '../Enum/GameEvent';
 import { LevelManager } from './LevelMgr';
-import { TYPE_BLESSINGS } from '../Model/LevelModel';
+import { TYPE_BLESSINGS, TYPE_GAME_STATE } from '../Model/LevelModel';
 const { ccclass, property } = _decorator;
 
 /** 黑洞管理器*/
@@ -38,9 +38,10 @@ export class HoleManager {
         this.holeModel.curHoleExpL += addExp;
         // console.log(`当前经验:${this.holeModel.curHoleExpL} ,增加的经验:${addExp} ,需要经验:${this.holeModel.exp}`);
         if (this.holeModel.curHoleExpL >= this.holeModel.exp) {
-            this.holeModel.curHoleExpL = 0;
-            this.holeModel.upgradeLevel();
-            EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP);
+            //游戏中升级 加5级
+            let state = LevelManager.instance.levelModel.curGameState;
+            let up = state == TYPE_GAME_STATE.GAME_STATE_START ? 1 : 5;
+            this.upgradeLevel(up);
         }
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_EXP_UPDATE);
     }
@@ -53,7 +54,7 @@ export class HoleManager {
 
         const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.SIZE, holeLevel);
         if (!attributeConfig) {
-            this.holeModel.holeLevel = this.holeModel.holeLevel - up;
+            this.holeModel.holeLevel = this.holeModel.holeLevel - 1;
             EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_MAX);
             return;
         }

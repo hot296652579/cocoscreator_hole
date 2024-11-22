@@ -39,7 +39,7 @@ export class BlackholeModel {
     }
 
     /** 黑洞等级升级*/
-    upgradeLevel(up: number = 1) {
+    upgradeHoleLevel(up: number = 1) {
         this.holeLevel += up;
         this.config.init(this.holeLevel);
     }
