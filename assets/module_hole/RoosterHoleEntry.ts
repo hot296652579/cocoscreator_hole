@@ -75,6 +75,7 @@ export class RoosterHoleEntry extends Component {
         EventDispatcher.instance.on(GameEvent.EVENT_ADD_EXTRATIME, this.addExtraTime, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_FINISH_EAT_ENTER_BATTLE, this.enterBattle, this);
     }
 
     protected onDestroy(): void {
@@ -84,6 +85,7 @@ export class RoosterHoleEntry extends Component {
         EventDispatcher.instance.off(GameEvent.EVENT_ADD_EXTRATIME, this.addExtraTime, this);
         EventDispatcher.instance.off(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler);
         EventDispatcher.instance.off(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose);
+        EventDispatcher.instance.off(GameEvent.EVENT_FINISH_EAT_ENTER_BATTLE, this.enterBattle);
     }
 
     onGameStart() {
@@ -142,6 +144,7 @@ export class RoosterHoleEntry extends Component {
     }
 
     private enterBattle(): void {
+        this.unschedule(this.updateCountdown);
         this.battleStageView();
         LevelManager.instance.loadBattle();
     }

@@ -93,6 +93,10 @@ export class LevelModel {
         return this.levelConfig.quality;
     }
 
+    get propTotal(): number {
+        return this.levelConfig.propTotal;
+    }
+
     /** 关卡等级升级*/
     upgradeLevel(up: number = 1) {
         this.level += up;

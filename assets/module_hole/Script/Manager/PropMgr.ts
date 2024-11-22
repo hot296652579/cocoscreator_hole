@@ -97,8 +97,23 @@ export class PropManager {
 
             this.eatsMap.set(id, obj);
         }
+        this.checkIsAllEaten();
         EventDispatcher.instance.emit(GameEvent.EVENT_LEVEL_PROGRESS_UPDATE);
-        // console.log(this.eatsMap);
+    }
+
+    /** 检测当前关卡是否吃完所有道具*/
+    checkIsAllEaten(): void {
+        const { propTotal } = LevelManager.instance.levelModel; //关卡道具总个数
+        const eatCount = this.getEatsCount();
+        if (eatCount >= propTotal) {
+            EventDispatcher.instance.emit(GameEvent.EVENT_FINISH_EAT_ENTER_BATTLE);
+        }
+    }
+
+    /** 获取当前关卡吃掉道具的总数*/
+    getEatsCount(): number {
+        const totalCount = Array.from(this.eatsMap.values()).reduce((sum, item) => sum + item.count, 0);
+        return totalCount;
     }
 
     /** 获取某个道具数量和总重量*/

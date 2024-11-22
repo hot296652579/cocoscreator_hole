@@ -35,5 +35,9 @@ export class Tablelevels_config {
     get quality(): number {
         return this.data.quality;
     }
+    /** 模型数量 */
+    get propTotal(): number {
+        return this.data.propTotal;
+    }
 }
     
