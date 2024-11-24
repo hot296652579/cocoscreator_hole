@@ -1,4 +1,4 @@
-import { BoxCollider, Component, CylinderCollider, ITriggerEvent, Node, ParticleSystem, SphereCollider, Vec3, _decorator, director, game, isValid, v3 } from 'cc';
+import { BoxCollider, Component, CylinderCollider, ITriggerEvent, MeshCollider, Node, ParticleSystem, SphereCollider, Vec3, _decorator, director, game, isValid, v3 } from 'cc';
 import { EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
@@ -22,7 +22,7 @@ export class HolePlayer extends Component {
 
     ringScale: Vec3 = v3(1.5, 0.01, 1.5); //刚体环形初始scale大小
     holeTriggerRadius: number = 0.4;      //碰撞器触发初始半径
-    coefficient: number = 15;
+    coefficient: number = 20;
     isMagment: boolean = false;
 
     @property(Node)
@@ -80,15 +80,7 @@ export class HolePlayer extends Component {
     }
 
     onTriggerEnter(event: ITriggerEvent): void {
-        const holeRadius = this.holeTigger.radius;
-        const distance = this.getPlanceVec3(event).length();
-        if (event.otherCollider.getGroup() == 1 << 4) {
-            if (distance <= holeRadius * this.coefficient) {
-                //EdibleThing 层组不与地面碰撞交集 就可通过刚体重力掉落
-                event.otherCollider.setGroup(1 << 3);
-                // this.pullTowardsHole(event);
-            }
-        }
+
     }
 
     onGetScoreTriggerEnter(event: ITriggerEvent): void {
@@ -139,15 +131,18 @@ export class HolePlayer extends Component {
     }
 
     onTriggerStay(event: ITriggerEvent): void {
-        // console.log(`碰撞持续stay otherGroup->:${event.otherCollider.getGroup()}`);
+        console.log(`碰撞持续stay otherGroup->:${event.otherCollider.getGroup()}`);
         const { isMagment } = HoleManager.instance.holeModel;
-        // if (isMagment) return;
-        if (event.otherCollider.getGroup() == 1 << 3) {
-            const otherPos = event.otherCollider.worldBounds.center;
-            const heloToOtherDir = this.getPlanceVec3(event).normalize();
-            heloToOtherDir.y = otherPos.y;
-            const heloActtion = heloToOtherDir.clone().negative();
-            event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.1), heloToOtherDir);
+
+        const otherPos = event.otherCollider.worldBounds.center;
+        const heloToOtherDir = this.getPlanceVec3(event).normalize();
+        heloToOtherDir.y = otherPos.y;
+        const heloActtion = heloToOtherDir.clone().negative();
+        event.otherCollider.attachedRigidBody?.applyForce(heloActtion.multiplyScalar(3), heloToOtherDir);
+
+        // 如果距离足够近，销毁节点
+        if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient * 0.5) {
+            event.otherCollider.setGroup(1 << 3);
         }
     }
 
@@ -206,7 +201,8 @@ export class HolePlayer extends Component {
         const { holeLevel, speed, view, diameter } = model;
         this.speed = speed;
         this.node.setScale(v3(diameter, 1, diameter));
-        // console.log(`黑洞等级:${holeLevel} diameter:${diameter} view:${view} speed:${speed}`);
+        console.log(`黑洞等级:${holeLevel} diameter:${diameter} view:${view} speed:${speed}`);
+        console.log(`黑洞刚体center y:${this.node.getChildByName('Ring').getComponent(MeshCollider).center.y}`)
 
         const sence = director.getScene();
         sence.emit(EasyControllerEvent.CAMERA_ZOOM, view);

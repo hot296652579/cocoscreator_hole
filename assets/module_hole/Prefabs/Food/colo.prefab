@@ -222,7 +222,7 @@
     "_group": 16,
     "_type": 1,
     "_mass": 1,
-    "_allowSleep": true,
+    "_allowSleep": false,
     "_linearDamping": 0.1,
     "_angularDamping": 0.1,
     "_useGravity": true,
@@ -256,7 +256,10 @@
     "__prefab": {
       "__id__": 12
     },
-    "_material": null,
+    "_material": {
+      "__uuid__": "3e8bec7a-f877-47c0-af72-b4cac5c9a477",
+      "__expectedType__": "cc.PhysicsMaterial"
+    },
     "_isTrigger": false,
     "_center": {
       "__type__": "cc.Vec3",
