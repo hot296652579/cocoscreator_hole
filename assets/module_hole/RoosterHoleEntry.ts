@@ -1,4 +1,4 @@
-import { Component, Label, Node, Prefab, ProgressBar, Tween, Vec3, _decorator, tween, v3 } from 'cc';
+import { Component, Label, Node, Prefab, ProgressBar, Tween, Vec3, _decorator, physics, tween, v3 } from 'cc';
 import { EventDispatcher } from '../core_tgx/easy_ui_framework/EventDispatcher';
 import { tgxUIMgr } from '../core_tgx/tgx';
 import { UI_ExtraTime, UI_Magnetic, UI_TopInfo } from '../scripts/UIDef';
@@ -37,6 +37,9 @@ export class RoosterHoleEntry extends Component {
     private gaming: boolean = false;
 
     start() {
+        // physics.PhysicsSystem.instance.fixedTimeStep = 1 / 60; // 固定为 60 帧
+        // physics.PhysicsSystem.instance.maxSubSteps = 2; // 限制物理步数
+
         HoleGameAudioMgr.initilize();
         AdvertMgr.instance.initilize();
         this.initilize();
