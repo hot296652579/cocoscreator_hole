@@ -19,6 +19,8 @@ export class AdvertMgr {
 
     initilize(): void {
         this.adInstance = (window as any)['adInstance'];
+        console.log('ad sdk初始化');
+        console.log(this.adInstance);
     }
 
     /** 显示激励广告*/
