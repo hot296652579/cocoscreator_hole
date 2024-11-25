@@ -22,7 +22,7 @@ export class HolePlayer extends Component {
 
     ringScale: Vec3 = v3(1.5, 0.01, 1.5); //刚体环形初始scale大小
     holeTriggerRadius: number = 0.4;      //碰撞器触发初始半径
-    coefficient: number = 20;
+    coefficient: number = 10;
     isMagment: boolean = false;
 
     @property(Node)
@@ -131,7 +131,6 @@ export class HolePlayer extends Component {
     }
 
     onTriggerStay(event: ITriggerEvent): void {
-        console.log(`碰撞持续stay otherGroup->:${event.otherCollider.getGroup()}`);
         const { isMagment } = HoleManager.instance.holeModel;
 
         const otherPos = event.otherCollider.worldBounds.center;
@@ -141,7 +140,7 @@ export class HolePlayer extends Component {
         event.otherCollider.attachedRigidBody?.applyForce(heloActtion.multiplyScalar(3), heloToOtherDir);
 
         // 如果距离足够近，销毁节点
-        if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient * 0.5) {
+        if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
             event.otherCollider.setGroup(1 << 3);
         }
     }
