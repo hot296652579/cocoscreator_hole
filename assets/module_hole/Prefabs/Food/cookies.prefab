@@ -222,9 +222,9 @@
     "_group": 16,
     "_type": 1,
     "_mass": 1,
-    "_allowSleep": false,
-    "_linearDamping": 0.1,
-    "_angularDamping": 0.1,
+    "_allowSleep": true,
+    "_linearDamping": 0,
+    "_angularDamping": 0,
     "_useGravity": true,
     "_linearFactor": {
       "__type__": "cc.Vec3",
@@ -267,7 +267,7 @@
       "y": 0.14,
       "z": 0
     },
-    "_radius": 0.55,
+    "_radius": 0.5,
     "_height": 0.27,
     "_direction": 1,
     "_id": ""

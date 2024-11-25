@@ -1,4 +1,4 @@
-import { BoxCollider, Component, CylinderCollider, ITriggerEvent, MeshCollider, Node, ParticleSystem, SphereCollider, Vec3, _decorator, director, game, isValid, v3 } from 'cc';
+import { BoxCollider, Component, CylinderCollider, ITriggerEvent, Node, ParticleSystem, SphereCollider, Vec3, _decorator, director, game, isValid, math, v3 } from 'cc';
 import { EasyControllerEvent } from '../../core_tgx/easy_controller/EasyController';
 import { EventDispatcher } from '../../core_tgx/easy_ui_framework/EventDispatcher';
 import { GameEvent } from './Enum/GameEvent';
@@ -10,6 +10,9 @@ import { TYPE_GAME_STATE } from './Model/LevelModel';
 import { PropItem } from './PropItem';
 import { UIJoyStick } from './UIJoyStick';
 const { ccclass, property } = _decorator;
+
+const _ime = new math.Vec3();
+const _pot = new math.Vec3();
 
 @ccclass('HolePlayer')
 export class HolePlayer extends Component {
@@ -94,16 +97,6 @@ export class HolePlayer extends Component {
         }, 500);
     }
 
-    private pullTowardsHole(event: ITriggerEvent): void {
-        const otherRigidBody = event.otherCollider.attachedRigidBody;
-        if (otherRigidBody) {
-            // 获取黑洞和物体的位置差向量，并将物体朝黑洞中心拉动
-            const directionToHole = this.getPlanceVec3(event).normalize().negative();
-            // 应用一个较大的冲量，使物体快速移动到黑洞
-            otherRigidBody.applyImpulse(directionToHole.multiplyScalar(1), directionToHole);
-        }
-    }
-
     private onMagmentTriggerStay(event: ITriggerEvent): void {
         const { isMagment } = HoleManager.instance.holeModel;
         if (isMagment) {
@@ -131,17 +124,51 @@ export class HolePlayer extends Component {
     }
 
     onTriggerStay(event: ITriggerEvent): void {
-        const { isMagment } = HoleManager.instance.holeModel;
+        // const { isMagment } = HoleManager.instance.holeModel;
 
-        const otherPos = event.otherCollider.worldBounds.center;
-        const heloToOtherDir = this.getPlanceVec3(event).normalize();
-        heloToOtherDir.y = otherPos.y;
-        const heloActtion = heloToOtherDir.clone().negative();
-        event.otherCollider.attachedRigidBody?.applyForce(heloActtion.multiplyScalar(3), heloToOtherDir);
+        // const otherPos = event.otherCollider.worldBounds.center;
+        // const heloToOtherDir = this.getPlanceVec3(event).normalize();
+        // heloToOtherDir.y = otherPos.y;
+        // const heloActtion = heloToOtherDir.clone().negative();
+        // event.otherCollider.attachedRigidBody?.applyForce(heloActtion.multiplyScalar(3), heloToOtherDir);
 
-        // 如果距离足够近，销毁节点
-        if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
-            event.otherCollider.setGroup(1 << 3);
+        // // 如果距离足够近，销毁节点
+        // if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
+        //     event.otherCollider.setGroup(1 << 3);
+        // }
+
+        if (event.otherCollider.attachedRigidBody) {
+            const otherCollider = event.otherCollider;
+            let dir = this.getPlanceVec3(event);
+            Vec3.copy(_pot, dir);
+            _pot.normalize();
+            Vec3.copy(_ime, dir.clone());
+            _ime.negative();
+            _ime.normalize();
+            _ime.multiplyScalar(0.1);
+
+            otherCollider.attachedRigidBody.applyImpulse(_ime, _pot);
+
+            if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
+                let radius: number | null = null;
+                if (otherCollider instanceof SphereCollider) {
+                    // 对于球体碰撞器，直接获取半径
+                    radius = otherCollider.radius;
+                } else if (otherCollider instanceof CylinderCollider) {
+                    // 对于圆柱体碰撞器，获取半径
+                    radius = otherCollider.radius;
+                } else if (otherCollider instanceof BoxCollider) {
+                    // 对于盒子碰撞器，计算包围球半径
+                    const size = otherCollider.size;
+                    radius = size.length() / 2; // 盒子的对角线长度的一半
+                }
+
+                if (radius != null) {
+                    if (radius * this.coefficient <= this.holeTigger.radius * this.coefficient) {
+                        event.otherCollider.setGroup(1 << 3)
+                    }
+                }
+            }
         }
     }
 
@@ -197,10 +224,11 @@ export class HolePlayer extends Component {
 
     updateHoleView(): void {
         const model = HoleManager.instance.holeModel;
-        const { holeLevel, speed, view, diameter } = model;
+        const { holeLevel, speed, view, diameter, radius } = model;
         this.speed = speed;
         this.node.setScale(v3(diameter, 1, diameter));
-        console.log(`当前黑洞等级:${holeLevel},速度:${speed},视野:${view},直径:${diameter}`);
+        this.holeTigger.radius = radius;
+        console.log(`当前黑洞等级:${holeLevel},速度:${speed},视野:${view},直径:${diameter} 半径 :${radius}`);
         const sence = director.getScene();
         sence.emit(EasyControllerEvent.CAMERA_ZOOM, view);
     }
