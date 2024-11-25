@@ -15,9 +15,17 @@ export class HoleManager {
         return this._instance;
     }
 
+    /** 玩家的养成等级*/
+    private develLevel: number = 1;
+    /** 游戏内升级的等级*/
+    private gameLevel: number = 0;
+    /** 最终呈现的等级*/
+    private finalLevel: number = 0;
+
     public holeModel: BlackholeModel;
     initilizeModel(): void {
-        this.holeModel = new BlackholeModel();
+        this.finalLevel = this.getFinishLev();
+        this.holeModel = new BlackholeModel(this.finalLevel);
 
         EventDispatcher.instance.on(GameEvent.EVENT_MAGNET_ON, this.onMagnetOn, this);
         EventDispatcher.instance.on(GameEvent.EVENT_MAGNET_OFF, this.onMagnetOff, this);
@@ -39,17 +47,25 @@ export class HoleManager {
         // console.log(`当前经验:${this.holeModel.curHoleExpL} ,增加的经验:${addExp} ,需要经验:${this.holeModel.exp}`);
         if (this.holeModel.curHoleExpL >= this.holeModel.exp) {
             //游戏中升级 加5级
-            let state = LevelManager.instance.levelModel.curGameState;
-            let up = state == TYPE_GAME_STATE.GAME_STATE_START ? 1 : 5;
-            this.upgradeLevel(up);
+            this.gameLevel += 5;
+            this.upHoleLevel();
         }
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_EXP_UPDATE);
     }
 
+    /** 黑洞等级:玩家养成等级+游戏内升级等级*/
+    getFinishLev(): number {
+        return this.develLevel + this.gameLevel;
+    }
+
     /** 黑洞等级升级*/
-    upgradeLevel(up: number = 1) {
+    upHoleLevel(add?: number) {
         this.holeModel.curHoleExpL = 0;
-        this.holeModel.holeLevel += up;
+        if (add) {
+            //按钮点击 升级
+            this.develLevel += add;
+        }
+        this.holeModel.holeLevel = this.getFinishLev();
         const { holeLevel } = this.holeModel;
 
         const attributeConfig = LevelManager.instance.getByTypeAndLevel(TYPE_BLESSINGS.SIZE, holeLevel);
@@ -63,11 +79,10 @@ export class HoleManager {
     }
 
     timeoutId = null;
-    /** 闯关失败重设经验*/
-    resetExPByLose(): void {
-        this.holeModel.curHoleExpL = 0;
-        this.onMagnetOff();
-        EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_EXP_UPDATE);
+    /** 闯关失败 重置黑洞等数据*/
+    reBornByLevelLose(): void {
+        this.clearHoleData();
+        EventDispatcher.instance.emit(GameEvent.EVENT_LEVEL_FAIL_RESET);
 
         if (this.timeoutId) {
             clearTimeout(this.timeoutId);
@@ -79,13 +94,19 @@ export class HoleManager {
         }, 100)
     }
 
-    /** 黑洞重生*/
-    reBornLevel() {
-        this.holeModel.holeLevel = 1;
+    clearHoleData() {
         this.holeModel.curHoleExpL = 0;
-        const { holeLevel } = this.holeModel;
-        this.holeModel.config.init(holeLevel);
+        this.gameLevel = 0;
+        this.finalLevel = this.getFinishLev();
+        this.holeModel.holeLevel = this.finalLevel;
+        this.holeModel.config.init(this.finalLevel);
         this.onMagnetOff();
+    }
+
+    /** 关卡胜利 黑洞重置*/
+    reBornByLevelWin() {
+        this.develLevel = 1;
+        this.clearHoleData();
         EventDispatcher.instance.emit(GameEvent.EVENT_HOLE_LEVEL_SIEZE_RESET);
     }
 }

@@ -45,6 +45,7 @@ export class ButtonController extends Component {
             { event: GameEvent.EVENT_HOLE_LEVEL_SIEZE_UP, handler: this.updateBtSizeLv },
             { event: GameEvent.EVENT_HOLE_LEVEL_SIEZE_MAX, handler: () => this.updateBtLvMax(TYPE_BLESSINGS.SIZE) },
             { event: GameEvent.EVENT_LEVEL_UP_RESET, handler: this.onResetAddition },
+            { event: GameEvent.EVENT_LEVEL_FAIL_RESET, handler: this.onResetAddition },
             { event: GameEvent.EVENT_USER_MONEY_UPDATE, handler: this.updateUserMoney },
         ];
 
@@ -73,7 +74,7 @@ export class ButtonController extends Component {
                 LevelManager.instance.upgradeLevelTime();
                 break;
             case TYPE_BLESSINGS.SIZE:
-                HoleManager.instance.upgradeLevel();
+                HoleManager.instance.upHoleLevel(1);
                 break;
             case TYPE_BLESSINGS.EXP:
                 LevelManager.instance.upgradeLevelExp();

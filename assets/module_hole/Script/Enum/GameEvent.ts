@@ -31,6 +31,9 @@ export class GameEvent {
     /** 关卡升级 各加成等级恢复到level1*/
     static readonly EVENT_LEVEL_UP_RESET = 'EVENT_LEVEL_UP_RESET';
 
+    /** 关卡失败 各加成等级恢复等级*/
+    static readonly EVENT_LEVEL_FAIL_RESET = 'EVENT_LEVEL_FAIL_RESET';
+
     /** 闯关成功 关卡升级*/
     static readonly EVENT_BATTLE_SUCCESS_LEVEL_UP = 'EVENT_BATTLE_SUCCESS_LEVEL_UP';
 

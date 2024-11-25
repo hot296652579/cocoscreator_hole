@@ -94,9 +94,9 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         let total = PropManager.instance.getLevelTotalWeight() || 0;
         const { quality } = LevelManager.instance.levelModel; //关卡总质量
         const percent = (total * 100) / quality; // 放大到整数范围
-        const rewardAdditional = Math.round((reward_basics * 100 + (reward_additional * percent)) / 100);
-        this.rewardBase = reward_basics;
-        this.rewardAdditional = rewardAdditional;
+        const reward = Math.round((reward_basics * 100 + (reward_additional * percent)) / 100);
+        this.rewardBase = reward;
+        this.rewardAdditional = reward_basics * 2;
     }
 }
 

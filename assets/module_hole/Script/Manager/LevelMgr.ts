@@ -86,7 +86,7 @@ export class LevelManager {
     resetAddition(): void {
         this.levelModel.timesLevel = 1;
         this.levelModel.expMulLevel = 1;
-        HoleManager.instance.reBornLevel();
+        HoleManager.instance.reBornByLevelWin();
         PropManager.instance.clearEatsMap();
         EventDispatcher.instance.emit(GameEvent.EVENT_LEVEL_UP_RESET);
     }
