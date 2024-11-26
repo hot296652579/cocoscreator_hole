@@ -11,6 +11,9 @@ import { PropItem } from './PropItem';
 import { UIJoyStick } from './UIJoyStick';
 const { ccclass, property } = _decorator;
 
+const _dir: Vec3 = new Vec3();
+const _ime: Vec3 = new Vec3();
+
 @ccclass('HolePlayer')
 export class HolePlayer extends Component {
     holeTigger: SphereCollider = null!;
@@ -59,7 +62,6 @@ export class HolePlayer extends Component {
         this.holeTigger.on('onTriggerEnter', this.onTriggerEnter, this);
         this.holeTigger.on('onTriggerStay', this.onTriggerStay, this);
         this.holeTigger.on('onTriggerExit', this.onTriggerExit, this);
-        this.magmentTigger.on('onTriggerStay', this.onMagmentTriggerStay, this);
         this.getScoreTigger.on('onTriggerEnter', this.onGetScoreTriggerEnter, this);
     }
 
@@ -80,7 +82,11 @@ export class HolePlayer extends Component {
     }
 
     onTriggerEnter(event: ITriggerEvent): void {
-
+        console.log("HolePlayer onTriggerEnter");
+        // this.pullTowardsHole(event);
+        // if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
+        //     event.otherCollider.setGroup(1 << 3);
+        // }
     }
 
     onGetScoreTriggerEnter(event: ITriggerEvent): void {
@@ -101,21 +107,8 @@ export class HolePlayer extends Component {
             const directionToHole = this.getPlanceVec3(event).normalize().negative();
             // 应用一个较大的冲量，使物体快速移动到黑洞
             otherRigidBody.applyImpulse(directionToHole.multiplyScalar(1), directionToHole);
-        }
-    }
 
-    private onMagmentTriggerStay(event: ITriggerEvent): void {
-        const { isMagment } = HoleManager.instance.holeModel;
-        if (isMagment) {
-            const otherPos = event.otherCollider.worldBounds.center;
-            const heloToOtherDir = this.getPlanceVec3(event).normalize();
-            heloToOtherDir.y = otherPos.y;
-            const heloActtion = heloToOtherDir.clone().negative();
-            event.otherCollider.attachedRigidBody?.applyImpulse(heloActtion.multiplyScalar(0.1), heloToOtherDir);
-
-            const holeRadius = this.holeTigger.radius;
-            const distance = this.getPlanceVec3(event).length();
-            if (distance <= holeRadius) {
+            if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
                 event.otherCollider.setGroup(1 << 3);
             }
         }
@@ -131,18 +124,36 @@ export class HolePlayer extends Component {
     }
 
     onTriggerStay(event: ITriggerEvent): void {
-        const { isMagment } = HoleManager.instance.holeModel;
+        // const otherPos = event.otherCollider.worldBounds.center;
+        // const heloToOtherDir = this.getPlanceVec3(event).normalize();
+        // heloToOtherDir.y = otherPos.y;
+        // const heloActtion = heloToOtherDir.clone().negative();
+        // event.otherCollider.attachedRigidBody?.applyForce(heloActtion.multiplyScalar(1), heloToOtherDir);
 
-        const otherPos = event.otherCollider.worldBounds.center;
-        const heloToOtherDir = this.getPlanceVec3(event).normalize();
-        heloToOtherDir.y = otherPos.y;
-        const heloActtion = heloToOtherDir.clone().negative();
-        event.otherCollider.attachedRigidBody?.applyForce(heloActtion.multiplyScalar(3), heloToOtherDir);
+        if (event.otherCollider.attachedRigidBody) {
+            const dir = this.getPlanceVec3(event);
+            Vec3.copy(_dir, dir);
+            _dir.normalize();
 
-        // 如果距离足够近，销毁节点
-        if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
-            event.otherCollider.setGroup(1 << 3);
+            Vec3.copy(_ime, dir);
+            _ime.negative();
+            _ime.normalize();
+            _ime.multiplyScalar(1);
+            // console.log('施加的力:', _ime);
+            // console.log('方向:', _dir);
+            event.otherCollider.attachedRigidBody.applyImpulse(_ime, _dir);
+
+            // 如果距离足够近，销毁节点
+            if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
+                event.otherCollider.setGroup(1 << 3);
+            }
         }
+
+        // if (event.otherCollider.attachedRigidBody) {
+        //     if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
+        //         event.otherCollider.setGroup(1 << 3);
+        //     }
+        // }
     }
 
     onTriggerExit(event: ITriggerEvent): void {

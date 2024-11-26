@@ -21,6 +21,24 @@
       ],
       "subMetas": {}
     },
+    "a62fe": {
+      "importer": "gltf-mesh",
+      "uuid": "6cf6f7c6-6ea7-437e-a1b0-a06e13eac8c1@a62fe",
+      "displayName": "",
+      "id": "a62fe",
+      "name": "Scene.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 68
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
     "fd73d": {
       "importer": "gltf-embeded-image",
       "uuid": "6cf6f7c6-6ea7-437e-a1b0-a06e13eac8c1@fd73d",
@@ -41,24 +59,6 @@
       ],
       "subMetas": {}
     },
-    "a62fe": {
-      "importer": "gltf-mesh",
-      "uuid": "6cf6f7c6-6ea7-437e-a1b0-a06e13eac8c1@a62fe",
-      "displayName": "",
-      "id": "a62fe",
-      "name": "Scene.mesh",
-      "userData": {
-        "gltfIndex": 0,
-        "triangleCount": 68
-      },
-      "ver": "1.1.1",
-      "imported": true,
-      "files": [
-        ".bin",
-        ".json"
-      ],
-      "subMetas": {}
-    },
     "4f17a": {
       "importer": "texture",
       "uuid": "6cf6f7c6-6ea7-437e-a1b0-a06e13eac8c1@4f17a",
@@ -72,8 +72,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": false,
-        "imageUuidOrDatabaseUri": "db://assets/module_hole/FBX/Car/Textures/colormap.png"
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "6cf6f7c6-6ea7-437e-a1b0-a06e13eac8c1@fd73d"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -103,7 +103,7 @@
     "imageMetas": [
       {
         "name": "DiffuseColor_Texture",
-        "uri": "db://assets/module_hole/FBX/Car/Textures/colormap.png"
+        "uri": "6cf6f7c6-6ea7-437e-a1b0-a06e13eac8c1@fd73d"
       }
     ],
     "fbx": {
