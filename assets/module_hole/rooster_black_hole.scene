@@ -6888,6 +6888,10 @@
       {
         "__uuid__": "07405aac-fda6-4089-9d19-0a036d881a45",
         "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "3cb86bbf-ac2d-4511-86cc-acfd6e6aafc9",
+        "__expectedType__": "cc.Prefab"
       }
     ],
     "battlePrefab": {

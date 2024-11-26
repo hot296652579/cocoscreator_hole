@@ -33,6 +33,11 @@ export class BlackholeModel {
         return this.config.view;
     }
 
+    /** 黑洞半径*/
+    get radius(): number {
+        return this.config.radius;
+    }
+
     /** 黑洞升级所需经验*/
     get exp(): number {
         return this.config.exp;

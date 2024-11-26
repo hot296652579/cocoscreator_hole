@@ -17,6 +17,7 @@ const _ime: Vec3 = new Vec3();
 @ccclass('HolePlayer')
 export class HolePlayer extends Component {
     holeTigger: SphereCollider = null!;
+    mouth: Node = null!;
     magmentTigger: SphereCollider = null!;
     getScoreTigger: BoxCollider = null!;
     diameter: number = 1;
@@ -57,6 +58,7 @@ export class HolePlayer extends Component {
 
     initilizeUI(): void {
         this.holeTigger = this.node.getChildByName('HoleTrigger')?.getComponent(SphereCollider)!;
+        this.mouth = this.node.getChildByName('Mouth')!;
         this.magmentTigger = this.node.getChildByName('MagmentTrigger')?.getComponent(SphereCollider)!;
         this.getScoreTigger = this.node.getComponent(BoxCollider)!;
         this.holeTigger.on('onTriggerEnter', this.onTriggerEnter, this);
@@ -125,6 +127,10 @@ export class HolePlayer extends Component {
 
     onTriggerStay(event: ITriggerEvent): void {
         if (event.otherCollider.attachedRigidBody) {
+            const otherCollider = event.otherCollider as CylinderCollider;
+            const radius = otherCollider.radius;
+            console.log(`当前道具的半径:${otherCollider.radius}`)
+
             const dir = this.getPlanceVec3(event);
             Vec3.copy(_dir, dir);
             _dir.normalize();
@@ -132,13 +138,15 @@ export class HolePlayer extends Component {
             Vec3.copy(_ime, dir);
             _ime.negative();
             _ime.normalize();
-            _ime.multiplyScalar(1);
+            _ime.multiplyScalar(2);
             event.otherCollider.attachedRigidBody.applyImpulse(_ime, _dir);
 
-            // 如果距离足够近，销毁节点
-            // if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
-            //     event.otherCollider.setGroup(1 << 3);
-            // }
+            // 如果距离足够近 并且黑洞半径大于等于道具半径 吞噬
+            if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient * 0.75) {
+                if (this.holeTigger.radius >= radius) {
+                    event.otherCollider.setGroup(1 << 3);
+                }
+            }
         }
     }
 
@@ -194,10 +202,17 @@ export class HolePlayer extends Component {
 
     updateHoleView(): void {
         const model = HoleManager.instance.holeModel;
-        const { holeLevel, speed, view, diameter } = model;
-        this.speed = speed;
-        this.node.setScale(v3(diameter, 1, diameter));
+        const { holeLevel, speed, view, diameter, radius } = model;
         console.log(`当前黑洞等级:${holeLevel},速度:${speed},视野:${view},直径:${diameter}`);
+        this.speed = speed;
+        // this.node.setScale(v3(diameter, 1, diameter));
+
+        if (this.holeTigger) {
+            this.holeTigger.radius = radius;
+        }
+        if (this.mouth) {
+            this.mouth.setScale(v3(diameter, 1, diameter));
+        }
         const sence = director.getScene();
         sence.emit(EasyControllerEvent.CAMERA_ZOOM, view);
     }

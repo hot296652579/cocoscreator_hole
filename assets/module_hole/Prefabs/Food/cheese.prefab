@@ -52,9 +52,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 5,
-      "y": 5,
-      "z": 5
+      "x": 1,
+      "y": 1,
+      "z": 1
     },
     "_mobility": 0,
     "_layer": 1073741824,
@@ -87,7 +87,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0.236,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -99,9 +99,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
+      "x": 5,
+      "y": 5,
+      "z": 5
     },
     "_mobility": 0,
     "_layer": 1073741824,
@@ -208,41 +208,6 @@
     "fileId": "c4OI7uo2xBc65996sTJGx4"
   },
   {
-    "__type__": "cc.BoxCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 10
-    },
-    "_material": {
-      "__uuid__": "3e8bec7a-f877-47c0-af72-b4cac5c9a477",
-      "__expectedType__": "cc.PhysicsMaterial"
-    },
-    "_isTrigger": false,
-    "_center": {
-      "__type__": "cc.Vec3",
-      "x": -0.05,
-      "y": 0.24,
-      "z": 0
-    },
-    "_size": {
-      "__type__": "cc.Vec3",
-      "x": 1.1,
-      "y": 0.46,
-      "z": 0.816
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "e9NkYws7JMwaRkLkGSk+zV"
-  },
-  {
     "__type__": "cc.RigidBody",
     "_name": "",
     "_objFlags": 0,
@@ -252,7 +217,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 12
+      "__id__": 10
     },
     "_group": 16,
     "_type": 1,
@@ -278,6 +243,35 @@
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "2dwf43sItAwLuZD66oqaih"
+  },
+  {
+    "__type__": "cc.CylinderCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 12
+    },
+    "_material": null,
+    "_isTrigger": false,
+    "_center": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_radius": 3,
+    "_height": 2,
+    "_direction": 1,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "a0ix+A9yVIor9xnFHOZZjJ"
   },
   {
     "__type__": "cc.PrefabInfo",
