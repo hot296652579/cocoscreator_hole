@@ -129,9 +129,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1.6,
-      "y": 0.001,
-      "z": 1.6
+      "x": 1.5,
+      "y": 1,
+      "z": 1.5
     },
     "_mobility": 0,
     "_layer": 1073741824,
@@ -220,11 +220,11 @@
       "__uuid__": "3e8bec7a-f877-47c0-af72-b4cac5c9a477",
       "__expectedType__": "cc.PhysicsMaterial"
     },
-    "_isTrigger": false,
+    "_isTrigger": true,
     "_center": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -15,
+      "y": 0,
       "z": 0
     },
     "_mesh": {
@@ -246,7 +246,7 @@
     "node": {
       "__id__": 2
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 9
     },
@@ -499,7 +499,7 @@
       "__id__": 20
     },
     "_group": 32,
-    "_type": 2,
+    "_type": 4,
     "_mass": 1,
     "_allowSleep": true,
     "_linearDamping": 0.1,

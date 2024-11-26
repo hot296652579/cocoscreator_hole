@@ -25,7 +25,7 @@ export class HolePlayer extends Component {
 
     ringScale: Vec3 = v3(1.5, 0.01, 1.5); //刚体环形初始scale大小
     holeTriggerRadius: number = 0.4;      //碰撞器触发初始半径
-    coefficient: number = 10;
+    coefficient: number = 1;
     isMagment: boolean = false;
 
     @property(Node)
@@ -131,29 +131,27 @@ export class HolePlayer extends Component {
         // event.otherCollider.attachedRigidBody?.applyForce(heloActtion.multiplyScalar(1), heloToOtherDir);
 
         if (event.otherCollider.attachedRigidBody) {
-            const dir = this.getPlanceVec3(event);
-            Vec3.copy(_dir, dir);
-            _dir.normalize();
-
-            Vec3.copy(_ime, dir);
-            _ime.negative();
-            _ime.normalize();
-            _ime.multiplyScalar(1);
-            // console.log('施加的力:', _ime);
-            // console.log('方向:', _dir);
-            event.otherCollider.attachedRigidBody.applyImpulse(_ime, _dir);
-
-            // 如果距离足够近，销毁节点
             if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
-                event.otherCollider.setGroup(1 << 3);
+                if (event.otherCollider.attachedRigidBody) {
+                    const dir = this.getPlanceVec3(event);
+                    Vec3.copy(_dir, dir);
+                    _dir.normalize();
+
+                    Vec3.copy(_ime, dir);
+                    _ime.negative();
+                    _ime.normalize();
+                    _ime.multiplyScalar(1);
+                    // console.log('施加的力:', _ime);
+                    // console.log('方向:', _dir);
+                    event.otherCollider.attachedRigidBody.applyImpulse(_ime, _dir);
+                }
             }
         }
 
-        // if (event.otherCollider.attachedRigidBody) {
-        //     if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
-        //         event.otherCollider.setGroup(1 << 3);
-        //     }
-        // }
+        // 如果距离足够近，销毁节点
+        if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
+            event.otherCollider.setGroup(1 << 3);
+        }
     }
 
     onTriggerExit(event: ITriggerEvent): void {
