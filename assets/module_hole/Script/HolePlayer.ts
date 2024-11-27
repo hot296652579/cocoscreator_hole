@@ -129,7 +129,7 @@ export class HolePlayer extends Component {
         if (event.otherCollider.attachedRigidBody) {
             const otherCollider = event.otherCollider as CylinderCollider;
             const radius = otherCollider.radius;
-            console.log(`当前道具的半径:${otherCollider.radius}`)
+            console.log(`当前道具的半径:${otherCollider.radius}`);
 
             const dir = this.getPlanceVec3(event);
             Vec3.copy(_dir, dir);
@@ -142,7 +142,9 @@ export class HolePlayer extends Component {
             event.otherCollider.attachedRigidBody.applyImpulse(_ime, _dir);
 
             // 如果距离足够近 并且黑洞半径大于等于道具半径 吞噬
-            if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient * 0.75) {
+            const selfCollider = event.selfCollider as CylinderCollider;
+            console.log(`当前黑洞的半径:${selfCollider.radius}`);
+            if (this.getPlanceVec3(event).length() <= selfCollider.radius * this.coefficient * 0.75) {
                 if (this.holeTigger.radius >= radius) {
                     event.otherCollider.setGroup(1 << 3);
                 }
@@ -203,7 +205,7 @@ export class HolePlayer extends Component {
     updateHoleView(): void {
         const model = HoleManager.instance.holeModel;
         const { holeLevel, speed, view, diameter, radius } = model;
-        console.log(`当前黑洞等级:${holeLevel},速度:${speed},视野:${view},直径:${diameter}`);
+        console.log(`当前黑洞等级:${holeLevel},速度:${speed},视野:${view},直径:${diameter} 半径:${radius}`);
         this.speed = speed;
         // this.node.setScale(v3(diameter, 1, diameter));
 
