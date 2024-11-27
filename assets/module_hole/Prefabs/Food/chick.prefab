@@ -87,8 +87,8 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
-      "z": 0
+      "y": 3.03,
+      "z": -1.188
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -261,11 +261,11 @@
     "_center": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": 4.2,
       "z": 0
     },
     "_radius": 8,
-    "_height": 4,
+    "_height": 8.305,
     "_direction": 1,
     "_id": ""
   },

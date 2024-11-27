@@ -142,7 +142,7 @@ export class HolePlayer extends Component {
             event.otherCollider.attachedRigidBody.applyImpulse(_ime, _dir);
 
             // 如果距离足够近 并且黑洞半径大于等于道具半径 吞噬
-            const selfCollider = event.selfCollider as CylinderCollider;
+            const selfCollider = event.selfCollider as SphereCollider;
             console.log(`当前黑洞的半径:${selfCollider.radius}`);
             if (this.getPlanceVec3(event).length() <= selfCollider.radius * this.coefficient * 0.75) {
                 if (this.holeTigger.radius >= radius) {
