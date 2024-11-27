@@ -1,4 +1,4 @@
-import { _decorator, assetManager, Component, director, game, Label, Prefab, Node, AssetManager, Asset, PhysicsSystem, PhysicsSystem2D, EPhysics2DDrawFlags } from 'cc';
+import { _decorator, assetManager, Component, director, game, Label, Prefab, Node, AssetManager, Asset, PhysicsSystem, PhysicsSystem2D, EPhysics2DDrawFlags, AudioClip } from 'cc';
 import { tgxModuleContext, tgxUIMgr, tgxUIWaiting } from '../core_tgx/tgx';
 import { GameUILayers, GameUILayerNames } from '../scripts/GameUILayers';
 
@@ -12,7 +12,15 @@ const _preloadBundles = [ModuleDef.BASIC, ModuleDef.MODULE_HOLE];
 const _preloadRes = [
     { bundle: ModuleDef.BASIC, url: 'ui_alert/UI_Alert', type: 'prefab' },
     { bundle: ModuleDef.BASIC, url: 'ui_waiting/UI_Waiting', type: 'prefab' },
-    { bundle: ModuleDef.MODULE_HOLE, url: 'Prefabs/Level/Level1.prefab', type: 'prefab' }
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Prefabs/Level/Level1.prefab', type: 'prefab' },
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Audio/bgm_boss.mp3', type: 'audio' },
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Audio/bgm_jiemian.mp3', type: 'audio' },
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Audio/bgm_youxi.mp3', type: 'audio' },
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Audio/chi.mp3', type: 'audio' },
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Audio/dianji.mp3', type: 'audio' },
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Audio/shengli.mp3', type: 'audio' },
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Audio/shibai.mp3', type: 'audio' },
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Audio/quanji.mp3', type: 'audio' },
 ];
 
 const _loadingText = ['Loading.', 'Loading..', 'Loading...'];
@@ -99,6 +107,8 @@ export class Start extends Component {
         if (bundle) {
             if (res.type == 'prefab') {
                 bundle.preload(res.url, Prefab, onComplete);
+            } else if (res.type == 'audio') {
+                bundle.preload(res.url, AudioClip, onComplete);
             }
         }
     }

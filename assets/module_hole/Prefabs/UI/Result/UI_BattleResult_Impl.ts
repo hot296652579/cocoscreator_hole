@@ -96,7 +96,7 @@ export class UI_BattleResult_Impl extends UI_BattleResult {
         const percent = (total * 100) / quality; // 放大到整数范围
         const reward = Math.round((reward_basics * 100 + (reward_additional * percent)) / 100);
         this.rewardBase = reward;
-        this.rewardAdditional = reward_basics * 2;
+        this.rewardAdditional = reward * 2;
     }
 }
 
