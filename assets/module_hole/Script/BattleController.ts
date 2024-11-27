@@ -7,6 +7,7 @@ import { GameEvent } from './Enum/GameEvent';
 import { HoleGameAudioMgr } from './Manager/HoleGameAudioMgr';
 import { LevelManager } from './Manager/LevelMgr';
 import { PropManager } from './Manager/PropMgr';
+import { PropItem } from './PropItem';
 
 const { ccclass, property } = _decorator;
 const duration: number = 1.5;
@@ -102,38 +103,47 @@ export class BattleController extends Component {
      * 一次性生成所有道具并开始掉落
      */
     private spawnAllProps(): void {
-        const eatsPropTotal = PropManager.instance.eatsMap.size;
+        const eatsMap = PropManager.instance.eatsMap;
+        const eatsPropTotal = eatsMap.size;
         if (eatsPropTotal > 0) {
-            const totalProps = Math.floor(Math.random() * 10) + 5; // 随机生成 3 到 7 个道具
+            eatsMap.forEach((propTotal, propId) => {
+                const { count } = propTotal;
+                const prefab = this.propsPrefabs.find((prefab) => {
+                    const propItem = prefab.data.getComponent(PropItem);
+                    return propItem && propItem.id === propId;
+                });
 
-            for (let i = 0; i < totalProps; i++) {
-                const randomIndex = Math.floor(Math.random() * this.propsPrefabs.length);
-                const propPrefab = this.propsPrefabs[randomIndex];
-                const propNode = instantiate(propPrefab);
-                const collider = propNode.getComponent(BoxCollider) || propNode.getComponent(CylinderCollider) || propNode.getComponent(SphereCollider);
-                collider.isTrigger = true;
-                // console.log('初始scale:' + propNode.getScale());
-                propNode.setScale(0.7, 0.7, 0.7);
+                if (!prefab) {
+                    console.warn(`未找到 propId: ${propId}`);
+                    return;
+                }
 
-                // 生成初始位置的随机坐标 (3D 空间)
-                const rangeX = 10; // X 轴范围
-                const rangeZ = 10; // Z 轴范围
-                const startX = math.randomRange(-rangeX, rangeX);
-                const startZ = math.randomRange(-rangeZ, rangeZ);
-                const startPos = new Vec3(startX, 20, startZ);
-                propNode.setPosition(startPos);
-                this.node.addChild(propNode);
+                for (let i = 0; i < count; i++) {
+                    const propNode = instantiate(prefab);
+                    const collider = propNode.getComponent(BoxCollider) || propNode.getComponent(CylinderCollider) || propNode.getComponent(SphereCollider);
+                    collider.isTrigger = true;
+                    propNode.setScale(0.7, 0.7, 0.7);
 
-                // 掉落动画（从随机位置到玩家位置）
-                const playerPos = this.player.getWorldPosition();
-                tween(propNode)
-                    .to(duration, { position: v3(playerPos.x, playerPos.y + 1, playerPos.z) }, { easing: 'sineOut' })
-                    .call(() => {
-                        this.onPropCollected(propNode);
+                    // 生成初始位置的随机坐标 (3D 空间)
+                    const rangeX = 10; // X 轴范围
+                    const rangeZ = 10; // Z 轴范围
+                    const startX = math.randomRange(-rangeX, rangeX);
+                    const startZ = math.randomRange(-rangeZ, rangeZ);
+                    const startPos = new Vec3(startX, 20, startZ);
+                    propNode.setPosition(startPos);
+                    this.node.addChild(propNode);
 
-                    })
-                    .start();
-            }
+                    // 掉落动画（从随机位置到玩家位置）
+                    const playerPos = this.player.getWorldPosition();
+                    tween(propNode)
+                        .to(duration, { position: v3(playerPos.x, playerPos.y + 1, playerPos.z) }, { easing: 'sineOut' })
+                        .call(() => {
+                            this.onPropCollected(propNode);
+
+                        })
+                        .start();
+                }
+            });
         }
 
         this.scheduleTask(() => this.bigScaleTween(), duration);

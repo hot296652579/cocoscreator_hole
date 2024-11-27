@@ -21,6 +21,7 @@ export class PropManager {
     propParent: Node = null!;
     expPrefab: Prefab = null!;
 
+    /** number:储存道具id IPropTotal:总个数和总重量*/
     eatsMap: Map<number, IPropTotal> = new Map();
 
     initilizeUI(): void {
