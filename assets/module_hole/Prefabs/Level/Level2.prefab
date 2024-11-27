@@ -9427,7 +9427,9 @@
     "__prefab": {
       "__id__": 709
     },
-    "target": null,
+    "target": {
+      "__id__": 662
+    },
     "lookAtOffset": {
       "__type__": "cc.Vec3",
       "x": 0,
