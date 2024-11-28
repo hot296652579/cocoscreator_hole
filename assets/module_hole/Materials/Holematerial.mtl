@@ -85,13 +85,6 @@
     {
       "mainColor": {
         "__type__": "cc.Color",
-        "r": 255,
-        "g": 17,
-        "b": 17,
-        "a": 0
-      },
-      "emissive": {
-        "__type__": "cc.Color",
         "r": 0,
         "g": 0,
         "b": 0,

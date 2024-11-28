@@ -202,7 +202,7 @@
     "_group": 16,
     "_type": 1,
     "_mass": 20,
-    "_allowSleep": false,
+    "_allowSleep": true,
     "_linearDamping": 0.1,
     "_angularDamping": 0.1,
     "_useGravity": true,

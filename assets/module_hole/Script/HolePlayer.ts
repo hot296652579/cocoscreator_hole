@@ -86,9 +86,15 @@ export class HolePlayer extends Component {
     onTriggerEnter(event: ITriggerEvent): void {
         // console.log("HolePlayer onTriggerEnter");
         // this.pullTowardsHole(event);
-        // if (this.getPlanceVec3(event).length() <= this.holeTigger.radius * this.coefficient) {
-        //     event.otherCollider.setGroup(1 << 3);
-        // }
+
+        const selfCollider = event.selfCollider as SphereCollider;
+        const otherCollider = event.otherCollider as CylinderCollider;
+        const radius = otherCollider.radius;
+        if (this.getPlanceVec3(event).length() <= selfCollider.radius * this.coefficient * 0.5) {
+            if (this.holeTigger.radius >= radius) {
+                event.otherCollider.setGroup(1 << 3);
+            }
+        }
     }
 
     onGetScoreTriggerEnter(event: ITriggerEvent): void {
@@ -126,8 +132,12 @@ export class HolePlayer extends Component {
     }
 
     onTriggerStay(event: ITriggerEvent): void {
+        const otherCollider = event.otherCollider as CylinderCollider;
+        if (otherCollider.getGroup() == 1 << 3) {
+            return;
+        }
+
         if (event.otherCollider.attachedRigidBody) {
-            const otherCollider = event.otherCollider as CylinderCollider;
             const radius = otherCollider.radius;
             // console.log(`当前道具的半径:${otherCollider.radius}`);
 
@@ -138,13 +148,13 @@ export class HolePlayer extends Component {
             Vec3.copy(_ime, dir);
             _ime.negative();
             _ime.normalize();
-            _ime.multiplyScalar(2);
+            _ime.multiplyScalar(1);
             event.otherCollider.attachedRigidBody.applyImpulse(_ime, _dir);
 
             // 如果距离足够近 并且黑洞半径大于等于道具半径 吞噬
             const selfCollider = event.selfCollider as SphereCollider;
             // console.log(`当前黑洞的半径:${selfCollider.radius}`);
-            if (this.getPlanceVec3(event).length() <= selfCollider.radius * this.coefficient * 0.75) {
+            if (this.getPlanceVec3(event).length() <= selfCollider.radius * this.coefficient * 0.5) {
                 if (this.holeTigger.radius >= radius) {
                     event.otherCollider.setGroup(1 << 3);
                 }
