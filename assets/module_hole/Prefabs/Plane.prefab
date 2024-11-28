@@ -25,14 +25,14 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 11
+        "__id__": 15
       },
       {
-        "__id__": 13
+        "__id__": 17
       }
     ],
     "_prefab": {
-      "__id__": 15
+      "__id__": 19
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -105,13 +105,13 @@
         "__id__": 7
       },
       {
-        "__id__": 8
-      },
-      {
         "__id__": 9
       },
       {
-        "__id__": 10
+        "__id__": 11
+      },
+      {
+        "__id__": 13
       }
     ],
     "removedComponents": []
@@ -135,7 +135,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 6
+      "__id__": 8
     },
     "propertyPath": [
       "_lpos"
@@ -143,14 +143,20 @@
     "value": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -0.513,
+      "y": -0.415,
       "z": 0
     }
   },
   {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "0dbpdUWKdV57/5BohZgCIy"
+    ]
+  },
+  {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 6
+      "__id__": 10
     },
     "propertyPath": [
       "_lrot"
@@ -164,9 +170,15 @@
     }
   },
   {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "0dbpdUWKdV57/5BohZgCIy"
+    ]
+  },
+  {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 6
+      "__id__": 12
     },
     "propertyPath": [
       "_euler"
@@ -179,9 +191,15 @@
     }
   },
   {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "0dbpdUWKdV57/5BohZgCIy"
+    ]
+  },
+  {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 6
+      "__id__": 14
     },
     "propertyPath": [
       "_lscale"
@@ -194,6 +212,12 @@
     }
   },
   {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "0dbpdUWKdV57/5BohZgCIy"
+    ]
+  },
+  {
     "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
@@ -203,7 +227,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 12
+      "__id__": 16
     },
     "_material": null,
     "_isTrigger": false,
@@ -235,7 +259,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 14
+      "__id__": 18
     },
     "_group": 2,
     "_type": 2,
