@@ -49,6 +49,7 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose, this);
         EventDispatcher.instance.on(GameEvent.EVENT_FINISH_EAT_ENTER_BATTLE, this.enterBattle, this);
         EventDispatcher.instance.on(GameEvent.EVENT_ENTER_BATTLE, this.enterBattle, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_UPDATE_BATTLE_WEIGHT, this.enterBattle, this);
     }
 
     private updateUserInfo(): void {

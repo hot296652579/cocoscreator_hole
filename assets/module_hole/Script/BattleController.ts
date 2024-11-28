@@ -10,7 +10,7 @@ import { PropManager } from './Manager/PropMgr';
 import { PropItem } from './PropItem';
 
 const { ccclass, property } = _decorator;
-const duration: number = 1.5;
+const duration: number = 2;
 /**
  * 战斗控制器
  */
@@ -32,6 +32,7 @@ export class BattleController extends Component {
     playerWeight: number = 0;
     bossWeight: number = 0;
 
+    dropTimeouts: ReturnType<typeof setTimeout>[] = []; // 存储所有 setTimeout 的引用
     scheduledCallbacks: (() => void)[] = []; // 存储定时器 ID
 
     protected start(): void {
@@ -74,32 +75,40 @@ export class BattleController extends Component {
                     return;
                 }
 
+                const totalDuration = 2; // 总掉落时长（秒）
+                const interval = totalDuration / count; // 每个道具的掉落间隔
+
                 for (let i = 0; i < count; i++) {
-                    const propNode = instantiate(prefab);
-                    const collider = propNode.getComponent(BoxCollider) || propNode.getComponent(CylinderCollider) || propNode.getComponent(SphereCollider);
-                    collider.isTrigger = true;
-                    propNode.setScale(0.7, 0.7, 0.7);
+                    // 使用 setTimeout 实现掉落延迟
+                    const timeoutId = setTimeout(() => {
+                        const propNode = instantiate(prefab);
+                        const collider = propNode.getComponent(BoxCollider) || propNode.getComponent(CylinderCollider) || propNode.getComponent(SphereCollider);
+                        collider.isTrigger = true;
+                        propNode.setScale(0.7, 0.7, 0.7);
 
-                    // 生成初始位置的随机坐标 (3D 空间)
-                    const rangeX = 10; // X 轴范围
-                    const rangeZ = 10; // Z 轴范围
-                    const startX = math.randomRange(-rangeX, rangeX);
-                    const startZ = math.randomRange(-rangeZ, rangeZ);
-                    const startPos = new Vec3(startX, 20, startZ);
-                    propNode.setPosition(startPos);
-                    this.node.addChild(propNode);
+                        // 生成初始位置的随机坐标 (3D 空间)
+                        const rangeX = 10; // X 轴范围
+                        const rangeZ = 10; // Z 轴范围
+                        const startX = math.randomRange(-rangeX, rangeX);
+                        const startZ = math.randomRange(-rangeZ, rangeZ);
+                        const startPos = new Vec3(startX, 20, startZ);
+                        propNode.setPosition(startPos);
+                        this.node.addChild(propNode);
 
-                    // 掉落动画（从随机位置到玩家位置）
-                    const playerPos = this.player.getWorldPosition();
-                    tween(propNode)
-                        .to(duration, { position: v3(playerPos.x, playerPos.y + 1, playerPos.z) }, { easing: 'sineOut' })
-                        .call(() => {
-                            this.onPropCollected(propNode);
+                        // 掉落动画（从随机位置到玩家位置）
+                        const playerPos = this.player.getWorldPosition();
+                        tween(propNode)
+                            .to(1, { position: v3(playerPos.x, playerPos.y + 1, playerPos.z) }, { easing: 'sineOut' })
+                            .call(() => {
+                                this.onPropCollected(propNode);
+                            })
+                            .start();
+                    }, i * interval * 1000); // 每个道具的掉落间隔
 
-                        })
-                        .start();
+                    this.dropTimeouts.push(timeoutId);
                 }
             });
+
         }
 
         this.scheduleTask(() => this.bigScaleTween(), duration);
@@ -129,8 +138,8 @@ export class BattleController extends Component {
 
     /** 变大动画*/
     private bigScaleTween(): void {
-        const bigTarget = this.battleWin ? this.player : this.boss;
-        const bigScale: number = 2;
+        const bigTarget = this.player;
+        const bigScale: number = this.battleWin ? 3 : 2;
         tween(bigTarget)
             .to(duration, { scale: new Vec3(bigScale, bigScale, bigScale) })
             .call(() => {
@@ -210,6 +219,15 @@ export class BattleController extends Component {
             this.unschedule(callback);
         }
         this.scheduledCallbacks.length = 0; // 清空数组
+
+        this.clearDropTimeouts();
+    }
+
+    private clearDropTimeouts() {
+        this.dropTimeouts.forEach((timeoutId) => {
+            clearTimeout(timeoutId as unknown as number);
+        });
+        this.dropTimeouts = [];
     }
 }
 
