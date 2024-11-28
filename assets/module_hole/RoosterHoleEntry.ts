@@ -118,6 +118,7 @@ export class RoosterHoleEntry extends Component {
         } else {
             this.unschedule(this.updateCountdown);
             this.enterBattle();
+            EventDispatcher.instance.emit(GameEvent.EVENT_ENTER_BATTLE);
         }
     }
 

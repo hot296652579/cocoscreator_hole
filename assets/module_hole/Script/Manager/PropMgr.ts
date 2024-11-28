@@ -122,7 +122,7 @@ export class PropManager {
         return this.eatsMap.get(itemId) || null;
     }
 
-    /** 获取当前关卡总重量*/
+    /** 获取当前关卡玩家吃道具总重量*/
     getLevelTotalWeight(): number {
         let totalWeight = 0;
         this.eatsMap.forEach((value, key) => {

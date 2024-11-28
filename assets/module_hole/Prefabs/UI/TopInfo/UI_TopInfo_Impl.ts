@@ -47,6 +47,8 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
         EventDispatcher.instance.on(GameEvent.EVENT_LEVEL_PROGRESS_UPDATE, this.updateLevProgress, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_FINISH_EAT_ENTER_BATTLE, this.enterBattle, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_ENTER_BATTLE, this.enterBattle, this);
     }
 
     private updateUserInfo(): void {
@@ -75,20 +77,37 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
             const { count, totalWeight } = element;
             eatTotalWeight += totalWeight;
         });
-        const progresLenth = Math.round((eatTotalWeight / quality) * total);
-        expProgress.progress = progresLenth / total;
+
+        const precision = 10000;
+        const progressRatio = Math.floor((eatTotalWeight * precision) / quality) / precision;
+        const progressLength = progressRatio * total;
+        // console.log(`吃到的重量:${eatTotalWeight} 关卡重量:${quality} 比例:${progressLength / total}`);
+        expProgress.progress = progressLength / total;
     }
 
     //关卡升级事件
     private levelUpHandler(): void {
         this.updateLevelLb();
         this.updateLevProgress();
+        this.showExpProgress(true);
     }
 
     //闯关失败事件
     private resetGameByLose(): void {
         this.updateLevelLb();
         this.updateLevProgress();
+        this.showExpProgress(true);
+    }
+
+    private enterBattle(): void {
+        this.showExpProgress(false);
+    }
+
+    private showExpProgress(show: boolean): void {
+        let layout = this.layout as Layout_TopInfo;
+        const expProgress = layout.expProgress;
+        expProgress.node.active = show;
+        console.log('隐藏expProgress show:' + show);
     }
 
     /**
@@ -128,9 +147,10 @@ export class UI_TopInfo_Impl extends UI_TopInfo {
 
     protected onDispose(): void {
         EventDispatcher.instance.off(GameEvent.EVENT_USER_MONEY_UPDATE, this.updateUserInfo);
-
         EventDispatcher.instance.off(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler);
         EventDispatcher.instance.off(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose);
+        EventDispatcher.instance.off(GameEvent.EVENT_FINISH_EAT_ENTER_BATTLE, this.enterBattle);
+        EventDispatcher.instance.off(GameEvent.EVENT_ENTER_BATTLE, this.enterBattle);
     }
 
 }

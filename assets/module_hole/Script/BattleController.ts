@@ -38,7 +38,6 @@ export class BattleController extends Component {
         HoleGameAudioMgr.play(HoleGameAudioMgr.getMusicIdName(1), 1.0);
         this.initilize();
         this.addListener();
-        this.takeCameraToPlayer();
         this.spawnAllProps();
         this.startSchedule();
         EventDispatcher.instance.emit(GameEvent.EVENT_UPDATE_BATTLE_WEIGHT);
@@ -54,49 +53,6 @@ export class BattleController extends Component {
     private addListener(): void {
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.onCloseMyself, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.onCloseMyself, this);
-    }
-
-    private takeCameraToPlayer(): void {
-        if (!this.camera) {
-            console.error("Camera node is not assigned.");
-            return;
-        }
-
-        const pos = v3(2.7, 1, 0.2);
-        const targetAngles = v3(0, 90, 0);
-        this.camera.node.setPosition(pos);
-        this.camera.node.setRotationFromEuler(targetAngles);
-    }
-
-    private takeCameraToBother(): void {
-        if (!this.camera) {
-            console.error("Camera node is not assigned.");
-            return;
-        }
-
-        // 定义目标位置和最终角度
-        const targetPosition = new Vec3(3, 5, 30);
-
-        const startPosition = this.camera.node.getPosition();
-        tween(this.camera.node)
-            .to(
-                duration,
-                { position: targetPosition },
-                {
-                    onUpdate: (target, ratio) => {
-                        const newPosition = startPosition.lerp(targetPosition, ratio);
-                        this.camera!.node.setPosition(newPosition);
-
-                        // 动态更新摄像机旋转，让其看向目标
-                        this.camera!.node.lookAt(this.player!.worldPosition);
-                    },
-                }
-            )
-            .call(() => {
-                this.camera!.node.setPosition(targetPosition);
-                this.camera!.node.lookAt(Vec3.ZERO);
-            })
-            .start();
     }
 
     /**
@@ -179,6 +135,7 @@ export class BattleController extends Component {
             .to(duration, { scale: new Vec3(bigScale, bigScale, bigScale) })
             .call(() => {
                 this.playAttackAniamtion();
+                this.scheduleTask(() => this.playSomeBodyWinAniamtion(), duration);
             })
             .start()
     }
@@ -190,9 +147,18 @@ export class BattleController extends Component {
         this.scheduleTask(() => this.playPunchFlyAnimation(), 1);
     }
 
+    /** 播放胜利动画*/
+    private playSomeBodyWinAniamtion(): void {
+        if (this.battleWin) {
+            this.player.getComponent(CharacterCtrl)?.doAnimation(ActionState.Win);
+        } else {
+            this.boss.getComponent(CharacterCtrl)?.doAnimation(ActionState.Win);
+        }
+    }
+
     private startSchedule(): void {
         // 设置定时任务
-        this.scheduleTask(() => this.takeCameraToBother(), 3);
+        // this.scheduleTask(() => this.takeCameraToBother(), 3);
         this.scheduleTask(() => this.loadBattleResult(), 5);
     }
 

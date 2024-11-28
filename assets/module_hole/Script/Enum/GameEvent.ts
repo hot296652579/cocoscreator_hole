@@ -61,6 +61,8 @@ export class GameEvent {
     /** 磁力加成增加关闭特效*/
     static readonly EVENT_MAGNET_EFFECT_HIDE = 'EVENT_MAGNET_EFFECT_HIDE';
 
+    /** 进入战斗事件*/
+    static readonly EVENT_ENTER_BATTLE = 'EVENT_ENTER_BATTLE';
     /** 吃完关卡道具进入战斗*/
     static readonly EVENT_FINISH_EAT_ENTER_BATTLE = 'EVENT_FINISH_EAT_ENTER_BATTLE';
 }

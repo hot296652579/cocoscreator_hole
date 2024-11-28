@@ -1,1 +1,482 @@
-{"1":{"level":1,"type":1,"param":20,"money":0},"2":{"level":2,"type":1,"param":21,"money":250},"3":{"level":3,"type":1,"param":23,"money":400},"4":{"level":4,"type":1,"param":24,"money":700},"5":{"level":5,"type":1,"param":26,"money":900},"6":{"level":6,"type":1,"param":27,"money":1200},"7":{"level":7,"type":1,"param":29,"money":1500},"8":{"level":8,"type":1,"param":30,"money":2000},"9":{"level":9,"type":1,"param":32,"money":3000},"10":{"level":10,"type":1,"param":33,"money":4000},"11":{"level":11,"type":1,"param":35,"money":5000},"12":{"level":12,"type":1,"param":36,"money":6000},"13":{"level":13,"type":1,"param":37,"money":7000},"14":{"level":14,"type":1,"param":38,"money":8000},"15":{"level":15,"type":1,"param":40,"money":9000},"16":{"level":16,"type":1,"param":42,"money":9000},"17":{"level":17,"type":1,"param":44,"money":9000},"18":{"level":18,"type":1,"param":46,"money":9000},"19":{"level":19,"type":1,"param":48,"money":9000},"20":{"level":20,"type":1,"param":50,"money":9000},"21":{"level":21,"type":1,"param":54,"money":9000},"22":{"level":22,"type":1,"param":58,"money":9000},"23":{"level":23,"type":1,"param":62,"money":9000},"24":{"level":24,"type":1,"param":66,"money":9000},"25":{"level":25,"type":1,"param":70,"money":9000},"26":{"level":26,"type":1,"param":74,"money":9000},"27":{"level":27,"type":1,"param":78,"money":9000},"28":{"level":28,"type":1,"param":82,"money":9000},"29":{"level":29,"type":1,"param":86,"money":9000},"30":{"level":30,"type":1,"param":90,"money":9000},"31":{"level":1,"type":2,"param":1,"money":0},"32":{"level":2,"type":2,"param":2,"money":250},"33":{"level":3,"type":2,"param":3,"money":400},"34":{"level":4,"type":2,"param":4,"money":700},"35":{"level":5,"type":2,"param":5,"money":900},"36":{"level":6,"type":2,"param":6,"money":1200},"37":{"level":7,"type":2,"param":7,"money":1500},"38":{"level":8,"type":2,"param":8,"money":2000},"39":{"level":9,"type":2,"param":9,"money":3000},"40":{"level":10,"type":2,"param":10,"money":4000},"41":{"level":11,"type":2,"param":11,"money":5000},"42":{"level":12,"type":2,"param":12,"money":6000},"43":{"level":13,"type":2,"param":13,"money":7000},"44":{"level":14,"type":2,"param":14,"money":8000},"45":{"level":15,"type":2,"param":15,"money":9000},"46":{"level":16,"type":2,"param":16,"money":9000},"47":{"level":17,"type":2,"param":17,"money":9000},"48":{"level":18,"type":2,"param":18,"money":9000},"49":{"level":19,"type":2,"param":19,"money":9000},"50":{"level":20,"type":2,"param":20,"money":9000},"51":{"level":1,"type":3,"param":10,"money":0},"52":{"level":2,"type":3,"param":20,"money":250},"53":{"level":3,"type":3,"param":30,"money":400},"54":{"level":4,"type":3,"param":40,"money":700},"55":{"level":5,"type":3,"param":50,"money":900},"56":{"level":6,"type":3,"param":60,"money":1200},"57":{"level":7,"type":3,"param":70,"money":1500},"58":{"level":8,"type":3,"param":80,"money":2000},"59":{"level":9,"type":3,"param":90,"money":3000},"60":{"level":10,"type":3,"param":100,"money":4000},"61":{"level":11,"type":3,"param":110,"money":5000},"62":{"level":12,"type":3,"param":120,"money":6000},"63":{"level":13,"type":3,"param":130,"money":7000},"64":{"level":14,"type":3,"param":140,"money":8000},"65":{"level":15,"type":3,"param":150,"money":9000},"66":{"level":16,"type":3,"param":160,"money":9000},"67":{"level":17,"type":3,"param":170,"money":9000},"68":{"level":18,"type":3,"param":180,"money":9000},"69":{"level":19,"type":3,"param":190,"money":9000},"70":{"level":20,"type":3,"param":200,"money":9000},"71":{"level":21,"type":3,"param":210,"money":9000},"72":{"level":22,"type":3,"param":220,"money":9000},"73":{"level":23,"type":3,"param":230,"money":9000},"74":{"level":24,"type":3,"param":240,"money":9000},"75":{"level":25,"type":3,"param":250,"money":9000},"76":{"level":26,"type":3,"param":260,"money":9000},"77":{"level":27,"type":3,"param":270,"money":9000},"78":{"level":28,"type":3,"param":280,"money":9000},"79":{"level":29,"type":3,"param":290,"money":9000},"80":{"level":30,"type":3,"param":300,"money":9000}}
+{
+    "1": {
+        "level": 1,
+        "type": 1,
+        "param": 2,
+        "money": 0
+    },
+    "2": {
+        "level": 2,
+        "type": 1,
+        "param": 21,
+        "money": 250
+    },
+    "3": {
+        "level": 3,
+        "type": 1,
+        "param": 23,
+        "money": 400
+    },
+    "4": {
+        "level": 4,
+        "type": 1,
+        "param": 24,
+        "money": 700
+    },
+    "5": {
+        "level": 5,
+        "type": 1,
+        "param": 26,
+        "money": 900
+    },
+    "6": {
+        "level": 6,
+        "type": 1,
+        "param": 27,
+        "money": 1200
+    },
+    "7": {
+        "level": 7,
+        "type": 1,
+        "param": 29,
+        "money": 1500
+    },
+    "8": {
+        "level": 8,
+        "type": 1,
+        "param": 30,
+        "money": 2000
+    },
+    "9": {
+        "level": 9,
+        "type": 1,
+        "param": 32,
+        "money": 3000
+    },
+    "10": {
+        "level": 10,
+        "type": 1,
+        "param": 33,
+        "money": 4000
+    },
+    "11": {
+        "level": 11,
+        "type": 1,
+        "param": 35,
+        "money": 5000
+    },
+    "12": {
+        "level": 12,
+        "type": 1,
+        "param": 36,
+        "money": 6000
+    },
+    "13": {
+        "level": 13,
+        "type": 1,
+        "param": 37,
+        "money": 7000
+    },
+    "14": {
+        "level": 14,
+        "type": 1,
+        "param": 38,
+        "money": 8000
+    },
+    "15": {
+        "level": 15,
+        "type": 1,
+        "param": 40,
+        "money": 9000
+    },
+    "16": {
+        "level": 16,
+        "type": 1,
+        "param": 42,
+        "money": 9000
+    },
+    "17": {
+        "level": 17,
+        "type": 1,
+        "param": 44,
+        "money": 9000
+    },
+    "18": {
+        "level": 18,
+        "type": 1,
+        "param": 46,
+        "money": 9000
+    },
+    "19": {
+        "level": 19,
+        "type": 1,
+        "param": 48,
+        "money": 9000
+    },
+    "20": {
+        "level": 20,
+        "type": 1,
+        "param": 50,
+        "money": 9000
+    },
+    "21": {
+        "level": 21,
+        "type": 1,
+        "param": 54,
+        "money": 9000
+    },
+    "22": {
+        "level": 22,
+        "type": 1,
+        "param": 58,
+        "money": 9000
+    },
+    "23": {
+        "level": 23,
+        "type": 1,
+        "param": 62,
+        "money": 9000
+    },
+    "24": {
+        "level": 24,
+        "type": 1,
+        "param": 66,
+        "money": 9000
+    },
+    "25": {
+        "level": 25,
+        "type": 1,
+        "param": 70,
+        "money": 9000
+    },
+    "26": {
+        "level": 26,
+        "type": 1,
+        "param": 74,
+        "money": 9000
+    },
+    "27": {
+        "level": 27,
+        "type": 1,
+        "param": 78,
+        "money": 9000
+    },
+    "28": {
+        "level": 28,
+        "type": 1,
+        "param": 82,
+        "money": 9000
+    },
+    "29": {
+        "level": 29,
+        "type": 1,
+        "param": 86,
+        "money": 9000
+    },
+    "30": {
+        "level": 30,
+        "type": 1,
+        "param": 90,
+        "money": 9000
+    },
+    "31": {
+        "level": 1,
+        "type": 2,
+        "param": 1,
+        "money": 0
+    },
+    "32": {
+        "level": 2,
+        "type": 2,
+        "param": 2,
+        "money": 250
+    },
+    "33": {
+        "level": 3,
+        "type": 2,
+        "param": 3,
+        "money": 400
+    },
+    "34": {
+        "level": 4,
+        "type": 2,
+        "param": 4,
+        "money": 700
+    },
+    "35": {
+        "level": 5,
+        "type": 2,
+        "param": 5,
+        "money": 900
+    },
+    "36": {
+        "level": 6,
+        "type": 2,
+        "param": 6,
+        "money": 1200
+    },
+    "37": {
+        "level": 7,
+        "type": 2,
+        "param": 7,
+        "money": 1500
+    },
+    "38": {
+        "level": 8,
+        "type": 2,
+        "param": 8,
+        "money": 2000
+    },
+    "39": {
+        "level": 9,
+        "type": 2,
+        "param": 9,
+        "money": 3000
+    },
+    "40": {
+        "level": 10,
+        "type": 2,
+        "param": 10,
+        "money": 4000
+    },
+    "41": {
+        "level": 11,
+        "type": 2,
+        "param": 11,
+        "money": 5000
+    },
+    "42": {
+        "level": 12,
+        "type": 2,
+        "param": 12,
+        "money": 6000
+    },
+    "43": {
+        "level": 13,
+        "type": 2,
+        "param": 13,
+        "money": 7000
+    },
+    "44": {
+        "level": 14,
+        "type": 2,
+        "param": 14,
+        "money": 8000
+    },
+    "45": {
+        "level": 15,
+        "type": 2,
+        "param": 15,
+        "money": 9000
+    },
+    "46": {
+        "level": 16,
+        "type": 2,
+        "param": 16,
+        "money": 9000
+    },
+    "47": {
+        "level": 17,
+        "type": 2,
+        "param": 17,
+        "money": 9000
+    },
+    "48": {
+        "level": 18,
+        "type": 2,
+        "param": 18,
+        "money": 9000
+    },
+    "49": {
+        "level": 19,
+        "type": 2,
+        "param": 19,
+        "money": 9000
+    },
+    "50": {
+        "level": 20,
+        "type": 2,
+        "param": 20,
+        "money": 9000
+    },
+    "51": {
+        "level": 1,
+        "type": 3,
+        "param": 10,
+        "money": 0
+    },
+    "52": {
+        "level": 2,
+        "type": 3,
+        "param": 20,
+        "money": 250
+    },
+    "53": {
+        "level": 3,
+        "type": 3,
+        "param": 30,
+        "money": 400
+    },
+    "54": {
+        "level": 4,
+        "type": 3,
+        "param": 40,
+        "money": 700
+    },
+    "55": {
+        "level": 5,
+        "type": 3,
+        "param": 50,
+        "money": 900
+    },
+    "56": {
+        "level": 6,
+        "type": 3,
+        "param": 60,
+        "money": 1200
+    },
+    "57": {
+        "level": 7,
+        "type": 3,
+        "param": 70,
+        "money": 1500
+    },
+    "58": {
+        "level": 8,
+        "type": 3,
+        "param": 80,
+        "money": 2000
+    },
+    "59": {
+        "level": 9,
+        "type": 3,
+        "param": 90,
+        "money": 3000
+    },
+    "60": {
+        "level": 10,
+        "type": 3,
+        "param": 100,
+        "money": 4000
+    },
+    "61": {
+        "level": 11,
+        "type": 3,
+        "param": 110,
+        "money": 5000
+    },
+    "62": {
+        "level": 12,
+        "type": 3,
+        "param": 120,
+        "money": 6000
+    },
+    "63": {
+        "level": 13,
+        "type": 3,
+        "param": 130,
+        "money": 7000
+    },
+    "64": {
+        "level": 14,
+        "type": 3,
+        "param": 140,
+        "money": 8000
+    },
+    "65": {
+        "level": 15,
+        "type": 3,
+        "param": 150,
+        "money": 9000
+    },
+    "66": {
+        "level": 16,
+        "type": 3,
+        "param": 160,
+        "money": 9000
+    },
+    "67": {
+        "level": 17,
+        "type": 3,
+        "param": 170,
+        "money": 9000
+    },
+    "68": {
+        "level": 18,
+        "type": 3,
+        "param": 180,
+        "money": 9000
+    },
+    "69": {
+        "level": 19,
+        "type": 3,
+        "param": 190,
+        "money": 9000
+    },
+    "70": {
+        "level": 20,
+        "type": 3,
+        "param": 200,
+        "money": 9000
+    },
+    "71": {
+        "level": 21,
+        "type": 3,
+        "param": 210,
+        "money": 9000
+    },
+    "72": {
+        "level": 22,
+        "type": 3,
+        "param": 220,
+        "money": 9000
+    },
+    "73": {
+        "level": 23,
+        "type": 3,
+        "param": 230,
+        "money": 9000
+    },
+    "74": {
+        "level": 24,
+        "type": 3,
+        "param": 240,
+        "money": 9000
+    },
+    "75": {
+        "level": 25,
+        "type": 3,
+        "param": 250,
+        "money": 9000
+    },
+    "76": {
+        "level": 26,
+        "type": 3,
+        "param": 260,
+        "money": 9000
+    },
+    "77": {
+        "level": 27,
+        "type": 3,
+        "param": 270,
+        "money": 9000
+    },
+    "78": {
+        "level": 28,
+        "type": 3,
+        "param": 280,
+        "money": 9000
+    },
+    "79": {
+        "level": 29,
+        "type": 3,
+        "param": 290,
+        "money": 9000
+    },
+    "80": {
+        "level": 30,
+        "type": 3,
+        "param": 300,
+        "money": 9000
+    }
+}

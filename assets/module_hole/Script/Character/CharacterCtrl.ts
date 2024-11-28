@@ -26,7 +26,7 @@ export class CharacterCtrl extends Component {
             case ActionState.Attack:
                 return 'root|Attack.001';
             case ActionState.Win:
-                return 'root|Victory1';
+                return 'root|Victory';
             default:
                 return 'root|Idle';
         }
