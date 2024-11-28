@@ -65,4 +65,13 @@ export class GameEvent {
     static readonly EVENT_ENTER_BATTLE = 'EVENT_ENTER_BATTLE';
     /** 吃完关卡道具进入战斗*/
     static readonly EVENT_FINISH_EAT_ENTER_BATTLE = 'EVENT_FINISH_EAT_ENTER_BATTLE';
+
+    /** 转场动画从小到大*/
+    static readonly EVENT_ZERO_TO_FULL_TRANSITION = 'EVENT_ZERO_TO_FULL_TRANSITION';
+    /** 转场动画从小到大完成*/
+    static readonly EVENT_ZERO_TO_FULL_TRANSITION_FINISH = 'EVENT_ZERO_TO_FULL_TRANSITION_FINISH';
+    /** 转场动画从大到小*/
+    static readonly EVENT_FULL_TO_ZERO_TRANSITION = 'EVENT_FULL_TO_ZERO_TRANSITION';
+    /** 转场动画从大到小完成*/
+    static readonly EVENT_FULL_TO_ZERO_TRANSITION_FINISH = 'EVENT_FULL_TO_ZERO_TRANSITION_FINISH';
 }
