@@ -34,7 +34,7 @@ export class TransitionUI extends Component {
 
     private growingToSmall(): void {
         this.node.active = true;
-        this.node.setScale(1, 1, 1);
+        this.node.setScale(1.3, 1.3, 1.3);
         this.isGrowing = false;
         this.startAnimation();
     }
@@ -48,7 +48,7 @@ export class TransitionUI extends Component {
         if (this.isGrowing) {
             // 变大动画
             this.tweenAction = tween(this.node)
-                .to(duration, { scale: new Vec3(1, 1, 1) }, { easing: 'quadInOut' })
+                .to(duration, { scale: new Vec3(1.3, 1.3, 1.3) }, { easing: 'quadInOut' })
                 .call(() => {
                     this.isGrowing = false;
                     EventDispatcher.instance.emit(GameEvent.EVENT_ZERO_TO_FULL_TRANSITION_FINISH);
