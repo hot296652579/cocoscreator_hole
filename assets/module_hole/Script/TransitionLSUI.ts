@@ -71,7 +71,7 @@ export class TransitionLSUI extends Component {
         const cols = Math.ceil(this.screenSize.width / this.blockSize);
 
         for (let col = 0; col < cols; col++) {
-            const delay = col * 0.05; // 每列延迟时间
+            const delay = col * 0.01; // 每列延迟时间
             for (let row = 0; row < rows; row++) {
                 const blockIndex = col * rows + row; // 当前小方块的索引
                 const block = blocks[blockIndex];
@@ -90,7 +90,7 @@ export class TransitionLSUI extends Component {
         this.scheduleOnce(() => {
             this.isFillingScheduled = false;
             EventDispatcher.instance.emit(GameEvent.EVENT_ZERO_TO_FULL_TRANSITION_FINISH);
-        }, cols * 0.1 + rows * 0.01);
+        }, cols * 0.05 + rows * 0.01);
     }
 
     /**
@@ -103,7 +103,7 @@ export class TransitionLSUI extends Component {
         const cols = Math.ceil(this.screenSize.width / this.blockSize);
 
         for (let col = cols - 1; col >= 0; col--) {
-            const delay = (cols - 1 - col) * 0.05; // 每列延迟时间，从右到左
+            const delay = (cols - 1 - col) * 0.01; // 每列延迟时间，从右到左
             for (let row = 0; row < rows; row++) {
                 const blockIndex = col * rows + row; // 当前小方块的索引
                 const block = blocks[blockIndex];
@@ -125,7 +125,7 @@ export class TransitionLSUI extends Component {
         this.scheduleOnce(() => {
             this.isClearingScheduled = false;
             this.onTransitionComplete();
-        }, cols * 0.1 + rows * 0.01); // 根据动画时长调整
+        }, cols * 0.05 + rows * 0.01); // 根据动画时长调整
     }
 
     /**
