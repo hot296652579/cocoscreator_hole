@@ -14,6 +14,8 @@ export class TransitionLSUI extends Component {
     blockSize: number = 50; // 每个小方块的大小
 
     private screenSize: Size = new Size(); // 屏幕大小
+    private isFillingScheduled = false;
+    private isClearingScheduled = false;
 
     start() {
         this.node.active = false;
@@ -84,7 +86,9 @@ export class TransitionLSUI extends Component {
             }
         }
 
+        this.isFillingScheduled = true;
         this.scheduleOnce(() => {
+            this.isFillingScheduled = false;
             EventDispatcher.instance.emit(GameEvent.EVENT_ZERO_TO_FULL_TRANSITION_FINISH);
         }, cols * 0.1 + rows * 0.03);
     }
@@ -110,15 +114,16 @@ export class TransitionLSUI extends Component {
                         .delay(delay + row * 0.03) // 列与行的延迟叠加
                         .to(0.2, { opacity: 0 }) // 透明度变化动画
                         .call(() => {
-                            block.active = false; // 动画完成后隐藏小方块
+                            // block.active = false; // 动画完成后隐藏小方块
                         })
                         .start();
                 }
             }
         }
 
-        // 全部移除后回调逻辑
+        this.isClearingScheduled = true;
         this.scheduleOnce(() => {
+            this.isClearingScheduled = false;
             this.onTransitionComplete();
         }, cols * 0.1 + rows * 0.03); // 根据动画时长调整
     }
@@ -130,9 +135,23 @@ export class TransitionLSUI extends Component {
         EventDispatcher.instance.emit(GameEvent.EVENT_FULL_TO_ZERO_TRANSITION_FINISH);
     }
 
+    /**
+         * 清理所有定时器
+         */
+    clearTimers() {
+        if (this.isFillingScheduled) {
+            this.unscheduleAllCallbacks(); // 无法直接清除 scheduleOnce，只能清除所有定时器
+            this.isFillingScheduled = false;
+        }
+
+        if (this.isClearingScheduled) {
+            this.unscheduleAllCallbacks(); // 清理所有剩余的 scheduleOnce
+            this.isClearingScheduled = false;
+        }
+    }
+
     protected onDestroy(): void {
-        this.unscheduleAllCallbacks();
-        Tween.stopAllByTarget(this.node);
+        this.clearTimers();
     }
 }
 

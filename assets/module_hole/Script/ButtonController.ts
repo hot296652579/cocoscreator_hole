@@ -137,9 +137,12 @@ export class ButtonController extends Component {
             buttonNode.off(NodeEventType.TOUCH_END);
             buttonNode.getComponent(Button)!.enabled = false;
         } else {
-            const { level, money } = this.getCurrentLevelParam(type);
-            lbLevel.string = `LVL.${level}`;
-            lbMoney.string = `${money}`;
+            const config = this.getCurrentLevelParam(type);
+            if (config) {
+                const { level, money } = this.getCurrentLevelParam(type);
+                lbLevel.string = `LVL.${level}`;
+                lbMoney.string = `${money}`;
+            }
         }
     }
 
