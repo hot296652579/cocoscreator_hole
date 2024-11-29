@@ -79,8 +79,8 @@ export class TransitionLSUI extends Component {
 
                 if (uiOpacity) {
                     tween(uiOpacity)
-                        .delay(delay + row * 0.03) // 列与行的延迟叠加
-                        .to(0.2, { opacity: 255 }) // 透明度变化动画
+                        .delay(delay + row * 0.02) // 列与行的延迟叠加
+                        .to(0.1, { opacity: 255 }) // 透明度变化动画
                         .start();
                 }
             }
@@ -90,7 +90,7 @@ export class TransitionLSUI extends Component {
         this.scheduleOnce(() => {
             this.isFillingScheduled = false;
             EventDispatcher.instance.emit(GameEvent.EVENT_ZERO_TO_FULL_TRANSITION_FINISH);
-        }, cols * 0.1 + rows * 0.03);
+        }, cols * 0.1 + rows * 0.01);
     }
 
     /**
@@ -111,8 +111,8 @@ export class TransitionLSUI extends Component {
 
                 if (uiOpacity) {
                     tween(uiOpacity)
-                        .delay(delay + row * 0.03) // 列与行的延迟叠加
-                        .to(0.2, { opacity: 0 }) // 透明度变化动画
+                        .delay(delay + row * 0.02) // 列与行的延迟叠加
+                        .to(0.1, { opacity: 0 }) // 透明度变化动画
                         .call(() => {
                             // block.active = false; // 动画完成后隐藏小方块
                         })
@@ -125,7 +125,7 @@ export class TransitionLSUI extends Component {
         this.scheduleOnce(() => {
             this.isClearingScheduled = false;
             this.onTransitionComplete();
-        }, cols * 0.1 + rows * 0.03); // 根据动画时长调整
+        }, cols * 0.1 + rows * 0.01); // 根据动画时长调整
     }
 
     /**
