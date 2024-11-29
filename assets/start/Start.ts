@@ -12,6 +12,7 @@ const _preloadBundles = [ModuleDef.BASIC, ModuleDef.MODULE_HOLE];
 const _preloadRes = [
     { bundle: ModuleDef.BASIC, url: 'ui_alert/UI_Alert', type: 'prefab' },
     { bundle: ModuleDef.BASIC, url: 'ui_waiting/UI_Waiting', type: 'prefab' },
+    { bundle: ModuleDef.MODULE_HOLE, url: 'Prefabs/Level/Battle.prefab', type: 'prefab' },
     { bundle: ModuleDef.MODULE_HOLE, url: 'Prefabs/Level/Level1.prefab', type: 'prefab' },
     { bundle: ModuleDef.MODULE_HOLE, url: 'Audio/bgm_boss.mp3', type: 'audio' },
     { bundle: ModuleDef.MODULE_HOLE, url: 'Audio/bgm_jiemian.mp3', type: 'audio' },

@@ -39,9 +39,6 @@ export class BattleController extends Component {
         HoleGameAudioMgr.play(HoleGameAudioMgr.getMusicIdName(1), 1.0);
         this.initilize();
         this.addListener();
-        this.spawnAllProps();
-        this.startSchedule();
-        EventDispatcher.instance.emit(GameEvent.EVENT_UPDATE_BATTLE_WEIGHT);
     }
 
     private initilize(): void {
@@ -52,8 +49,16 @@ export class BattleController extends Component {
     }
 
     private addListener(): void {
+        //EVENT_FULL_TO_ZERO_TRANSITION_FINISH
+        EventDispatcher.instance.on(GameEvent.EVENT_FULL_TO_ZERO_TRANSITION_FINISH, this.startBattle, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.onCloseMyself, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.onCloseMyself, this);
+    }
+
+    private startBattle(): void {
+        this.spawnAllProps();
+        this.startSchedule();
+        EventDispatcher.instance.emit(GameEvent.EVENT_UPDATE_BATTLE_WEIGHT);
     }
 
     /**
@@ -63,6 +68,8 @@ export class BattleController extends Component {
         const eatsMap = PropManager.instance.eatsMap;
         const eatsPropTotal = eatsMap.size;
         if (eatsPropTotal > 0) {
+            if (!this.propsPrefabs) return;
+
             eatsMap.forEach((propTotal, propId) => {
                 const { count } = propTotal;
                 const prefab = this.propsPrefabs.find((prefab) => {
@@ -168,10 +175,12 @@ export class BattleController extends Component {
     private startSchedule(): void {
         // 设置定时任务
         // this.scheduleTask(() => this.takeCameraToBother(), 3);
-        this.scheduleTask(() => this.loadBattleResult(), 5);
+        this.scheduleTask(() => this.loadBattleResult(), 7);
     }
 
     private scheduleTask(callback: () => void, delay: number): void {
+        if (!this.scheduledCallbacks) return;
+
         const wrappedCallback = () => {
             callback();
             this.removeSchedule(wrappedCallback); // 回调执行后自动移除

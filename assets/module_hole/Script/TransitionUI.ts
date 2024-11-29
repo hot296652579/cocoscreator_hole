@@ -21,13 +21,11 @@ export class TransitionUI extends Component {
     }
 
     private setupUIListeners(): void {
-        console.log(`注册过场动画监听事件++++++++++++++++++++++`);
         EventDispatcher.instance.on(GameEvent.EVENT_ZERO_TO_FULL_TRANSITION, this.growingToBig, this);
         EventDispatcher.instance.on(GameEvent.EVENT_FULL_TO_ZERO_TRANSITION, this.growingToSmall, this);
     }
 
     private growingToBig(): void {
-        console.log(`变大caocaocoa+++++`);
         this.node.active = true;
         this.node.setScale(Vec3.ZERO);
         this.isGrowing = true;

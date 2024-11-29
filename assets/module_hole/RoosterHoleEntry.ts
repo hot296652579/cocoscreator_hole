@@ -78,7 +78,9 @@ export class RoosterHoleEntry extends Component {
         EventDispatcher.instance.on(GameEvent.EVENT_ADD_EXTRATIME, this.addExtraTime, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler, this);
         EventDispatcher.instance.on(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose, this);
-        EventDispatcher.instance.on(GameEvent.EVENT_FINISH_EAT_ENTER_BATTLE, this.enterBattle, this);
+        EventDispatcher.instance.on(GameEvent.EVENT_FINISH_EAT_ENTER_BATTLE, this.startTransitionToBig, this);
+
+        EventDispatcher.instance.on(GameEvent.EVENT_ZERO_TO_FULL_TRANSITION_FINISH, this.fullTransitionFinish, this);
     }
 
     protected onDestroy(): void {
@@ -88,7 +90,9 @@ export class RoosterHoleEntry extends Component {
         EventDispatcher.instance.off(GameEvent.EVENT_ADD_EXTRATIME, this.addExtraTime, this);
         EventDispatcher.instance.off(GameEvent.EVENT_BATTLE_SUCCESS_LEVEL_UP, this.levelUpHandler);
         EventDispatcher.instance.off(GameEvent.EVENT_BATTLE_FAIL_LEVEL_RESET, this.resetGameByLose);
-        EventDispatcher.instance.off(GameEvent.EVENT_FINISH_EAT_ENTER_BATTLE, this.enterBattle);
+        EventDispatcher.instance.off(GameEvent.EVENT_FINISH_EAT_ENTER_BATTLE, this.startTransitionToBig);
+
+        EventDispatcher.instance.off(GameEvent.EVENT_ZERO_TO_FULL_TRANSITION_FINISH, this.fullTransitionFinish);
     }
 
     onGameStart() {
@@ -116,8 +120,7 @@ export class RoosterHoleEntry extends Component {
 
             LevelManager.instance.levelModel.curGameState = TYPE_GAME_STATE.GAME_STATE_START;
         } else {
-            this.unschedule(this.updateCountdown);
-            this.enterBattle();
+            this.startTransitionToBig();
             EventDispatcher.instance.emit(GameEvent.EVENT_ENTER_BATTLE);
         }
     }
@@ -131,10 +134,12 @@ export class RoosterHoleEntry extends Component {
             const { extraTimePop } = LevelManager.instance.levelModel;
 
             if (extraTimePop) {
-                this.enterBattle(); //弹过时间加成弹窗直接进去战斗
+                // this.enterBattle(); //弹过时间加成弹窗直接进去战斗
+                this.startTransitionToBig();
             } else {
                 if (isExceed) {
-                    this.enterBattle(); // 超过关卡比例直接进入战斗
+                    // this.enterBattle(); // 超过关卡比例直接进入战斗
+                    this.startTransitionToBig();
                 } else {
                     tgxUIMgr.inst.showUI(UI_ExtraTime);
                     LevelManager.instance.levelModel.extraTimePop = true;
@@ -147,10 +152,20 @@ export class RoosterHoleEntry extends Component {
         this.lbTimes.string = `${formatStr}`;
     }
 
+    private startTransitionToBig(): void {
+        this.unschedule(this.updateCountdown);
+        EventDispatcher.instance.emit(GameEvent.EVENT_ZERO_TO_FULL_TRANSITION);
+    }
+
+    private fullTransitionFinish(): void {
+        this.enterBattle();
+    }
+
     private enterBattle(): void {
         this.unschedule(this.updateCountdown);
         this.battleStageView();
         LevelManager.instance.loadBattle();
+        EventDispatcher.instance.emit(GameEvent.EVENT_FULL_TO_ZERO_TRANSITION);
     }
 
     private updateCountLb(addTime?: number): void {
