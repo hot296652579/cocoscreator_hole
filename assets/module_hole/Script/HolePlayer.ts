@@ -24,8 +24,6 @@ export class HolePlayer extends Component {
     speed: number = 1;
     view: number = 1;
 
-    ringScale: Vec3 = v3(1.5, 0.01, 1.5); //刚体环形初始scale大小
-    holeTriggerRadius: number = 0.4;      //碰撞器触发初始半径
     coefficient: number = 1;
     isMagment: boolean = false;
 
@@ -148,7 +146,7 @@ export class HolePlayer extends Component {
             Vec3.copy(_ime, dir);
             _ime.negative();
             _ime.normalize();
-            _ime.multiplyScalar(2);
+            _ime.multiplyScalar(3);
             event.otherCollider.attachedRigidBody.applyImpulse(_ime, _dir);
 
             // 如果距离足够近 并且黑洞半径大于等于道具半径 吞噬

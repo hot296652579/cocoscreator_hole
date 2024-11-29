@@ -36,6 +36,11 @@ export class PropModel {
         return this.config.weight;
     }
 
+    /** 缩放比例*/
+    get narrow(): number {
+        return this.config.narrow;
+    }
+
     /** 根据id获取当前道具重量*/
     getWeightById(id: number = 1): number {
         this.config.init(id);

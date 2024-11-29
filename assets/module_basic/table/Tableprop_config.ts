@@ -35,5 +35,9 @@ export class Tableprop_config {
     get radius(): number {
         return this.data.radius;
     }
+    /** 缩小倍率 */
+    get narrow(): number {
+        return this.data.narrow;
+    }
 }
     

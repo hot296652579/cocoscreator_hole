@@ -80,11 +80,12 @@ export class PropManager {
 
     /** 记录吞噬的道具*/
     savePropItems(data: PropItem): void {
-        const { id, name, weight } = data;
+        const { id, narrow, weight } = data;
         if (!this.eatsMap.has(id)) {
             const obj = {
                 count: 1,
-                totalWeight: weight
+                totalWeight: weight,
+                narrow
             }
             this.eatsMap.set(id, obj);
         } else {
@@ -95,6 +96,7 @@ export class PropManager {
             const totalWeight = count * weight;
             obj.count = count;
             obj.totalWeight = totalWeight;
+            obj.narrow = narrow;
 
             this.eatsMap.set(id, obj);
         }
@@ -145,4 +147,5 @@ export class PropManager {
 interface IPropTotal {
     count: number,//总数
     totalWeight: number //总重量
+    narrow: number,//缩小值
 }

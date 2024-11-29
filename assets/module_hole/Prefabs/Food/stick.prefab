@@ -183,6 +183,8 @@
       "__id__": 0
     },
     "fileId": "eey57WpfJdBaCVYbubLLcE",
+    "instance": null,
+    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
@@ -221,8 +223,8 @@
     "_type": 1,
     "_mass": 17,
     "_allowSleep": false,
-    "_linearDamping": 0.1,
-    "_angularDamping": 0.1,
+    "_linearDamping": 0,
+    "_angularDamping": 0,
     "_useGravity": true,
     "_linearFactor": {
       "__type__": "cc.Vec3",
@@ -254,10 +256,7 @@
     "__prefab": {
       "__id__": 12
     },
-    "_material": {
-      "__uuid__": "3e8bec7a-f877-47c0-af72-b4cac5c9a477",
-      "__expectedType__": "cc.PhysicsMaterial"
-    },
+    "_material": null,
     "_isTrigger": false,
     "_center": {
       "__type__": "cc.Vec3",

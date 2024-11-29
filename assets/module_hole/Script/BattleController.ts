@@ -71,7 +71,7 @@ export class BattleController extends Component {
             if (!this.propsPrefabs) return;
 
             eatsMap.forEach((propTotal, propId) => {
-                const { count } = propTotal;
+                const { count, narrow } = propTotal;
                 const prefab = this.propsPrefabs.find((prefab) => {
                     const propItem = prefab.data.getComponent(PropItem);
                     return propItem && propItem.id === propId;
@@ -91,7 +91,7 @@ export class BattleController extends Component {
                         const propNode = instantiate(prefab);
                         const collider = propNode.getComponent(BoxCollider) || propNode.getComponent(CylinderCollider) || propNode.getComponent(SphereCollider);
                         collider.isTrigger = true;
-                        propNode.setScale(0.7, 0.7, 0.7);
+                        propNode.setScale(narrow, narrow, narrow);
 
                         // 生成初始位置的随机坐标 (3D 空间)
                         const rangeX = 10; // X 轴范围
@@ -115,7 +115,6 @@ export class BattleController extends Component {
                     this.dropTimeouts.push(timeoutId);
                 }
             });
-
         }
 
         this.scheduleTask(() => this.bigScaleTween(), duration);

@@ -7,7 +7,8 @@ export interface IPropItem {
     content: string,
     model: string,
     exp: number,
-    weight: number
+    weight: number,
+    narrow: number
 }
 
 @ccclass('PropItem')
@@ -19,10 +20,11 @@ export class PropItem extends Component {
     @property
     propName: string = '';
 
-    content: string = null!;
-    model: string = null!;
-    exp: number = null!;
-    weight: number = null!;
+    content: string = null;
+    model: string = null;
+    exp: number = null;
+    weight: number = null;
+    narrow: number = null;
 
     start() {
         const propData = this.getDataByJsonId();
@@ -30,6 +32,7 @@ export class PropItem extends Component {
         this.model = propData.model;
         this.exp = propData.exp;
         this.weight = propData.weight;
+        this.narrow = propData.narrow;
 
         // console.log(`道具id:${this.id} 道具名content:${this.content} 道具exp:${this.exp} 道具重量:${this.weight}`);
     }
@@ -41,7 +44,8 @@ export class PropItem extends Component {
             content: model.content,
             model: model.model,
             exp: model.exp,
-            weight: model.weight
+            weight: model.weight,
+            narrow: model.narrow
         }
         return data;
     }
