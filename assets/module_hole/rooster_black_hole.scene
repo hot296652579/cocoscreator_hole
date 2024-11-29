@@ -26,12 +26,14 @@
         "__id__": 7
       },
       {
-        "__id__": 204
+        "__id__": 203
       }
     ],
     "_active": true,
     "_components": [],
-    "_prefab": null,
+    "_prefab": {
+      "__id__": 205
+    },
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
@@ -271,6 +273,9 @@
     "_active": true,
     "_components": [
       {
+        "__id__": 199
+      },
+      {
         "__id__": 200
       },
       {
@@ -278,9 +283,6 @@
       },
       {
         "__id__": 202
-      },
-      {
-        "__id__": 203
       }
     ],
     "_prefab": null,
@@ -435,10 +437,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 198
+        "__id__": 197
       },
       {
-        "__id__": 199
+        "__id__": 198
       }
     ],
     "_prefab": null,
@@ -7518,7 +7520,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Transition",
+    "_name": "TransitionUI",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": {
@@ -7535,9 +7537,6 @@
       },
       {
         "__id__": 196
-      },
-      {
-        "__id__": 197
       }
     ],
     "_prefab": null,
@@ -7556,9 +7555,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
-      "z": 0
+      "x": 1,
+      "y": 1,
+      "z": 1
     },
     "_mobility": 0,
     "_layer": 33554432,
@@ -7568,7 +7567,7 @@
       "y": 0,
       "z": 0
     },
-    "_id": "8eTE0tD5tDDqbv3jDdeuzR"
+    "_id": "59ID+9LdJPfZLkOSH2vA7l"
   },
   {
     "__type__": "cc.UITransform",
@@ -7583,53 +7582,14 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 720,
-      "height": 1334
+      "height": 1334.0000000000002
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
       "y": 0.5
     },
-    "_id": "e93VG40a9Mspc3yzmiw4ae"
-  },
-  {
-    "__type__": "cc.Sprite",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 193
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_customMaterial": null,
-    "_srcBlendFactor": 2,
-    "_dstBlendFactor": 4,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
-      "a": 255
-    },
-    "_spriteFrame": {
-      "__uuid__": "7d8f9b89-4fd1-4c9f-a3ab-38ec7cded7ca@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
-    "_type": 0,
-    "_fillType": 0,
-    "_sizeMode": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_useGrayscale": false,
-    "_atlas": null,
-    "_id": "25kPLlCjFGI7Cov1jLAx5X"
+    "_id": "8awNiD4F9J35klUdHASswS"
   },
   {
     "__type__": "cc.Widget",
@@ -7659,10 +7619,10 @@
     "_originalHeight": 100,
     "_alignMode": 2,
     "_lockFlags": 0,
-    "_id": "47g/PuEYBDKpnlp4gjtMWn"
+    "_id": "90+PrREbFKqJw90yui219F"
   },
   {
-    "__type__": "a7d83lb0MtMLLvkYdd1hM9o",
+    "__type__": "bc4e9c9MAtP8JG7vrKD8FoD",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -7671,7 +7631,12 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_id": "33AtSosMhBerb9LdQxi90Y"
+    "blockPrefab": {
+      "__uuid__": "b7bf505e-4ba5-427c-9616-11ff198788fc",
+      "__expectedType__": "cc.Prefab"
+    },
+    "blockSize": 50,
+    "_id": "67MqMJCNpHOqjJ/f5WvE5y"
   },
   {
     "__type__": "cc.UITransform",
@@ -7822,7 +7787,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 205
+        "__id__": 204
       }
     ],
     "_prefab": null,
@@ -7861,7 +7826,7 @@
     "_objFlags": 0,
     "__editorExtras__": {},
     "node": {
-      "__id__": 204
+      "__id__": 203
     },
     "_enabled": true,
     "__prefab": null,
@@ -7932,6 +7897,14 @@
       "__id__": 23
     },
     "_id": "faVuLjSsRIoKWar6o08Srq"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": null,
+    "asset": null,
+    "fileId": "be14c61f-22d8-4bb9-b444-ad9f29740469",
+    "instance": null,
+    "targetOverrides": null
   },
   {
     "__type__": "cc.SceneGlobals",
